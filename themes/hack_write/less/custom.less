@@ -1,0 +1,404 @@
+/** HACKWRITE THEMING **/
+
+/* Solarized colors */
+
+@base03:    greyscale(#002b36);
+@base02:    greyscale(#073642);
+@base01:    greyscale(#586e75);
+@base00:    greyscale(#657b83);
+@base0:     greyscale(#839496);
+@base1:     greyscale(#93a1a1);
+@base2:     greyscale(#eee8d5);
+@base3:     greyscale(#fdf6e3);
+@yellow:    #b58900;
+@orange:    #cb4b16;
+@red:       #dc322f;
+@magenta:   #d33682;
+@violet:    #6c71c4;
+@blue:      #268bd2;
+@cyan:      #2aa198;
+@green:     #859900;
+
+.clearfix:after {
+     visibility: hidden;
+     display: block;
+     font-size: 0;
+     content: " ";
+     clear: both;
+     height: 0;
+     }
+.clearfix { display: inline-block;
+	&:after {
+	     visibility: hidden;
+	     display: block;
+	     font-size: 0;
+	     content: " ";
+	     clear: both;
+	     height: 0;
+	     }
+}
+/* start commented backslash hack \*/
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+/* close commented backslash hack */
+
+
+
+/* One size */
+
+@media all and (min-width: 960px) {
+body{
+    font-size: 30px;
+  }
+}
+
+@media all and (max-width: 959px) and (min-width: 600px) {
+body{
+    font-size: 20px;
+  }
+}
+
+@media all and (max-width: 599px) and (min-width: 50px) {
+body{
+    font-size: 16px;
+  }
+}
+
+
+body {
+	background-color: @base03;
+	color: @base0;
+	font-family: "Emilbus Mono", Menlo, Inconsolata, Monaco, Consolas, 'Courier New', Courier, monospace;
+	line-height: 1.4;
+	padding: 1em;
+}
+
+#header {
+	background-color: #000000;
+	width: calc(100vw - 2em);
+	margin-top: 0;
+	margin-bottom: 0;
+	position: fixed;
+	left: 0;
+	top: 0;
+	font-size: .75em;
+	font-weight: normal;
+	padding-top: .5em;
+	padding-bottom:.5em;
+	padding-left: 1em;
+	padding-right: 1em;
+	z-index: 9999;
+
+
+
+	#brand {
+		float: left;
+		margin-top: 0;
+		margin-bottom: 0;
+		font-weight: normal;
+	}
+
+	#menu {
+		float: right;
+
+		ul {
+			margin-top: 0;
+			margin-bottom: 0;
+			font-weight: normal;
+		}
+	}
+
+	.clearfix;
+}
+
+.entry-title, menu, h1, h2, h3, h4, h5, h6 {
+	font-size: 1em;
+}
+
+pre, code, pre.code, pre code, .code, .literal-block {
+	background-color: @base02;
+}
+
+pre, pre.code, pre code, .literal-block {
+  margin-left: -4em;
+	margin-right: -4em;
+	padding-left: 4em;
+	padding-right: 4em;
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
+
+a {
+	color: @blue;
+
+  &:link {
+		color: @blue;
+	}
+
+	&:visited {
+		color: @blue;
+	}
+
+	&:hover {
+		color: @blue !important;
+		text-decoration: underline;
+	}
+}
+
+.headers {
+	color: @orange !important;
+	text-decoration: none;
+
+}
+
+h1, h2, h3, .postpage .entry-title a, .postpage .entry-title a:hover {
+	.headers;
+	font-weight: bold;
+}
+
+h4, h5, h6 {
+	.headers;
+	font-weight: normal;
+}
+
+.markup-reveal {
+	font-size: .75em;
+	font-weight: lighter;
+	color: @base02;
+}
+
+.entry-content p {
+	position: relative;
+	&:before, &:after {
+		.markup-reveal;
+	}
+	&:before {
+		content: "<p>";
+		position: absolute;
+		left: -3ch;
+	}
+	&:after {
+	 content: "</p>";
+	}
+}
+
+article {
+ h2, h3, h4, h5, h6 {
+
+	 margin-left: -1ch;
+
+		&:before {
+			font-weight: normal;
+			font-size: .8em;
+			color: darken(@orange, 15%);
+		}
+	}
+}
+
+body {counter-reset: h2}
+h2 {counter-reset: h3}
+h3 {counter-reset: h4}
+h4 {counter-reset: h5}
+h5 {counter-reset: h6}
+
+ h2:before {counter-increment: h2; content: counter(h2) " — "}
+ h3:before {counter-increment: h3; content: counter(h2) "." counter(h3) " — "}
+ h4:before {counter-increment: h4; content: counter(h2) "." counter(h3) "." counter(h4) " — "}
+ h5:before {counter-increment: h5; content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) " — "}
+ h6:before {counter-increment: h6; content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) "." counter(h6) " — "}
+
+
+article h2:after {
+	.markup-reveal;
+	content: " </h2>";
+
+}
+
+article h3:after {
+	.markup-reveal;
+	content: " </h3>";
+
+}
+article h4:after {
+	.markup-reveal;
+	content: " </h4>";
+
+}
+
+article h5:after {
+	.markup-reveal;
+	content: " </h5>";
+
+}
+
+article h6:after {
+	.markup-reveal;
+	content: " </h6>";
+
+}
+
+article ul {
+	margin-left: none;
+	padding-left: 2ch;
+}
+
+article ul, article ul li {
+  margin-left: none;
+	list-style-type: none;
+}
+
+article ul li:before {
+	content: " - ";
+	color: @violet;
+}
+
+article ul li li:before {
+	content: " -- ";
+}
+
+article ul li li li:before {
+	content: " --- ";
+}
+
+article ul li li li li:before {
+	content: " ---- ";
+}
+
+ol {
+	counter-reset: item;
+	padding-left: 2ch;
+}
+
+ol li {
+	padding-left: 0;
+	display: block;
+}
+
+ol li:before {
+	content: counter(item) ". ";
+	counter-increment: item;
+	color: @violet;
+}
+
+ol ol {
+	counter-reset: nest-item;
+
+	li:before {
+		content: counter(nest-item) ". ";
+		counter-increment: nest-item;
+	}
+
+	ol {
+		counter-reset: nest-nest-item;
+
+		li:before {
+			content: counter(nest-nest-item) ". ";
+			counter-increment: nest-nest-item;
+		}
+	}
+
+}
+
+ol ul li:before {
+	content: " - ";
+	counter-increment: none;
+}
+
+
+
+.metadata {
+  &:before, &:after {
+		color: @base01;
+		white-space: pre-wrap;
+		display: block;
+	}
+
+	&:before {
+		content: "<!--";
+	}
+
+	&:after {
+		content: "-->";
+	}
+
+	p {
+		display: block;
+		margin: 0;
+		padding-left: 2ch;
+		&:before {
+			color: @base01;
+		}
+		&:after {
+			content: none;
+		}
+	}
+
+	.byline {
+		&:before {
+			color: @base01;
+			content: " .. author:";
+		}
+	}
+	.dateline {
+		&:before {
+			content: " .. published: ";
+		}
+	}
+
+	.sourceline {
+		&:before {
+			content: " .. view_source: ";
+		}
+	}
+
+}
+
+blockquote {
+	margin-left: 0;
+	margin-right: 0;
+	padding-left: 3ch;
+	border-left: 1px solid @base02;
+
+	&:before, &:after {
+		.markup-reveal;
+		display: block;
+	}
+	&:before {
+		content: "<blockquote>";
+	}
+	&:after {
+		content: "</blockquote>"
+	}
+	p {
+		&:before, &:after {
+			content: none !important;
+		}
+	}
+	cite {
+		color: @base01;
+		font-style: italic;
+		display: block;
+		margin-left: 2ch;
+
+		&:before {
+			content: "— ";
+		}
+	}
+
+}
+
+article.postpage header:before {
+		.markup-reveal;
+		display: block;
+		content: "<article>";
+}
+
+.postpage .entry-content:after {
+  	.markup-reveal;
+	  display: block;
+		content: "</article>";
+}
+
+.commentline {
+  display: none;
+}
