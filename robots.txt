@@ -1,0 +1,4 @@
+Sitemap: http://adammichaelwood.com/hackwrite/sitemapindex.xml
+
+User-Agent: *
+Host: adammichaelwood.com
