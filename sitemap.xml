@@ -6,31 +6,31 @@
     xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
-  <loc>http://adammichaelwood.com/hackwrite/</loc>
+  <loc>http://hackwrite.com/</loc>
   <lastmod>2016-02-11T01:03:00Z</lastmod>
  </url>
  <url>
-  <loc>http://adammichaelwood.com/hackwrite/2016/</loc>
+  <loc>http://hackwrite.com/2016/</loc>
   <lastmod>2016-02-11T01:03:00Z</lastmod>
  </url>
  <url>
-  <loc>http://adammichaelwood.com/hackwrite/archive.html</loc>
-  <lastmod>2016-02-11T01:18:00Z</lastmod>
+  <loc>http://hackwrite.com/archive.html</loc>
+  <lastmod>2016-02-12T18:05:00Z</lastmod>
  </url>
  <url>
-  <loc>http://adammichaelwood.com/hackwrite/categories/</loc>
+  <loc>http://hackwrite.com/categories/</loc>
   <lastmod>2016-02-11T01:03:00Z</lastmod>
  </url>
  <url>
-  <loc>http://adammichaelwood.com/hackwrite/galleries/</loc>
+  <loc>http://hackwrite.com/galleries/</loc>
   <lastmod>2016-02-11T01:03:00Z</lastmod>
  </url>
  <url>
-  <loc>http://adammichaelwood.com/hackwrite/listings/</loc>
+  <loc>http://hackwrite.com/listings/</loc>
   <lastmod>2016-02-11T01:03:00Z</lastmod>
  </url>
  <url>
-  <loc>http://adammichaelwood.com/hackwrite/posts/python-and-django-vs-ruby-and-rails/</loc>
+  <loc>http://hackwrite.com/posts/python-and-django-vs-ruby-and-rails/</loc>
   <lastmod>2016-02-11T01:03:00Z</lastmod>
  </url>
 </urlset>
