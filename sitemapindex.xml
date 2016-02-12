@@ -7,7 +7,7 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <sitemap>
   <loc>http://hackwrite.com/galleries/rss.xml</loc>
-  <lastmod>2016-02-12T18:05:00Z</lastmod>
+  <lastmod>2016-02-12T18:25:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://hackwrite.com/rss.xml</loc>
@@ -15,6 +15,6 @@
  </sitemap>
  <sitemap>
   <loc>http://hackwrite.com/sitemap.xml</loc>
-  <lastmod>2016-02-12T18:05:00Z</lastmod>
+  <lastmod>2016-02-12T18:25:00Z</lastmod>
  </sitemap>
 </sitemapindex>
