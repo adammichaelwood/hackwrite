@@ -23,7 +23,7 @@ while: # variable not assigned
 
 If the assignment or validation fails, the loop repeats and the user has another opportunity to enter input. (You could even add a message to `except` if you wanted to.)
 
-This came up for me in [a little script I wrote](.) to [semi-automate a task](.). I needed to rate the quality of something I was looking at, and I was going for speed: Glance at the item, make a snap quality judgment, type a number.
+This came up for me in [a little script I wrote](https://gist.github.com/adammichaelwood/6f2e02c4156c6cc27020ce179d2e8638) to [semi-automate a task](https://www.reddit.com/r/learnpython/comments/56r94z/what_python_program_have_you_created_to_make_your/d8m0hy6/?context=3). I needed to rate the quality of something I was looking at, and I was going for speed: Glance at the item, make a snap quality judgment, type a number.
 
 But, of course, sometimes I typed the number incorrectly, hitting a letter instead of a number. This screwed things up latter, when I tried to order all my items by quality rating.
 
