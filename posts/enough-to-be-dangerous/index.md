@@ -9,9 +9,9 @@
 .. type: text
 -->
 
-As we all know, **Learning to Code** is all the rage. I don't see any sign that the trend is dying down any time soon, so I might as well jump on the bandwagon here and encourage my fellow tech writers to do the same.
+**Learning to Code** is all the rage. I don't see any sign that the trend is dying down any time soon. I might as well jump on the bandwagon here and encourage my fellow tech writers to do the same.
 
-Obviously, a lot of you already do code, or are in the process of learning. I once assumed knowing at least some coding was a requirement for being a tech writer. But it seems this isn't entirely the case. Some TWs need to be able to read and write enough code to document APIs and provide code samples --- but apparently (I have learned) most tech writers aren't doing that, and you can fake your way through that if you really need to.
+Obviously, a lot of you already code, or are in the process of learning. I once assumed knowing at least some coding was a requirement for being a tech writer. But it seems this isn't entirely the case. Some TWs need to be able to read and write enough code to document APIs and provide code samples --- but apparently (I have learned) most tech writers aren't doing that, and you can fake your way through that if you really need to.
 
 So, **if you are among the majority of technical writers that don't code, this post is for you**.
 
