@@ -11,7 +11,7 @@
 
 While working on the theme for [this site](http://hackwrite.com), I was referencing [Markdown CSS](http://mrcoles.com/demo/markdown-css/), which makes HTML look like Markdown. (h/t [@ericholscher](https://twitter.com/ericholscher))
 
-I ran across an interesting (let's call it a) pattern.
+I [ran across an interesting (let's call it a) pattern](https://github.com/mrcoles/markdown-css/blob/master/markdown.less).
 
 ```less
 h2:before,
