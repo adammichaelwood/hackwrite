@@ -1,5 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0"><channel><title>hack.write()</title><link>http://hackwrite.com/</link><description>Writing about writing about development.</description><atom:link rel="self" type="application/rss+xml" href="http://hackwrite.com/rss.xml"></atom:link><language>en</language><lastBuildDate>Tue, 03 Jan 2017 16:02:54 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>It Should Matter That It's You</title><link>http://hackwrite.com/posts/it-should-matter-that-its-you/</link><dc:creator>Adam Michael Wood</dc:creator><description>&lt;p&gt;I grew up doing theatre, went to college for theatre, and taught theatre for a few years. Nearly all of my theatre experience --- as a performer, teacher, director, stagehand, designer, or even audience member --- was non-profit and the bulk was non-professional. High school, university, community, non-profit regional.&lt;/p&gt;
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>hack.write()</title><link>http://hackwrite.com/</link><description>Writing about writing about development.</description><atom:link href="http://hackwrite.com/rss.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><lastBuildDate>Wed, 04 Jan 2017 14:24:49 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Overriding CSS/LESS Declaration to Reduce One LOC</title><link>http://hackwrite.com/posts/overriding-css-declaration-to-reduce-loc/</link><dc:creator>Adam Michael Wood</dc:creator><description>&lt;p&gt;While working on the theme for &lt;a href="http://hackwrite.com"&gt;this site&lt;/a&gt;, I was referencing &lt;a href="http://mrcoles.com/demo/markdown-css/"&gt;Markdown CSS&lt;/a&gt;, which makes HTML look like Markdown. (h/t &lt;a href="https://twitter.com/ericholscher"&gt;@ericholscher&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;I &lt;a href="https://github.com/mrcoles/markdown-css/blob/master/markdown.less"&gt;ran across an interesting (let's call it a) pattern&lt;/a&gt;.&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;h2&lt;/span&gt;&lt;span class="nd"&gt;:before&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+&lt;span class="nt"&gt;h3&lt;/span&gt;&lt;span class="nd"&gt;:before&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+&lt;span class="nt"&gt;h4&lt;/span&gt;&lt;span class="nd"&gt;:before&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+&lt;span class="nt"&gt;h5&lt;/span&gt;&lt;span class="nd"&gt;:before&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+&lt;span class="nt"&gt;h6&lt;/span&gt;&lt;span class="nd"&gt;:before&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nb"&gt;content&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"## "&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nb"&gt;display&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;inline&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="nt"&gt;h3&lt;/span&gt;&lt;span class="nd"&gt;:before&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nb"&gt;content&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"### "&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="nt"&gt;h4&lt;/span&gt;&lt;span class="nd"&gt;:before&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nb"&gt;content&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"#### "&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="nt"&gt;h5&lt;/span&gt;&lt;span class="nd"&gt;:before&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nb"&gt;content&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"##### "&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="nt"&gt;h6&lt;/span&gt;&lt;span class="nd"&gt;:before&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nb"&gt;content&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"###### "&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;
+
+
+&lt;p&gt;The &lt;code&gt;content&lt;/code&gt; for all five subheadings is first set to &lt;code&gt;##&lt;/code&gt;, and then re-defined individually.&lt;/p&gt;
+&lt;p&gt;This saves, as far as I can figure out, one line of code. (Well, two lines if you count the closing curly brace.)&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;h2&lt;/span&gt;&lt;span class="nd"&gt;:before&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+&lt;span class="nt"&gt;h3&lt;/span&gt;&lt;span class="nd"&gt;:before&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+&lt;span class="nt"&gt;h4&lt;/span&gt;&lt;span class="nd"&gt;:before&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+&lt;span class="nt"&gt;h5&lt;/span&gt;&lt;span class="nd"&gt;:before&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+&lt;span class="nt"&gt;h6&lt;/span&gt;&lt;span class="nd"&gt;:before&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nb"&gt;display&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;inline&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="nt"&gt;h2&lt;/span&gt;&lt;span class="nd"&gt;:before&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nb"&gt;content&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"## "&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="nt"&gt;h3&lt;/span&gt;&lt;span class="nd"&gt;:before&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nb"&gt;content&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"### "&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="nt"&gt;h4&lt;/span&gt;&lt;span class="nd"&gt;:before&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nb"&gt;content&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"#### "&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="nt"&gt;h5&lt;/span&gt;&lt;span class="nd"&gt;:before&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nb"&gt;content&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"##### "&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="nt"&gt;h6&lt;/span&gt;&lt;span class="nd"&gt;:before&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nb"&gt;content&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"###### "&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;
+
+
+&lt;p&gt;The second way --- one extra line of verbosity --- strikes me as more readable, easier to understand immediately.&lt;/p&gt;
+&lt;p&gt;But the first way isn't &lt;em&gt;really&lt;/em&gt; obscure, just a touch clever. It doesn't impede readability so much as provide a little brain hiccup. If I weren't writing about it, it would have cost me nothing more than a brief moment.&lt;/p&gt;
+&lt;p&gt;Which makes me wonder. We generally place a premium on code readability. "Don't be clever" is common --- and good --- advice. But if code is poetry (or, at least, art), maybe these little flourishes --- when they don't impede readability, really --- add to the beauty of the code.&lt;/p&gt;</description><guid>http://hackwrite.com/posts/overriding-css-declaration-to-reduce-loc/</guid><pubDate>Wed, 04 Jan 2017 13:50:39 GMT</pubDate></item><item><title>It Should Matter That It's You</title><link>http://hackwrite.com/posts/it-should-matter-that-its-you/</link><dc:creator>Adam Michael Wood</dc:creator><description>&lt;p&gt;I grew up doing theatre, went to college for theatre, and taught theatre for a few years. Nearly all of my theatre experience --- as a performer, teacher, director, stagehand, designer, or even audience member --- was non-profit and the bulk was non-professional. High school, university, community, non-profit regional.&lt;/p&gt;
 &lt;p&gt;I saw a lot of shows where it didn't seem to matter who had directed it, or who had designed it. So many high school and community theatre shows are bad reproductions of the professional version of the same show. Musicals, comedies, murder mysteries... musical comedy murder mysteries. Names the audience recognizes, with poorly built sets that look pretty much the same as every other production of the show, and costumes assembled from what seems like the same pile of thrift-store refuse.&lt;/p&gt;
 &lt;p&gt;The major license holders that lease titles to amateur and non-profit theatres make this boring situation even worse by selling convenient production packages. You can rent costumes, props, and scenery along with performer scripts and orchestral scores. Everything shows up in a bunch of boxes, you pull your show out, and ship everything back when you are done.&lt;/p&gt;
 &lt;p&gt;There are a lot of problems here. It leads to boring theatre; it devalues the talent of individual contributors; it promotes the idea that culture and art come from some other place and even passionate amateurs are really just consumers.&lt;/p&gt;
