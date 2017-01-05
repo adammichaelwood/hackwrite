@@ -130,6 +130,8 @@ pre, pre.code, pre code, .literal-block {
 
 a {
 	color: @blue;
+  text-decoration: underline !important;
+  position: relative;
 
   &:link {
 		color: @blue;
@@ -142,8 +144,10 @@ a {
 	&:hover {
 		color: @blue !important;
 		text-decoration: underline;
+    border-bottom: solid 2px @blue;
 	}
 }
+
 
 .headers {
 	color: @orange !important;
@@ -154,6 +158,7 @@ a {
 h1, h2, h3, .postpage .entry-title a, .postpage .entry-title a:hover {
 	.headers;
 	font-weight: bold;
+  text-decoration: none !important;
 }
 
 h4, h5, h6 {
@@ -167,25 +172,28 @@ h4, h5, h6 {
 	color: @base02;
 }
 
-.entry-content p {
+.entry-content p, .entry-summary p {
+  margin: 0 ;
 	position: relative;
 	&:before, &:after {
 		.markup-reveal;
 	}
 	&:before {
-		content: "<p>";
+		content: "";
 		position: absolute;
 		left: -3ch;
 	}
 	&:after {
-	 content: "</p>";
+   white-space: pre;
+	 content: " \a\a";
+   //display: block;
 	}
 }
 
 article {
- h2, h3, h4, h5, h6 {
+ h3, h4, h5, h6 {
 
-	 margin-left: -1ch;
+
 
 		&:before {
 			font-weight: normal;
@@ -195,24 +203,44 @@ article {
 	}
 }
 
-body {counter-reset: h2}
-h2 {counter-reset: h3}
-h3 {counter-reset: h4}
-h4 {counter-reset: h5}
-h5 {counter-reset: h6}
+article h1 {
+  position: relative;
+  display: table-cell;
+  padding: 1em 0 2em;
+  margin: 0;
+  overflow: hidden;
+}
 
- h2:before {counter-increment: h2; content: counter(h2) " — "}
- h3:before {counter-increment: h3; content: counter(h2) "." counter(h3) " — "}
- h4:before {counter-increment: h4; content: counter(h2) "." counter(h3) "." counter(h4) " — "}
- h5:before {counter-increment: h5; content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) " — "}
- h6:before {counter-increment: h6; content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) "." counter(h6) " — "}
 
+article h1:after {
+  position: absolute;
+  bottom: 1em;
+  left: 0;
+  content: "====================================================================================================";
+}
+
+article h2 {
+  position: relative;
+  display: table-cell;
+  padding: 0 0 2em;
+  margin: 0;
+  overflow: hidden;
+}
+
+article h2:before {
+  white-space: pre;
+  content: "\a";
+  display: block;
+}
 
 article h2:after {
-	.markup-reveal;
-	content: " </h2>";
-
+  position: absolute;
+  bottom: 1em;
+  left: 0;
+  word-wrap: normal;
+  content: "\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011";
 }
+
 
 article h3:after {
 	.markup-reveal;
@@ -318,7 +346,8 @@ ol ul li:before {
 	}
 
 	&:after {
-		content: "-->";
+		content: "-->\a\a";
+    white-space: pre;
 	}
 
 	p {
@@ -353,6 +382,8 @@ ol ul li:before {
 
 }
 
+
+/*
 blockquote {
 	margin-left: 0;
 	margin-right: 0;
@@ -386,6 +417,49 @@ blockquote {
 	}
 
 }
+*/
+
+blockquote {
+  position: relative;
+  padding-left: 17px;
+  padding-left: 4ch;
+  overflow: hidden;
+}
+blockquote:after {
+  content: ">\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>";
+  white-space: pre;
+  color: @base01;
+  position: absolute;
+  top: 0;
+  left: 0;
+  //font-size: 30px !important;
+  //line-height: 42px !important;
+}
+
+
+hr {
+  position: relative;
+  height: 2em;
+  width: 100%;
+  //font-size: 0;
+  //line-height: 0;
+  //overflow: hidden;
+  border: 0;
+  //margin-bottom: 42px;
+}
+hr:after {
+  content: "\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\a\a";
+  white-space: pre;
+  position: absolute;
+  color: @base01;
+  top: 0;
+  left: 0;
+  //font-size: 30px;
+  //line-height: 1.4px;
+  width: 100%;
+  word-wrap: break-word;
+  text-align: center;
+}
 
 article.postpage header:before {
 		.markup-reveal;
@@ -401,4 +475,18 @@ article.postpage header:before {
 
 .commentline {
   display: none;
+}
+
+
+em, strong {
+  color: @violet;
+}
+em:before, em:after {
+  content: "_";
+  display: inline;
+}
+
+strong:before, strong:after {
+  content: "**";
+  display: inline;
 }
