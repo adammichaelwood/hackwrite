@@ -1,0 +1,1354 @@
+/*
+:Author: David Goodger (goodger@python.org)
+:Id: $Id: html4css1.css 7614 2013-02-21 15:55:51Z milde $
+:Copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+
+See http://docutils.sf.net/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+object[type="image/svg+xml"], object[type="application/x-shockwave-flash"] {
+  overflow: hidden;
+}
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning, div.sidebar {
+/* stolen from Boostrap 3 (.panel .panel-default) */
+  margin-bottom: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+          box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+  padding: 0 15px 15px 15px;
+}
+
+div.attention, div.caution, div.danger, div.error, div.warning {
+  /* stolen from Boostrap 3 (.panel .panel-danger) */
+  border-color: #EBCCD1;
+}
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title, div.sidebar p.sidebar-title,
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title {
+/* stolen from Boostrap 3 (.panel .panel-default .panel-heading) */
+  font-size: 16px;
+  color: #333;
+  background-color: #F5F5F5;
+  padding: 10px 15px;
+  margin-left: -15px;
+  margin-right: -15px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0);
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  color: #333;
+  background-color: #F5F5F5;
+  border-color: #DDD;
+}
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title {
+  /* stolen from Boostrap 3 (.panel .panel-danger) */
+  color: #A94442;
+  background-color: #F2DEDE;
+  border-color: #EBCCD1;
+}
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+
+html[dir="rtl"] div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-right: 1.5em  ;
+  margin-left: 0  ;
+}
+
+div.sidebar {
+  margin-left: 2em;
+  min-height: 20px;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: #a94442 }
+
+div.system-message {
+  border: 1px solid #ebccd1;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: #a94442 ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+img.align-left, .figure.align-left, object.align-left {
+  clear: left ;
+  float: left ;
+  margin-right: 1em }
+
+img.align-right, .figure.align-right, object.align-right {
+  clear: right ;
+  float: right ;
+  margin-left: 1em }
+
+img.align-center, .figure.align-center, object.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.align-left {
+  text-align: left }
+
+.align-center {
+  clear: both ;
+  text-align: center }
+
+.align-right {
+  text-align: right }
+
+/* reset inner alignment in figures */
+.figure.align-right {
+  text-align: inherit }
+
+/* div.align-center * { */
+/*   text-align: left } */
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-subtitle {
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font: inherit }
+
+pre.code .ln { color: grey; } /* line numbers */
+/*
+pre.code, code { background-color: #eeeeee }
+pre.code .comment, code .comment { color: #5C6576 }
+pre.code .keyword, code .keyword { color: #3B0D06; font-weight: bold }
+pre.code .literal.string, code .literal.string { color: #0C5404 }
+pre.code .name.builtin, code .name.builtin { color: #352B84 }
+pre.code .deleted, code .deleted { background-color: #DEB0A1}
+pre.code .inserted, code .inserted { background-color: #A3D289}
+*/
+
+span.classifier {
+  font-style: italic }
+
+span.classifier-delimiter {
+  font-weight: bold }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid 1px black;
+  margin-left: 1px }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+/* "booktabs" style (no vertical lines) */
+table.docutils.booktabs {
+  border: 0px;
+  border-top: 2px solid;
+  border-bottom: 2px solid;
+  border-collapse: collapse;
+}
+table.docutils.booktabs * {
+  border: 0px;
+}
+table.docutils.booktabs th {
+  border-bottom: thin solid;
+  text-align: left;
+}
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+ul.auto-toc {
+  list-style-type: none }
+
+a.footnote-reference {
+     line-height: 0px;
+}
+
+/* code.css file generated by Nikola */
+pre.code .hll { background-color: #49483e }
+pre.code  { background: #272822; color: #f8f8f2 }
+pre.code .c { color: #75715e } /* Comment */
+pre.code .err { color: #960050; background-color: #1e0010 } /* Error */
+pre.code .k { color: #66d9ef } /* Keyword */
+pre.code .l { color: #ae81ff } /* Literal */
+pre.code .n { color: #f8f8f2 } /* Name */
+pre.code .o { color: #f92672 } /* Operator */
+pre.code .p { color: #f8f8f2 } /* Punctuation */
+pre.code .ch { color: #75715e } /* Comment.Hashbang */
+pre.code .cm { color: #75715e } /* Comment.Multiline */
+pre.code .cp { color: #75715e } /* Comment.Preproc */
+pre.code .cpf { color: #75715e } /* Comment.PreprocFile */
+pre.code .c1 { color: #75715e } /* Comment.Single */
+pre.code .cs { color: #75715e } /* Comment.Special */
+pre.code .gd { color: #f92672 } /* Generic.Deleted */
+pre.code .ge { font-style: italic } /* Generic.Emph */
+pre.code .gi { color: #a6e22e } /* Generic.Inserted */
+pre.code .gs { font-weight: bold } /* Generic.Strong */
+pre.code .gu { color: #75715e } /* Generic.Subheading */
+pre.code .kc { color: #66d9ef } /* Keyword.Constant */
+pre.code .kd { color: #66d9ef } /* Keyword.Declaration */
+pre.code .kn { color: #f92672 } /* Keyword.Namespace */
+pre.code .kp { color: #66d9ef } /* Keyword.Pseudo */
+pre.code .kr { color: #66d9ef } /* Keyword.Reserved */
+pre.code .kt { color: #66d9ef } /* Keyword.Type */
+pre.code .ld { color: #e6db74 } /* Literal.Date */
+pre.code .m { color: #ae81ff } /* Literal.Number */
+pre.code .s { color: #e6db74 } /* Literal.String */
+pre.code .na { color: #a6e22e } /* Name.Attribute */
+pre.code .nb { color: #f8f8f2 } /* Name.Builtin */
+pre.code .nc { color: #a6e22e } /* Name.Class */
+pre.code .no { color: #66d9ef } /* Name.Constant */
+pre.code .nd { color: #a6e22e } /* Name.Decorator */
+pre.code .ni { color: #f8f8f2 } /* Name.Entity */
+pre.code .ne { color: #a6e22e } /* Name.Exception */
+pre.code .nf { color: #a6e22e } /* Name.Function */
+pre.code .nl { color: #f8f8f2 } /* Name.Label */
+pre.code .nn { color: #f8f8f2 } /* Name.Namespace */
+pre.code .nx { color: #a6e22e } /* Name.Other */
+pre.code .py { color: #f8f8f2 } /* Name.Property */
+pre.code .nt { color: #f92672 } /* Name.Tag */
+pre.code .nv { color: #f8f8f2 } /* Name.Variable */
+pre.code .ow { color: #f92672 } /* Operator.Word */
+pre.code .w { color: #f8f8f2 } /* Text.Whitespace */
+pre.code .mb { color: #ae81ff } /* Literal.Number.Bin */
+pre.code .mf { color: #ae81ff } /* Literal.Number.Float */
+pre.code .mh { color: #ae81ff } /* Literal.Number.Hex */
+pre.code .mi { color: #ae81ff } /* Literal.Number.Integer */
+pre.code .mo { color: #ae81ff } /* Literal.Number.Oct */
+pre.code .sb { color: #e6db74 } /* Literal.String.Backtick */
+pre.code .sc { color: #e6db74 } /* Literal.String.Char */
+pre.code .sd { color: #e6db74 } /* Literal.String.Doc */
+pre.code .s2 { color: #e6db74 } /* Literal.String.Double */
+pre.code .se { color: #ae81ff } /* Literal.String.Escape */
+pre.code .sh { color: #e6db74 } /* Literal.String.Heredoc */
+pre.code .si { color: #e6db74 } /* Literal.String.Interpol */
+pre.code .sx { color: #e6db74 } /* Literal.String.Other */
+pre.code .sr { color: #e6db74 } /* Literal.String.Regex */
+pre.code .s1 { color: #e6db74 } /* Literal.String.Single */
+pre.code .ss { color: #e6db74 } /* Literal.String.Symbol */
+pre.code .bp { color: #f8f8f2 } /* Name.Builtin.Pseudo */
+pre.code .vc { color: #f8f8f2 } /* Name.Variable.Class */
+pre.code .vg { color: #f8f8f2 } /* Name.Variable.Global */
+pre.code .vi { color: #f8f8f2 } /* Name.Variable.Instance */
+pre.code .il { color: #ae81ff } /* Literal.Number.Integer.Long */
+table.codetable { width: 100%;} td.linenos {text-align: right; width: 4em;}
+
+@charset "UTF-8";
+
+/*
+	Copyright © 2014-2015 Daniel Aleksandersen and others.
+
+	Permission is hereby granted, free of charge, to any
+	person obtaining a copy of this software and associated
+	documentation files (the "Software"), to deal in the
+	Software without restriction, including without limitation
+	the rights to use, copy, modify, merge, publish,
+	distribute, sublicense, and/or sell copies of the
+	Software, and to permit persons to whom the Software is
+	furnished to do so, subject to the following conditions:
+
+	The above copyright notice and this permission notice
+	shall be included in all copies or substantial portions of
+	the Software.
+
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY
+	KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+	WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+	PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS
+	OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+	OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+	OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+	SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*/
+
+
+
+#container {
+	margin: 1em auto;
+	max-width: 60ch;
+}
+#menu ul,
+#menu ul li,
+.postpromonav .tags,
+.postpromonav .tags li,
+.pager,
+.pager li,
+#toptranslations ul,
+#toptranslations ul li {
+	list-style: none;
+	padding-left: 0;
+	padding-right: 0;
+}
+
+#toptranslations ul {
+	display: inline;
+}
+
+#menu ul li,
+#toptranslations ul li {
+	display: inline-block;
+	margin-right: 1.5em;
+}
+
+#toptranslations h2 {
+	display: inline;
+	font-size: 1em;
+	margin-right: 1.5em;
+}
+
+#menu ul li:dir(rtl),
+#toptranslations ul li:dir(rtl),
+#toptranslations h2:dir(rtl) {
+	margin-left: 1.5em;
+	margin-right: 0;
+}
+
+#toptranslations {
+	text-align: right;
+	float: right;
+}
+
+#toptranslations:dir(rtl) {
+	text-align: left;
+	float: left;
+}
+
+.posttranslations h3 {
+	display: inline;
+	font-size: 1em;
+}
+
+.entry-title {
+
+}
+
+.posttranslations h3:last-child {
+	display: none;
+}
+
+.postindex article {
+	border-bottom: 1px solid #4F5151;
+	padding-bottom: 1em;
+}
+#header {
+	border-bottom: 1px solid #4F5151;
+}
+#footer {
+	border-top: 1px solid #4F5151;
+}
+
+/* Tags */
+.postpromonav {
+	border-bottom: 1px solid #4F5151;
+	border-top: 1px solid #4F5151;
+	margin-top: 1em;
+	padding: .5em 0;
+}
+.postpromonav .tags {
+	text-align: center;
+}
+
+.postpromonav .tags li:before,
+.postlist .listdate:before {
+	content: " — ";
+}
+.postlist li {
+	margin-bottom: .33em;
+}
+
+/* Post and archive pagers */
+.postindexpager .pager .next:before {
+	content: "↓ ";
+}
+.postindexpager .pager .previous:before {
+	content: "↑ ";
+}
+.postpromonav .pager .next:after {
+	content: " →";
+}
+.postpromonav .pager .previous:dir(rtl):after {
+	content: " →";
+}
+.postpromonav .pager .previous:before {
+	content: "← ";
+}
+.postpromonav .pager .next:dir(rtl):before {
+	content: "← ";
+}
+
+.postpromonav .tags li:first-of-type:before {
+	content: "";
+}
+.postpromonav .pager {
+	clear: both;
+	height: 1em;
+}
+.postpromonav .tags li,
+.postpromonav .pager li {
+	display: inline-block;
+}
+.postpromonav .pager .next {
+	float: right;
+}
+.postpromonav .pager .next:dir(rtl) {
+	float: left;
+}
+
+.postpromonav .pager .previous {
+	float: left;
+}
+.postpromonav .pager .previous:dir(rtl) {
+	float: right;
+}
+
+#brand {
+
+}
+
+/* Links */
+:link {
+	color: #1168CC;
+	text-decoration: none;
+}
+:visited {
+	color: #6830BB;
+}
+:link:hover, :visited:hover {
+	color: #0d53a3;
+}
+
+#brand :link,
+#brand :visited {
+	color: inherit;
+}
+
+/* Images */
+img {
+	border: none;
+	line-height: 1;
+}
+
+.postpage img,
+.postpage object,
+.postindex article img,
+.postindex article object {
+	height: auto;
+	max-width: 100%;
+}
+
+/* Comment helpers */
+#disqus_thread {
+	min-height: 325px;
+}
+
+.breadcrumb {
+	padding: 8px 15px;
+	margin-bottom: 20px;
+	list-style: none;
+}
+
+.breadcrumb > li {
+	display: inline-block;
+	margin-right: 0;
+	margin-left: 0;
+}
+
+.breadcrumb > li:after {
+	content: ' / ';
+	color: #888;
+}
+
+.breadcrumb > li:last-of-type:after {
+	content: '';
+	margin-left: 0;
+}
+
+.thumbnails {
+	list-style: none;
+	padding: 0;
+}
+
+.thumbnails > li {
+	display: inline-block;
+	margin-right: 10px;
+}
+
+.thumbnails > li:last-of-type {
+	margin-right: 0;
+}
+
+.codetable .linenos {
+	padding-right: 10px;
+}
+
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
+}
+
+.sr-only-focusable:active,
+.sr-only-focusable:focus {
+	position: static;
+	width: auto;
+	height: auto;
+	margin: 0;
+	overflow: visible;
+	clip: auto;
+}
+
+pre.code, code {
+	white-space: pre;
+	word-wrap: normal;
+	overflow: auto;
+}
+
+/* SOURCE: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */
+@media print {
+	*,
+	*:before,
+	*:after {
+		background: transparent !important;
+		color: #000 !important; /* Black prints faster: http://www.sanbeiji.com/archives/953 */
+		box-shadow: none !important;
+		text-shadow: none !important;
+		font-family: Garamond, Junicode, serif;
+	}
+
+	body {
+		font-size: 12pt;
+	}
+
+	a,
+	a:visited {
+		text-decoration: underline;
+	}
+
+	a[href]:after {
+		content: " (" attr(href) ")";
+	}
+
+	abbr[title]:after {
+		content: " (" attr(title) ")";
+	}
+
+	/*
+	 * Don't show links that are fragment identifiers,
+	 * or use the `javascript:` pseudo protocol
+	 */
+
+	a[href^="#"]:after,
+	a[href^="data:"]:after,
+	a[href^="javascript:"]:after {
+		content: "";
+	}
+
+	pre,
+	blockquote {
+		border: 1px solid #999;
+		page-break-inside: avoid;
+	}
+
+	/*
+	 * Printing Tables:
+	 * http://css-discuss.incutio.com/wiki/Printing_Tables
+	 */
+
+	thead {
+		display: table-header-group;
+	}
+
+	tr,
+	img {
+		page-break-inside: avoid;
+	}
+
+	img {
+		max-width: 100% !important;
+	}
+
+	p,
+	h2,
+	h3 {
+		orphans: 3;
+		widows: 3;
+	}
+
+	h2,
+	h3 {
+		page-break-after: avoid;
+	}
+
+	.hidden-print {
+		display: none !important;
+	}
+
+	article .entry-title a[href]:after,
+	article .metadata a[href]:after,
+	article .tags a[href]:after {
+		content: "";
+	}
+
+	article .metadata .sourceline {
+		display: none;
+	}
+
+	article .metadata .linkline a[href]:after {
+		content: " (" attr(href) ")";
+	}
+
+	#header {
+		display: none;
+	}
+
+	.postpromonav {
+		padding: 0;
+	}
+}
+
+/*! The MIT License (MIT)
+
+Copyright (c) 2014 Prince John Wesley <princejohnwesley@gmail.com>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+**/.minimap,.miniregion{position:fixed;cursor:pointer}.minimap{z-index:10000;font-size:1em}.miniregion{z-index:10001;background:0 0;border:2px solid silver;border-radius:10%;cursor:-webkit-grab;cursor:-moz-grab}.miniregion.dragging{cursor:-webkit-grabbing;cursor:-moz-grabbing}.miniregion:hover{box-shadow:0 0 .4em #a9a9a9}.noselect{-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+
+div.prompt {
+  padding: 0.6em;
+  font-size: 13px;
+  background-color: #E9E9E9;
+  margin-right: 1em;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+
+div.output_prompt {
+  /* 5px right shift to account for margin in parent container */
+  margin: 0 5px 0 0px;
+}
+
+div.output_area pre {
+  font-size: 13px;
+}
+
+div.text_cell_render {
+  padding: 0px;
+  color: #333333;
+}
+
+.rendered_html p {
+  text-align: left;
+}
+
+.rendered_html ul {
+  margin: 0 0 12px 25px;
+}
+
+.rendered_html :visited {
+  text-decoration: none;
+}
+
+.rendered_html :link {
+  text-decoration: none;
+}
+
+.rendered_html pre, .rendered_html code {
+  background-color: #DDDDDD;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  padding-top: 0.05em;
+  padding-bottom: 0.05em;
+  margin: 1em 0em;
+  font-size: 14px;
+}
+
+.page-content > .content p {
+  margin: 0 0 0px;
+}
+
+.highlight .hll { background-color: #ffffcc }
+.highlight  { background: #f8f8f8; }
+.highlight .c { color: #408080; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { color: #008000; font-weight: bold } /* Keyword */
+.highlight .o { color: #666666 } /* Operator */
+.highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #FF0000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0044DD } /* Generic.Traceback */
+.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #008000 } /* Keyword.Pseudo */
+.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #B00040 } /* Keyword.Type */
+.highlight .m { color: #666666 } /* Literal.Number */
+.highlight .s { color: #BA2121 } /* Literal.String */
+.highlight .na { color: #7D9029 } /* Name.Attribute */
+.highlight .nb { color: #008000 } /* Name.Builtin */
+.highlight .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.highlight .no { color: #880000 } /* Name.Constant */
+.highlight .nd { color: #AA22FF } /* Name.Decorator */
+.highlight .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #0000FF } /* Name.Function */
+.highlight .nl { color: #A0A000 } /* Name.Label */
+.highlight .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #19177C } /* Name.Variable */
+.highlight .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mf { color: #666666 } /* Literal.Number.Float */
+.highlight .mh { color: #666666 } /* Literal.Number.Hex */
+.highlight .mi { color: #666666 } /* Literal.Number.Integer */
+.highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
+.highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
+.highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.highlight .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.highlight .sx { color: #008000 } /* Literal.String.Other */
+.highlight .sr { color: #BB6688 } /* Literal.String.Regex */
+.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
+.highlight .ss { color: #19177C } /* Literal.String.Symbol */
+.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .vc { color: #19177C } /* Name.Variable.Class */
+.highlight .vg { color: #19177C } /* Name.Variable.Global */
+.highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
+
+/** HACKWRITE THEMING **/
+/* Solarized colors */
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+.clearfix {
+  display: inline-block;
+}
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+/* start commented backslash hack \*/
+* html .clearfix {
+  height: 1%;
+}
+.clearfix {
+  display: block;
+}
+/* close commented backslash hack */
+/* One size */
+@media all and (min-width: 960px) {
+  body {
+    font-size: 30px;
+  }
+}
+@media all and (max-width: 959px) and (min-width: 600px) {
+  body {
+    font-size: 20px;
+  }
+}
+@media all and (max-width: 599px) and (min-width: 50px) {
+  body {
+    font-size: 16px;
+  }
+}
+body {
+  background-color: #1b1b1b;
+  color: #8d8d8d;
+  font-family: "Emilbus Mono", Menlo, Inconsolata, Monaco, Consolas, 'Courier New', Courier, monospace;
+  line-height: 1.4;
+  padding: 1em;
+}
+#header {
+  background-color: #000000;
+  width: calc(98vw);
+  margin-top: 0;
+  margin-bottom: 0;
+  position: fixed;
+  left: 0;
+  top: 0;
+  font-size: .75em;
+  font-weight: normal;
+  padding-top: .5em;
+  padding-bottom: .5em;
+  padding-left: 1em;
+  padding-right: 1em;
+  z-index: 9999;
+  display: inline-block;
+  display: block;
+}
+#header #brand {
+  float: left;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-weight: normal;
+}
+#header #menu {
+  float: right;
+}
+#header #menu ul {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-weight: normal;
+}
+#header:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+.entry-title,
+menu,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 1em;
+}
+pre,
+code,
+pre.code,
+pre code,
+.code,
+.literal-block {
+  background-color: #252525;
+}
+pre,
+pre.code,
+pre code,
+.literal-block {
+  margin-left: -4em;
+  margin-right: -4em;
+  padding-left: 4em;
+  padding-right: 4em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+a {
+  color: #268bd2;
+  text-decoration: underline !important;
+  position: relative;
+}
+a:link {
+  color: #268bd2;
+}
+a:visited {
+  color: #268bd2;
+}
+a:hover {
+  color: #268bd2 !important;
+  text-decoration: underline;
+  border-bottom: solid 2px #268bd2;
+}
+.headers {
+  color: #cb4b16 !important;
+  text-decoration: none;
+}
+h1,
+h2,
+h3,
+.postpage .entry-title a,
+.postpage .entry-title a:hover {
+  color: #cb4b16 !important;
+  text-decoration: none;
+  font-weight: bold;
+  text-decoration: none !important;
+}
+h4,
+h5,
+h6 {
+  color: #cb4b16 !important;
+  text-decoration: none;
+  font-weight: normal;
+}
+.markup-reveal {
+  font-size: .75em;
+  font-weight: lighter;
+  color: #252525;
+}
+.entry-content p,
+.entry-summary p {
+  margin: 0 ;
+  position: relative;
+}
+.entry-content p:before,
+.entry-summary p:before,
+.entry-content p:after,
+.entry-summary p:after {
+  font-size: .75em;
+  font-weight: lighter;
+  color: #252525;
+}
+.entry-content p:before,
+.entry-summary p:before {
+  content: "";
+  position: absolute;
+  left: -3ch;
+}
+.entry-content p:after,
+.entry-summary p:after {
+  white-space: pre;
+  content: " \a\a";
+}
+article h3:before,
+article h4:before,
+article h5:before,
+article h6:before {
+  font-weight: normal;
+  font-size: .8em;
+  color: #86310f;
+}
+article h1 {
+  position: relative;
+  display: table-cell;
+  padding: 1em 0 2em;
+  margin: 0;
+  overflow: hidden;
+}
+article h1:after {
+  position: absolute;
+  bottom: 1em;
+  left: 0;
+  content: "====================================================================================================";
+}
+article h2 {
+  position: relative;
+  display: table-cell;
+  padding: 0 0 2em;
+  margin: 0;
+  overflow: hidden;
+}
+article h2:before {
+  white-space: pre;
+  content: "\a";
+  display: block;
+}
+article h2:after {
+  position: absolute;
+  bottom: 1em;
+  left: 0;
+  word-wrap: normal;
+  content: "\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011";
+}
+article h3:after {
+  font-size: .75em;
+  font-weight: lighter;
+  color: #252525;
+  content: " </h3>";
+}
+article h4:after {
+  font-size: .75em;
+  font-weight: lighter;
+  color: #252525;
+  content: " </h4>";
+}
+article h5:after {
+  font-size: .75em;
+  font-weight: lighter;
+  color: #252525;
+  content: " </h5>";
+}
+article h6:after {
+  font-size: .75em;
+  font-weight: lighter;
+  color: #252525;
+  content: " </h6>";
+}
+article ul {
+  margin-left: none;
+  padding-left: 2ch;
+}
+article ul,
+article ul li {
+  margin-left: none;
+  list-style-type: none;
+}
+article ul li:before {
+  content: " - ";
+  color: #6c71c4;
+}
+article ul li li:before {
+  content: " -- ";
+}
+article ul li li li:before {
+  content: " --- ";
+}
+article ul li li li li:before {
+  content: " ---- ";
+}
+ol {
+  counter-reset: item;
+  padding-left: 2ch;
+}
+ol li {
+  padding-left: 0;
+  display: block;
+}
+ol li:before {
+  content: counter(item) ". ";
+  counter-increment: item;
+  color: #6c71c4;
+}
+ol ol {
+  counter-reset: nest-item;
+}
+ol ol li:before {
+  content: counter(nest-item) ". ";
+  counter-increment: nest-item;
+}
+ol ol ol {
+  counter-reset: nest-nest-item;
+}
+ol ol ol li:before {
+  content: counter(nest-nest-item) ". ";
+  counter-increment: nest-nest-item;
+}
+ol ul li:before {
+  content: " - ";
+  counter-increment: none;
+}
+.metadata:before,
+.metadata:after {
+  color: #676767;
+  white-space: pre-wrap;
+  display: block;
+}
+.metadata:before {
+  content: "<!--";
+}
+.metadata:after {
+  content: "-->\a\a";
+  white-space: pre;
+}
+.metadata p {
+  display: block;
+  margin: 0;
+  padding-left: 2ch;
+}
+.metadata p:before {
+  color: #676767;
+}
+.metadata p:after {
+  content: none;
+}
+.metadata .byline:before {
+  color: #676767;
+  content: " .. author:";
+}
+.metadata .dateline:before {
+  content: " .. published: ";
+}
+.metadata .sourceline:before {
+  content: " .. view_source: ";
+}
+/*
+blockquote {
+	margin-left: 0;
+	margin-right: 0;
+	padding-left: 3ch;
+	border-left: 1px solid @base02;
+
+	&:before, &:after {
+		.markup-reveal;
+		display: block;
+	}
+	&:before {
+		content: "<blockquote>";
+	}
+	&:after {
+		content: "</blockquote>"
+	}
+	p {
+		&:before, &:after {
+			content: none !important;
+		}
+	}
+	cite {
+		color: @base01;
+		font-style: italic;
+		display: block;
+		margin-left: 2ch;
+
+		&:before {
+			content: "— ";
+		}
+	}
+
+}
+*/
+blockquote {
+  position: relative;
+  padding-left: 17px;
+  padding-left: 4ch;
+  overflow: hidden;
+}
+blockquote:after {
+  content: ">\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>";
+  white-space: pre;
+  color: #676767;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+hr {
+  position: relative;
+  height: 2em;
+  width: 100%;
+  border: 0;
+}
+hr:after {
+  content: "\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\2011\a\a";
+  white-space: pre;
+  position: absolute;
+  color: #676767;
+  top: 0;
+  left: 0;
+  width: 100%;
+  word-wrap: break-word;
+  text-align: center;
+}
+article.postpage header:before {
+  font-size: .75em;
+  font-weight: lighter;
+  color: #252525;
+  display: block;
+  content: "<article>";
+}
+.postpage .entry-content:after {
+  font-size: .75em;
+  font-weight: lighter;
+  color: #252525;
+  display: block;
+  content: "</article>";
+}
+.commentline {
+  display: none;
+}
+em,
+strong {
+  color: #6c71c4;
+}
+em:before,
+em:after {
+  content: "_";
+  display: inline;
+}
+strong:before,
+strong:after {
+  content: "**";
+  display: inline;
+}
