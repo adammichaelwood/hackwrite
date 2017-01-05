@@ -2,6 +2,7 @@
 <html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " vocab="http://ogp.me/ns" lang="en">
 <head>
 <meta charset="utf-8">
+<base href="http://hackwrite.com/">
 <meta name="description" content="Writing about writing about development.">
 <meta name="viewport" content="width=device-width">
 <title>hack.write()</title>
@@ -9,7 +10,8 @@
 <meta content="#5670d4" name="theme-color">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
 <link rel="canonical" href="http://hackwrite.com/">
-<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/overriding-css-declaration-to-reduce-loc/" type="text/html">
+<link rel="next" href="index-1.html" type="text/html">
+<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/on-the-design-of-this-blog/" type="text/html">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -31,17 +33,51 @@
     
     
     </ul></nav></header><main id="content"><div class="postindex">
-    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/overriding-css-declaration-to-reduce-loc/" class="u-url">Overriding CSS/LESS Declaration to Reduce One LOC</a></h1>
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/on-the-design-of-this-blog/" class="u-url">On the Design of this Blog</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn">
                 Adam Michael Wood
             </span></p>
-            <p class="dateline"><a href="posts/overriding-css-declaration-to-reduce-loc/" rel="bookmark"><time class="published dt-published" datetime="2017-01-04T05:50:39-08:00" title="2017-01-04 05:50">2017-01-04 05:50</time></a></p>
+            <p class="dateline"><a href="posts/on-the-design-of-this-blog/" rel="bookmark"><time class="published dt-published" datetime="2017-01-05T06:29:14-08:00" title="2017-01-05 06:29">2017-01-05 06:29</time></a></p>
+        </div>
+    </header><div class="p-summary entry-summary">
+    <p>Since I spend almost my entire day in an editor, writing, I've put a bit of effort into getting it to look the way I like. The most important things for my writing experience are:</p>
+<ul>
+<li>dark theme</li>
+<li>oversized display font</li>
+<li>syntax highlighting</li>
+<li>relatively narrow text (&lt; 80 column)</li>
+<li>centered text with a decent margin on each side</li>
+</ul>
+<p>Here is what my screen looks like when writing a blog post.</p>
+<p><img alt="AMW Post in Editor" src="img/amw-post-in-editor.png"></p>
+<p>This reduces eye fatigue, lets me focus on the writing, and generally speeds me up while making me happier. It doesn't hurt that my non-tech friends see this screen and think I'm some kind of mad hacker scientist, while my developer colleagues see it and know I use (some of) the same tools they do.</p>
+<p>When I finally made the switch to this writing environment, over WordPress Visual Editor or MS Word, I had a sort of writer's euphoria. After several years, it still hasn't really gone away.</p>
+<p><img alt="AMW Raving About Sublime on FB" src="img/amw-fb-sublime-raving.png"></p>
+<p>(I use <a href="http://atom.io">Atom</a> now, instead of Sublime, but the point is the same.)</p>
+<p>I really do prefer reading content this way --- sometimes if I have to read a really long text I'll copy-paste into Atom.</p>
+<p>So, I thought --- wouldn't it be cool if my site looked like that? It took a lot of work but, it (currently, as I am writing this) does.</p>
+<p><img alt="Hack.write's Editor Theme" src="img/amw-hackwrite-atom-theme.png"></p>
+<p>I'm including the picture for reference, because I'll probably be changing this theme soon.</p>
+<p>It turns out the writer and reader experiences are quite different. For one thing, I've several people tell me they thought it was supposed to look like a Terminal, as opposed to a Code Editor. This is sort of interesting.</p>
+<p>But, more to the point, it seems off-putting to non-tech people. And even some tech people, I think.</p>
+<p>I've asked a lot of people for feedback --- most of the positive comments have been along the lines of "I like the idea" or "cool concept." That's very different than, "it was a joy to read." In fact, I don't think anyone has said anything indicating that they had a positive experience <em>reading</em> the blog with the design.</p>
+<p>The design was broken for a couple days earlier this week, looking like this:</p>
+<p><img alt="Hack.write broken" src="img/hw-base-theme.png"></p>
+<p>While this doesn't look like an editor, obviously --- it strikes me that this might be a little more in the realm of the developer aesthetic. It's clean, basic. Narrow columns, plenty of space. Nearly neutral, focused on content.</p>
+<p>I'm going to play around with variations here, and see if I can find a way to get back to a more readable design while retaining some of the more memorable elements of my in-editor theme.</p>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/overriding-css-declaration-to-reduce-loc/overriding-css-declaration-to-reduce-loc/" class="u-url">Overriding CSS/LESS Declaration to Reduce One LOC</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                Adam Michael Wood
+            </span></p>
+            <p class="dateline"><a href="posts/overriding-css-declaration-to-reduce-loc/overriding-css-declaration-to-reduce-loc/" rel="bookmark"><time class="published dt-published" datetime="2017-01-04T05:50:39-08:00" title="2017-01-04 05:50">2017-01-04 05:50</time></a></p>
         </div>
     </header><div class="p-summary entry-summary">
     <p>While working on the theme for <a href="http://hackwrite.com">this site</a>, I was referencing <a href="http://mrcoles.com/demo/markdown-css/">Markdown CSS</a>, which makes HTML look like Markdown. (h/t <a href="https://twitter.com/ericholscher">@ericholscher</a>)</p>
 <p>I <a href="https://github.com/mrcoles/markdown-css/blob/master/markdown.less">ran across an interesting (let's call it a) pattern</a>.</p>
-<pre class="code literal-block"><span></span><span class="nt">h2</span><span class="nd">:before</span><span class="o">,</span>
+<pre class="code literal-block"><span class="nt">h2</span><span class="nd">:before</span><span class="o">,</span>
 <span class="nt">h3</span><span class="nd">:before</span><span class="o">,</span>
 <span class="nt">h4</span><span class="nd">:before</span><span class="o">,</span>
 <span class="nt">h5</span><span class="nd">:before</span><span class="o">,</span>
@@ -66,7 +102,7 @@
 
 <p>The <code>content</code> for all five subheadings is first set to <code>##</code>, and then re-defined individually.</p>
 <p>This saves, as far as I can figure out, one line of code. (Well, two lines if you count the closing curly brace.)</p>
-<pre class="code literal-block"><span></span><span class="nt">h2</span><span class="nd">:before</span><span class="o">,</span>
+<pre class="code literal-block"><span class="nt">h2</span><span class="nd">:before</span><span class="o">,</span>
 <span class="nt">h3</span><span class="nd">:before</span><span class="o">,</span>
 <span class="nt">h4</span><span class="nd">:before</span><span class="o">,</span>
 <span class="nt">h5</span><span class="nd">:before</span><span class="o">,</span>
@@ -95,6 +131,126 @@
 <p>But the first way isn't <em>really</em> obscure, just a touch clever. It doesn't impede readability so much as provide a little brain hiccup. If I weren't writing about it, it would have cost me nothing more than a brief moment.</p>
 <p>Which makes me wonder. We generally place a premium on code readability. "Don't be clever" is common --- and good --- advice. But if code is poetry (or, at least, art), maybe these little flourishes --- when they don't impede readability, really --- add to the beauty of the code.</p>
     </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/overriding-css-declaration-to-reduce-loc/" class="u-url">Overriding CSS/LESS Declaration to Reduce One LOC</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                Adam Michael Wood
+            </span></p>
+            <p class="dateline"><a href="posts/overriding-css-declaration-to-reduce-loc/" rel="bookmark"><time class="published dt-published" datetime="2017-01-04T05:50:39-08:00" title="2017-01-04 05:50">2017-01-04 05:50</time></a></p>
+        </div>
+    </header><div class="p-summary entry-summary">
+    <p>While working on the theme for <a href="http://hackwrite.com">this site</a>, I was referencing <a href="http://mrcoles.com/demo/markdown-css/">Markdown CSS</a>, which makes HTML look like Markdown. (h/t <a href="https://twitter.com/ericholscher">@ericholscher</a>)</p>
+<p>I <a href="https://github.com/mrcoles/markdown-css/blob/master/markdown.less">ran across an interesting (let's call it a) pattern</a>.</p>
+<pre class="code literal-block"><span class="nt">h2</span><span class="nd">:before</span><span class="o">,</span>
+<span class="nt">h3</span><span class="nd">:before</span><span class="o">,</span>
+<span class="nt">h4</span><span class="nd">:before</span><span class="o">,</span>
+<span class="nt">h5</span><span class="nd">:before</span><span class="o">,</span>
+<span class="nt">h6</span><span class="nd">:before</span> <span class="p">{</span>
+    <span class="nb">content</span><span class="o">:</span> <span class="s2">"## "</span><span class="p">;</span>
+    <span class="nb">display</span><span class="o">:</span> <span class="nb">inline</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">h3</span><span class="nd">:before</span> <span class="p">{</span>
+    <span class="nb">content</span><span class="o">:</span> <span class="s2">"### "</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">h4</span><span class="nd">:before</span> <span class="p">{</span>
+    <span class="nb">content</span><span class="o">:</span> <span class="s2">"#### "</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">h5</span><span class="nd">:before</span> <span class="p">{</span>
+    <span class="nb">content</span><span class="o">:</span> <span class="s2">"##### "</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">h6</span><span class="nd">:before</span> <span class="p">{</span>
+    <span class="nb">content</span><span class="o">:</span> <span class="s2">"###### "</span><span class="p">;</span>
+<span class="p">}</span>
+</pre>
+
+
+<p>The <code>content</code> for all five subheadings is first set to <code>##</code>, and then re-defined individually.</p>
+<p>This saves, as far as I can figure out, one line of code. (Well, two lines if you count the closing curly brace.)</p>
+<pre class="code literal-block"><span class="nt">h2</span><span class="nd">:before</span><span class="o">,</span>
+<span class="nt">h3</span><span class="nd">:before</span><span class="o">,</span>
+<span class="nt">h4</span><span class="nd">:before</span><span class="o">,</span>
+<span class="nt">h5</span><span class="nd">:before</span><span class="o">,</span>
+<span class="nt">h6</span><span class="nd">:before</span> <span class="p">{</span>
+    <span class="nb">display</span><span class="o">:</span> <span class="nb">inline</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">h2</span><span class="nd">:before</span> <span class="p">{</span>
+    <span class="nb">content</span><span class="o">:</span> <span class="s2">"## "</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">h3</span><span class="nd">:before</span> <span class="p">{</span>
+    <span class="nb">content</span><span class="o">:</span> <span class="s2">"### "</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">h4</span><span class="nd">:before</span> <span class="p">{</span>
+    <span class="nb">content</span><span class="o">:</span> <span class="s2">"#### "</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">h5</span><span class="nd">:before</span> <span class="p">{</span>
+    <span class="nb">content</span><span class="o">:</span> <span class="s2">"##### "</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">h6</span><span class="nd">:before</span> <span class="p">{</span>
+    <span class="nb">content</span><span class="o">:</span> <span class="s2">"###### "</span><span class="p">;</span>
+<span class="p">}</span>
+</pre>
+
+
+<p>The second way --- one extra line of verbosity --- strikes me as more readable, easier to understand immediately.</p>
+<p>But the first way isn't <em>really</em> obscure, just a touch clever. It doesn't impede readability so much as provide a little brain hiccup. If I weren't writing about it, it would have cost me nothing more than a brief moment.</p>
+<p>Which makes me wonder. We generally place a premium on code readability. "Don't be clever" is common --- and good --- advice. But if code is poetry (or, at least, art), maybe these little flourishes --- when they don't impede readability, really --- add to the beauty of the code.</p>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/it-should-matter-that-its-you/it-should-matter-that-its-you/" class="u-url">It Should Matter That It's You</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                Adam Michael Wood
+            </span></p>
+            <p class="dateline"><a href="posts/it-should-matter-that-its-you/it-should-matter-that-its-you/" rel="bookmark"><time class="published dt-published" datetime="2017-01-03T06:06:56-08:00" title="2017-01-03 06:06">2017-01-03 06:06</time></a></p>
+        </div>
+    </header><div class="p-summary entry-summary">
+    <p>I grew up doing theatre, went to college for theatre, and taught theatre for a few years. Nearly all of my theatre experience --- as a performer, teacher, director, stagehand, designer, or even audience member --- was non-profit and the bulk was non-professional. High school, university, community, non-profit regional.</p>
+<p>I saw a lot of shows where it didn't seem to matter who had directed it, or who had designed it. So many high school and community theatre shows are bad reproductions of the professional version of the same show. Musicals, comedies, murder mysteries... musical comedy murder mysteries. Names the audience recognizes, with poorly built sets that look pretty much the same as every other production of the show, and costumes assembled from what seems like the same pile of thrift-store refuse.</p>
+<p>The major license holders that lease titles to amateur and non-profit theatres make this boring situation even worse by selling convenient production packages. You can rent costumes, props, and scenery along with performer scripts and orchestral scores. Everything shows up in a bunch of boxes, you pull your show out, and ship everything back when you are done.</p>
+<p>There are a lot of problems here. It leads to boring theatre; it devalues the talent of individual contributors; it promotes the idea that culture and art come from some other place and even passionate amateurs are really just consumers.</p>
+<p>This <em>inside the box</em> approach teaches everyone involved that there is <strong>one right way</strong> of doing things. And that gives the impression that outcomes exist on a one-dimensional scale of quality: it was either a <em>good</em> version of the same thing, or a <em>bad</em> version. (One might say, a <em>good copy</em> or a <em>bad copy</em>.)</p>
+<p>Of course, the number of things that can affect the one-dimensional rating is pretty small. With school shows, its usually money --- schools with rich parents do a better copy than schools with poor parents. It also might mean talent --- better dancers doing the same moves, a better school band playing the score, a better actor playing the lead. (This is mostly money, too --- but at least it's slightly indirect.)</p>
+<p>This one-dimensional scale affects how audiences perceive the work. The most common compliment you will ever hear from audience members in an amateur setting is, "It was so professional." If the complimenter is an arts fan, this will be followed by a comparison between the present production and some other "real" production (yes, that word gets used), and how this one was "just as good."</p>
+<p>It isn't just as good, of course. One wonders --- why not just stay home and watch the movie?</p>
+<p>It also affects the way people talk about career trajectory. As a teenager doing theatre, I was constantly told about New York. Someone saw a show in New York and thought of me. I should move to New York when I grow up. That director is really good... did you hear? He's from New York. This is the way they do it in New York.</p>
+<h2>Local, Specific</h2>
+<p>I never had any interest in this approach.</p>
+<p>Maybe it was because I was never any good at copying. My attempts in that vein were always quite low on the one-dimensional quality scale.</p>
+<p>I just wasn't interested in making a copy of someone else's production.</p>
+<p>When other theatre kids were listening to cast recordings and looking at coffee-table books about Broadway, I was reading <a href="http://amzn.to/2hNFHI3">Brook</a>, <a href="http://amzn.to/2iv7VGq">Artaud</a>, <a href="http://amzn.to/2iEcDCq">Mamet</a>. When everyone else was dreaming about New York, I dreamed about a <a href="http://amzn.to/2j0y7WH">Living Theatre</a>, a <a href="http://amzn.to/2hO8jz7">Poor Theatre</a>, a <a href="http://amzn.to/2hO886M">Holy Theatre</a>.</p>
+<p>I wanted to create something that was specific. Something local. Something that could only be created there, that time. Not just my vision as a director or designer --- though, yes, that too. But the synthesis of everyone's vision. This particular team, in this particular space.</p>
+<p>One of the most interesting books on theatre I've ever read was an account of a tour by Peter Brook's company. (It <em>may</em> have been <a href="http://amzn.to/2iEucSJ">The Open Circle</a>, but I'm not sure.) The book detailed how they adapted each venue they performed in, and how the show itself adapted to each new location. The same actors, the same production, was different each place they performed.</p>
+<p>If a change in building matters that much, how can it make any sense that a thousand productions with different casts and different directors, in different cities, should all look so much alike?</p>
+<h2>Not Just Theatre, Not Just Me</h2>
+<p>It's been a long time since I've done any theatre, but I continue to be bad at making copies.</p>
+<p>When I sold insurance, I developed my own pitch. When I was a church choir director, our repertoire and programming wasn't the same as anyone else's.</p>
+<p>And I'm hardly unique in this desire to be unique.</p>
+<p>Speaking of church music, <a href="http://www.allsoulsparish.org/">my current parish</a> has perhaps the oddest assemblage of musical variety I've ever encountered in a single worshipping community. There's <a href="https://www.classicalsinger.com/sites/showsite.php?pt=1&amp;user_id=30842">a professionally trained opera singer</a>, a <a href="http://anglobaptist.org/">banjo-playing early music specialist</a>, a <a href="http://www.allsoulsparish.org/worship-music-and-the-arts/music/angel-band/">bluegrass band</a>, a <a href="http://www.allsoulsparish.org/worship-music-and-the-arts/music/hearts-on-fire-gospel-choir/">gospel choir</a>, and a pipe organ. On any given Sunday you might hear a Bach chorale, some Gregorian chant, a contemporary Gospel number, your grandmother's favorite hymn, and a Johny Cash song. It's weird, and it doesn't always work. But it's unlike any other place. And even though it would drive some people crazy, there are a bunch of us who can't really imagine being anywhere else.</p>
+<h2>Tech Writing</h2>
+<p>What are the chances that you can be <em>the best</em> at something? I mean really --- in the top 1% of any particular skill?</p>
+<p>I am not the best writer. I'm <a href="http://hackwrite.com/posts/enough-to-be-dangerous/">certainly not the best coder</a>. Not the best project manager. Not the one best, and probably not even one of the best, in any of the individual skills needed to have a career as a Technical Writer. But my career has taken off since I have focused on answering two questions:</p>
+<ul>
+<li>What is my unique combination of skills?</li>
+<li>What is my particular approach to technical writing?</li>
+</ul>
+<p>I gave up trying to be <em>the best</em>, and have focused on being myself.</p>
+<p>Let me clarify that I don't especially try to be different. I don't go out of my way to find out what other tech writers are doing and then do things differently. I think each one of us is different naturally. We have particular experiences, preferences, interests. Some of these differences are big (work experience, degrees), and some are minor (favorite editor) --- but each of us is particular.</p>
+<p>Focus on the particular, and the right opportunities find you. And just as importantly --- focus on the particular, and the wrong opportunities avoid you like the plague.</p>
+<p>Have you ever told someone in an initial interview what technologies you like to work with and which ones you don't want to have anything to do with? Or told them what you love <em>and hate</em> about doing this job?</p>
+<p>If you're a bad fit for a job, you find out right away. And if you're a good fit, you find that out, too.</p>
+<h2>What About You?</h2>
+<p>What makes you weird? What do you like that everyone else thinks is silly? What does everyone do the same that you absolutely hate? How is your writing different than anyone else?</p>
+<hr>
+<h2>Further Reading</h2>
+<p>The ideas here are mine, but not mine alone. You may also appeciate:</p>
+<ul>
+<li>
+<a href="http://amzn.to/2hLSHc7">How to Fail at Almost Everything and Still Win Big: Kind of the Story of My Life</a>, by <a href="http://blog.dilbert.com/">Scott Adams</a>
+</li>
+<li>
+<a href="http://amzn.to/2iLiMd7">Purple Cow: Transform Your Business by Being Remarkable</a>, by <a href="http://sethgodin.typepad.com/">Seth Godin</a>
+</li>
+</ul>
+</div>
     </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/it-should-matter-that-its-you/" class="u-url">It Should Matter That It's You</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn">
@@ -151,16 +307,16 @@
 </li>
 </ul>
 </div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/simple-input-validation-handling-python/" class="u-url">Simple Input Validation and Exception Handling in Python</a></h1>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/simple-input-validation-handling-python/simple-input-validation-handling-python/" class="u-url">Simple Input Validation and Exception Handling in Python</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn">
                 Adam Michael Wood
             </span></p>
-            <p class="dateline"><a href="posts/simple-input-validation-handling-python/" rel="bookmark"><time class="published dt-published" datetime="2017-01-02T06:33:49-08:00" title="2017-01-02 06:33">2017-01-02 06:33</time></a></p>
+            <p class="dateline"><a href="posts/simple-input-validation-handling-python/simple-input-validation-handling-python/" rel="bookmark"><time class="published dt-published" datetime="2017-01-02T06:33:49-08:00" title="2017-01-02 06:33">2017-01-02 06:33</time></a></p>
         </div>
     </header><div class="p-summary entry-summary">
     <p>If you are doing a simple terminal script in Python, and you need to validate some user-supplied input, you can put the assignment and validation in a <code>try</code> block inside a <code>while</code> loop.</p>
-<pre class="code literal-block"><span></span><span class="k">while</span><span class="p">:</span> <span class="c1"># variable not assigned</span>
+<pre class="code literal-block"><span class="k">while</span><span class="p">:</span> <span class="c1"># variable not assigned</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="c1"># input, assignment, validation</span>
     <span class="k">except</span><span class="p">:</span>
@@ -172,7 +328,7 @@
 <p>This came up for me in <a href="https://gist.github.com/adammichaelwood/6f2e02c4156c6cc27020ce179d2e8638">a little script I wrote</a> to <a href="https://www.reddit.com/r/learnpython/comments/56r94z/what_python_program_have_you_created_to_make_your/d8m0hy6/?context=3">semi-automate a task</a>. I needed to rate the quality of something I was looking at, and I was going for speed: Glance at the item, make a snap quality judgment, type a number.</p>
 <p>But, of course, sometimes I typed the number incorrectly, hitting a letter instead of a number. This screwed things up latter, when I tried to order all my items by quality rating.</p>
 <p>So, I cast the input to an integer inside the <code>try</code> block, and used the <code>while</code> loop to repeat until the <code>quality</code> rating was assigned.</p>
-<pre class="code literal-block"><span></span><span class="k">while</span> <span class="s1">'quality'</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">lnk</span><span class="p">:</span>
+<pre class="code literal-block"><span class="k">while</span> <span class="s1">'quality'</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">lnk</span><span class="p">:</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">lnk</span><span class="p">[</span><span class="s1">'quality'</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">"Quality (0-9): "</span><span class="p">))</span>
     <span class="k">except</span><span class="p">:</span>
@@ -181,6 +337,94 @@
 
 
 <p>This approach could be expanded for more complicated types of validation, and messages to the user could be added. I just wanted a quick way to deal with my fat fingers.</p>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/simple-input-validation-handling-python/" class="u-url">Simple Input Validation and Exception Handling in Python</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                Adam Michael Wood
+            </span></p>
+            <p class="dateline"><a href="posts/simple-input-validation-handling-python/" rel="bookmark"><time class="published dt-published" datetime="2017-01-02T06:33:49-08:00" title="2017-01-02 06:33">2017-01-02 06:33</time></a></p>
+        </div>
+    </header><div class="p-summary entry-summary">
+    <p>If you are doing a simple terminal script in Python, and you need to validate some user-supplied input, you can put the assignment and validation in a <code>try</code> block inside a <code>while</code> loop.</p>
+<pre class="code literal-block"><span class="k">while</span><span class="p">:</span> <span class="c1"># variable not assigned</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># input, assignment, validation</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">continue</span>
+</pre>
+
+
+<p>If the assignment or validation fails, the loop repeats and the user has another opportunity to enter input. (You could even add a message to <code>except</code> if you wanted to.)</p>
+<p>This came up for me in <a href="https://gist.github.com/adammichaelwood/6f2e02c4156c6cc27020ce179d2e8638">a little script I wrote</a> to <a href="https://www.reddit.com/r/learnpython/comments/56r94z/what_python_program_have_you_created_to_make_your/d8m0hy6/?context=3">semi-automate a task</a>. I needed to rate the quality of something I was looking at, and I was going for speed: Glance at the item, make a snap quality judgment, type a number.</p>
+<p>But, of course, sometimes I typed the number incorrectly, hitting a letter instead of a number. This screwed things up latter, when I tried to order all my items by quality rating.</p>
+<p>So, I cast the input to an integer inside the <code>try</code> block, and used the <code>while</code> loop to repeat until the <code>quality</code> rating was assigned.</p>
+<pre class="code literal-block"><span class="k">while</span> <span class="s1">'quality'</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">lnk</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">lnk</span><span class="p">[</span><span class="s1">'quality'</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">"Quality (0-9): "</span><span class="p">))</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">continue</span>
+</pre>
+
+
+<p>This approach could be expanded for more complicated types of validation, and messages to the user could be added. I just wanted a quick way to deal with my fat fingers.</p>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/enough-to-be-dangerous/enough-to-be-dangerous/" class="u-url">Enough to Be Dangerous: The Joy of Bad Python</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                Adam Michael Wood
+            </span></p>
+            <p class="dateline"><a href="posts/enough-to-be-dangerous/enough-to-be-dangerous/" rel="bookmark"><time class="published dt-published" datetime="2017-01-01T06:31:41-08:00" title="2017-01-01 06:31">2017-01-01 06:31</time></a></p>
+        </div>
+    </header><div class="p-summary entry-summary">
+    <p><strong>Learning to Code</strong> is all the rage. I don't see any sign that the trend is dying down any time soon. I might as well jump on the bandwagon here and encourage my fellow tech writers to do the same.</p>
+<p>Obviously, a lot of you already code, or are in the process of learning. I once assumed knowing at least some coding was a requirement for being a tech writer. But it seems this isn't entirely the case. Some TWs need to be able to read and write enough code to document APIs and provide code samples --- but apparently (I have learned) most tech writers aren't doing that, and you can fake your way through that if you really need to.</p>
+<p>So, <strong>if you are among the majority of technical writers that don't code, this post is for you</strong>.</p>
+<h2>We Know Too Much</h2>
+<p>When people outside the tech field suddenly decide that they are going to learn to code, they have <em>no idea</em> how hard that actually is. All of the "Learn to Code" resources, books, sites, and bootcamps tell you that you can learn to build web and mobile apps pretty easily --- in just a few weeks, even.</p>
+<p>And when you first start coding, it seems magical. Especially if the framework does a lot for you. "Oh, wow! Is this all it takes to build an app?!"</p>
+<p>You and I know --- these people don't have any idea what they are in for, how difficult it is about to get for them, how far is the distance between local build and production deployment.</p>
+<p>I suspect this stops many of us from getting started. It stopped me for a long time.</p>
+<h2>Beginner's Mind</h2>
+<p>Beginner's mind is a state in which, lacking the knowledge of how hard something is, everything seems easy. There are no boundaries, only possibilities. Beginner's mind is crucial for early learning of a new skill or subject area. With beginner's mind, small improvements seem like major wins. This enthusiasm creates a positive feedback loop, encouraging more learning and skill acquisition.  </p>
+<p>Tech writers don't have beginner's mind. Even if you have never written a line of code in your life, our proximity to software development has shattered any illusions we might have about how easy it is to get an app built and launched. We are aware of all the things that beginners happily ignore --- security, maintainability, deployment, cross-platform compatibility. We've seen too many problems caused by ignoring things. If we ever do sit down to start building a little app or follow along with a tutorial, we are overwhelmed by all the things that are going unmentioned.</p>
+<p>Or maybe I'm the only one.</p>
+<h2>Don't Hope to be a Developer</h2>
+<p>Here's my trick for overcoming this problem --- drastically lower your expectations of what "learning to code" means.</p>
+<p>You already know how hard it is to go from zero (or even 1) to actually-qualified developer. And you've met too many not-actually-qualified developers to have any interest in that path.</p>
+<p>So how do you get started?</p>
+<p>By deciding you are not ever going to write any application code. You are not going to be a developer. You are not even going to be a "coder."</p>
+<p>You are going to be a <em>technical writer with bad coding skills</em>.</p>
+<p>That lowers the bar, doesn't it?</p>
+<h2>Bad Coding Skills</h2>
+<p>What are you going to do with bad coding skills?</p>
+<p>You're not going to become a developer with bad coding skills. (That's not an editorial "you." Lots of people become developers with bad coding skills. You, in particular, are not going to become a developer with bad coding skills.)</p>
+<p>You are going to be a better technical writer. More efficient, happier, and more employable.</p>
+<p>Here a few things I have been able to do since acquiring bad coding skills:</p>
+<ul>
+<li>semi-automate an incredibly boring freelance writing task, letting me earn the same amount of money in about half the time</li>
+<li>easily render HTML from Markdown, automating fussy style rules and naming conventions, saving several minutes and annoyance every day</li>
+<li>switch from WordPress to Jekyll and/or Nikola for my personal blogs, saving money and time</li>
+<li>put "Python" on my resume, greatly increasing the number of interviews and job opportunities I get</li>
+<li>automate documentation deployment ("DocOps")</li>
+<li>write code samples where I actually knew what was going on</li>
+<li>make a code contribution to an Open Source project</li>
+</ul>
+<p>I have not built any apps or launched any products. No one has ever paid me to write code, and I don't think anyone ever will. I don't know how to handle user sessions or deal with cache invalidation. I code slowly, and I Google constantly.</p>
+<p>And, believe me, the code I have written is bad. It's ugly and inefficient. It wouldn't pass a code review.</p>
+<p>But, even though my coding skills are bad, they have made a huge impact in my life. I am more employable, more efficient, more valuable. I'm also happier, and <a href="http://hackwrite.com/posts/third-option-success/">feel more optimistic about my future</a>. Bad code works.</p>
+<p>If you have been discouraged, I encourage you. It only takes a little bit --- enough to be dangerous.</p>
+<blockquote>
+<p>Programming as a profession is only moderately interesting. It can be a good job, but you could make about the same money and be happier running a fast food joint. You're much better off using code as your secret weapon in another profession.</p>
+<p>People who can code in the world of technology companies are a dime a dozen and get no respect. People who can code in biology, medicine, government, sociology, physics, history, and mathematics are respected and can do amazing things to advance those disciplines.</p>
+<p>--- Zed Shaw, <a href="http://amzn.to/2iwhe9n">Learn Python the Hard Way</a></p>
+</blockquote>
+<hr>
+<h2>How (What) To Learn</h2>
+<p>I recommend Python.</p>
+<p>Python is the perfect language for bad coding by non-developers. You can do a lot without knowing very much, and there are a lot of tools for accomplishing non-development tasks --- writing tools, math tools, publishing tools, task automation tools. If you're going to learn to code in order to improve your own life (as opposed to learning to code to get a job or build things) Python is the best option. (It's also good for getting jobs and building things. Learning Python will not limit you.)</p>
+<p>I do not recommend <a href="http://amzn.to/2iwhe9n">Learn Python the Hard Way</a>, even though it is very popular. It's out of date and a bit too curmudgeonly.</p>
+<p>The best book (I think) for learning to write Python for life-improvement is <a href="http://amzn.to/2hGOZ6L">Automate the Boring Stuff with Python</a>.</p>
     </div>
     </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/enough-to-be-dangerous/" class="u-url">Enough to Be Dangerous: The Joy of Bad Python</a></h1>
         <div class="metadata">
@@ -239,12 +483,12 @@
 <p>I do not recommend <a href="http://amzn.to/2iwhe9n">Learn Python the Hard Way</a>, even though it is very popular. It's out of date and a bit too curmudgeonly.</p>
 <p>The best book (I think) for learning to write Python for life-improvement is <a href="http://amzn.to/2hGOZ6L">Automate the Boring Stuff with Python</a>.</p>
     </div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/third-option-success/" class="u-url">"Success and Self-Determination: You Need a Third Option"</a></h1>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/third-option-success/third-option-success/" class="u-url">"Success and Self-Determination: You Need a Third Option"</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn">
                 Adam Michael Wood
             </span></p>
-            <p class="dateline"><a href="posts/third-option-success/" rel="bookmark"><time class="published dt-published" datetime="2016-02-13T07:26:43-08:00" title="2016-02-13 07:26">2016-02-13 07:26</time></a></p>
+            <p class="dateline"><a href="posts/third-option-success/third-option-success/" rel="bookmark"><time class="published dt-published" datetime="2016-02-13T07:26:43-08:00" title="2016-02-13 07:26">2016-02-13 07:26</time></a></p>
         </div>
     </header><div class="p-summary entry-summary">
     <blockquote>
@@ -273,80 +517,14 @@ I am the captain of my soul.<br>
 <p>For me, learning to be a developer (<b>n.b.</b> not just a coder) is my third option.</p>
 <p>What is your third option?</p>
     </div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/python-and-django-vs-ruby-and-rails/" class="u-url">Python and Django vs. Ruby and Rails</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn">
-                Adam Michael Wood
-            </span></p>
-            <p class="dateline"><a href="posts/python-and-django-vs-ruby-and-rails/" rel="bookmark"><time class="published dt-published" datetime="2016-02-10T15:22:39-08:00" title="2016-02-10 15:22">2016-02-10 15:22</time></a></p>
-        </div>
-    </header><div class="p-summary entry-summary">
-    <p><em>tl;dr - Python.</em></p>
-<p>I can't even begin to count how many forum posts and deleted Stack Overflow questions there are boiling down to some version of <em>Python vs. Ruby</em> or, more specifically, <em>Django vs. Rails</em>. Google (as of right now) has <a href="https://en.wiktionary.org/wiki/buttload">NINE POINT EIGHT MILLION</a> results for <a href="https://www.google.com/webhp?sourceid=chrome-instant&amp;ion=1&amp;espv=2&amp;ie=UTF-8#safe=off&amp;q=python+vs.+ruby">"Python vs. Ruby"</a>, which is basically insane.</p>
-<p>Unfortunately many of the articles and posts answering the question don't actually answer it. They provide some generalizations about each, talk about some of the differences, and say that it's up to you.</p>
-<p><strong>Have an opinion, you soulless producers of Search Engine fodder!</strong></p>
-<p>I have recently spent a bunch of time trying to answer this question as I attempt to transition out of the wasteland of PHP and WordPress. I have a particular app I'm trying to build, and it is just the sort of content-driven, database-backed, CRUD app that both Ruby on Rails and Django are perfectly suited for. (And that WordPress <del>idiots</del> evangelists would claim would be just perfect as a custom plugin, except that's a <em>terrible idea</em>.)</p>
-<p>So here is the definitive answer...</p>
-<p>Use Python, and Django, if you care about any of the following:</p>
-<ul>
-<li>Schema design</li>
-<li>Data analytics</li>
-<li>Programming best practices</li>
-<li>Learning how to actually program</li>
-<li>Database integrity</li>
-</ul>
-<p>Also, use Python, and (if needed) Django, if you are working in any of the following domains:</p>
-<ul>
-<li>Math</li>
-<li>Science</li>
-<li>Music</li>
-<li>Signal Processing</li>
-<li>AI</li>
-<li>Analytics (which is really math)</li>
-<li>Statistics (more math)</li>
-<li>Academia (most likely math)</li>
-<li>Engineering</li>
-<li>Remotely serious gaming</li>
-<li>Security</li>
-<li>Networking</li>
-</ul>
-<p>Use Ruby if you want to use Rails. And use Rails if you care about:</p>
-<ul>
-<li>Getting a <del>stupid</del> <ins>clever</ins> social media app MVP up and running as soon as possible</li>
-</ul>
-<p><span title="Actually it is.">This isn't really a judgement on the quality of either language.</span> <span title="But I will anyway.">I am not in a position to say which language is intrinsically better suited for either task.</span> (And neither are most of the people blogging on this subject.)</p>
-<p>What matters in either case is the community of people who have gravitated to each language and (therefore) what kinds of tools are available for each. Also, the focus of the two disparate communities has impacted the design of Django and Rails in different ways.</p>
-<p>So, who uses Python? Nerds, mostly. Sciencey people. Math people. People who care about data. People who know three or four or a dozen other programming languages. People who prefer PostgreSQL to MongoDB, because they care about things like data integrity. People who actually understand what polymorphism is. People who want to teach computers to write music or recognize handwriting.</p>
-<p>Because these are the kind of people who have gotten into Python, the tools exist in Python to do that kind of work. And because those tools exist, more and more of those kinds of people have gravitated to the language, generating a positive feedback loop and a network effect of geeky awesomeness.</p>
-<p>And who uses Ruby? People who want to get rich building the next Twitter.</p>
-<p>Compare the contents of Python's <a href="https://pypi.python.org/pypi?%3Aaction=browse">package index</a> against the <a href="https://rubygems.org/gems">Ruby gems library</a>.</p>
-<p><span title="Yes it is.">This is not a moral judgement.</span> I would love to get rich building the next Twitter. But since a deep understanding of either language, either platform, can be a ticket to a lucrative career, I think it makes more sense to focus on a language and community that has more interesting possibilities. (And it's not like you <em>can't</em> build the next Twitter on Django.)</p>
-<p>These differences in focus and culture manifest in non-trivial differences between Django and Rails. One difference in particular sealed the deal for me in selecting Django (and, by extension, Python) for my next project, even though I was already leaning in that direction.</p>
-<p>I am working on a library-catalog-like index of church music --- everything from Gregorian Chant to Christian Pop, including tons of information about liturgy (rituals), history, legislation and a hundred other things you wouldn't understand unless you really cared about church music. The corpus is unbelievable large and just wrapping one's head around how the data should be organized is difficult.</p>
-<p>One tiny, nearly non-trivial example of one of the data modeling problems: A hymn consists of a tune and a text. A tune can have multiple harmonizations, but it is possible that one is "canonical." Texts might be paired with different tunes over time (for example, there are at least <a href="https://www.youtube.com/watch?v=MTPyKwqUUgc">two</a> <a href="https://www.youtube.com/watch?v=Lj2fwME46GM">different</a> well-known tunes for the Christmas Hymn <em>O Little Town of Bethlehem</em>.) And the tunes often end up paired to different texts over time. Sometimes these pairings are "canonical" or widely recognized, while other times they are one-off pairings that appear only in a single book or hymnal. And sometimes a tune and text simply cannot be separated, because they were written together and form a singular unit. And sometimes that happens, but someone else still comes behind and writes a new tune for the text.</p>
-<p>Another issue... authors of texts and tunes. Most texts are written by individual people. But some are written by groups, like a worship committee or church council. Others are traditional or anonymous. Some are attributed to a particular person, but he or she probably didn't actually write it. Some attributions are apocryphal, others are doubtful but possible, some fraudulent or spurious, and so on.</p>
-<p>And the possibilities for relationships between authors and texts, is the same as for composers and tunes --- so <span title="Yes, it should be.">shouldn't that be abstracted?</span> And therefore <span title="Yes, again.">shouldn't tunes and texts (and books and arrangements and sermons and pamphlets) be abstracted to something like <code>Works</code></span>? And since people and groups can both be contributors, <span title="Still yes.">shouldn't they be abstracted into something like <code>Entities</code></span>?</p>
-<p>Trying to capture all of these different relationships, and the meta-data under the relationships (<em>What type of tune-text pairing?</em> <em>What degree of certainty does an attribution have?</em>) is a big undertaking. To get it right, I need a pretty high degree of control over the database schema.</p>
-<p>That <em>could</em> mean writing SQL from scratch and using a framework that doesn't have a built-in abstraction layer, which would be great if I wanted to go completely insane.</p>
-<p>Or it <em>could</em> mean basically hacking Ruby on Rails, relying on a <a href="https://github.com/hzamani/acts_as_relation">poorly supported plugin</a> or <a href="https://dan.chak.org/enterprise-rails/chapter-10-multiple-table-inheritance/">reading way too much</a> to accomplish multi-table inheritance.</p>
-<p>Or I could just use Django, which <a href="https://docs.djangoproject.com/en/1.9/topics/db/models/#multi-table-inheritance">natively and simply supports multi-table inheritance</a>, and provides pretty real polymorphism with a <a href="https://django-polymorphic.readthedocs.org/en/latest/quickstart.html">well-documented, actively developed plugin</a>.</p>
-<p>(And if you want to jump all over me about performance issues with concrete inheritance and left joins, <em>fuck off</em>. I will take a data model that reflects reality over cargo-cult performance superstitions any day. Besides, I'm not building 911 dispatch or a global e-commerce site. I'm indexing hymnals for church musicians.)</p>
-<p>This one example --- how each framework deals with model inheritance --- is indicative of a larger trend I found when trying to mockup various pieces of my system in both platforms: Django gives you more control over the data model. There's still an abstraction layer, but it was written by people who care about schema --- not people who are trying to hide it from you. Since I care about data models also (maybe you don't), this is a killer feature.</p>
-<p>It doesn't hurt that if I want to do anything remotely interesting with all the music data I plan to <del><a href="http://scrapy.org/">steal</a></del> <ins>collect</ins>, I'll want to do that sort of thing in Python.</p>
-<p>Analyze all the hymn tunes written in 17th century Germany in order to programatically create new tunes in the same style?</p>
-<p>Yeah, I could totally do that in Ruby.</p>
-<p>So... bottom line: If you are learning to code because you want to be an entrepreneur, <span title="Or, better yet, hire a developer.">learn Ruby on Rails</span>. If you are learning to code because you want to do unique and interesting things as a developer, learn Python.</p>
-    </div>
     </article>
 </div>
 
-
-
-
-
-
-
-         </main><footer id="footer"><p>© 2016–2017 <a href="mailto:adam.michael.wood@gmail.com">Adam Michael Wood</a> - <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> <br><span id="powered-by">Powered by <a href="https://getnikola.com" rel="nofollow">Nikola</a></span></p>
+        <nav class="postindexpager"><ul class="pager">
+<li class="next">
+                <a href="index-1.html" rel="next">Older posts</a>
+            </li>
+        </ul></nav></main><footer id="footer"><p>© 2016–2017 <a href="mailto:adam.michael.wood@gmail.com">Adam Michael Wood</a> - <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> <br><span id="powered-by">Powered by <a href="https://getnikola.com" rel="nofollow">Nikola</a></span></p>
             
         </footer>
 </div>
