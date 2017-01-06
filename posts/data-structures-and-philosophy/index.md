@@ -83,4 +83,4 @@ The point is that philosophy, or at least philosophical thinking, can inform sys
 
 A simple example is choice of database. Instead of following the New Hotness (or the "I've always done it this way"), what if we had an epistemological approach to selecting a particular database engine? What if, before asking "how this should information be stored?" we asked "How is this knowledge known?"
 
-Sometime, the knowledge will be known in an Aristotelian (or Medieval Scholastic) way, in which case traditional SQL (or something even more on the nose) might be the right approach. Other times, we'll have to look to human reason. Other times, some other way of knowing and organizing the world. (So maybe those Mongo people are on to *something*...)
+Sometime, the knowledge will be known in an Aristotelian (or Medieval Scholastic) way, in which case traditional SQL (or [something even more on the nose](http://www.sciencedirect.com/science/article/pii/S0747717189800306)) might be the right approach. Other times, we'll have to look to human reason. Other times, some other way of knowing and organizing the world. (So maybe those Mongo people are on to *something*...)
