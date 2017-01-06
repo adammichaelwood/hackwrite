@@ -6,15 +6,11 @@
     xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <sitemap>
-  <loc>http://hackwrite.com/galleries/rss.xml</loc>
-  <lastmod>2017-01-05T15:07:00Z</lastmod>
- </sitemap>
- <sitemap>
   <loc>http://hackwrite.com/rss.xml</loc>
-  <lastmod>2017-01-05T15:16:00Z</lastmod>
+  <lastmod>2017-01-06T15:27:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://hackwrite.com/sitemap.xml</loc>
-  <lastmod>2017-01-05T15:16:00Z</lastmod>
+  <lastmod>2017-01-06T15:27:00Z</lastmod>
  </sitemap>
 </sitemapindex>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " vocab="http://ogp.me/ns" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Data Structures and Philosophy | hack.write()</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<meta content="#5670d4" name="theme-color">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<link rel="canonical" href="http://hackwrite.com/posts/data-structures-and-philosophy/">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Adam Michael Wood">
+<link rel="prev" href="../on-the-design-of-this-blog/" title="On the Design of this Blog" type="text/html">
+<meta property="og:site_name" content="hack.write()">
+<meta property="og:title" content="Data Structures and Philosophy">
+<meta property="og:url" content="http://hackwrite.com/posts/data-structures-and-philosophy/">
+<meta property="og:description" content="Sometimes bad programming is just bad programming: people write sloppy code, people don't know how things are supposed to work, people forget that binary math is weird sometimes.
+But often, bad progra">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2017-01-06T07:26:34-08:00">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+    <div id="container">
+         
+    <header id="header"><h1 id="brand"><a href="http://hackwrite.com/" title="hack.write()" rel="home">
+
+        <span id="blog-title">hack.write()</span>
+    </a></h1>
+
+        
+
+        
+    <nav id="menu"><ul>
+<li><a href="../../archive.html">Archive</a></li>
+                <li><a href="../../categories/">Tags</a></li>
+                <li><a href="../../rss.xml">RSS feed</a></li>
+                <li><a href="https://github.com/adammichaelwood/hackwrite">Repo</a></li>
+    
+    
+    </ul></nav></header><main id="content"><article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Data Structures and Philosophy</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                    Adam Michael Wood
+            </span></p>
+            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2017-01-06T07:26:34-08:00" itemprop="datePublished" title="2017-01-06 07:26">2017-01-06 07:26</time></a></p>
+            
+        <p class="sourceline"><a href="index.md" id="sourcelink">Source</a></p>
+
+        </div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <p>Sometimes bad programming is just bad programming: people write sloppy code, people don't know how things are supposed to work, people forget that binary math is weird sometimes.</p>
+<p>But often, bad programming is a result of bad philosophy - a fundamental misunderstanding of how meaning is made, or thought works, or how the world is structured. Sometimes the fault is a little less radical, tied to ignorance of some domain-specific facts, but often it's just plain bad philosophy.</p>
+<p>And nowhere is bad philosophy more on display than in poorly designed data models. Most <a href="http://www.amazon.com/gp/product/B00A376BB2/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=B00A376BB2&amp;linkCode=as2&amp;tag=musforsun-20">database 'antipatterns'</a> are philosophical in nature.</p>
+<p>This is, I think, not well understood by the majority of programmers and project managers. Even most engineers (read: technicians) who do things the right way can't always explain the philosophical underpinnings of the right way. This situation is analogous to high school students who know how to use the quadratic formula, but have no idea why it's meaningful. But while most of those bored teenagers move blissfully away from mathematics without doing anyone any serious harm, programmers without a sense of good philosophy (along with plenty of <a href="http://www.amazon.com/gp/product/0517122707/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0517122707&amp;linkCode=as2&amp;tag=musforsun-20">theology and geometry</a>) move from project to project, wreaking havoc on database after database without any understanding of why things keep breaking. This situation is, of course, compounded by project managers, executives, and <a href="http://www.amazon.com/gp/product/B007O8101E/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=B007O8101E&amp;linkCode=as2&amp;tag=musforsun-20">pointy-haired bosses</a> of all stripes who don't rise to the level of software technician, and so don't even know what the right way is, let alone understand why there has to be a right way in the first place.</p>
+<h2>The Canonical Example: How Old Are You?</h2>
+<p>I assume you are aware that the correct piece of information to store about a person is not their age, but their birthday. Other than the fact that this is painfully obvious to anyone who thinks about it for more than a moment, what might we offer as a philosophical explanation of the right way, and how can we understand why so many people take the wrong path?</p>
+<p>If we are forced to "show our work," there are at least two routes by which one can arrive at the "store birthdays, not ages."</p>
+<h3>Understanding of Human Thought</h3>
+<p>The more obvious, and slightly less interesting, of the two routes involves an understanding of what a person does when asked the question, "How old are you?" or "How old is Socrates?"</p>
+<p>(Socrates is, of course, either the interviewee's child or pet.)</p>
+<p>Typically, we do not walk around with the answer to this question readily available. Rather, we quickly calculate it:</p>
+<p>"Let's see, I was born in 1982 and... what year is it? Oh right, so I'm... 34, I guess? Yeah - 34. I'll be 35 in July."</p>
+<p>By working backwards from "how do I figure it out" we can arrive at "how should it be known."</p>
+<h3>God's Knowledge: Thomistic Data Structures</h3>
+<p>We can do the inverse, work forwards from the more fundamental question --- how is a thing known?</p>
+<p>Your database is supposed to know everything, and always be right. But facts change. How can this be handled?!</p>
+<p>Medieval philosophers had a similar, but much more fundamental question:
+God knows everything, and is always right. Facts change. <strong>But God cannot change.</strong> How can God know about things if God doesn't change, but things do?</p>
+<blockquote>
+<p><strong>Whether the knowledge of God is variable?</strong></p>
+<p>Objection 1:<br>
+It seems that the knowledge of God is variable. For knowledge is related to what is knowable. But whatever imports relation to the creature is applied to God from time, and varies according to the variation of creatures. Therefore the knowledge of God is variable according to the variation of creatures.</p>
+<p>--- <a href="http://home.newadvent.org/summa/1014.htm#article15">Thomas Aquinas, Summa Theologica, Pars Prima - Question 14, Article 15</a></p>
+</blockquote>
+<p>This might seem silly, but it was a big deal at the time: If God's knowledge is variable, than God is variable. But God <em>is not</em> variable --- God is Simple, and One. The whole edifice of belief might crumble if we imagine a God who just changes willy-nilly. (Not unlike a computer system that crashes from too many logical contradictions and inconsistencies.)</p>
+<p>Moreover, like the issue of storing birthdays or ages, the question only seems silly now because an answer was provided which is so obvious and clear that once you have grokked it, you will wonder why you didn't think of it yourself.</p>
+<p>(The following is Aquinas' reply to a later objection, but it is particularly relevant here.)</p>
+<blockquote>
+<p>The ancient Nominalists said that it was the same thing to say "Christ is born" and "will be born" and "was born"; because the same thing is signified by these three--viz. the nativity of Christ. Therefore it follows, they said, that whatever God knew, He knows; because now He knows that Christ is born, which means the same thing as that Christ will be born. This opinion, however, is false; both because the diversity in the parts of a sentence causes a diversity of enunciations; and because it would follow that a proposition which is true once would be always true; which is contrary to what the Philosopher lays down (Categor. iii) when he says that this sentence, "Socrates sits," is true when he is sitting, and false when he rises up. Therefore, it must be conceded that this proposition is not true, "Whatever God knew He knows," if referred to enunciable propositions. But because of this, it does not follow that the knowledge of God is variable. For as it is without variation in the divine knowledge that God knows one and the same thing sometime to be, and sometime not to be, so it is without variation in the divine knowledge that God knows an enunciable proposition is sometime true, and sometime false. The knowledge of God, however, would be variable if He knew enunciable things by way of enunciation, by composition and division, as occurs in our intellect. Hence our knowledge varies either as regards truth and falsity, for example, if when either as regards truth and falsity, for example, if when a thing suffers change we retained the same opinion about it; or as regards diverse opinions, as if we first thought that anyone was sitting, and afterwards thought that he was not sitting; neither of which can be in God.</p>
+</blockquote>
+<p>Aquinas is explaining that some thing which is only true at a point in time is not known by God by way of the kind of knowledge expressed in present-tense statements, like "Socrates is sitting."</p>
+<p>This is precisely analogous to our database, where enunciating the individual facts "today I am 34; tomorrow I will be 35" is not proper to the way a database knows things.</p>
+<h3>Data Persistence vs. Application Layer</h3>
+<p>Here, I think we have an analogy to the separation of concerns between a <em>Single Source of Truth</em> database and the application layer. The database doesn't "know" things by way of enunciation --- it simply knows things. It is up to the (human?) logic of the application layer to enunciate that knowledge for human consumption.</p>
+<h3>Imperfect Analogies</h3>
+<p>Of course this is an imperfect analogy, since <code>INSERT</code> and <code>DELETE</code> exist. (That is, the contents of the database change.)</p>
+<p>So our database is in no way omniscient (unless you work for Google), but there is a benefit to patterning knowledge using the highest form of rational thinking possible. With the birthday example, we can look to a Divine Precedent for our data model.</p>
+<p>(One can be an atheist or agnostic and still benefit from this analogy by asking the question as a hypothetical: How <em>would</em> an omniscient, unmoving God know things.)</p>
+<p>As a side note --- having this Divine Precedent probably explains my aesthetic revulsion at <a href="http://blog.mlab.com/2012/08/why-is-mongodb-wildly-popular/#comment-353">NoSQL's propensity to float data integrity concerns into the application layer</a>. (I'm not sure if this means that NoSQL people are Godless heathens or just <a href="https://en.wikipedia.org/wiki/Process_theology">process theologians</a>.)</p>
+<h3>Models of Knowledge</h3>
+<p>The point is that philosophy, or at least philosophical thinking, can inform system design. The application of epistemology (how we know things) should be of particular interest to the design of knowledge systems.</p>
+<p>A simple example is choice of database. Instead of following the New Hotness (or the "I've always done it this way"), what if we had an epistemological approach to selecting a particular database engine? What if, before asking "how this should information be stored?" we asked "How is this knowledge known?"</p>
+<p>Sometime, the knowledge will be known in an Aristotelian (or Medieval Scholastic) way, in which case traditional SQL (or something even more on the nose) might be the right approach. Other times, we'll have to look to human reason. Other times, some other way of knowing and organizing the world. (So maybe those Mongo people are on to <em>something</em>...)</p>
+    </div>
+    <aside class="postpromonav"><nav><ul class="pager hidden-print">
+<li class="previous">
+                <a href="../on-the-design-of-this-blog/" rel="prev" title="On the Design of this Blog">Previous post</a>
+            </li>
+        </ul></nav></aside></article></main><footer id="footer"><p>© 2016–2017 <a href="mailto:adam.michael.wood@gmail.com">Adam Michael Wood</a> - <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> <br><span id="powered-by">Powered by <a href="https://getnikola.com" rel="nofollow">Nikola</a></span></p>
+            
+        </footer>
+</div>
+    
+    
+
+    
+    <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga'); ga('create', 'UA-46189469-6', 'auto'); ga('send', 'pageview');</script>
+</body>
+</html>

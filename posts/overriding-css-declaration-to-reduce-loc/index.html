@@ -2,7 +2,6 @@
 <html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " vocab="http://ogp.me/ns" lang="en">
 <head>
 <meta charset="utf-8">
-<base href="http://hackwrite.com/posts/overriding-css-declaration-to-reduce-loc/">
 <meta name="viewport" content="width=device-width">
 <title>Overriding CSS/LESS Declaration to Reduce One LOC | hack.write()</title>
 <link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
@@ -57,7 +56,7 @@ h3:">
     </header><div class="e-content entry-content" itemprop="articleBody text">
     <p>While working on the theme for <a href="http://hackwrite.com">this site</a>, I was referencing <a href="http://mrcoles.com/demo/markdown-css/">Markdown CSS</a>, which makes HTML look like Markdown. (h/t <a href="https://twitter.com/ericholscher">@ericholscher</a>)</p>
 <p>I <a href="https://github.com/mrcoles/markdown-css/blob/master/markdown.less">ran across an interesting (let's call it a) pattern</a>.</p>
-<pre class="code literal-block"><span class="nt">h2</span><span class="nd">:before</span><span class="o">,</span>
+<pre class="code literal-block"><span></span><span class="nt">h2</span><span class="nd">:before</span><span class="o">,</span>
 <span class="nt">h3</span><span class="nd">:before</span><span class="o">,</span>
 <span class="nt">h4</span><span class="nd">:before</span><span class="o">,</span>
 <span class="nt">h5</span><span class="nd">:before</span><span class="o">,</span>
@@ -82,7 +81,7 @@ h3:">
 
 <p>The <code>content</code> for all five subheadings is first set to <code>##</code>, and then re-defined individually.</p>
 <p>This saves, as far as I can figure out, one line of code. (Well, two lines if you count the closing curly brace.)</p>
-<pre class="code literal-block"><span class="nt">h2</span><span class="nd">:before</span><span class="o">,</span>
+<pre class="code literal-block"><span></span><span class="nt">h2</span><span class="nd">:before</span><span class="o">,</span>
 <span class="nt">h3</span><span class="nd">:before</span><span class="o">,</span>
 <span class="nt">h4</span><span class="nd">:before</span><span class="o">,</span>
 <span class="nt">h5</span><span class="nd">:before</span><span class="o">,</span>

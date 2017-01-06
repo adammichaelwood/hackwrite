@@ -2,7 +2,6 @@
 <html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " vocab="http://ogp.me/ns" lang="en">
 <head>
 <meta charset="utf-8">
-<base href="http://hackwrite.com/posts/simple-input-validation-handling-python/">
 <meta name="viewport" content="width=device-width">
 <title>Simple Input Validation and Exception Handling in Python | hack.write()</title>
 <link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
@@ -54,7 +53,7 @@ while: # variable ">
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
     <p>If you are doing a simple terminal script in Python, and you need to validate some user-supplied input, you can put the assignment and validation in a <code>try</code> block inside a <code>while</code> loop.</p>
-<pre class="code literal-block"><span class="k">while</span><span class="p">:</span> <span class="c1"># variable not assigned</span>
+<pre class="code literal-block"><span></span><span class="k">while</span><span class="p">:</span> <span class="c1"># variable not assigned</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="c1"># input, assignment, validation</span>
     <span class="k">except</span><span class="p">:</span>
@@ -66,7 +65,7 @@ while: # variable ">
 <p>This came up for me in <a href="https://gist.github.com/adammichaelwood/6f2e02c4156c6cc27020ce179d2e8638">a little script I wrote</a> to <a href="https://www.reddit.com/r/learnpython/comments/56r94z/what_python_program_have_you_created_to_make_your/d8m0hy6/?context=3">semi-automate a task</a>. I needed to rate the quality of something I was looking at, and I was going for speed: Glance at the item, make a snap quality judgment, type a number.</p>
 <p>But, of course, sometimes I typed the number incorrectly, hitting a letter instead of a number. This screwed things up latter, when I tried to order all my items by quality rating.</p>
 <p>So, I cast the input to an integer inside the <code>try</code> block, and used the <code>while</code> loop to repeat until the <code>quality</code> rating was assigned.</p>
-<pre class="code literal-block"><span class="k">while</span> <span class="s1">'quality'</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">lnk</span><span class="p">:</span>
+<pre class="code literal-block"><span></span><span class="k">while</span> <span class="s1">'quality'</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">lnk</span><span class="p">:</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">lnk</span><span class="p">[</span><span class="s1">'quality'</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">"Quality (0-9): "</span><span class="p">))</span>
     <span class="k">except</span><span class="p">:</span>
