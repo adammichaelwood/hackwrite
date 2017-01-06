@@ -136,7 +136,8 @@ NAVIGATION_LINKS = {
 }
 
 # Name of the theme to use.
-THEME = "hack_write"
+# THEME = "hack_write"
+THEME = "base"
 
 
 # Primary color of your theme. This will be used to customize your theme and
