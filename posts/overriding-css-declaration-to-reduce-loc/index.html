@@ -2,6 +2,7 @@
 <html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " vocab="http://ogp.me/ns" lang="en">
 <head>
 <meta charset="utf-8">
+<base href="http://hackwrite.com/posts/overriding-css-declaration-to-reduce-loc/">
 <meta name="viewport" content="width=device-width">
 <title>Overriding CSS/LESS Declaration to Reduce One LOC | hack.write()</title>
 <link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
@@ -9,8 +10,8 @@
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
 <link rel="canonical" href="http://hackwrite.com/posts/overriding-css-declaration-to-reduce-loc/">
 <!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Adam Michael Wood">
-<link rel="prev" href="../it-should-matter-that-its-you/it-should-matter-that-its-you/" title="It Should Matter That It's You" type="text/html">
-<link rel="next" href="overriding-css-declaration-to-reduce-loc/" title="Overriding CSS/LESS Declaration to Reduce One LOC" type="text/html">
+<link rel="prev" href="../it-should-matter-that-its-you/" title="It Should Matter That It's You" type="text/html">
+<link rel="next" href="../on-the-design-of-this-blog/" title="On the Design of this Blog" type="text/html">
 <meta property="og:site_name" content="hack.write()">
 <meta property="og:title" content="Overriding CSS/LESS Declaration to Reduce One LOC">
 <meta property="og:url" content="http://hackwrite.com/posts/overriding-css-declaration-to-reduce-loc/">
@@ -56,7 +57,7 @@ h3:">
     </header><div class="e-content entry-content" itemprop="articleBody text">
     <p>While working on the theme for <a href="http://hackwrite.com">this site</a>, I was referencing <a href="http://mrcoles.com/demo/markdown-css/">Markdown CSS</a>, which makes HTML look like Markdown. (h/t <a href="https://twitter.com/ericholscher">@ericholscher</a>)</p>
 <p>I <a href="https://github.com/mrcoles/markdown-css/blob/master/markdown.less">ran across an interesting (let's call it a) pattern</a>.</p>
-<pre class="code literal-block"><span></span><span class="nt">h2</span><span class="nd">:before</span><span class="o">,</span>
+<pre class="code literal-block"><span class="nt">h2</span><span class="nd">:before</span><span class="o">,</span>
 <span class="nt">h3</span><span class="nd">:before</span><span class="o">,</span>
 <span class="nt">h4</span><span class="nd">:before</span><span class="o">,</span>
 <span class="nt">h5</span><span class="nd">:before</span><span class="o">,</span>
@@ -81,7 +82,7 @@ h3:">
 
 <p>The <code>content</code> for all five subheadings is first set to <code>##</code>, and then re-defined individually.</p>
 <p>This saves, as far as I can figure out, one line of code. (Well, two lines if you count the closing curly brace.)</p>
-<pre class="code literal-block"><span></span><span class="nt">h2</span><span class="nd">:before</span><span class="o">,</span>
+<pre class="code literal-block"><span class="nt">h2</span><span class="nd">:before</span><span class="o">,</span>
 <span class="nt">h3</span><span class="nd">:before</span><span class="o">,</span>
 <span class="nt">h4</span><span class="nd">:before</span><span class="o">,</span>
 <span class="nt">h5</span><span class="nd">:before</span><span class="o">,</span>
@@ -112,10 +113,10 @@ h3:">
     </div>
     <aside class="postpromonav"><nav><ul class="pager hidden-print">
 <li class="previous">
-                <a href="../it-should-matter-that-its-you/it-should-matter-that-its-you/" rel="prev" title="It Should Matter That It's You">Previous post</a>
+                <a href="../it-should-matter-that-its-you/" rel="prev" title="It Should Matter That It's You">Previous post</a>
             </li>
             <li class="next">
-                <a href="overriding-css-declaration-to-reduce-loc/" rel="next" title="Overriding CSS/LESS Declaration to Reduce One LOC">Next post</a>
+                <a href="../on-the-design-of-this-blog/" rel="next" title="On the Design of this Blog">Next post</a>
             </li>
         </ul></nav></aside></article></main><footer id="footer"><p>© 2016–2017 <a href="mailto:adam.michael.wood@gmail.com">Adam Michael Wood</a> - <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> <br><span id="powered-by">Powered by <a href="https://getnikola.com" rel="nofollow">Nikola</a></span></p>
             

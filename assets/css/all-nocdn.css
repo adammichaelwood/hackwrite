@@ -191,7 +191,7 @@ img.align-center, .figure.align-center, object.align-center {
   text-align: right }
 
 /* reset inner alignment in figures */
-.figure.align-right {
+div.align-right {
   text-align: inherit }
 
 /* div.align-center * { */
@@ -401,7 +401,7 @@ table.codetable { width: 100%;} td.linenos {text-align: right; width: 4em;}
 @charset "UTF-8";
 
 /*
-	Copyright © 2014-2016 Daniel Aleksandersen and others.
+	Copyright © 2014-2015 Daniel Aleksandersen and others.
 
 	Permission is hereby granted, free of charge, to any
 	person obtaining a copy of this software and associated
@@ -520,7 +520,7 @@ body {
 }
 .metadata p:before,
 .postpromonav .tags li:before,
-.postlist .listdate:after {
+.postlist .listdate:before {
 	content: " — ";
 }
 .postlist li {

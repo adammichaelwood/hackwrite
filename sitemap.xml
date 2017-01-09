@@ -7,82 +7,54 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>http://hackwrite.com/</loc>
-  <lastmod>2017-01-06T15:25:00Z</lastmod>
+  <lastmod>2017-01-09T14:40:00Z</lastmod>
  </url>
  <url>
   <loc>http://hackwrite.com/2016/</loc>
-  <lastmod>2017-01-06T15:25:00Z</lastmod>
+  <lastmod>2017-01-09T14:40:00Z</lastmod>
  </url>
  <url>
   <loc>http://hackwrite.com/2017/</loc>
-  <lastmod>2017-01-06T15:25:00Z</lastmod>
+  <lastmod>2017-01-09T14:40:00Z</lastmod>
  </url>
  <url>
   <loc>http://hackwrite.com/archive.html</loc>
-  <lastmod>2017-01-06T18:18:00Z</lastmod>
+  <lastmod>2017-01-09T14:40:00Z</lastmod>
  </url>
  <url>
   <loc>http://hackwrite.com/categories/</loc>
-  <lastmod>2017-01-06T15:25:00Z</lastmod>
- </url>
- <url>
-  <loc>http://hackwrite.com/index-1.html</loc>
-  <lastmod>2017-01-06T18:18:00Z</lastmod>
+  <lastmod>2017-01-09T14:40:00Z</lastmod>
  </url>
  <url>
   <loc>http://hackwrite.com/posts/data-structures-and-philosophy/</loc>
-  <lastmod>2017-01-06T15:27:00Z</lastmod>
+  <lastmod>2017-01-09T14:40:00Z</lastmod>
  </url>
  <url>
   <loc>http://hackwrite.com/posts/enough-to-be-dangerous/</loc>
-  <lastmod>2017-01-06T15:25:00Z</lastmod>
- </url>
- <url>
-  <loc>http://hackwrite.com/posts/enough-to-be-dangerous/enough-to-be-dangerous/</loc>
-  <lastmod>2017-01-06T15:25:00Z</lastmod>
+  <lastmod>2017-01-09T14:40:00Z</lastmod>
  </url>
  <url>
   <loc>http://hackwrite.com/posts/it-should-matter-that-its-you/</loc>
-  <lastmod>2017-01-06T15:25:00Z</lastmod>
- </url>
- <url>
-  <loc>http://hackwrite.com/posts/it-should-matter-that-its-you/it-should-matter-that-its-you/</loc>
-  <lastmod>2017-01-06T15:25:00Z</lastmod>
+  <lastmod>2017-01-09T14:40:00Z</lastmod>
  </url>
  <url>
   <loc>http://hackwrite.com/posts/on-the-design-of-this-blog/</loc>
-  <lastmod>2017-01-06T15:25:00Z</lastmod>
+  <lastmod>2017-01-09T14:40:00Z</lastmod>
  </url>
  <url>
   <loc>http://hackwrite.com/posts/overriding-css-declaration-to-reduce-loc/</loc>
-  <lastmod>2017-01-06T15:25:00Z</lastmod>
- </url>
- <url>
-  <loc>http://hackwrite.com/posts/overriding-css-declaration-to-reduce-loc/overriding-css-declaration-to-reduce-loc/</loc>
-  <lastmod>2017-01-06T15:25:00Z</lastmod>
+  <lastmod>2017-01-09T14:40:00Z</lastmod>
  </url>
  <url>
   <loc>http://hackwrite.com/posts/python-and-django-vs-ruby-and-rails/</loc>
-  <lastmod>2017-01-06T15:25:00Z</lastmod>
- </url>
- <url>
-  <loc>http://hackwrite.com/posts/python-and-django-vs-ruby-and-rails/python-and-django-vs-ruby-and-rails/</loc>
-  <lastmod>2017-01-06T15:25:00Z</lastmod>
+  <lastmod>2017-01-09T14:40:00Z</lastmod>
  </url>
  <url>
   <loc>http://hackwrite.com/posts/simple-input-validation-handling-python/</loc>
-  <lastmod>2017-01-06T15:25:00Z</lastmod>
- </url>
- <url>
-  <loc>http://hackwrite.com/posts/simple-input-validation-handling-python/simple-input-validation-handling-python/</loc>
-  <lastmod>2017-01-06T15:25:00Z</lastmod>
+  <lastmod>2017-01-09T14:40:00Z</lastmod>
  </url>
  <url>
   <loc>http://hackwrite.com/posts/third-option-success/</loc>
-  <lastmod>2017-01-06T15:25:00Z</lastmod>
- </url>
- <url>
-  <loc>http://hackwrite.com/posts/third-option-success/third-option-success/</loc>
-  <lastmod>2017-01-06T15:25:00Z</lastmod>
+  <lastmod>2017-01-09T14:40:00Z</lastmod>
  </url>
 </urlset>
