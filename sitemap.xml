@@ -19,7 +19,7 @@
  </url>
  <url>
   <loc>http://hackwrite.com/archive.html</loc>
-  <lastmod>2017-01-09T14:40:00Z</lastmod>
+  <lastmod>2017-01-09T14:54:00Z</lastmod>
  </url>
  <url>
   <loc>http://hackwrite.com/categories/</loc>
@@ -48,6 +48,10 @@
  <url>
   <loc>http://hackwrite.com/posts/python-and-django-vs-ruby-and-rails/</loc>
   <lastmod>2017-01-09T14:40:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://hackwrite.com/posts/shipping/</loc>
+  <lastmod>2017-01-09T14:54:00Z</lastmod>
  </url>
  <url>
   <loc>http://hackwrite.com/posts/simple-input-validation-handling-python/</loc>
