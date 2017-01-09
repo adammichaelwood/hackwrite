@@ -1,4 +1,0 @@
-Sitemap: http://hackwrite.com/sitemapindex.xml
-
-User-Agent: *
-Host: hackwrite.com
