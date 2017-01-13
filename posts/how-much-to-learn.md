@@ -30,7 +30,8 @@ Endless discussion board and subreddit questions about "what language should I l
 
 These are the skills that I have found most useful day to day. Additionally, these skills have made me much more employable. Since I started focusing on these skills and highlighting them in my resume, I get a lot more phone calls and interviews.
 
-I know a lot of really good tech writers don't have these particular skills, but to me --- the following are *essential skills for tech writers*.
+I know a lot of really good tech writers don't have these particular skills, but to me --- the following are *essential skills*.
+
 
 ### Comfortable at the Terminal
 
@@ -45,15 +46,18 @@ It's great to know more, of course. Tools like `grep` can help you search code b
 
 But knowing these simple things --- and especially being confident in your ability to Google and figure stuff out --- will make everything else easier.
 
+If you work in big enterprise organizations, you may also need to learn the Windows/DOS-prompt version of all this. (But, then, you'll also likely be using an integrated enterprise toolchain as well, so it might not matter.)
+
 ### Basic Web Dev
 
 Having an understanding of how the web works in general and how browsers turn HTML, CSS, and JavaScript into a rendered page is really helpful. You don't need to get bogged down in all the frontend JS framework insanity --- focus on web fundamentals and core concepts.
 
- - having a concept of a web page as a document
- - cool URL/URIs
- - "textual" HTML
- - semantic markup
- - CSS (LESS, SASS)
+ - I have found understanding how the web is/was "supposed" to work (that is, as a web of *documents*, [identified by URIs](https://www.w3.org/Provider/Style/URI.html), and transferred via HTTP) helps me conceptualize content organization better. It also helps me understand why so many things about web development are non-trivial.
+ - Knowing (and caring) about "textual" HTML (all the inline elements) and their semantic meaning is helpful.
+ - Knowing what makes for good (valid, clean) HTML, and understanding proper separation of concerns helps me evaluate the quality of my tooling and prevents future redesign and reorganization headaches.
+ - Understanding 
+ - Basic facility with CSS (LESS, SASS) gives me the ability to
+ -
 
 ### plaintext, code editors
 
@@ -72,6 +76,7 @@ Having an understanding of how the web works in general and how browsers turn HT
 
  - Java
  - JavaScript
+ - Objective C / Swift
  - Whatever they are doing where you work...
 
 ### System
@@ -84,4 +89,3 @@ Having an understanding of how the web works in general and how browsers turn HT
  - Agile
  - TDD, BDD, etc...
  - Devops, deployment, CI
- 
