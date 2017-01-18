@@ -59,7 +59,7 @@ Having an understanding of how the web works in general and how browsers turn HT
  - Those last three items --- and a general focus on web standards --- [give you a big head start in understanding web accessibility needs](https://twitter.com/sarah_edo/status/780780145086988289) which too few tech writers care about, but we all should.
  - Basic facility with CSS (LESS, SASS) gives me the ability to solve my own design problems. (For example, styling help text to mimic the UI being written about.)
 
-### plaintext, code editors
+### Plaintext and Code Editors
 
  - Being comfortable away from WYSIWYG editors and word processors is a requirement for most of the other tools I use.
  - Fluency in [Markdown](http://kirkstrobeck.github.io/whatismarkdown.com/) has become nearly mandatory, since developers really like it and [Github supports it by default](https://guides.github.com/features/mastering-markdown/).
@@ -88,26 +88,52 @@ It is really helpful to be able to write local scripts to automate your own task
 
 (I recommend [Automating the Boring Stuff](http://amzn.to/2jV13iW) as a good intro to Python and what you can accomplish with it.)
 
+#### Other Helpful Languages
+
+Python is not the only good utility language for this sort of work. Bash is also very helpful, as I mentioned earlier. It's also not hard to learn, so the ROI is pretty high.
+
+##### What about Ruby or JavaScript?
+
+Ruby is the language behind Jekyll, the most popular static site generator and also Ruby on Rails, the most popular rapid web application development framework. [Ruby definitely has facility as a local utility language](https://smthngsmwhr.wordpress.com/2013/01/01/gentle-introduction-to-routine-tasks-automation-with-ruby/), but I don't know anyone who uses it that way who isn't also a Ruby developer generally. I'm trying to focus on dev skills for non-devs.
+
+JavaScript (or, more specifically, Node.js) can also be used for this kind of work, but there is a much shorter history of it, so the tools are not as settled. If you already know JS well, then by all means use it. But if you're looking for a local utility language to learn, I wouldn't start here.
+
+
+##### What about Perl?
+
+Perl used to hold the place Python has assumed, as the "standard" utility and scripting language. I'm not sure there's a lot of need for tech writers to know it (I don't), but I'd feel remiss not mentioning it.
+
 ## Domain Knowledge
 
-Every tech writer needs to know different things in order to understand the technology they are writing about. So, the following is highly conditional and probably not that helpful for tech writers already deep into a particular field. But this might be a decent overview for people trying to get into the field or make a change.
+Every tech writer needs to know different things in order to understand the technology they are writing about. So, the following is highly conditional and probably not that helpful for tech writers already deep into a particular field.
+
+This is intended as a general overview for people trying to get into the field or make a change.
 
 ### Languages
 
-It's always hard to 
+I'm really of the opinion that for most tech writers --- even those writing developer docs --- the amount of target-language skill required is low, and can be acquired for most languages in a week or so.
 
- - Java --- Java is ubiquitous in large enterprise organizations (and startups founded by people who used to work for them).
- - JavaScript
- - Objective C / Swift
- - Whatever they are doing where you work...
+Once you've acquired basic programming skill in one language, *most* other languages are relatively similar. You need a quick primer on the syntax, how typical things are done (loops, conditionals, function definitions, etc.), and anything unusual or weird about the language. Anything else you need to know you can probably Google or ask someone when you encounter. ("What's this `lambda` thing?")
 
-### System
+That being said, there are a handful of languages that are especially helpful. If you're interested in expanding your knowledge of languages (and you've already got a good handle on Python) you might look into these.
 
- - Architecture
- - How things talk to each other
+ - Java --- Java is ubiquitous in large enterprise organizations (and startups founded by people who used to work for them). Though [Python and JavaScript have both surpassed Java on some measures of popularity](https://github.com/emmanuel-keller/github-language-statistics/blob/master/README.md), there are still [way more tech writer job openings for people who know Java](https://www.indeed.com/jobtrends/q-%22technical-writer%22-java-q-%22technical-writer%22-javascript-q-%22technical-writer%22-C++-q-%22technical-writer%22-python.html) than other languages. No doubt this is because big enterprise software companies using Java are more likely to hire a technical writer than smaller companies that might use "cooler" languages.
+    - Another reason to learn Java in particular is that it is the native language for Android apps. There's a lot of work available documenting mobile SDKs for cloud-based utilities. Knowing (at least a bit of) Java is a requirement for that.
+    - If you're interested in mobile SDK work, also get familiar with Objective C and Swift, which are both used for iOS development. Someone with decent facility in those three languages could carve out a nice niche working on mobile developer docs.
+ - JavaScript is just freaking everywhere. Every web application that is complicated enough to need a tech writer is going to have at least some JavaScript. That doesn't mean you have to know it to work on it, but it can't hurt. (And having it on your resume implicitly tells hiring managers that you understand web technology.)
 
-### Process
+I could go on and on --- this language is popular in this industry, that language gets a lot of use for this other kind of work. That probably wouldn't be helpful.
 
- - Agile
- - TDD, BDD, etc...
- - Devops, deployment, CI
+If you're writing developer docs for a library, SDK, or language API, the most important language to know (if you need to know one at all) is whatever language they are using to build the thing you are currently documenting. Trying to learn languages in the abstract, in case you might need them as a tech writer, is probably not the best use of your time.
+
+If you just want to have a better sense of programming in general, work on Python because you'll find it useful as a tool in its own right. If you have your heart set on a particular area or specialization (mobile, web, machine learning, etc.) find out what languages and technologies are popular there.
+
+### Systems and Architecture
+
+Perhaps more important than understanding in particular language is understanding how systems work and communicate with each other. As always, my view is particular, but --- I've had dozens of interviews over the last year and nearly all of them required a basic understanding of Service Oriented Architecture (whether or not they called it that) and RESTful web APIs.
+
+It seems that a large percentage of people hiring tech writers need them to understand how the modern web works, how web and mobile applications communicate with servers, and how multiple system components connect to each other and to third party systems.
+
+## These are not the only skills
+
+It's important to remember that developer skills (or technical skills more broadly) are not the only skills needed for technical writers. We also need to be good writers and teachers. Project management skills are also extremely helpful. And don't forget marketing copywriting --- someone is eventually going to ask you to do that if they haven't already.
