@@ -7,7 +7,7 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>http://hackwrite.com/</loc>
-  <lastmod>2017-01-09T14:40:00Z</lastmod>
+  <lastmod>2017-01-19T15:06:00Z</lastmod>
  </url>
  <url>
   <loc>http://hackwrite.com/2016/</loc>
@@ -19,11 +19,15 @@
  </url>
  <url>
   <loc>http://hackwrite.com/archive.html</loc>
-  <lastmod>2017-01-10T15:20:00Z</lastmod>
+  <lastmod>2017-01-19T15:06:00Z</lastmod>
  </url>
  <url>
   <loc>http://hackwrite.com/categories/</loc>
   <lastmod>2017-01-09T14:40:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://hackwrite.com/index-1.html</loc>
+  <lastmod>2017-01-19T15:06:00Z</lastmod>
  </url>
  <url>
   <loc>http://hackwrite.com/posts/data-structures-and-philosophy/</loc>
@@ -64,5 +68,9 @@
  <url>
   <loc>http://hackwrite.com/posts/third-option-success/</loc>
   <lastmod>2017-01-09T14:40:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://hackwrite.com/posts/what-and-how-much-to-learn/</loc>
+  <lastmod>2017-01-19T15:06:00Z</lastmod>
  </url>
 </urlset>

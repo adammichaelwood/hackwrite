@@ -10,7 +10,8 @@
 <meta content="#5670d4" name="theme-color">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
 <link rel="canonical" href="http://hackwrite.com/">
-<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/github-pages-problem/" type="text/html">
+<link rel="next" href="index-1.html" type="text/html">
+<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/what-and-how-much-to-learn/" type="text/html">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -32,7 +33,113 @@
     
     
     </ul></nav></header><main id="content"><div class="postindex">
-    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/github-pages-problem/" class="u-url">The Problem with Github Pages</a></h1>
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/what-and-how-much-to-learn/" class="u-url">What (and how much) to learn?</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                Adam Michael Wood
+            </span></p>
+            <p class="dateline"><a href="posts/what-and-how-much-to-learn/" rel="bookmark"><time class="published dt-published" datetime="2017-01-19T06:30:00-08:00" title="2017-01-19 06:30">2017-01-19 06:30</time></a></p>
+        </div>
+    </header><div class="p-summary entry-summary">
+    <p>I recently wrote that you don't need to attain a high-level of coding skill for learning to code to be useful. A technical writer can see substantial ROI from just learning <a href="http://hackwrite.com/posts/enough-to-be-dangerous/">enough to be dangerous</a>.</p>
+<p>Which raises (not begs!) the question: How much <em>is</em> enough? What topics should tech writers know? And how well should we know them?</p>
+<p>To start answering that question, I'd like to expand what we mean by "learn to code" or "knowing how to code" to "developer skills" in general. Too much focus on <em>coding</em> overlooks the other highly useful things that developers know and do that tech writers can benefit from.</p>
+<p>Further, we need to distinguish between two (overlapping) sets of developer skills:</p>
+<ul>
+<li>skills that you might directly use as a tech writer</li>
+<li>skills that help you understand the technology you write about</li>
+</ul>
+<p>For example, I use Python a lot as a writer. I can hack together little scripts to help me automate things. This blog is built on Nikola, and I use Sphinx a lot for building documentation --- both built in Python, and I have just enough Python skill to debug problems and add very minor functionality when needed. But I've never written documentation about something written in Python.</p>
+<p>On the other hand, I have never once written a line of Java. I hardly know anything about the language, its ecosystem, or common tooling. But I've stared at enough of it that <em>in context</em> I can usually dumb out the sorts of things a tech writer might need to know about a web API written in Java. And I've had to do that many times.</p>
+<p>Endless discussion board threads and subreddit questions about "what language should I learn" usually ignore this distinction. But it's a good idea to separate dev skills which are actually a subset of tech writer skills, and dev skills which are actually domain-knowledge about your subject matter.</p>
+<h2>Tech Writing Dev Skills</h2>
+<p>These are the skills that you can actively use in the course of being a tech writer, regardless of what you are writing about.</p>
+<h3>Comfortable at the Terminal</h3>
+<ul>
+<li>Basic facility with navigation and file manipulation commands (<code>cd</code>, <code>mkdir</code>, <code>rm</code>, <code>mv</code>)</li>
+<li>General understanding of how commands work --- enough to quickly learn and use other tools you may need (<code>git</code>, <code>curl</code>, etc.)</li>
+<li>Know how to open, edit, and close a file with <code>vi</code> (you don't have to <em>really know</em> Vim or use it for authoring; just know enough to be able to edit files on unfamiliar machines --- <code>vi</code> is everywhere)</li>
+<li>Basic facility with Bash scripting --- just enough that if you find yourself typing the same sequence of commands over and over, you know how turn that into a simple script</li>
+<li>Lack of fear or anxiety, and the confidence to use Google or Stack Overflow to solve problems</li>
+</ul>
+<p>It's great to know more, of course. Tools like <code>grep</code> can help you search code bases; understanding <code>awk</code> and other tools can help you with data munging and cleaning up text.</p>
+<p>But knowing these simple things --- and especially being confident in your ability to Google and figure stuff out --- will make everything else easier.</p>
+<p><i><b>Note:</b> All of the above was relevant to Unix-like systems with Bash terminals (GNU/Linux and Mac). If you work in Windows, you may also need to learn the Windows/DOS-prompt version of all this. Or switch to a Unix-like system and be happier. I honestly don't know how to do any of my primary work without a Bash terminal. YMMV.</i></p>
+<h3>Basic Web Dev</h3>
+<p>Having an understanding of how the web works in general and how browsers turn HTML, CSS, and JavaScript into a rendered page is really helpful. You don't need to get bogged down in all the <a href="https://hackernoon.com/how-it-feels-to-learn-javascript-in-2016-d3a717dd577f#.uwcjmcwnt">frontend JS framework insanity</a> --- focus on web fundamentals and core concepts.</p>
+<ul>
+<li>I have found understanding how the web is/was "supposed" to work (that is, as a web of <em>documents</em>, <a href="https://www.w3.org/Provider/Style/URI.html">identified by URIs</a>, and transferred via HTTP) helps me conceptualize content organization better. It also helps me understand why so many things about web development are non-trivial.</li>
+<li>Knowing (and caring) about "textual" HTML (all the inline elements) and their semantic meaning is helpful.</li>
+<li>Knowing what makes for good (valid, clean) HTML, and understanding proper separation of concerns helps me evaluate the quality of my tooling and prevents future redesign and reorganization headaches.</li>
+<li>Those last three items --- and a general focus on web standards --- <a href="https://twitter.com/sarah_edo/status/780780145086988289">give you a big head start in understanding web accessibility needs</a> which too few tech writers care about, but we all should.</li>
+<li>Basic facility with CSS (LESS, SASS) gives me the ability to solve my own design problems. (For example, styling help text to mimic the UI being written about.)</li>
+</ul>
+<h3>Plaintext and Code Editors</h3>
+<ul>
+<li>Being comfortable away from WYSIWYG editors and word processors is a requirement for most of the other tools I use.</li>
+<li>Fluency in <a href="http://kirkstrobeck.github.io/whatismarkdown.com/">Markdown</a> has become nearly mandatory, since developers really like it and <a href="https://guides.github.com/features/mastering-markdown/">Github supports it by default</a>.</li>
+<li>
+<a href="http://docutils.sourceforge.net/rst.html">reStructured Text</a> is a <a href="http://ericholscher.com/blog/2016/mar/15/dont-use-markdown-for-technical-docs/">better tool than Markdown for documentation</a>. It really helps to know reST and <a href="http://www.sphinx-doc.org/en/1.5.1/">Sphinx</a>, which is a static site generator designed for documentation. Like many static site generators, Sphinx is mostly run from the command line (another reason for you to get comfortable at a terminal).</li>
+</ul>
+<p>If you're going to be writing Markdown, reST, or another plain text format, you'll need to find an editor you like. I use <a href="http://atom.io">Atom</a> myself, but <a href="https://www.sublimetext.com/3">Sublime Text</a>, <a href="https://notepad-plus-plus.org/">Notepad++</a>, and [Vim](https://en.wikipedia.org/wiki/Vim_(text_editor) are also popular among writers. (And there are many others.)</p>
+<p>One of the great things about plaintext formats is that, instead of everyone being forced to use the same software (Word or Framemaker, for example), everyone can use their own preferred editor. Developers have been able to do this for a long time, and now writers can enjoy the freedom to customize their workspace as they see fit.</p>
+<h3>git and Github</h3>
+<p>Git is a distributed version control system. Even though <a href="https://xkcd.com/1597/">no one really understands it</a>, it's become standard for many developers and development teams. If you're going to <a href="http://justwriteclick.com/2015/05/19/treat-docs-like-code-doc-bugs-and-issues/">treat docs like code</a> (which you should), some basic git skills are really helpful.</p>
+<ul>
+<li>basic git commands: <code>add</code>, <code>commit</code>, <code>pull</code>, <code>push</code>, <code>merge</code>, <code>clone</code>
+</li>
+<li>general understanding of the distributed model, remotes, and common work flow with Github (fork, clone down, edit, commit, push, pull request)</li>
+<li>how to use Github pages and Jekyll (Developers tend to like these, so more and more startups are using them for docs --- if you're the first writer to show up, you be dealing with existing Jekyll docs written by the developers.)</li>
+</ul>
+<p>Git is complicated, and can <a href="http://hackwrite.com/posts/github-pages-problem/">cause particular problems for writers</a>. Perhaps the most important skill in git is the ability to keep calm, Google your problem, and know when to ask for help before you make things worse.</p>
+<h3>Python</h3>
+<p>This is my favorite developer skill because it is <em>actually coding</em>, and makes me feel (I think?) like a real developer.</p>
+<p>It is really helpful to be able to write local scripts to automate your own tasks as a writer, and --- if you're treating docs like code --- for automating the building, testing, and deployment of your docs. You could do this sort of thing in several languages (Perl, Ruby, Bash, JavaScript), but Python is probably the best choice. It's easy to learn, you can do a lot with it early on, and the <a href="https://pypi.python.org/pypi">PyPi</a> ecosystem provides pretty much every tool you are likely to need for basic scripting and automating purposes. In a number of fields (science, math, engineering, digital humanities) it has become the default language for non-developers writing code to get things done.</p>
+<p>(I recommend <a href="http://amzn.to/2jV13iW">Automating the Boring Stuff</a> as a good intro to Python and what you can accomplish with it.)</p>
+<h4>Other Helpful Languages</h4>
+<p>Python is not the only good utility language for this sort of work. Bash is also very helpful, as I mentioned earlier. It's also not hard to learn, so the ROI is pretty high.</p>
+<h5>What about Ruby or JavaScript?</h5>
+<p>Ruby is the language behind Jekyll, the most popular static site generator, and also Ruby on Rails, the most popular rapid web application development framework. <a href="https://smthngsmwhr.wordpress.com/2013/01/01/gentle-introduction-to-routine-tasks-automation-with-ruby/">Ruby definitely has facility as a local utility language</a>, but I don't know anyone who uses it that way who isn't also a Ruby developer generally. I'm trying to focus on dev skills for non-devs.</p>
+<p>JavaScript (or, more specifically, Node.js) can also be used for this kind of work, but there is a much shorter history of it, so the tools are not as settled. If you already know JS well, then by all means use it. But if you're looking for a local utility language to learn, I wouldn't start here.</p>
+<h5>What about Perl?</h5>
+<p>Perl used to hold the place Python has assumed, as the "standard" utility and scripting language. I'm not sure there's a lot of need for tech writers to know it (I don't), but I'd feel remiss not mentioning it.</p>
+<h2>Domain Knowledge</h2>
+<p>Every tech writer needs to know different things in order to understand the technology they are writing about. So, the following is highly conditional and probably not that helpful for tech writers already deep into a particular field.</p>
+<p>This is intended as a general overview for people trying to get into the field or make a change.</p>
+<h3>Languages</h3>
+<p>I'm really of the opinion that for most tech writers --- even those writing developer docs --- the amount of target-language skill required is low, and can be acquired for most languages in a week or so.</p>
+<p>Once you've acquired basic programming skill in one language, <em>most</em> other languages are relatively similar. You need a quick primer on the syntax, how typical things are done (loops, conditionals, function definitions, etc.), and anything unusual or weird about the language. Anything else you need to know you can probably Google or ask someone when you encounter. ("What's this <code>lambda</code> thing?")</p>
+<p>That being said, there are a handful of languages that are especially helpful. If you're interested in expanding your knowledge of languages (and you've already got a good handle on Python) you might look into these.</p>
+<ul>
+<li>Java --- Java is ubiquitous in large enterprise organizations (and startups founded by people who used to work for them). Though <a href="https://github.com/emmanuel-keller/github-language-statistics/blob/master/README.md">Python and JavaScript have both surpassed Java on some measures of popularity</a>, there are still <a href="https://www.indeed.com/jobtrends/q-%22technical-writer%22-java-q-%22technical-writer%22-javascript-q-%22technical-writer%22-C++-q-%22technical-writer%22-python.html">way more tech writer job openings for people who know Java</a> than other languages. No doubt this is because big enterprise software companies using Java are more likely to hire a technical writer than smaller companies that might use "cooler" languages.<ul>
+<li>Another reason to learn Java in particular is that it is the native language for Android apps. There's a lot of work available documenting mobile SDKs for cloud-based utilities. Knowing (at least a bit of) Java is a requirement for that.</li>
+<li>If you're interested in mobile SDK work, also get familiar with Objective C and Swift, which are both used for iOS development. Someone with decent facility in those three languages could carve out a nice niche working on mobile developer docs.</li>
+</ul>
+</li>
+<li>JavaScript is just freaking everywhere. Every web application that is complicated enough to need a tech writer is going to have at least some JavaScript. That doesn't mean you have to know it to work on it, but it can't hurt. (And having it on your resume implicitly tells hiring managers that you understand web technology.)</li>
+</ul>
+<p>I could go on and on --- this language is popular in this industry, that language gets a lot of use for this other kind of work. That probably wouldn't be helpful.</p>
+<p>If you're writing developer docs for a library, SDK, or language API, the most important language to know (if you need to know one at all) is whatever language they are using to build the thing you are currently documenting. Trying to learn languages in the abstract, in case you might need them as a tech writer, is probably not the best use of your time.</p>
+<p>If you just want to have a better sense of programming in general, work on Python because you'll find it useful as a tool in its own right. If you have your heart set on a particular area or specialization (mobile, web, machine learning, etc.) find out what languages and technologies are popular there.</p>
+<h3>Systems and Architecture</h3>
+<p>Perhaps more important than understanding in particular language is understanding how software and systems work. As always, my view is particular, but --- it seems to me that a large percentage of people hiring tech writers need them to understand how the modern web works, how web and mobile applications communicate with servers, and how multiple system components connect to each other and to third party systems. I've had dozens of interviews over the last year and nearly all of them required a basic understanding of Service Oriented Architecture (whether or not they called it that) and RESTful web APIs.</p>
+<h2>Tech Writer Competency vs. Developer Competency</h2>
+<p>A big difference between developer skills for developers and the same skills for tech writers is the level of competence needed before being able to honestly say you are competent (read: put it on your resume).</p>
+<p>For a developer to list some language on their resume suggests that they <em>really</em> know it with some degree of fluency --- that they can <em>do the work of a developer in that language</em>. But what does it means to do the work of a technical writer in a particular language? You should be able to:</p>
+<ul>
+<li>read some code and, given the context, figure out what it does</li>
+<li>write short (&lt; 10 lines) code examples</li>
+</ul>
+<p>If you know programming basics (that is, you know at least one language decently well) achieving this level of competence in a new language is pretty easy.</p>
+<h2>Have No Fear</h2>
+<p>It could be easy to read all this and think that I am saying something like, "You need to learn ALL THIS STUFF before being a real tech writer." Please know that is not at all what I'm trying to say.</p>
+<p>I'm trying to say, as I was trying to say in my <a href="http://hackwrite.com/posts/enough-to-be-dangerous/">original post on the matter</a>:</p>
+<p><strong>You don't need to know everything a developer knows, so don't worry about that. But there is a small set of <em>developer skills</em> which are easily achievable and which will make a huge impact on your productivity and career prospects.</strong></p>
+<p>I have personally been amazed at the gains I have seen in my own productivity, job satisfaction, and employability by acquiring and exercising developer skills which I continue to see as exceptionally mediocre. Much of those gains have come by letting go of my fear --- fear that people will judge my bad code, fear that I'll break my computer if I mess up at the terminal, fear that I'll type the wrong git command and destroy everything, fear that if I put a programming language on my resume I'll be called out as a fraud.</p>
+<p>So far none of those things have happened.</p>
+<p><strong>What could you achieve with just a little more skill and just a little less fear?</strong></p>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/github-pages-problem/" class="u-url">The Problem with Github Pages</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn">
                 Adam Michael Wood
@@ -410,80 +517,14 @@ I am the captain of my soul.<br>
 <p>For me, learning to be a developer (<b>n.b.</b> not just a coder) is my third option.</p>
 <p>What is your third option?</p>
     </div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/python-and-django-vs-ruby-and-rails/" class="u-url">Python and Django vs. Ruby and Rails</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn">
-                Adam Michael Wood
-            </span></p>
-            <p class="dateline"><a href="posts/python-and-django-vs-ruby-and-rails/" rel="bookmark"><time class="published dt-published" datetime="2016-02-10T15:22:39-08:00" title="2016-02-10 15:22">2016-02-10 15:22</time></a></p>
-        </div>
-    </header><div class="p-summary entry-summary">
-    <p><em>tl;dr - Python.</em></p>
-<p>I can't even begin to count how many forum posts and deleted Stack Overflow questions there are boiling down to some version of <em>Python vs. Ruby</em> or, more specifically, <em>Django vs. Rails</em>. Google (as of right now) has <a href="https://en.wiktionary.org/wiki/buttload">NINE POINT EIGHT MILLION</a> results for <a href="https://www.google.com/webhp?sourceid=chrome-instant&amp;ion=1&amp;espv=2&amp;ie=UTF-8#safe=off&amp;q=python+vs.+ruby">"Python vs. Ruby"</a>, which is basically insane.</p>
-<p>Unfortunately many of the articles and posts answering the question don't actually answer it. They provide some generalizations about each, talk about some of the differences, and say that it's up to you.</p>
-<p><strong>Have an opinion, you soulless producers of Search Engine fodder!</strong></p>
-<p>I have recently spent a bunch of time trying to answer this question as I attempt to transition out of the wasteland of PHP and WordPress. I have a particular app I'm trying to build, and it is just the sort of content-driven, database-backed, CRUD app that both Ruby on Rails and Django are perfectly suited for. (And that WordPress <del>idiots</del> evangelists would claim would be just perfect as a custom plugin, except that's a <em>terrible idea</em>.)</p>
-<p>So here is the definitive answer...</p>
-<p>Use Python, and Django, if you care about any of the following:</p>
-<ul>
-<li>Schema design</li>
-<li>Data analytics</li>
-<li>Programming best practices</li>
-<li>Learning how to actually program</li>
-<li>Database integrity</li>
-</ul>
-<p>Also, use Python, and (if needed) Django, if you are working in any of the following domains:</p>
-<ul>
-<li>Math</li>
-<li>Science</li>
-<li>Music</li>
-<li>Signal Processing</li>
-<li>AI</li>
-<li>Analytics (which is really math)</li>
-<li>Statistics (more math)</li>
-<li>Academia (most likely math)</li>
-<li>Engineering</li>
-<li>Remotely serious gaming</li>
-<li>Security</li>
-<li>Networking</li>
-</ul>
-<p>Use Ruby if you want to use Rails. And use Rails if you care about:</p>
-<ul>
-<li>Getting a <del>stupid</del> <ins>clever</ins> social media app MVP up and running as soon as possible</li>
-</ul>
-<p><span title="Actually it is.">This isn't really a judgement on the quality of either language.</span> <span title="But I will anyway.">I am not in a position to say which language is intrinsically better suited for either task.</span> (And neither are most of the people blogging on this subject.)</p>
-<p>What matters in either case is the community of people who have gravitated to each language and (therefore) what kinds of tools are available for each. Also, the focus of the two disparate communities has impacted the design of Django and Rails in different ways.</p>
-<p>So, who uses Python? Nerds, mostly. Sciencey people. Math people. People who care about data. People who know three or four or a dozen other programming languages. People who prefer PostgreSQL to MongoDB, because they care about things like data integrity. People who actually understand what polymorphism is. People who want to teach computers to write music or recognize handwriting.</p>
-<p>Because these are the kind of people who have gotten into Python, the tools exist in Python to do that kind of work. And because those tools exist, more and more of those kinds of people have gravitated to the language, generating a positive feedback loop and a network effect of geeky awesomeness.</p>
-<p>And who uses Ruby? People who want to get rich building the next Twitter.</p>
-<p>Compare the contents of Python's <a href="https://pypi.python.org/pypi?%3Aaction=browse">package index</a> against the <a href="https://rubygems.org/gems">Ruby gems library</a>.</p>
-<p><span title="Yes it is.">This is not a moral judgement.</span> I would love to get rich building the next Twitter. But since a deep understanding of either language, either platform, can be a ticket to a lucrative career, I think it makes more sense to focus on a language and community that has more interesting possibilities. (And it's not like you <em>can't</em> build the next Twitter on Django.)</p>
-<p>These differences in focus and culture manifest in non-trivial differences between Django and Rails. One difference in particular sealed the deal for me in selecting Django (and, by extension, Python) for my next project, even though I was already leaning in that direction.</p>
-<p>I am working on a library-catalog-like index of church music --- everything from Gregorian Chant to Christian Pop, including tons of information about liturgy (rituals), history, legislation and a hundred other things you wouldn't understand unless you really cared about church music. The corpus is unbelievable large and just wrapping one's head around how the data should be organized is difficult.</p>
-<p>One tiny, nearly non-trivial example of one of the data modeling problems: A hymn consists of a tune and a text. A tune can have multiple harmonizations, but it is possible that one is "canonical." Texts might be paired with different tunes over time (for example, there are at least <a href="https://www.youtube.com/watch?v=MTPyKwqUUgc">two</a> <a href="https://www.youtube.com/watch?v=Lj2fwME46GM">different</a> well-known tunes for the Christmas Hymn <em>O Little Town of Bethlehem</em>.) And the tunes often end up paired to different texts over time. Sometimes these pairings are "canonical" or widely recognized, while other times they are one-off pairings that appear only in a single book or hymnal. And sometimes a tune and text simply cannot be separated, because they were written together and form a singular unit. And sometimes that happens, but someone else still comes behind and writes a new tune for the text.</p>
-<p>Another issue... authors of texts and tunes. Most texts are written by individual people. But some are written by groups, like a worship committee or church council. Others are traditional or anonymous. Some are attributed to a particular person, but he or she probably didn't actually write it. Some attributions are apocryphal, others are doubtful but possible, some fraudulent or spurious, and so on.</p>
-<p>And the possibilities for relationships between authors and texts, is the same as for composers and tunes --- so <span title="Yes, it should be.">shouldn't that be abstracted?</span> And therefore <span title="Yes, again.">shouldn't tunes and texts (and books and arrangements and sermons and pamphlets) be abstracted to something like <code>Works</code></span>? And since people and groups can both be contributors, <span title="Still yes.">shouldn't they be abstracted into something like <code>Entities</code></span>?</p>
-<p>Trying to capture all of these different relationships, and the meta-data under the relationships (<em>What type of tune-text pairing?</em> <em>What degree of certainty does an attribution have?</em>) is a big undertaking. To get it right, I need a pretty high degree of control over the database schema.</p>
-<p>That <em>could</em> mean writing SQL from scratch and using a framework that doesn't have a built-in abstraction layer, which would be great if I wanted to go completely insane.</p>
-<p>Or it <em>could</em> mean basically hacking Ruby on Rails, relying on a <a href="https://github.com/hzamani/acts_as_relation">poorly supported plugin</a> or <a href="https://dan.chak.org/enterprise-rails/chapter-10-multiple-table-inheritance/">reading way too much</a> to accomplish multi-table inheritance.</p>
-<p>Or I could just use Django, which <a href="https://docs.djangoproject.com/en/1.9/topics/db/models/#multi-table-inheritance">natively and simply supports multi-table inheritance</a>, and provides pretty real polymorphism with a <a href="https://django-polymorphic.readthedocs.org/en/latest/quickstart.html">well-documented, actively developed plugin</a>.</p>
-<p>(And if you want to jump all over me about performance issues with concrete inheritance and left joins, <em>fuck off</em>. I will take a data model that reflects reality over cargo-cult performance superstitions any day. Besides, I'm not building 911 dispatch or a global e-commerce site. I'm indexing hymnals for church musicians.)</p>
-<p>This one example --- how each framework deals with model inheritance --- is indicative of a larger trend I found when trying to mockup various pieces of my system in both platforms: Django gives you more control over the data model. There's still an abstraction layer, but it was written by people who care about schema --- not people who are trying to hide it from you. Since I care about data models also (maybe you don't), this is a killer feature.</p>
-<p>It doesn't hurt that if I want to do anything remotely interesting with all the music data I plan to <del><a href="http://scrapy.org/">steal</a></del> <ins>collect</ins>, I'll want to do that sort of thing in Python.</p>
-<p>Analyze all the hymn tunes written in 17th century Germany in order to programatically create new tunes in the same style?</p>
-<p>Yeah, I could totally do that in Ruby.</p>
-<p>So... bottom line: If you are learning to code because you want to be an entrepreneur, <span title="Or, better yet, hire a developer.">learn Ruby on Rails</span>. If you are learning to code because you want to do unique and interesting things as a developer, learn Python.</p>
-    </div>
     </article>
 </div>
 
-
-
-
-
-
-
-         </main><footer id="footer"><p>© 2016–2017 <a href="mailto:adam.michael.wood@gmail.com">Adam Michael Wood</a> - <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> <br><span id="powered-by">Powered by <a href="https://getnikola.com" rel="nofollow">Nikola</a></span></p>
+        <nav class="postindexpager"><ul class="pager">
+<li class="next">
+                <a href="index-1.html" rel="next">Older posts</a>
+            </li>
+        </ul></nav></main><footer id="footer"><p>© 2016–2017 <a href="mailto:adam.michael.wood@gmail.com">Adam Michael Wood</a> - <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> <br><span id="powered-by">Powered by <a href="https://getnikola.com" rel="nofollow">Nikola</a></span></p>
             
         </footer>
 </div>
