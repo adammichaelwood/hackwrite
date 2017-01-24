@@ -13,6 +13,8 @@ While working on the theme for [this site](http://hackwrite.com), I was referenc
 
 I [ran across an interesting (let's call it a) pattern](https://github.com/mrcoles/markdown-css/blob/master/markdown.less).
 
+<!-- TEASER_END -->
+
 ```less
 h2:before,
 h3:before,

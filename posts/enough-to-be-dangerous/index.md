@@ -15,6 +15,8 @@ Obviously, a lot of you already code, or are in the process of learning. I once 
 
 So, **if you are among the majority of technical writers that don't code, this post is for you**.
 
+<!-- TEASER_END -->
+
 ## We Know Too Much
 
 When people outside the tech field suddenly decide that they are going to learn to code, they have _no idea_ how hard that actually is. All of the "Learn to Code" resources, books, sites, and bootcamps tell you that you can learn to build web and mobile apps pretty easily --- in just a few weeks, even.

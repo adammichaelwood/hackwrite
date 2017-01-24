@@ -15,6 +15,8 @@ Which raises (not begs!) the question: How much *is* enough? What topics should 
 
 To start answering that question, I'd like to expand what we mean by "learn to code" or "knowing how to code" to "developer skills" in general. Too much focus on *coding* overlooks the other highly useful things that developers know and do that tech writers can benefit from.
 
+<!-- TEASER_END -->
+
 Further, we need to distinguish between two (overlapping) sets of developer skills:
 
  - skills that you might directly use as a tech writer

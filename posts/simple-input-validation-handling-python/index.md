@@ -11,6 +11,8 @@
 
 If you are doing a simple terminal script in Python, and you need to validate some user-supplied input, you can put the assignment and validation in a `try` block inside a `while` loop.
 
+<!-- TEASER_END -->
+
 ```python
 
 while: # variable not assigned

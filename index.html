@@ -47,7 +47,8 @@
         </p>
 </div>
     </header><div class="p-summary entry-summary">
-    <blockquote>
+    <div>
+<blockquote>
 <p>There are only two hard things in Computer Science: cache invalidation and naming things.<br>
 -- Phil Karlton</p>
 <p>I cannot help you with cache invalidation.<br>
@@ -66,51 +67,8 @@
 <p>Is there any need to give dates to files like this? It's important for the organization to archive old versions, but is there any need to have unique names so that websites like ours end up with older versions?</p>
 </blockquote>
 <p>I summed a few file name best practices, but... I have <em>a lot</em> to say about this topic. File naming is one of those weird little things I have irrationally strong feelings about, and the ubiquity of bad file naming practices is a constant source of rage in my life.</p>
-<p>Also, people tend to just dash off a few rules about file names, without talking much about the underlying reasons. So I thought I would spend some time exploring how to think about file names.</p>
-<p><a href="posts/file-names/#file-name-guidelines">Skip ahead for tl;dr file name guidelines.</a></p>
-<h2>What is a file?</h2>
-<p>Our experience of using computers is mostly <a href="http://www.sciencedirect.com/science/article/pii/S1570868308000463">a</a> <a href="https://bytebaker.com/2008/12/04/metaphors-in-computer-science/">series</a> <a href="http://www.cs.utexas.edu/users/EWD/ewd10xx/EWD1036.PDF">of</a> <a href="http://cargocollective.com/jamesfearon/Metaphors-Abstractions-Humans-and-Computers">metaphors</a> for how we interact with physical objects. File is one of those metaphors --- we imagine a fistful of paper or a glossy photo print. When we send or receive a file, we imagine this physical object moving around. Even when we acknowledge that transferring files is really just copying them, we typically imagine analog photocopy machines. Then, sometimes, we imagine we're getting the <em>real computer answer</em> when we are told or acknowledge that a file is "a string of ones and zeroes," which isn't really accurate either.</p>
-<p>We actually mean several different things with the word <strong>file</strong>.</p>
-<p>Most of the time we mean the abstracted contents of the file. This works the same way we usually talk about a <strong>book</strong>. This summer, <a href="http://www.allsoulsparish.org/">my parish</a> is trying to everyone to read the same book. That doesn't mean we are all literally going to hold the same physical object; it means we're all going to read (or listen to) the same words.</p>
-<p>We usually mean <strong>file</strong> this way when we talk about revising or editing a file. If someone tells you they just <em>finished writing a book</em> and is now working with an editor, we don't say that the editor is now going to write a new book. Likewise, if someone emails you a file, and you edit it and email it back, you don't say, "attached is a new file, based on the one you sent me." You just say, "I've revised the file." (Sidenote: This is a terrible practice. Don't email revisions.)</p>
-<p>We might mean a couple other (closely related) things when we say <em>file</em>:</p>
-<ul>
-<li>The actual binary representation as it is stored on a disk. (The "ones and zeroes," manifested in a particular physical location.)</li>
-<li>The abstract numerical value of the data. That is, the information that is loaded in memory, sent over the internet, and decoded by a program. There are many individual copies of this value when a file is in use or in transit.</li>
-</ul>
-<p>Most of us don't really think about either of these meanings. We sometimes imagine we mean the first, when we talk about which "folder" a file is in. But <a href="http://www.bilskiblog.com/blog/2013/09/the-processof-developing-software-typically-involves-the-use-of-abstractions-of-concrete-concepts-to-describe-the-operationsp.html">that is an abstraction</a>. As a user, you don't deal with a file at the level of its physical storage.</p>
-<p>As to the numerical value of the data itself, the only time I can think of where this is relevant to users is when comparing <a href="https://en.wikipedia.org/wiki/Checksum">file checksum hashes</a>. And how often do you do that?</p>
-<p>I bring up these other underlying meanings of <em>file</em> because its important to think about which reality we are naming when we name a file. Everyone seems to know that we aren't naming a specific physical manifestation of data on a disk. But, contrary to those who think <code>_revised_Nov_2016</code> belongs in a file name, we also aren't naming the particular content at any given time. If we were, the proper name would be the checksum hash, and it would change every time you added or deleted a single character.</p>
-<p>What we are naming and thinking about when we name and think about files is the underlying content --- its meaning to us.  Therefore the name should be meaningful to us <em>at precisely that level of abstraction</em>.</p>
-<p>This means the file name is not a place for commentary like <code>revised</code>. It does not need a creation date or other metadata.</p>
-<p>If it is important to track changes to a file over time, then it should be under version control. If the <em>creation date</em> is important an important thing for everyone to know, then it should be under version control. If those things aren't important, then there should be no need to put things like <code>revised</code> or <code>2016_11_03</code> into a file name.</p>
-<h2>Uniqueness, File Names, and URIs/URLs</h2>
-<p>Arbitrary uniqueness tags like timestamps, <code>_(1)</code>, or <code>-- copy</code> are not needed in file names, and are generally a sign of poor organization or poor thinking.  If they are not descriptions of the underlying, Platonic reality of the content, they shouldn't be in the file name.</p>
-<p>If you have two documents with the same name in a single directory, and its <em>not</em> just because of bad version control, you need more explicit names, or more granular directories. Dating them is not going to help you remember later which one is which.</p>
-<p>If you are thinking a file needs a name with uniqueness tags in order to ensure universal uniqueness, the information in that file would probably be better distributed as a web document (an HTML page) with a Uniform Resource Identifier (URI or informally, URL) that is guaranteed to be globally unique and <a href="https://www.w3.org/Provider/Style/URI.html">unchanging</a>, not to mention easier to read and universally accessible.</p>
-<h2>When Dates Belong</h2>
-<p>File names should reflect the underlying Platonic reality of the content. Therefore, dates make sense if the content itself is related to a date. Blog posts, news items, photos, meeting notes, invoices, and a whole host of other types of documents should include date stamps in the title because the content is related to a particular date. Of course, it is the date of the content that matters, not the creation date of the file --- meeting notes should be dated to match the date of the meeting, not three days later when you typed them up.</p>
-<p>Typically, if you have dates in a file name, you will end up with many files that have similar names differentiated only by the date. It makes sense to want to sort these easily by the date, so you need to name them in a way that makes that possible. Put the dates at the beginning or the end (pick one consistently) and use <code>YYYY-MM-DD</code> format. Use leading zeroes for single-digit days and months.</p>
-<h2>Technical Concerns</h2>
-<p>File names are used in a wide variety of contexts, only some of which you will be able to predict at the time of naming a file. File names should work everywhere, for every user, every time. Therefore, a whole host of technical restrictions should be followed <em>even if you think they won't matter</em>. For example, some file systems have trouble with special (non-ASCII) characters in file names, and also URIs can only contain ASCII characters. Even if your system handles them just fine, you shouldn't presume that everyone else who might need to view or work with the file can do so easily. Spaces cause problems for file names when they become a part of a URI --- they get translated into the hard-to-read <code>%20</code> encoding. Since you don't know that a file will never be distributed via the web, avoiding spaces is a good idea. (Also, people who do their computing at a terminal or command line are extremely annoyed at file names with spaces.)</p>
-<p>Mixed-case (upper and lower) can cause problems for naive search implementations, and also play havoc with uniqueness checks. So it makes sense to uniformly use lowercase. Underscores are <a href="https://blog.codinghorror.com/of-spaces-underscores-and-dashes/">bad word separators</a>, so use hyphens (dashes) instead. Unix, Linux, and Mac file systems, and URLs, all use slashes ( <code>/</code> ) as a path separator, and Windows/DOS uses the backwards slash ( <code>\</code> ), so avoid both of those characters. Single and double quote marks are extremely problematic in a number of contexts. Finally, dots typically have special meanings in file names. Only use them if you specifically know how. (Really, avoiding all punctuation is best.)</p>
-<h2 id="file-name-guidelinesn">File Name Guidelines</h2>
-<p>Here's the compiled list of file name rules.</p>
-<ul>
-<li>File names should only have a date if it is intrinsic to the content. Your 2017 budget should have "2017" in the title. Meeting minutes should have meeting date in the title.</li>
-<li>Files that are not time or date specific shouldn't have the date in the title. If you have a photo release form, a resume, your novel, or a PO request document, the creation date is probably irrelevant.</li>
-<li>Except for news and blog posts (and similar itmes), <em>creation date</em> is usually irrelevant. Your 2017 budget should NOT specify in the file name that it was created in 2016.</li>
-<li>Dates, if needed, should be either at the beginning or the end of the name, depending largely on how heaps of files will likely be organized and sorted.</li>
-<li>Dates should be YYYY or YYYY-MM or YYYY-MM-DD. Always include leading zeros (<code>-2016-01-04</code>). Do not run the date together (<code>20170119</code>).</li>
-<li>Version history should <strong>not ever</strong> be inserted into the file name. Use version control, not multiple renamed copies of files.</li>
-<li>Global uniqueness is not a function of file names, but of URIs. A file name only has to be unique to its context, which should normally be a directory related to a particular project.</li>
-<li>No spaces.</li>
-<li>Dashes, not underscores.</li>
-<li>No special characters. File names should only use characters in the ASCII character set.</li>
-<li>No slashes, no commas, no dots, no single quote marks, no double quote marks, no back-ticks, no pipes... really no punctuation of any kind.</li>
-</ul>
-<p>Here's a shareable picture to help.</p>
-<p><img alt="File name guide" src="img/file-name-guides.png"></p>
+<p class="more"><a href="posts/file-names/">Read more…</a></p>
+</div>
     </div>
     </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/what-and-how-much-to-learn/" class="u-url">What (and how much) to learn?</a></h1>
         <div class="metadata">
@@ -126,103 +84,12 @@
         </p>
 </div>
     </header><div class="p-summary entry-summary">
-    <p>I recently wrote that you don't need to attain a high-level of coding skill for learning to code to be useful. A technical writer can see substantial ROI from just learning <a href="http://hackwrite.com/posts/enough-to-be-dangerous/">enough to be dangerous</a>.</p>
+    <div>
+<p>I recently wrote that you don't need to attain a high-level of coding skill for learning to code to be useful. A technical writer can see substantial ROI from just learning <a href="http://hackwrite.com/posts/enough-to-be-dangerous/">enough to be dangerous</a>.</p>
 <p>Which raises (not begs!) the question: How much <em>is</em> enough? What topics should tech writers know? And how well should we know them?</p>
 <p>To start answering that question, I'd like to expand what we mean by "learn to code" or "knowing how to code" to "developer skills" in general. Too much focus on <em>coding</em> overlooks the other highly useful things that developers know and do that tech writers can benefit from.</p>
-<p>Further, we need to distinguish between two (overlapping) sets of developer skills:</p>
-<ul>
-<li>skills that you might directly use as a tech writer</li>
-<li>skills that help you understand the technology you write about</li>
-</ul>
-<p>For example, I use Python a lot as a writer. I can hack together little scripts to help me automate things. This blog is built on Nikola, and I use Sphinx a lot for building documentation --- both built in Python, and I have just enough Python skill to debug problems and add very minor functionality when needed. But I've never written documentation about something written in Python.</p>
-<p>On the other hand, I have never once written a line of Java. I hardly know anything about the language, its ecosystem, or common tooling. But I've stared at enough of it that <em>in context</em> I can usually dumb out the sorts of things a tech writer might need to know about a web API written in Java. And I've had to do that many times.</p>
-<p>Endless discussion board threads and subreddit questions about "what language should I learn" usually ignore this distinction. But it's a good idea to separate dev skills which are actually a subset of tech writer skills, and dev skills which are actually domain-knowledge about your subject matter.</p>
-<h2>Tech Writing Dev Skills</h2>
-<p>These are the skills that you can actively use in the course of being a tech writer, regardless of what you are writing about.</p>
-<h3>Comfortable at the Terminal</h3>
-<ul>
-<li>Basic facility with navigation and file manipulation commands (<code>cd</code>, <code>mkdir</code>, <code>rm</code>, <code>mv</code>)</li>
-<li>General understanding of how commands work --- enough to quickly learn and use other tools you may need (<code>git</code>, <code>curl</code>, etc.)</li>
-<li>Know how to open, edit, and close a file with <code>vi</code> (you don't have to <em>really know</em> Vim or use it for authoring; just know enough to be able to edit files on unfamiliar machines --- <code>vi</code> is everywhere)</li>
-<li>Basic facility with Bash scripting --- just enough that if you find yourself typing the same sequence of commands over and over, you know how turn that into a simple script</li>
-<li>Lack of fear or anxiety, and the confidence to use Google or Stack Overflow to solve problems</li>
-</ul>
-<p>It's great to know more, of course. Tools like <code>grep</code> can help you search code bases; understanding <code>awk</code> and other tools can help you with data munging and cleaning up text.</p>
-<p>But knowing these simple things --- and especially being confident in your ability to Google and figure stuff out --- will make everything else easier.</p>
-<p><i><b>Note:</b> All of the above was relevant to Unix-like systems with Bash terminals (GNU/Linux and Mac). If you work in Windows, you may also need to learn the Windows/DOS-prompt version of all this. Or switch to a Unix-like system and be happier. I honestly don't know how to do any of my primary work without a Bash terminal. YMMV.</i></p>
-<h3>Basic Web Dev</h3>
-<p>Having an understanding of how the web works in general and how browsers turn HTML, CSS, and JavaScript into a rendered page is really helpful. You don't need to get bogged down in all the <a href="https://hackernoon.com/how-it-feels-to-learn-javascript-in-2016-d3a717dd577f#.uwcjmcwnt">frontend JS framework insanity</a> --- focus on web fundamentals and core concepts.</p>
-<ul>
-<li>I have found understanding how the web is/was "supposed" to work (that is, as a web of <em>documents</em>, <a href="https://www.w3.org/Provider/Style/URI.html">identified by URIs</a>, and transferred via HTTP) helps me conceptualize content organization better. It also helps me understand why so many things about web development are non-trivial.</li>
-<li>Knowing (and caring) about "textual" HTML (all the inline elements) and their semantic meaning is helpful.</li>
-<li>Knowing what makes for good (valid, clean) HTML, and understanding proper separation of concerns helps me evaluate the quality of my tooling and prevents future redesign and reorganization headaches.</li>
-<li>Those last three items --- and a general focus on web standards --- <a href="https://twitter.com/sarah_edo/status/780780145086988289">give you a big head start in understanding web accessibility needs</a> which too few tech writers care about, but we all should.</li>
-<li>Basic facility with CSS (LESS, SASS) gives me the ability to solve my own design problems. (For example, styling help text to mimic the UI being written about.)</li>
-</ul>
-<h3>Plaintext and Code Editors</h3>
-<ul>
-<li>Being comfortable away from WYSIWYG editors and word processors is a requirement for most of the other tools I use.</li>
-<li>Fluency in <a href="http://kirkstrobeck.github.io/whatismarkdown.com/">Markdown</a> has become nearly mandatory, since developers really like it and <a href="https://guides.github.com/features/mastering-markdown/">Github supports it by default</a>.</li>
-<li>
-<a href="http://docutils.sourceforge.net/rst.html">reStructured Text</a> is a <a href="http://ericholscher.com/blog/2016/mar/15/dont-use-markdown-for-technical-docs/">better tool than Markdown for documentation</a>. It really helps to know reST and <a href="http://www.sphinx-doc.org/en/1.5.1/">Sphinx</a>, which is a static site generator designed for documentation. Like many static site generators, Sphinx is mostly run from the command line (another reason for you to get comfortable at a terminal).</li>
-</ul>
-<p>If you're going to be writing Markdown, reST, or another plain text format, you'll need to find an editor you like. I use <a href="http://atom.io">Atom</a> myself, but <a href="https://www.sublimetext.com/3">Sublime Text</a>, <a href="https://notepad-plus-plus.org/">Notepad++</a>, and [Vim](https://en.wikipedia.org/wiki/Vim_(text_editor) are also popular among writers. (And there are many others.)</p>
-<p>One of the great things about plaintext formats is that, instead of everyone being forced to use the same software (Word or Framemaker, for example), everyone can use their own preferred editor. Developers have been able to do this for a long time, and now writers can enjoy the freedom to customize their workspace as they see fit.</p>
-<h3>git and Github</h3>
-<p>Git is a distributed version control system. Even though <a href="https://xkcd.com/1597/">no one really understands it</a>, it's become standard for many developers and development teams. If you're going to <a href="http://justwriteclick.com/2015/05/19/treat-docs-like-code-doc-bugs-and-issues/">treat docs like code</a> (which you should), some basic git skills are really helpful.</p>
-<ul>
-<li>basic git commands: <code>add</code>, <code>commit</code>, <code>pull</code>, <code>push</code>, <code>merge</code>, <code>clone</code>
-</li>
-<li>general understanding of the distributed model, remotes, and common work flow with Github (fork, clone down, edit, commit, push, pull request)</li>
-<li>how to use Github pages and Jekyll (Developers tend to like these, so more and more startups are using them for docs --- if you're the first writer to show up, you be dealing with existing Jekyll docs written by the developers.)</li>
-</ul>
-<p>Git is complicated, and can <a href="http://hackwrite.com/posts/github-pages-problem/">cause particular problems for writers</a>. Perhaps the most important skill in git is the ability to keep calm, Google your problem, and know when to ask for help before you make things worse.</p>
-<h3>Python</h3>
-<p>This is my favorite developer skill because it is <em>actually coding</em>, and makes me feel (I think?) like a real developer.</p>
-<p>It is really helpful to be able to write local scripts to automate your own tasks as a writer, and --- if you're treating docs like code --- for automating the building, testing, and deployment of your docs. You could do this sort of thing in several languages (Perl, Ruby, Bash, JavaScript), but Python is probably the best choice. It's easy to learn, you can do a lot with it early on, and the <a href="https://pypi.python.org/pypi">PyPi</a> ecosystem provides pretty much every tool you are likely to need for basic scripting and automating purposes. In a number of fields (science, math, engineering, digital humanities) it has become the default language for non-developers writing code to get things done.</p>
-<p>(I recommend <a href="http://amzn.to/2jV13iW">Automating the Boring Stuff</a> as a good intro to Python and what you can accomplish with it.)</p>
-<h4>Other Helpful Languages</h4>
-<p>Python is not the only good utility language for this sort of work. Bash is also very helpful, as I mentioned earlier. It's also not hard to learn, so the ROI is pretty high.</p>
-<h5>What about Ruby or JavaScript?</h5>
-<p>Ruby is the language behind Jekyll, the most popular static site generator, and also Ruby on Rails, the most popular rapid web application development framework. <a href="https://smthngsmwhr.wordpress.com/2013/01/01/gentle-introduction-to-routine-tasks-automation-with-ruby/">Ruby definitely has facility as a local utility language</a>, but I don't know anyone who uses it that way who isn't also a Ruby developer generally. I'm trying to focus on dev skills for non-devs.</p>
-<p>JavaScript (or, more specifically, Node.js) can also be used for this kind of work, but there is a much shorter history of it, so the tools are not as settled. If you already know JS well, then by all means use it. But if you're looking for a local utility language to learn, I wouldn't start here.</p>
-<h5>What about Perl?</h5>
-<p>Perl used to hold the place Python has assumed, as the "standard" utility and scripting language. I'm not sure there's a lot of need for tech writers to know it (I don't), but I'd feel remiss not mentioning it.</p>
-<h2>Domain Knowledge</h2>
-<p>Every tech writer needs to know different things in order to understand the technology they are writing about. So, the following is highly conditional and probably not that helpful for tech writers already deep into a particular field.</p>
-<p>This is intended as a general overview for people trying to get into the field or make a change.</p>
-<h3>Languages</h3>
-<p>I'm really of the opinion that for most tech writers --- even those writing developer docs --- the amount of target-language skill required is low, and can be acquired for most languages in a week or so.</p>
-<p>Once you've acquired basic programming skill in one language, <em>most</em> other languages are relatively similar. You need a quick primer on the syntax, how typical things are done (loops, conditionals, function definitions, etc.), and anything unusual or weird about the language. Anything else you need to know you can probably Google or ask someone when you encounter. ("What's this <code>lambda</code> thing?")</p>
-<p>That being said, there are a handful of languages that are especially helpful. If you're interested in expanding your knowledge of languages (and you've already got a good handle on Python) you might look into these.</p>
-<ul>
-<li>Java --- Java is ubiquitous in large enterprise organizations (and startups founded by people who used to work for them). Though <a href="https://github.com/emmanuel-keller/github-language-statistics/blob/master/README.md">Python and JavaScript have both surpassed Java on some measures of popularity</a>, there are still <a href="https://www.indeed.com/jobtrends/q-%22technical-writer%22-java-q-%22technical-writer%22-javascript-q-%22technical-writer%22-C++-q-%22technical-writer%22-python.html">way more tech writer job openings for people who know Java</a> than other languages. No doubt this is because big enterprise software companies using Java are more likely to hire a technical writer than smaller companies that might use "cooler" languages.<ul>
-<li>Another reason to learn Java in particular is that it is the native language for Android apps. There's a lot of work available documenting mobile SDKs for cloud-based utilities. Knowing (at least a bit of) Java is a requirement for that.</li>
-<li>If you're interested in mobile SDK work, also get familiar with Objective C and Swift, which are both used for iOS development. Someone with decent facility in those three languages could carve out a nice niche working on mobile developer docs.</li>
-</ul>
-</li>
-<li>JavaScript is just freaking everywhere. Every web application that is complicated enough to need a tech writer is going to have at least some JavaScript. That doesn't mean you have to know it to work on it, but it can't hurt. (And having it on your resume implicitly tells hiring managers that you understand web technology.)</li>
-</ul>
-<p>I could go on and on --- this language is popular in this industry, that language gets a lot of use for this other kind of work. That probably wouldn't be helpful.</p>
-<p>If you're writing developer docs for a library, SDK, or language API, the most important language to know (if you need to know one at all) is whatever language they are using to build the thing you are currently documenting. Trying to learn languages in the abstract, in case you might need them as a tech writer, is probably not the best use of your time.</p>
-<p>If you just want to have a better sense of programming in general, work on Python because you'll find it useful as a tool in its own right. If you have your heart set on a particular area or specialization (mobile, web, machine learning, etc.) find out what languages and technologies are popular there.</p>
-<h3>Systems and Architecture</h3>
-<p>Perhaps more important than understanding in particular language is understanding how software and systems work. As always, my view is particular, but --- it seems to me that a large percentage of people hiring tech writers need them to understand how the modern web works, how web and mobile applications communicate with servers, and how multiple system components connect to each other and to third party systems. I've had dozens of interviews over the last year and nearly all of them required a basic understanding of Service Oriented Architecture (whether or not they called it that) and RESTful web APIs.</p>
-<h2>Tech Writer Competency vs. Developer Competency</h2>
-<p>A big difference between developer skills for developers and the same skills for tech writers is the level of competence needed before being able to honestly say you are competent (read: put it on your resume).</p>
-<p>For a developer to list some language on their resume suggests that they <em>really</em> know it with some degree of fluency --- that they can <em>do the work of a developer in that language</em>. But what does it means to do the work of a technical writer in a particular language? You should be able to:</p>
-<ul>
-<li>read some code and, given the context, figure out what it does</li>
-<li>write short (&lt; 10 lines) code examples</li>
-</ul>
-<p>If you know programming basics (that is, you know at least one language decently well) achieving this level of competence in a new language is pretty easy.</p>
-<h2>Have No Fear</h2>
-<p>It could be easy to read all this and think that I am saying something like, "You need to learn ALL THIS STUFF before being a real tech writer." Please know that is not at all what I'm trying to say.</p>
-<p>I'm trying to say, as I was trying to say in my <a href="http://hackwrite.com/posts/enough-to-be-dangerous/">original post on the matter</a>:</p>
-<p><strong>You don't need to know everything a developer knows, so don't worry about that. But there is a small set of <em>developer skills</em> which are easily achievable and which will make a huge impact on your productivity and career prospects.</strong></p>
-<p>I have personally been amazed at the gains I have seen in my own productivity, job satisfaction, and employability by acquiring and exercising developer skills which I continue to see as exceptionally mediocre. Much of those gains have come by letting go of my fear --- fear that people will judge my bad code, fear that I'll break my computer if I mess up at the terminal, fear that I'll type the wrong git command and destroy everything, fear that if I put a programming language on my resume I'll be called out as a fraud.</p>
-<p>So far none of those things have happened.</p>
-<p><strong>What could you achieve with just a little more skill and just a little less fear?</strong></p>
+<p class="more"><a href="posts/what-and-how-much-to-learn/">Read more…</a></p>
+</div>
     </div>
     </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/github-pages-problem/" class="u-url">The Problem with Github Pages</a></h1>
         <div class="metadata">
@@ -238,29 +105,11 @@
         </p>
 </div>
     </header><div class="p-summary entry-summary">
-    <p>I love Github Pages. I run this blog, my <a href="http://adammichaelwood.com">personal blog</a>, and my <a href="http://progressivesolemnity.org">music and liturgy blog</a> on it. I used it to host <a href="http://docs.botcentral.ai">documentation for my most recent tech writing gig</a>.</p>
+    <div>
+<p>I love Github Pages. I run this blog, my <a href="http://adammichaelwood.com">personal blog</a>, and my <a href="http://progressivesolemnity.org">music and liturgy blog</a> on it. I used it to host <a href="http://docs.botcentral.ai">documentation for my most recent tech writing gig</a>.</p>
 <p>For a single writer with moderate or better technical skills looking for a simple hosting solution, it's amazing. But, I've recently realized there's a problem with it that makes it ill-suited for multiple collaborators working on complicated documentation. (Or even, as I discovered, a single writer on more than one machine.)</p>
-<p>Let's review how Github pages works. You designate a particular branch or directory of a branch as the Github pages source. The source can either be an unbuilt Jekyll site source, plain markdown files, or a fully built static HTML (+CSS +JS) site. If it's plain markdown or Jekyll, Github builds and deploys for you. If it's a built HTML site, Github just serves those files.</p>
-<p>If you let Github build your site automatically from Jekyll or plain markdown files, everything works great. The Open Source collaboration model applies as well to content as it does to code. Better, perhaps, because adding or modifying content doesn't cause conflicts and run-time errors. But if you need to run a build yourself --- because you're using another generator like <a href="http://www.sphinx-doc.org/en/1.5.1/">Sphinx</a>, <a href="https://getnikola.com/">Nikola</a>, or <a href="http://www.mkdocs.org/">Mkdocs</a> --- or because you have some <a href="https://jekyllrb.com/docs/plugins/">Jekyll plugins</a> that aren't supported in Github --- you'll have problems once you add a second writer.</p>
-<p>Suppose Addison and Bahati are two writers each working on their own piece of content in a Sphinx repo. This repo is set up to serve Github pages from a <code>/docs/</code> directory that they are supposed to build to. For the sake of simplicity, let's pretend nothing they do would conflict, even a little bit. They both fork, clone down, and get to work.</p>
-<p>In the course of their work, they have each built locally a handful of times and made one or two commits. Now, the end of the day, they are both ready to do a PR. Addison pulls down from upstream (like ya do), runs the build, commits, pushes, and PRs. Addison also has commit privileges, and goes ahead and accepts the PR right away. No problem.</p>
-<p>A few minutes later, Bahati --- whose work doesn't conflict, even a little bit --- finishes up and is ready to do the same. Bahati starts by pulling down from upstream (like ya do) and gets a merge conflict.</p>
-<p><img alt="Screen shot of merge conflict error message." src="img/git-merge-conflict.png"></p>
-<p>Since Bahati <a href="https://xkcd.com/1597/">understands git about as well as the average developer</a>, this is a problem.</p>
-<p><img alt="Merge tool not configured" src="img/merge-tool-not-configured.png"></p>
-<p>What went wrong?</p>
-<p>The problem is that a built HTML site --- whether it's Jekyll or Sphinx or anything else --- has cross references on every page to nearly every other page. Tables of contents, menus, internal links. This is the case on "regular" sites and blogs, but is even more true with technical documentation, where there might be an entire sitemap on the side bar of every page.</p>
-<p>This means that even though Addison and Bahati each only added a single file, and their work didn't conflict (even a little bit), there is no way to merge back together their built output.</p>
-<p>And here's the problem with Github pages for complex documentation (that is, anything that needs to be built outside GH). <strong>Output shouldn't be version controlled, only source files should be version controlled.</strong></p>
-<h2>Solving the Problem</h2>
-<p>The worst solution, which might work for a very small team, is to use the <code>gh-pages</code> branch and workflow that attempts to ensure all builds to <code>gh-pages</code> happen in a very fast pull-build-push cycle. With a little scripting, a little luck, and lot of commit privileges, this will work. However, the more complicated the documentation is, the longer the pull-build-push process takes. Combined with a large team, the potential for conflicts grows.</p>
-<p>The right solution is don't use Github pages. Don't attempt to keep built output files in version control. Keep your source files in git/Github, and setup a tool(chain) that builds, deploys, and hosts your documentation from Github to some other place. The other place could be <a href="https://readthedocs.org/">Read the Docs</a>, an <a href="https://aws.amazon.com/s3/">AWS server</a>, a <a href="https://www.keycdn.com/support/static-site-hosting-with-a-cdn/">content delivery network</a>, or pretty much anything. (But it probably should be Read the Docs. Just sayin'.)</p>
-<h2>When to use Github Pages (and when not to)</h2>
-<p>Github pages is great if you have uncomplicated needs that are well served by a Jekyll site that is built automatically. (So... personal blogs.) Lots of people are using Jekyll for documentation, but <a href="http://ericholscher.com/blog/2016/mar/15/dont-use-markdown-for-technical-docs/">that isn't a good idea, really</a>.</p>
-<p>You can also get away with hosting locally-built static sites on Github pages if you are the only author. (So... personal blogs.) This site, for example, is built locally from <a href="https://getnikola.com/">Nikola</a> and hosted on Github pages. But even then, you can run into problems. I was switching back and forth between two computers and ran into difficulty.</p>
-<p><img alt="git error: updates rejected" src="img/updates-rejected.png"></p>
-<p>(Those other error messages above were also my own. 100% real.)</p>
-<p>For anything more complicated --- developer or user documentation written by more than one person --- you should be using a tool like <a href="http://www.sphinx-doc.org/en/1.5.1/">Sphinx</a>, using git and Github for source control, and publishing from there to <a href="https://readthedocs.org/">some place designed for that sort of thing</a>.  </p>
+<p class="more"><a href="posts/github-pages-problem/">Read more…</a></p>
+</div>
     </div>
     </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/shipping/" class="u-url">Shipping</a></h1>
         <div class="metadata">
@@ -276,15 +125,10 @@
         </p>
 </div>
     </header><div class="p-summary entry-summary">
-    <p>My New Year's Resolution --- which I have so far held to --- is to write <em>and publish</em> every day.</p>
-<p>I have tendencies toward perfectionism. For me, this frequently manifests as inaction --- it can't be perfect, so I might as well not do it. Or, more often: It isn't perfect yet. I just need to work on it a little more.</p>
-<p>Having a firm deadline every morning (roughly 7:00 AM) makes that sort of perfectionism nearly impossible.</p>
-<p>I haven't decided yet if I will keep this up. I find that some of the posts I've published have not been as good as I would have liked (or, really, <a href="http://hackwrite.com/posts/data-structures-and-philosophy/">made very mush sense at all</a>). <a href="http://sethgodin.typepad.com/">Seth Godin blogs every day.</a> I'm not sure that this is where I need to be.</p>
-<p>But, for now, I need it.</p>
-<p>I need to get myself into he habit of <em>shipping</em>. There is such a thing as a MVP, and I need to be a lot more comfortable hoe minimal that can be some times.</p>
-<p>I also need the habit of producing first. I have a tendency to want to consume. This is sometimes lazy consumption (TV, movies, YouTube), but even when I'm trying to be productive and work on something, I have a tendency toward consumption first. Let me just read the whole book first, and watch a few tutorials, and ask a question on Stack Overflow...</p>
-<p>One of the things I've learned as I have improved my <a href="http://hackwrite.com/posts/enough-to-be-dangerous/">bad coding skills</a> is that you really don't learn until you do it. Just put something down and see how it is.</p>
-<p>So, for now, that's what I'm doing with this blog. If you are one of the handful of people who read it --- I would love your feedback. And I'm sorry if sometimes the posts don't make any sense or don't seem relevant or feel like they were thrown together in 45 minutes that morning (they were!).</p>
+    <div>
+<p>My New Year's Resolution --- which I have so far held to --- is to write <em>and publish</em> every day.</p>
+<p class="more"><a href="posts/shipping/">Read more…</a></p>
+</div>
     </div>
     </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/data-structures-and-philosophy/" class="u-url">Data Structures and Philosophy</a></h1>
         <div class="metadata">
@@ -300,49 +144,11 @@
         </p>
 </div>
     </header><div class="p-summary entry-summary">
-    <p>Sometimes bad programming is just bad programming: people write sloppy code, people don't know how things are supposed to work, people forget that binary math is weird sometimes.</p>
+    <div>
+<p>Sometimes bad programming is just bad programming: people write sloppy code, people don't know how things are supposed to work, people forget that binary math is weird sometimes.</p>
 <p>But often, bad programming is a result of bad philosophy - a fundamental misunderstanding of how meaning is made, or thought works, or how the world is structured. Sometimes the fault is a little less radical, tied to ignorance of some domain-specific facts, but often it's just plain bad philosophy.</p>
-<p>And nowhere is bad philosophy more on display than in poorly designed data models. Most <a href="http://www.amazon.com/gp/product/B00A376BB2/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=B00A376BB2&amp;linkCode=as2&amp;tag=musforsun-20">database 'antipatterns'</a> are philosophical in nature.</p>
-<p>This is, I think, not well understood by the majority of programmers and project managers. Even most engineers (read: technicians) who do things the right way can't always explain the philosophical underpinnings of the right way. This situation is analogous to high school students who know how to use the quadratic formula, but have no idea why it's meaningful. But while most of those bored teenagers move blissfully away from mathematics without doing anyone any serious harm, programmers without a sense of good philosophy (along with plenty of <a href="http://www.amazon.com/gp/product/0517122707/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0517122707&amp;linkCode=as2&amp;tag=musforsun-20">theology and geometry</a>) move from project to project, wreaking havoc on database after database without any understanding of why things keep breaking. This situation is, of course, compounded by project managers, executives, and <a href="http://www.amazon.com/gp/product/B007O8101E/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=B007O8101E&amp;linkCode=as2&amp;tag=musforsun-20">pointy-haired bosses</a> of all stripes who don't rise to the level of software technician, and so don't even know what the right way is, let alone understand why there has to be a right way in the first place.</p>
-<h2>The Canonical Example: How Old Are You?</h2>
-<p>I assume you are aware that the correct piece of information to store about a person is not their age, but their birthday. Other than the fact that this is painfully obvious to anyone who thinks about it for more than a moment, what might we offer as a philosophical explanation of the right way, and how can we understand why so many people take the wrong path?</p>
-<p>If we are forced to "show our work," there are at least two routes by which one can arrive at the "store birthdays, not ages."</p>
-<h3>Understanding of Human Thought</h3>
-<p>The more obvious, and slightly less interesting, of the two routes involves an understanding of what a person does when asked the question, "How old are you?" or "How old is Socrates?"</p>
-<p>(Socrates is, of course, either the interviewee's child or pet.)</p>
-<p>Typically, we do not walk around with the answer to this question readily available. Rather, we quickly calculate it:</p>
-<p>"Let's see, I was born in 1982 and... what year is it? Oh right, so I'm... 34, I guess? Yeah - 34. I'll be 35 in July."</p>
-<p>By working backwards from "how do I figure it out" we can arrive at "how should it be known."</p>
-<h3>God's Knowledge: Thomistic Data Structures</h3>
-<p>We can do the inverse, work forwards from the more fundamental question --- how is a thing known?</p>
-<p>Your database is supposed to know everything, and always be right. But facts change. How can this be handled?!</p>
-<p>Medieval philosophers had a similar, but much more fundamental question:
-God knows everything, and is always right. Facts change. <strong>But God cannot change.</strong> How can God know about things if God doesn't change, but things do?</p>
-<blockquote>
-<p><strong>Whether the knowledge of God is variable?</strong></p>
-<p>Objection 1:<br>
-It seems that the knowledge of God is variable. For knowledge is related to what is knowable. But whatever imports relation to the creature is applied to God from time, and varies according to the variation of creatures. Therefore the knowledge of God is variable according to the variation of creatures.</p>
-<p>--- <a href="http://home.newadvent.org/summa/1014.htm#article15">Thomas Aquinas, Summa Theologica, Pars Prima - Question 14, Article 15</a></p>
-</blockquote>
-<p>This might seem silly, but it was a big deal at the time: If God's knowledge is variable, than God is variable. But God <em>is not</em> variable --- God is Simple, and One. The whole edifice of belief might crumble if we imagine a God who just changes willy-nilly. (Not unlike a computer system that crashes from too many logical contradictions and inconsistencies.)</p>
-<p>Moreover, like the issue of storing birthdays or ages, the question only seems silly now because an answer was provided which is so obvious and clear that once you have grokked it, you will wonder why you didn't think of it yourself.</p>
-<p>(The following is Aquinas' reply to a later objection, but it is particularly relevant here.)</p>
-<blockquote>
-<p>The ancient Nominalists said that it was the same thing to say "Christ is born" and "will be born" and "was born"; because the same thing is signified by these three--viz. the nativity of Christ. Therefore it follows, they said, that whatever God knew, He knows; because now He knows that Christ is born, which means the same thing as that Christ will be born. This opinion, however, is false; both because the diversity in the parts of a sentence causes a diversity of enunciations; and because it would follow that a proposition which is true once would be always true; which is contrary to what the Philosopher lays down (Categor. iii) when he says that this sentence, "Socrates sits," is true when he is sitting, and false when he rises up. Therefore, it must be conceded that this proposition is not true, "Whatever God knew He knows," if referred to enunciable propositions. But because of this, it does not follow that the knowledge of God is variable. For as it is without variation in the divine knowledge that God knows one and the same thing sometime to be, and sometime not to be, so it is without variation in the divine knowledge that God knows an enunciable proposition is sometime true, and sometime false. The knowledge of God, however, would be variable if He knew enunciable things by way of enunciation, by composition and division, as occurs in our intellect. Hence our knowledge varies either as regards truth and falsity, for example, if when either as regards truth and falsity, for example, if when a thing suffers change we retained the same opinion about it; or as regards diverse opinions, as if we first thought that anyone was sitting, and afterwards thought that he was not sitting; neither of which can be in God.</p>
-</blockquote>
-<p>Aquinas is explaining that some thing which is only true at a point in time is not known by God by way of the kind of knowledge expressed in present-tense statements, like "Socrates is sitting."</p>
-<p>This is precisely analogous to our database, where enunciating the individual facts "today I am 34; tomorrow I will be 35" is not proper to the way a database knows things.</p>
-<h3>Data Persistence vs. Application Layer</h3>
-<p>Here, I think we have an analogy to the separation of concerns between a <em>Single Source of Truth</em> database and the application layer. The database doesn't "know" things by way of enunciation --- it simply knows things. It is up to the (human?) logic of the application layer to enunciate that knowledge for human consumption.</p>
-<h3>Imperfect Analogies</h3>
-<p>Of course this is an imperfect analogy, since <code>INSERT</code> and <code>DELETE</code> exist. (That is, the contents of the database change.)</p>
-<p>So our database is in no way omniscient (unless you work for Google), but there is a benefit to patterning knowledge using the highest form of rational thinking possible. With the birthday example, we can look to a Divine Precedent for our data model.</p>
-<p>(One can be an atheist or agnostic and still benefit from this analogy by asking the question as a hypothetical: How <em>would</em> an omniscient, unmoving God know things.)</p>
-<p>As a side note --- having this Divine Precedent probably explains my aesthetic revulsion at <a href="http://blog.mlab.com/2012/08/why-is-mongodb-wildly-popular/#comment-353">NoSQL's propensity to float data integrity concerns into the application layer</a>. (I'm not sure if this means that NoSQL people are Godless heathens or just <a href="https://en.wikipedia.org/wiki/Process_theology">process theologians</a>.)</p>
-<h3>Models of Knowledge</h3>
-<p>The point is that philosophy, or at least philosophical thinking, can inform system design. The application of epistemology (how we know things) should be of particular interest to the design of knowledge systems.</p>
-<p>A simple example is choice of database. Instead of following the New Hotness (or the "I've always done it this way"), what if we had an epistemological approach to selecting a particular database engine? What if, before asking "how this should information be stored?" we asked "How is this knowledge known?"</p>
-<p>Sometime, the knowledge will be known in an Aristotelian (or Medieval Scholastic) way, in which case traditional SQL (or <a href="http://www.sciencedirect.com/science/article/pii/S0747717189800306">something even more on the nose</a>) might be the right approach. Other times, we'll have to look to human reason. Other times, some other way of knowing and organizing the world. (So maybe those Mongo people are on to <em>something</em>...)</p>
+<p class="more"><a href="posts/data-structures-and-philosophy/">Read more…</a></p>
+</div>
     </div>
     </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/on-the-design-of-this-blog/" class="u-url">On the Design of this Blog</a></h1>
         <div class="metadata">
@@ -358,7 +164,8 @@ It seems that the knowledge of God is variable. For knowledge is related to what
         </p>
 </div>
     </header><div class="p-summary entry-summary">
-    <p>Since I spend almost my entire day in an editor, writing, I've put a bit of effort into getting it to look the way I like. The most important things for my writing experience are:</p>
+    <div>
+<p>Since I spend almost my entire day in an editor, writing, I've put a bit of effort into getting it to look the way I like. The most important things for my writing experience are:</p>
 <ul>
 <li>dark theme</li>
 <li>oversized display font</li>
@@ -368,21 +175,8 @@ It seems that the knowledge of God is variable. For knowledge is related to what
 </ul>
 <p>Here is what my screen looks like when writing a blog post.</p>
 <p><img alt="AMW Post in Editor" src="img/amw-post-in-editor.png"></p>
-<p>This reduces eye fatigue, lets me focus on the writing, and generally speeds me up while making me happier. It doesn't hurt that my non-tech friends see this screen and think I'm some kind of mad hacker scientist, while my developer colleagues see it and know I use (some of) the same tools they do.</p>
-<p>When I finally made the switch to this writing environment, over WordPress Visual Editor or MS Word, I had a sort of writer's euphoria. After several years, it still hasn't really gone away.</p>
-<p><img alt="AMW Raving About Sublime on FB" src="img/amw-fb-sublime-raving.png"></p>
-<p>(I use <a href="http://atom.io">Atom</a> now, instead of Sublime, but the point is the same.)</p>
-<p>I really do prefer reading content this way --- sometimes if I have to read a really long text I'll copy-paste into Atom.</p>
-<p>So, I thought --- wouldn't it be cool if my site looked like that? It took a lot of work but, it (currently, as I am writing this) does.</p>
-<p><img alt="Hack.write's Editor Theme" src="img/amw-hackwrite-atom-theme.png"></p>
-<p>I'm including the picture for reference, because I'll probably be changing this theme soon.</p>
-<p>It turns out the writer and reader experiences are quite different. For one thing, I've several people tell me they thought it was supposed to look like a Terminal, as opposed to a Code Editor. This is sort of interesting.</p>
-<p>But, more to the point, it seems off-putting to non-tech people. And even some tech people, I think.</p>
-<p>I've asked a lot of people for feedback --- most of the positive comments have been along the lines of "I like the idea" or "cool concept." That's very different than, "it was a joy to read." In fact, I don't think anyone has said anything indicating that they had a positive experience <em>reading</em> the blog with the design.</p>
-<p>The design was broken for a couple days earlier this week, looking like this:</p>
-<p><img alt="Hack.write broken" src="img/hw-base-theme.png"></p>
-<p>While this doesn't look like an editor, obviously --- it strikes me that this might be a little more in the realm of the developer aesthetic. It's clean, basic. Narrow columns, plenty of space. Nearly neutral, focused on content.</p>
-<p>I'm going to play around with variations here, and see if I can find a way to get back to a more readable design while retaining some of the more memorable elements of my in-editor theme.</p>
+<p class="more"><a href="posts/on-the-design-of-this-blog/">Read more…</a></p>
+</div>
     </div>
     </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/overriding-css-declaration-to-reduce-loc/" class="u-url">Overriding CSS/LESS Declaration to Reduce One LOC</a></h1>
         <div class="metadata">
@@ -398,61 +192,11 @@ It seems that the knowledge of God is variable. For knowledge is related to what
         </p>
 </div>
     </header><div class="p-summary entry-summary">
-    <p>While working on the theme for <a href="http://hackwrite.com">this site</a>, I was referencing <a href="http://mrcoles.com/demo/markdown-css/">Markdown CSS</a>, which makes HTML look like Markdown. (h/t <a href="https://twitter.com/ericholscher">@ericholscher</a>)</p>
+    <div>
+<p>While working on the theme for <a href="http://hackwrite.com">this site</a>, I was referencing <a href="http://mrcoles.com/demo/markdown-css/">Markdown CSS</a>, which makes HTML look like Markdown. (h/t <a href="https://twitter.com/ericholscher">@ericholscher</a>)</p>
 <p>I <a href="https://github.com/mrcoles/markdown-css/blob/master/markdown.less">ran across an interesting (let's call it a) pattern</a>.</p>
-<pre class="code literal-block"><span class="nt">h2</span><span class="nd">:before</span><span class="o">,</span>
-<span class="nt">h3</span><span class="nd">:before</span><span class="o">,</span>
-<span class="nt">h4</span><span class="nd">:before</span><span class="o">,</span>
-<span class="nt">h5</span><span class="nd">:before</span><span class="o">,</span>
-<span class="nt">h6</span><span class="nd">:before</span> <span class="p">{</span>
-    <span class="nb">content</span><span class="o">:</span> <span class="s2">"## "</span><span class="p">;</span>
-    <span class="nb">display</span><span class="o">:</span> <span class="nb">inline</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="nt">h3</span><span class="nd">:before</span> <span class="p">{</span>
-    <span class="nb">content</span><span class="o">:</span> <span class="s2">"### "</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="nt">h4</span><span class="nd">:before</span> <span class="p">{</span>
-    <span class="nb">content</span><span class="o">:</span> <span class="s2">"#### "</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="nt">h5</span><span class="nd">:before</span> <span class="p">{</span>
-    <span class="nb">content</span><span class="o">:</span> <span class="s2">"##### "</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="nt">h6</span><span class="nd">:before</span> <span class="p">{</span>
-    <span class="nb">content</span><span class="o">:</span> <span class="s2">"###### "</span><span class="p">;</span>
-<span class="p">}</span>
-</pre>
-
-
-<p>The <code>content</code> for all five subheadings is first set to <code>##</code>, and then re-defined individually.</p>
-<p>This saves, as far as I can figure out, one line of code. (Well, two lines if you count the closing curly brace.)</p>
-<pre class="code literal-block"><span class="nt">h2</span><span class="nd">:before</span><span class="o">,</span>
-<span class="nt">h3</span><span class="nd">:before</span><span class="o">,</span>
-<span class="nt">h4</span><span class="nd">:before</span><span class="o">,</span>
-<span class="nt">h5</span><span class="nd">:before</span><span class="o">,</span>
-<span class="nt">h6</span><span class="nd">:before</span> <span class="p">{</span>
-    <span class="nb">display</span><span class="o">:</span> <span class="nb">inline</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="nt">h2</span><span class="nd">:before</span> <span class="p">{</span>
-    <span class="nb">content</span><span class="o">:</span> <span class="s2">"## "</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="nt">h3</span><span class="nd">:before</span> <span class="p">{</span>
-    <span class="nb">content</span><span class="o">:</span> <span class="s2">"### "</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="nt">h4</span><span class="nd">:before</span> <span class="p">{</span>
-    <span class="nb">content</span><span class="o">:</span> <span class="s2">"#### "</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="nt">h5</span><span class="nd">:before</span> <span class="p">{</span>
-    <span class="nb">content</span><span class="o">:</span> <span class="s2">"##### "</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="nt">h6</span><span class="nd">:before</span> <span class="p">{</span>
-    <span class="nb">content</span><span class="o">:</span> <span class="s2">"###### "</span><span class="p">;</span>
-<span class="p">}</span>
-</pre>
-
-
-<p>The second way --- one extra line of verbosity --- strikes me as more readable, easier to understand immediately.</p>
-<p>But the first way isn't <em>really</em> obscure, just a touch clever. It doesn't impede readability so much as provide a little brain hiccup. If I weren't writing about it, it would have cost me nothing more than a brief moment.</p>
-<p>Which makes me wonder. We generally place a premium on code readability. "Don't be clever" is common --- and good --- advice. But if code is poetry (or, at least, art), maybe these little flourishes --- when they don't impede readability, really --- add to the beauty of the code.</p>
+<p class="more"><a href="posts/overriding-css-declaration-to-reduce-loc/">Read more…</a></p>
+</div>
     </div>
     </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/it-should-matter-that-its-you/" class="u-url">It Should Matter That It's You</a></h1>
         <div class="metadata">
@@ -468,54 +212,12 @@ It seems that the knowledge of God is variable. For knowledge is related to what
         </p>
 </div>
     </header><div class="p-summary entry-summary">
-    <p>I grew up doing theatre, went to college for theatre, and taught theatre for a few years. Nearly all of my theatre experience --- as a performer, teacher, director, stagehand, designer, or even audience member --- was non-profit and the bulk was non-professional. High school, university, community, non-profit regional.</p>
+    <div>
+<p>I grew up doing theatre, went to college for theatre, and taught theatre for a few years. Nearly all of my theatre experience --- as a performer, teacher, director, stagehand, designer, or even audience member --- was non-profit and the bulk was non-professional. High school, university, community, non-profit regional.</p>
 <p>I saw a lot of shows where it didn't seem to matter who had directed it, or who had designed it. So many high school and community theatre shows are bad reproductions of the professional version of the same show. Musicals, comedies, murder mysteries... musical comedy murder mysteries. Names the audience recognizes, with poorly built sets that look pretty much the same as every other production of the show, and costumes assembled from what seems like the same pile of thrift-store refuse.</p>
-<p>The major license holders that lease titles to amateur and non-profit theatres make this boring situation even worse by selling convenient production packages. You can rent costumes, props, and scenery along with performer scripts and orchestral scores. Everything shows up in a bunch of boxes, you pull your show out, and ship everything back when you are done.</p>
-<p>There are a lot of problems here. It leads to boring theatre; it devalues the talent of individual contributors; it promotes the idea that culture and art come from some other place and even passionate amateurs are really just consumers.</p>
-<p>This <em>inside the box</em> approach teaches everyone involved that there is <strong>one right way</strong> of doing things. And that gives the impression that outcomes exist on a one-dimensional scale of quality: it was either a <em>good</em> version of the same thing, or a <em>bad</em> version. (One might say, a <em>good copy</em> or a <em>bad copy</em>.)</p>
-<p>Of course, the number of things that can affect the one-dimensional rating is pretty small. With school shows, its usually money --- schools with rich parents do a better copy than schools with poor parents. It also might mean talent --- better dancers doing the same moves, a better school band playing the score, a better actor playing the lead. (This is mostly money, too --- but at least it's slightly indirect.)</p>
-<p>This one-dimensional scale affects how audiences perceive the work. The most common compliment you will ever hear from audience members in an amateur setting is, "It was so professional." If the complimenter is an arts fan, this will be followed by a comparison between the present production and some other "real" production (yes, that word gets used), and how this one was "just as good."</p>
-<p>It isn't just as good, of course. One wonders --- why not just stay home and watch the movie?</p>
-<p>It also affects the way people talk about career trajectory. As a teenager doing theatre, I was constantly told about New York. Someone saw a show in New York and thought of me. I should move to New York when I grow up. That director is really good... did you hear? He's from New York. This is the way they do it in New York.</p>
-<h2>Local, Specific</h2>
-<p>I never had any interest in this approach.</p>
-<p>Maybe it was because I was never any good at copying. My attempts in that vein were always quite low on the one-dimensional quality scale.</p>
-<p>I just wasn't interested in making a copy of someone else's production.</p>
-<p>When other theatre kids were listening to cast recordings and looking at coffee-table books about Broadway, I was reading <a href="http://amzn.to/2hNFHI3">Brook</a>, <a href="http://amzn.to/2iv7VGq">Artaud</a>, <a href="http://amzn.to/2iEcDCq">Mamet</a>. When everyone else was dreaming about New York, I dreamed about a <a href="http://amzn.to/2j0y7WH">Living Theatre</a>, a <a href="http://amzn.to/2hO8jz7">Poor Theatre</a>, a <a href="http://amzn.to/2hO886M">Holy Theatre</a>.</p>
-<p>I wanted to create something that was specific. Something local. Something that could only be created there, that time. Not just my vision as a director or designer --- though, yes, that too. But the synthesis of everyone's vision. This particular team, in this particular space.</p>
-<p>One of the most interesting books on theatre I've ever read was an account of a tour by Peter Brook's company. (It <em>may</em> have been <a href="http://amzn.to/2iEucSJ">The Open Circle</a>, but I'm not sure.) The book detailed how they adapted each venue they performed in, and how the show itself adapted to each new location. The same actors, the same production, was different each place they performed.</p>
-<p>If a change in building matters that much, how can it make any sense that a thousand productions with different casts and different directors, in different cities, should all look so much alike?</p>
-<h2>Not Just Theatre, Not Just Me</h2>
-<p>It's been a long time since I've done any theatre, but I continue to be bad at making copies.</p>
-<p>When I sold insurance, I developed my own pitch. When I was a church choir director, our repertoire and programming wasn't the same as anyone else's.</p>
-<p>And I'm hardly unique in this desire to be unique.</p>
-<p>Speaking of church music, <a href="http://www.allsoulsparish.org/">my current parish</a> has perhaps the oddest assemblage of musical variety I've ever encountered in a single worshipping community. There's <a href="https://www.classicalsinger.com/sites/showsite.php?pt=1&amp;user_id=30842">a professionally trained opera singer</a>, a <a href="http://anglobaptist.org/">banjo-playing early music specialist</a>, a <a href="http://www.allsoulsparish.org/worship-music-and-the-arts/music/angel-band/">bluegrass band</a>, a <a href="http://www.allsoulsparish.org/worship-music-and-the-arts/music/hearts-on-fire-gospel-choir/">gospel choir</a>, and a pipe organ. On any given Sunday you might hear a Bach chorale, some Gregorian chant, a contemporary Gospel number, your grandmother's favorite hymn, and a Johny Cash song. It's weird, and it doesn't always work. But it's unlike any other place. And even though it would drive some people crazy, there are a bunch of us who can't really imagine being anywhere else.</p>
-<h2>Tech Writing</h2>
-<p>What are the chances that you can be <em>the best</em> at something? I mean really --- in the top 1% of any particular skill?</p>
-<p>I am not the best writer. I'm <a href="http://hackwrite.com/posts/enough-to-be-dangerous/">certainly not the best coder</a>. Not the best project manager. Not the one best, and probably not even one of the best, in any of the individual skills needed to have a career as a Technical Writer. But my career has taken off since I have focused on answering two questions:</p>
-<ul>
-<li>What is my unique combination of skills?</li>
-<li>What is my particular approach to technical writing?</li>
-</ul>
-<p>I gave up trying to be <em>the best</em>, and have focused on being myself.</p>
-<p>Let me clarify that I don't especially try to be different. I don't go out of my way to find out what other tech writers are doing and then do things differently. I think each one of us is different naturally. We have particular experiences, preferences, interests. Some of these differences are big (work experience, degrees), and some are minor (favorite editor) --- but each of us is particular.</p>
-<p>Focus on the particular, and the right opportunities find you. And just as importantly --- focus on the particular, and the wrong opportunities avoid you like the plague.</p>
-<p>Have you ever told someone in an initial interview what technologies you like to work with and which ones you don't want to have anything to do with? Or told them what you love <em>and hate</em> about doing this job?</p>
-<p>If you're a bad fit for a job, you find out right away. And if you're a good fit, you find that out, too.</p>
-<h2>What About You?</h2>
-<p>What makes you weird? What do you like that everyone else thinks is silly? What does everyone do the same that you absolutely hate? How is your writing different than anyone else?</p>
-<hr>
-<h2>Further Reading</h2>
-<p>The ideas here are mine, but not mine alone. You may also appeciate:</p>
-<ul>
-<li>
-<a href="http://amzn.to/2hLSHc7">How to Fail at Almost Everything and Still Win Big: Kind of the Story of My Life</a>, by <a href="http://blog.dilbert.com/">Scott Adams</a>
-</li>
-<li>
-<a href="http://amzn.to/2iLiMd7">Purple Cow: Transform Your Business by Being Remarkable</a>, by <a href="http://sethgodin.typepad.com/">Seth Godin</a>
-</li>
-</ul>
+<p class="more"><a href="posts/it-should-matter-that-its-you/">Read more…</a></p>
 </div>
+    </div>
     </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/simple-input-validation-handling-python/" class="u-url">Simple Input Validation and Exception Handling in Python</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn">
@@ -530,28 +232,10 @@ It seems that the knowledge of God is variable. For knowledge is related to what
         </p>
 </div>
     </header><div class="p-summary entry-summary">
-    <p>If you are doing a simple terminal script in Python, and you need to validate some user-supplied input, you can put the assignment and validation in a <code>try</code> block inside a <code>while</code> loop.</p>
-<pre class="code literal-block"><span class="k">while</span><span class="p">:</span> <span class="c1"># variable not assigned</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="c1"># input, assignment, validation</span>
-    <span class="k">except</span><span class="p">:</span>
-        <span class="k">continue</span>
-</pre>
-
-
-<p>If the assignment or validation fails, the loop repeats and the user has another opportunity to enter input. (You could even add a message to <code>except</code> if you wanted to.)</p>
-<p>This came up for me in <a href="https://gist.github.com/adammichaelwood/6f2e02c4156c6cc27020ce179d2e8638">a little script I wrote</a> to <a href="https://www.reddit.com/r/learnpython/comments/56r94z/what_python_program_have_you_created_to_make_your/d8m0hy6/?context=3">semi-automate a task</a>. I needed to rate the quality of something I was looking at, and I was going for speed: Glance at the item, make a snap quality judgment, type a number.</p>
-<p>But, of course, sometimes I typed the number incorrectly, hitting a letter instead of a number. This screwed things up latter, when I tried to order all my items by quality rating.</p>
-<p>So, I cast the input to an integer inside the <code>try</code> block, and used the <code>while</code> loop to repeat until the <code>quality</code> rating was assigned.</p>
-<pre class="code literal-block"><span class="k">while</span> <span class="s1">'quality'</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">lnk</span><span class="p">:</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">lnk</span><span class="p">[</span><span class="s1">'quality'</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">"Quality (0-9): "</span><span class="p">))</span>
-    <span class="k">except</span><span class="p">:</span>
-        <span class="k">continue</span>
-</pre>
-
-
-<p>This approach could be expanded for more complicated types of validation, and messages to the user could be added. I just wanted a quick way to deal with my fat fingers.</p>
+    <div>
+<p>If you are doing a simple terminal script in Python, and you need to validate some user-supplied input, you can put the assignment and validation in a <code>try</code> block inside a <code>while</code> loop.</p>
+<p class="more"><a href="posts/simple-input-validation-handling-python/">Read more…</a></p>
+</div>
     </div>
     </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/enough-to-be-dangerous/" class="u-url">Enough to Be Dangerous: The Joy of Bad Python</a></h1>
         <div class="metadata">
@@ -567,54 +251,12 @@ It seems that the knowledge of God is variable. For knowledge is related to what
         </p>
 </div>
     </header><div class="p-summary entry-summary">
-    <p><strong>Learning to Code</strong> is all the rage. I don't see any sign that the trend is dying down any time soon. I might as well jump on the bandwagon here and encourage my fellow tech writers to do the same.</p>
+    <div>
+<p><strong>Learning to Code</strong> is all the rage. I don't see any sign that the trend is dying down any time soon. I might as well jump on the bandwagon here and encourage my fellow tech writers to do the same.</p>
 <p>Obviously, a lot of you already code, or are in the process of learning. I once assumed knowing at least some coding was a requirement for being a tech writer. But it seems this isn't entirely the case. Some TWs need to be able to read and write enough code to document APIs and provide code samples --- but apparently (I have learned) most tech writers aren't doing that, and you can fake your way through that if you really need to.</p>
 <p>So, <strong>if you are among the majority of technical writers that don't code, this post is for you</strong>.</p>
-<h2>We Know Too Much</h2>
-<p>When people outside the tech field suddenly decide that they are going to learn to code, they have <em>no idea</em> how hard that actually is. All of the "Learn to Code" resources, books, sites, and bootcamps tell you that you can learn to build web and mobile apps pretty easily --- in just a few weeks, even.</p>
-<p>And when you first start coding, it seems magical. Especially if the framework does a lot for you. "Oh, wow! Is this all it takes to build an app?!"</p>
-<p>You and I know --- these people don't have any idea what they are in for, how difficult it is about to get for them, how far is the distance between local build and production deployment.</p>
-<p>I suspect this stops many of us from getting started. It stopped me for a long time.</p>
-<h2>Beginner's Mind</h2>
-<p>Beginner's mind is a state in which, lacking the knowledge of how hard something is, everything seems easy. There are no boundaries, only possibilities. Beginner's mind is crucial for early learning of a new skill or subject area. With beginner's mind, small improvements seem like major wins. This enthusiasm creates a positive feedback loop, encouraging more learning and skill acquisition.  </p>
-<p>Tech writers don't have beginner's mind. Even if you have never written a line of code in your life, our proximity to software development has shattered any illusions we might have about how easy it is to get an app built and launched. We are aware of all the things that beginners happily ignore --- security, maintainability, deployment, cross-platform compatibility. We've seen too many problems caused by ignoring things. If we ever do sit down to start building a little app or follow along with a tutorial, we are overwhelmed by all the things that are going unmentioned.</p>
-<p>Or maybe I'm the only one.</p>
-<h2>Don't Hope to be a Developer</h2>
-<p>Here's my trick for overcoming this problem --- drastically lower your expectations of what "learning to code" means.</p>
-<p>You already know how hard it is to go from zero (or even 1) to actually-qualified developer. And you've met too many not-actually-qualified developers to have any interest in that path.</p>
-<p>So how do you get started?</p>
-<p>By deciding you are not ever going to write any application code. You are not going to be a developer. You are not even going to be a "coder."</p>
-<p>You are going to be a <em>technical writer with bad coding skills</em>.</p>
-<p>That lowers the bar, doesn't it?</p>
-<h2>Bad Coding Skills</h2>
-<p>What are you going to do with bad coding skills?</p>
-<p>You're not going to become a developer with bad coding skills. (That's not an editorial "you." Lots of people become developers with bad coding skills. You, in particular, are not going to become a developer with bad coding skills.)</p>
-<p>You are going to be a better technical writer. More efficient, happier, and more employable.</p>
-<p>Here a few things I have been able to do since acquiring bad coding skills:</p>
-<ul>
-<li>semi-automate an incredibly boring freelance writing task, letting me earn the same amount of money in about half the time</li>
-<li>easily render HTML from Markdown, automating fussy style rules and naming conventions, saving several minutes and annoyance every day</li>
-<li>switch from WordPress to Jekyll and/or Nikola for my personal blogs, saving money and time</li>
-<li>put "Python" on my resume, greatly increasing the number of interviews and job opportunities I get</li>
-<li>automate documentation deployment ("DocOps")</li>
-<li>write code samples where I actually knew what was going on</li>
-<li>make a code contribution to an Open Source project</li>
-</ul>
-<p>I have not built any apps or launched any products. No one has ever paid me to write code, and I don't think anyone ever will. I don't know how to handle user sessions or deal with cache invalidation. I code slowly, and I Google constantly.</p>
-<p>And, believe me, the code I have written is bad. It's ugly and inefficient. It wouldn't pass a code review.</p>
-<p>But, even though my coding skills are bad, they have made a huge impact in my life. I am more employable, more efficient, more valuable. I'm also happier, and <a href="http://hackwrite.com/posts/third-option-success/">feel more optimistic about my future</a>. Bad code works.</p>
-<p>If you have been discouraged, I encourage you. It only takes a little bit --- enough to be dangerous.</p>
-<blockquote>
-<p>Programming as a profession is only moderately interesting. It can be a good job, but you could make about the same money and be happier running a fast food joint. You're much better off using code as your secret weapon in another profession.</p>
-<p>People who can code in the world of technology companies are a dime a dozen and get no respect. People who can code in biology, medicine, government, sociology, physics, history, and mathematics are respected and can do amazing things to advance those disciplines.</p>
-<p>--- Zed Shaw, <a href="http://amzn.to/2iwhe9n">Learn Python the Hard Way</a></p>
-</blockquote>
-<hr>
-<h2>How (What) To Learn</h2>
-<p>I recommend Python.</p>
-<p>Python is the perfect language for bad coding by non-developers. You can do a lot without knowing very much, and there are a lot of tools for accomplishing non-development tasks --- writing tools, math tools, publishing tools, task automation tools. If you're going to learn to code in order to improve your own life (as opposed to learning to code to get a job or build things) Python is the best option. (It's also good for getting jobs and building things. Learning Python will not limit you.)</p>
-<p>I do not recommend <a href="http://amzn.to/2iwhe9n">Learn Python the Hard Way</a>, even though it is very popular. It's out of date and a bit too curmudgeonly.</p>
-<p>The best book (I think) for learning to write Python for life-improvement is <a href="http://amzn.to/2hGOZ6L">Automate the Boring Stuff with Python</a>.</p>
+<p class="more"><a href="posts/enough-to-be-dangerous/">Read more…</a></p>
+</div>
     </div>
     </article>
 </div>

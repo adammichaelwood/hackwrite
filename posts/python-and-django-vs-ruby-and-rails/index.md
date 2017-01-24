@@ -13,6 +13,8 @@ _tl;dr - Python._
 
 I can't even begin to count how many forum posts and deleted Stack Overflow questions there are boiling down to some version of _Python vs. Ruby_ or, more specifically, _Django vs. Rails_. Google (as of right now) has [NINE POINT EIGHT MILLION](https://en.wiktionary.org/wiki/buttload) results for ["Python vs. Ruby"](https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#safe=off&q=python+vs.+ruby), which is basically insane.
 
+<!-- TEASER_END -->
+
 Unfortunately many of the articles and posts answering the question don't actually answer it. They provide some generalizations about each, talk about some of the differences, and say that it's up to you.
 
 __Have an opinion, you soulless producers of Search Engine fodder!__
