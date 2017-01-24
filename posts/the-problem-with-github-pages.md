@@ -13,6 +13,8 @@ I love Github Pages. I run this blog, my [personal blog](http://adammichaelwood.
 
 For a single writer with moderate or better technical skills looking for a simple hosting solution, it's amazing. But, I've recently realized there's a problem with it that makes it ill-suited for multiple collaborators working on complicated documentation. (Or even, as I discovered, a single writer on more than one machine.)
 
+<!-- TEASER_END -->
+
 Let's review how Github pages works. You designate a particular branch or directory of a branch as the Github pages source. The source can either be an unbuilt Jekyll site source, plain markdown files, or a fully built static HTML (+CSS +JS) site. If it's plain markdown or Jekyll, Github builds and deploys for you. If it's a built HTML site, Github just serves those files.
 
 If you let Github build your site automatically from Jekyll or plain markdown files, everything works great. The Open Source collaboration model applies as well to content as it does to code. Better, perhaps, because adding or modifying content doesn't cause conflicts and run-time errors. But if you need to run a build yourself --- because you're using another generator like [Sphinx](http://www.sphinx-doc.org/en/1.5.1/), [Nikola](https://getnikola.com/), or [Mkdocs](http://www.mkdocs.org/) --- or because you have some [Jekyll plugins](https://jekyllrb.com/docs/plugins/) that aren't supported in Github --- you'll have problems once you add a second writer.

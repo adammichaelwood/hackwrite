@@ -21,6 +21,8 @@ Here is what my screen looks like when writing a blog post.
 
 ![AMW Post in Editor](/img/amw-post-in-editor.png)
 
+<!-- TEASER_END -->
+
 This reduces eye fatigue, lets me focus on the writing, and generally speeds me up while making me happier. It doesn't hurt that my non-tech friends see this screen and think I'm some kind of mad hacker scientist, while my developer colleagues see it and know I use (some of) the same tools they do.
 
 When I finally made the switch to this writing environment, over WordPress Visual Editor or MS Word, I had a sort of writer's euphoria. After several years, it still hasn't really gone away.

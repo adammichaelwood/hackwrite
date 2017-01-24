@@ -22,6 +22,8 @@ If I am _not_ the master of my fate, then my lack of success up to this point is
 
 But if I _am_, well then --- I have some explaining to do. Why have I not lost the weight, started the business, written the book, built the app?
 
+<!-- TEASER_END -->
+
 When faced with a history of lack of success, and trying to make it over the chasm of despair to a _designed life_, we have these two explanations:
 
 1. The world (fate, luck, God, the system, the Man, capitalism) has stopped me. Since the world hasn't changed, I will continue to not succeed.

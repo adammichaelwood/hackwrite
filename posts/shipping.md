@@ -11,6 +11,8 @@
 
 My New Year's Resolution --- which I have so far held to --- is to write *and publish* every day.
 
+<!-- TEASER_END -->
+
 I have tendencies toward perfectionism. For me, this frequently manifests as inaction --- it can't be perfect, so I might as well not do it. Or, more often: It isn't perfect yet. I just need to work on it a little more.
 
 Having a firm deadline every morning (roughly 7:00 AM) makes that sort of perfectionism nearly impossible.

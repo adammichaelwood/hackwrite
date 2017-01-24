@@ -13,6 +13,8 @@ I grew up doing theatre, went to college for theatre, and taught theatre for a f
 
 I saw a lot of shows where it didn't seem to matter who had directed it, or who had designed it. So many high school and community theatre shows are bad reproductions of the professional version of the same show. Musicals, comedies, murder mysteries... musical comedy murder mysteries. Names the audience recognizes, with poorly built sets that look pretty much the same as every other production of the show, and costumes assembled from what seems like the same pile of thrift-store refuse.
 
+<!-- TEASER_END -->
+
 The major license holders that lease titles to amateur and non-profit theatres make this boring situation even worse by selling convenient production packages. You can rent costumes, props, and scenery along with performer scripts and orchestral scores. Everything shows up in a bunch of boxes, you pull your show out, and ship everything back when you are done.
 
 There are a lot of problems here. It leads to boring theatre; it devalues the talent of individual contributors; it promotes the idea that culture and art come from some other place and even passionate amateurs are really just consumers.
