@@ -41,8 +41,6 @@ I summed a few file name best practices, but... I have *a lot* to say about this
 
 Also, people tend to just dash off a few rules about file names, without talking much about the underlying reasons. So I thought I would spend some time exploring how to think about file names.
 
-[Skip ahead for tl;dr file name guidelines.](#file-name-guidelines)
-
 
 ## What is a file?
 
