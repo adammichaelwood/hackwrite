@@ -37,6 +37,8 @@ I recently saw a question about file names in the [Episcopal Communicators Faceb
 
 I summed a few file name best practices, but... I have *a lot* to say about this topic. File naming is one of those weird little things I have irrationally strong feelings about, and the ubiquity of bad file naming practices is a constant source of rage in my life.
 
+<!-- TEASER_END -->
+
 Also, people tend to just dash off a few rules about file names, without talking much about the underlying reasons. So I thought I would spend some time exploring how to think about file names.
 
 [Skip ahead for tl;dr file name guidelines.](#file-name-guidelines)
