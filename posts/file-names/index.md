@@ -89,6 +89,8 @@ File names are used in a wide variety of contexts, only some of which you will b
 
 Mixed-case (upper and lower) can cause problems for naive search implementations, and also play havoc with uniqueness checks. So it makes sense to uniformly use lowercase. Underscores are [bad word separators](https://blog.codinghorror.com/of-spaces-underscores-and-dashes/), so use hyphens (dashes) instead. Unix, Linux, and Mac file systems, and URLs, all use slashes ( `/` ) as a path separator, and Windows/DOS uses the backwards slash ( `\` ), so avoid both of those characters. Single and double quote marks are extremely problematic in a number of contexts. Finally, dots typically have special meanings in file names. Only use them if you specifically know how. (Really, avoiding all punctuation is best.)
 
+(NOTE: Underscores, like dots, are used in particular situations with meaning. That is fine. But if you don't have a reason to use them *that you understand*, don't use them.)
+
 ## File Name Guidelines {#file-name-guidelinesn}
 
 Here's the compiled list of file name rules.
