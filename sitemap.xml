@@ -19,7 +19,7 @@
  </url>
  <url>
   <loc>http://hackwrite.com/archive.html</loc>
-  <lastmod>2017-01-24T23:31:00Z</lastmod>
+  <lastmod>2017-01-25T14:36:00Z</lastmod>
  </url>
  <url>
   <loc>http://hackwrite.com/categories/</loc>
@@ -27,7 +27,7 @@
  </url>
  <url>
   <loc>http://hackwrite.com/index-1.html</loc>
-  <lastmod>2017-01-24T23:42:00Z</lastmod>
+  <lastmod>2017-01-25T14:36:00Z</lastmod>
  </url>
  <url>
   <loc>http://hackwrite.com/posts/data-structures-and-philosophy/</loc>
@@ -60,6 +60,10 @@
  <url>
   <loc>http://hackwrite.com/posts/python-and-django-vs-ruby-and-rails/</loc>
   <lastmod>2017-01-24T22:00:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://hackwrite.com/posts/real-reason-i-love-static-site-generators/</loc>
+  <lastmod>2017-01-25T14:36:00Z</lastmod>
  </url>
  <url>
   <loc>http://hackwrite.com/posts/shipping/</loc>
