@@ -11,7 +11,7 @@
 
 Somewhere in the last year I decided I was into *DocOps*.
 
-What that really meant for me is that was into *Docs-as-code*, which is a related trend, but not quite the same. I care about  things like single-source documents (DRY), version control, plain text editing, style linting, and automated deployment. I write little Python or Bash scripts to pipe tools together and customize the output of static site generators. I'm learning a lot, having a lot of fun, and finally weaving together a number of different skill sets and interests I've picked up over the years (writing, coding, project management).
+What that really meant for me is that I am into *Docs-as-code*, which is a related trend, but not quite the same. I care about  things like single-source documents (DRY), version control, plain text editing, style linting, and automated deployment. I write little Python or Bash scripts to pipe tools together and customize the output of static site generators. I'm learning a lot, having a lot of fun, and finally weaving together a number of different skill sets and interests I've picked up over the years (writing, coding, project management).
 
 When I was the only writer at a startup, this was all really effective. I could fool myself into thinking I was *doing DocOps*. And maybe I was, but only in that particular context.
 

@@ -83,7 +83,7 @@ What makes you weird? What do you like that everyone else thinks is silly? What 
 
 ## Further Reading
 
-The ideas here are mine, but not mine alone. You may also appeciate:
+The ideas here are mine, but not mine alone. You may also appreciate:
 
  - [How to Fail at Almost Everything and Still Win Big: Kind of the Story of My Life](http://amzn.to/2hLSHc7), by [Scott Adams](http://blog.dilbert.com/)
  - [Purple Cow: Transform Your Business by Being Remarkable](http://amzn.to/2iLiMd7), by [Seth Godin](http://sethgodin.typepad.com/)
