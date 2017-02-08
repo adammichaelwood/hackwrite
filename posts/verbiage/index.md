@@ -11,8 +11,6 @@
 
 I hate the word _verbiage_.
 
-<iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fwood.adam.michael%2Fposts%2F10206772635434069&width=500" width="500" height="161" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
-
 First, we need to deal with the fact that it is the *wrong word*. Most of the time, when people say *verbiage*, they really mean *verbage* --- that is, the wording. *Verbiage*, properly, means excessive wordiness, not the specifics of word choice.
 
 But this isn't what I hate about it. I would hate it just as much if it meant precisely what every one uses it to mean. My problem is with the idea itself. I hate what people are saying when they say *verbiage*.
