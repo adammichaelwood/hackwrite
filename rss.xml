@@ -1,5 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>hack.write()</title><link>http://hackwrite.com/</link><description>Writing about writing about development.</description><atom:link href="http://hackwrite.com/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><lastBuildDate>Wed, 08 Feb 2017 17:55:09 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Verbiage</title><link>http://hackwrite.com/posts/verbiage/</link><dc:creator>Adam Michael Wood</dc:creator><description>&lt;p&gt;I hate the word &lt;em&gt;verbiage&lt;/em&gt;.&lt;/p&gt;
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>hack.write()</title><link>http://hackwrite.com/</link><description>Writing about writing about development.</description><atom:link href="http://hackwrite.com/rss.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><lastBuildDate>Sun, 16 Apr 2017 00:19:05 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Intersection of Non-Empty Sets in Python</title><link>http://hackwrite.com/posts/intersection-of-non-empty-sets-in-python/</link><dc:creator>Adam Michael Wood</dc:creator><description>&lt;p&gt;Suppose you generate several sets on the fly, and you want to find the elements that are in all the sets. That's easy, it's the intersection of sets.&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span class="c1"&gt;# One syntax option&lt;/span&gt;
+&lt;span class="n"&gt;result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;set_one&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;set_two&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;set_three&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Another option&lt;/span&gt;
+&lt;span class="n"&gt;result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;set&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;intersection&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;set_one&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;set_two&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;set_three&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;
+
+
+&lt;p&gt;But let's suppose that one or more of your sets is empty. The intersection of any set and an empty set is an empty set. But, that's not what you want. (Well, it wasn't what I wanted, anyway.)&lt;/p&gt;
+&lt;p&gt;Suppose you want the intersection of all non-empty sets.&lt;/p&gt;
+&lt;h2&gt;List comprehension&lt;/h2&gt;
+&lt;p&gt;If the sets are in a list, you can remove the empties. Then unpack the list into the &lt;code&gt;set.intersection()&lt;/code&gt; function.&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span class="n"&gt;list_of_sets&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;set_one&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;set_two&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;set_three&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Empty sets evaluate to false,&lt;/span&gt;
+&lt;span class="c1"&gt;# so will be excluded from list comp.&lt;/span&gt;
+&lt;span class="n"&gt;non_empties&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;list_of_sets&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+&lt;span class="n"&gt;solution_set&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;set&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;intersection&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;non_empties&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;
+
+
+&lt;p&gt;The asterisk before &lt;code&gt;non_empties&lt;/code&gt; unpacks the list into a series of positional arguments. This is needed because &lt;code&gt;set.intersection()&lt;/code&gt; takes an arbitrary number of sets, not an iterable full of sets. (It's the same asterisk as in &lt;code&gt;*args&lt;/code&gt; in function definitions.)&lt;/p&gt;
+&lt;p&gt;(Note: You &lt;em&gt;could&lt;/em&gt; use a filter instead of a list comprehension, but &lt;a href="http://www.artima.com/weblogs/viewpost.jsp?thread=98196"&gt;Guido thinks a list comprehension is better&lt;/a&gt;. I agree.)&lt;/p&gt;
+&lt;h3&gt;With iterable unpacking (tuple unpacking)&lt;/h3&gt;
+&lt;p&gt;In my case, I was generating the sets in my code, and the solution set always contained only one item. And I wanted the item, not a set with the item. So...&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span class="c1"&gt;# initialize an empty list&lt;/span&gt;
+&lt;span class="n"&gt;list_of_sets&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;
+
+&lt;span class="c1"&gt;# each time I create a set,&lt;/span&gt;
+&lt;span class="c1"&gt;# append set to list when it is created,&lt;/span&gt;
+&lt;span class="c1"&gt;# instead of naming them individually&lt;/span&gt;
+&lt;span class="n"&gt;list_of_sets&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;thing_that_generates_a_set&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# drop the empties, find the intersection&lt;/span&gt;
+&lt;span class="c1"&gt;# and unpack the remaining single element&lt;/span&gt;
+&lt;span class="n"&gt;solution&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;set&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;intersection&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;list_of_sets&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+&lt;/pre&gt;
+
+
+&lt;p&gt;The comma after &lt;code&gt;solution&lt;/code&gt; turns the assignment into a tuple unpacking. If you unpack a collection of one, you get the single item.&lt;/p&gt;
+&lt;p&gt;By the way, if you end up with more than one item in your collection, and only want the first item, you can do:&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;first_item, *_ = some_collection
+&lt;/pre&gt;
+
+
+&lt;p&gt;The &lt;code&gt;*&lt;/code&gt; indicates a variable number of positional arguments (it's the same asterisk as in &lt;code&gt;*args&lt;/code&gt; and in passing the list to &lt;code&gt;set.intersection()&lt;/code&gt; above), and the underscore is used as a convention for "not using this stuff."&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;# you could have done this instead
+
+first_item, *stuff_i_will_not_care_about = some_collection
+&lt;/pre&gt;
+
+
+&lt;p&gt;I'll be using that &lt;code&gt;*_&lt;/code&gt; below, in the actual code.&lt;/p&gt;
+&lt;h2&gt;Why would you ever do this?&lt;/h2&gt;
+&lt;h3&gt;The generalized problem&lt;/h3&gt;
+&lt;p&gt;From a pool of items, there are three attributes to select for. Specifying any two of them should produce one and only one result.&lt;/p&gt;
+&lt;h3&gt;More specifically...&lt;/h3&gt;
+&lt;p&gt;Musical intervals.&lt;/p&gt;
+&lt;p&gt;A musical interval has:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;a quality (Major, Minor, Perfect, Augment, or Diminished)&lt;/li&gt;
+&lt;li&gt;a number (Unison (1), Second (2), Third (3) ... Octave (8))&lt;/li&gt;
+&lt;li&gt;a distance of half_steps (for example, a major third is 4 half steps)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If you know any two of these, you can select the correct one.&lt;/p&gt;
+&lt;h2&gt;Some actual code&lt;/h2&gt;
+&lt;pre class="code literal-block"&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Interval&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+
+  &lt;span class="c1"&gt;#####################################&lt;/span&gt;
+  &lt;span class="c1"&gt;# ... all sorts of things removed ...&lt;/span&gt;
+  &lt;span class="c1"&gt;#####################################&lt;/span&gt;
+
+
+  &lt;span class="n"&gt;instances&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;set&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+  &lt;span class="c1"&gt;# all instances of Interval&lt;/span&gt;
+
+
+  &lt;span class="nd"&gt;@classmethod&lt;/span&gt;
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;get_intervals&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cls&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;quality&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;number&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;half_steps&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+      &lt;span class="sd"&gt;"""Return a set of intervals."""&lt;/span&gt;
+
+      &lt;span class="n"&gt;candidate_sets&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;
+
+      &lt;span class="n"&gt;candidate_sets&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;cls&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;instances&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;quality&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="n"&gt;quality&lt;/span&gt;&lt;span class="p"&gt;})&lt;/span&gt;
+
+      &lt;span class="n"&gt;candidate_sets&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;cls&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;instances&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;number&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="n"&gt;number&lt;/span&gt;&lt;span class="p"&gt;})&lt;/span&gt;
+
+      &lt;span class="n"&gt;candidate_sets&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;cls&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;instances&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;half_steps&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="n"&gt;half_steps&lt;/span&gt;&lt;span class="p"&gt;})&lt;/span&gt;
+
+      &lt;span class="n"&gt;candidate_sets&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;candidate_sets&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+      &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;set&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;intersection&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;candidate_sets&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+  &lt;span class="nd"&gt;@classmethod&lt;/span&gt;
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;get_interval&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cls&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;quality&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;number&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;half_steps&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+      &lt;span class="sd"&gt;""" Return a single interval."""&lt;/span&gt;
+
+      &lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+          &lt;span class="n"&gt;interval&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;cls&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_intervals&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;quality&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;quality&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;number&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;number&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;half_steps&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;half_steps&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+      &lt;span class="c1"&gt;## if there was not one and only one result&lt;/span&gt;
+      &lt;span class="k"&gt;except&lt;/span&gt; &lt;span class="ne"&gt;ValueError&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+
+          &lt;span class="c1"&gt;# only select by half_steps&lt;/span&gt;
+          &lt;span class="n"&gt;candidates&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;cls&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;instances&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;half_steps&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;half_steps&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+          &lt;span class="c1"&gt;# select the first one,&lt;/span&gt;
+          &lt;span class="c1"&gt;# based on quality priority:&lt;/span&gt;
+          &lt;span class="c1"&gt;# Perfect, Major, Minor, Dim, Aug&lt;/span&gt;
+          &lt;span class="n"&gt;interval&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;_&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;sorted&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;candidates&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;quality&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;priority&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;interval&lt;/span&gt;
+&lt;/pre&gt;
+
+
+&lt;p&gt;In &lt;a href="https://github.com/OphisMusic/ophis"&gt;the actual code&lt;/a&gt;, there's a bunch of other things going on, but this is the general idea.&lt;/p&gt;
+&lt;h2&gt;Another approach&lt;/h2&gt;
+&lt;p&gt;For my specific use case, another approach is simply to not create a set for the unspecified attribute.&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;quality&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;candidate_sets&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;cls&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;instances&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;quality&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="n"&gt;quality&lt;/span&gt;&lt;span class="p"&gt;})&lt;/span&gt;
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;number&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;candidate_sets&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;cls&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;instances&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;number&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="n"&gt;number&lt;/span&gt;&lt;span class="p"&gt;})&lt;/span&gt;
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;half_steps&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;candidate_sets&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;cls&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;instances&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;half_steps&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="n"&gt;half_steps&lt;/span&gt;&lt;span class="p"&gt;})&lt;/span&gt;
+&lt;/pre&gt;
+
+
+&lt;p&gt;In my working code, I actually do both. This allows for a potentially meaningful result even if something is specified incorrectly. I could have decided to let bad input cause explicit failure, but I &lt;strong&gt;think&lt;/strong&gt; I'd rather not in this case.&lt;/p&gt;
+&lt;h2&gt;So... what's the point?&lt;/h2&gt;
+&lt;p&gt;This post looks like a tutorial on list comprehension. Or maybe set operations. But really this post is about problem solving while writing code.&lt;/p&gt;
+&lt;p&gt;The code solution to this problem is really easy... but &lt;em&gt;only if you've figured out the problem you need to solve&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;I started with the following problem:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Find the intersection of all non-empty sets, from an arbitrary pool of sets, not knowing which ones would be empty.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;So I started Googling variations on that theme. But there aren't any "intersection of just the good sets" functions. Then I tried to start writing a question for Stack Overflow, and as soon as I had written the title, I knew the answer.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Starting with a collection of sets, drop the empty sets and find the intersection of the remaining sets.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;As soon as I broke my one problem into two steps, the problem was immediately solved:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Create a new collection without the empties. (List comp.)&lt;/li&gt;
+&lt;li&gt;Find the intersection of &lt;em&gt;that&lt;/em&gt; list.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;At the same moment I realized these steps, it also become clear that the original group of sets should be a collection, not just several unrelated objects.&lt;/p&gt;
+&lt;p&gt;So, the moral of the story is...&lt;/p&gt;
+&lt;p&gt;If you can't find the solution to your specific problem, restate your problem as a series of steps.&lt;/p&gt;</description><guid>http://hackwrite.com/posts/intersection-of-non-empty-sets-in-python/</guid><pubDate>Sat, 15 Apr 2017 14:48:40 GMT</pubDate></item><item><title>Verbiage</title><link>http://hackwrite.com/posts/verbiage/</link><dc:creator>Adam Michael Wood</dc:creator><description>&lt;p&gt;I hate the word &lt;em&gt;verbiage&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;First, we need to deal with the fact that it is the &lt;em&gt;wrong word&lt;/em&gt;. Most of the time, when people say &lt;em&gt;verbiage&lt;/em&gt;, they really mean &lt;em&gt;verbage&lt;/em&gt; --- that is, the wording. &lt;em&gt;Verbiage&lt;/em&gt;, properly, means excessive wordiness, not the specifics of word choice.&lt;/p&gt;
 &lt;p&gt;But this isn't what I hate about it. I would hate it just as much if it meant precisely what every one uses it to mean. My problem is with the idea itself. I hate what people are saying when they say &lt;em&gt;verbiage&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;Every time I have ever heard the word &lt;em&gt;verbiage&lt;/em&gt;, the person has been talking about &lt;em&gt;the precise way that something is worded&lt;/em&gt;. The context is always about improving something.&lt;/p&gt;
@@ -98,6 +248,4 @@
 &lt;p&gt;&lt;a href="http://hackwrite.com/posts/what-and-how-much-to-learn/"&gt;Read more…&lt;/a&gt; (11 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><guid>http://hackwrite.com/posts/what-and-how-much-to-learn/</guid><pubDate>Thu, 19 Jan 2017 14:30:00 GMT</pubDate></item><item><title>The Problem with Github Pages</title><link>http://hackwrite.com/posts/github-pages-problem/</link><dc:creator>Adam Michael Wood</dc:creator><description>&lt;div&gt;&lt;p&gt;I love Github Pages. I run this blog, my &lt;a href="http://adammichaelwood.com"&gt;personal blog&lt;/a&gt;, and my &lt;a href="http://progressivesolemnity.org"&gt;music and liturgy blog&lt;/a&gt; on it. I used it to host &lt;a href="http://docs.botcentral.ai"&gt;documentation for my most recent tech writing gig&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;For a single writer with moderate or better technical skills looking for a simple hosting solution, it's amazing. But, I've recently realized there's a problem with it that makes it ill-suited for multiple collaborators working on complicated documentation. (Or even, as I discovered, a single writer on more than one machine.)&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://hackwrite.com/posts/github-pages-problem/"&gt;Read more…&lt;/a&gt; (4 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><guid>http://hackwrite.com/posts/github-pages-problem/</guid><pubDate>Tue, 10 Jan 2017 13:50:37 GMT</pubDate></item><item><title>Shipping</title><link>http://hackwrite.com/posts/shipping/</link><dc:creator>Adam Michael Wood</dc:creator><description>&lt;div&gt;&lt;p&gt;My New Year's Resolution --- which I have so far held to --- is to write &lt;em&gt;and publish&lt;/em&gt; every day.&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://hackwrite.com/posts/shipping/"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><guid>http://hackwrite.com/posts/shipping/</guid><pubDate>Mon, 09 Jan 2017 14:42:24 GMT</pubDate></item><item><title>Data Structures and Philosophy</title><link>http://hackwrite.com/posts/data-structures-and-philosophy/</link><dc:creator>Adam Michael Wood</dc:creator><description>&lt;div&gt;&lt;p&gt;Sometimes bad programming is just bad programming: people write sloppy code, people don't know how things are supposed to work, people forget that binary math is weird sometimes.&lt;/p&gt;
-&lt;p&gt;But often, bad programming is a result of bad philosophy - a fundamental misunderstanding of how meaning is made, or thought works, or how the world is structured. Sometimes the fault is a little less radical, tied to ignorance of some domain-specific facts, but often it's just plain bad philosophy.&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://hackwrite.com/posts/data-structures-and-philosophy/"&gt;Read more…&lt;/a&gt; (6 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><guid>http://hackwrite.com/posts/data-structures-and-philosophy/</guid><pubDate>Fri, 06 Jan 2017 15:26:34 GMT</pubDate></item></channel></rss>
+&lt;p&gt;&lt;a href="http://hackwrite.com/posts/shipping/"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><guid>http://hackwrite.com/posts/shipping/</guid><pubDate>Mon, 09 Jan 2017 14:42:24 GMT</pubDate></item></channel></rss>

@@ -11,7 +11,7 @@
 <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
 <link rel="canonical" href="http://hackwrite.com/">
 <link rel="next" href="index-1.html" type="text/html">
-<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/verbiage/" type="text/html">
+<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/intersection-of-non-empty-sets-in-python/" type="text/html">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -33,7 +33,173 @@
     
     
     </ul></nav></header><main id="content"><div class="postindex">
-    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/verbiage/" class="u-url">Verbiage</a></h1>
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/intersection-of-non-empty-sets-in-python/" class="u-url">Intersection of Non-Empty Sets in Python</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                Adam Michael Wood
+            </span></p>
+            <p class="dateline"><a href="posts/intersection-of-non-empty-sets-in-python/" rel="bookmark"><time class="published dt-published" datetime="2017-04-15T07:48:40-07:00" title="2017-04-15 07:48">2017-04-15 07:48</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/intersection-of-non-empty-sets-in-python/#disqus_thread" data-disqus-identifier="cache/posts/intersection-of-non-empty-sets-in-python.html">Comments</a>
+
+
+        </p>
+</div>
+    </header><div class="p-summary entry-summary">
+    <p>Suppose you generate several sets on the fly, and you want to find the elements that are in all the sets. That's easy, it's the intersection of sets.</p>
+<pre class="code literal-block"><span class="c1"># One syntax option</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">set_one</span> <span class="o">&amp;</span> <span class="n">set_two</span> <span class="o">&amp;</span> <span class="n">set_three</span>
+
+<span class="c1"># Another option</span>
+<span class="n">result</span> <span class="o">=</span> <span class="nb">set</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">set_one</span><span class="p">,</span> <span class="n">set_two</span><span class="p">,</span> <span class="n">set_three</span><span class="p">)</span>
+</pre>
+
+
+<p>But let's suppose that one or more of your sets is empty. The intersection of any set and an empty set is an empty set. But, that's not what you want. (Well, it wasn't what I wanted, anyway.)</p>
+<p>Suppose you want the intersection of all non-empty sets.</p>
+<h2>List comprehension</h2>
+<p>If the sets are in a list, you can remove the empties. Then unpack the list into the <code>set.intersection()</code> function.</p>
+<pre class="code literal-block"><span class="n">list_of_sets</span> <span class="o">=</span> <span class="p">[</span><span class="n">set_one</span><span class="p">,</span> <span class="n">set_two</span><span class="p">,</span> <span class="n">set_three</span><span class="p">]</span>
+
+<span class="c1"># Empty sets evaluate to false,</span>
+<span class="c1"># so will be excluded from list comp.</span>
+<span class="n">non_empties</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">list_of_sets</span> <span class="k">if</span> <span class="n">x</span><span class="p">]</span>
+
+<span class="n">solution_set</span> <span class="o">=</span> <span class="nb">set</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="o">*</span><span class="n">non_empties</span><span class="p">)</span>
+</pre>
+
+
+<p>The asterisk before <code>non_empties</code> unpacks the list into a series of positional arguments. This is needed because <code>set.intersection()</code> takes an arbitrary number of sets, not an iterable full of sets. (It's the same asterisk as in <code>*args</code> in function definitions.)</p>
+<p>(Note: You <em>could</em> use a filter instead of a list comprehension, but <a href="http://www.artima.com/weblogs/viewpost.jsp?thread=98196">Guido thinks a list comprehension is better</a>. I agree.)</p>
+<h3>With iterable unpacking (tuple unpacking)</h3>
+<p>In my case, I was generating the sets in my code, and the solution set always contained only one item. And I wanted the item, not a set with the item. So...</p>
+<pre class="code literal-block"><span class="c1"># initialize an empty list</span>
+<span class="n">list_of_sets</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># each time I create a set,</span>
+<span class="c1"># append set to list when it is created,</span>
+<span class="c1"># instead of naming them individually</span>
+<span class="n">list_of_sets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">thing_that_generates_a_set</span><span class="p">()</span> <span class="p">)</span>
+
+<span class="c1"># drop the empties, find the intersection</span>
+<span class="c1"># and unpack the remaining single element</span>
+<span class="n">solution</span><span class="p">,</span> <span class="o">=</span> <span class="nb">set</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">list_of_sets</span> <span class="k">if</span> <span class="n">x</span><span class="p">])</span>
+</pre>
+
+
+<p>The comma after <code>solution</code> turns the assignment into a tuple unpacking. If you unpack a collection of one, you get the single item.</p>
+<p>By the way, if you end up with more than one item in your collection, and only want the first item, you can do:</p>
+<pre class="code literal-block">first_item, *_ = some_collection
+</pre>
+
+
+<p>The <code>*</code> indicates a variable number of positional arguments (it's the same asterisk as in <code>*args</code> and in passing the list to <code>set.intersection()</code> above), and the underscore is used as a convention for "not using this stuff."</p>
+<pre class="code literal-block"># you could have done this instead
+
+first_item, *stuff_i_will_not_care_about = some_collection
+</pre>
+
+
+<p>I'll be using that <code>*_</code> below, in the actual code.</p>
+<h2>Why would you ever do this?</h2>
+<h3>The generalized problem</h3>
+<p>From a pool of items, there are three attributes to select for. Specifying any two of them should produce one and only one result.</p>
+<h3>More specifically...</h3>
+<p>Musical intervals.</p>
+<p>A musical interval has:</p>
+<ul>
+<li>a quality (Major, Minor, Perfect, Augment, or Diminished)</li>
+<li>a number (Unison (1), Second (2), Third (3) ... Octave (8))</li>
+<li>a distance of half_steps (for example, a major third is 4 half steps)</li>
+</ul>
+<p>If you know any two of these, you can select the correct one.</p>
+<h2>Some actual code</h2>
+<pre class="code literal-block"><span class="k">class</span> <span class="nc">Interval</span><span class="p">():</span>
+
+  <span class="c1">#####################################</span>
+  <span class="c1"># ... all sorts of things removed ...</span>
+  <span class="c1">#####################################</span>
+
+
+  <span class="n">instances</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+  <span class="c1"># all instances of Interval</span>
+
+
+  <span class="nd">@classmethod</span>
+  <span class="k">def</span> <span class="nf">get_intervals</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">quality</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">half_steps</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+      <span class="sd">"""Return a set of intervals."""</span>
+
+      <span class="n">candidate_sets</span> <span class="o">=</span> <span class="p">[]</span>
+
+      <span class="n">candidate_sets</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">cls</span><span class="o">.</span><span class="n">instances</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">quality</span> <span class="o">==</span> <span class="n">quality</span><span class="p">})</span>
+
+      <span class="n">candidate_sets</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">cls</span><span class="o">.</span><span class="n">instances</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">number</span> <span class="o">==</span> <span class="n">number</span><span class="p">})</span>
+
+      <span class="n">candidate_sets</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">cls</span><span class="o">.</span><span class="n">instances</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">half_steps</span> <span class="o">==</span> <span class="n">half_steps</span><span class="p">})</span>
+
+      <span class="n">candidate_sets</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">candidate_sets</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
+
+      <span class="k">return</span> <span class="nb">set</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="o">*</span><span class="n">candidate_sets</span><span class="p">)</span>
+
+  <span class="nd">@classmethod</span>
+  <span class="k">def</span> <span class="nf">get_interval</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">quality</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">half_steps</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+      <span class="sd">""" Return a single interval."""</span>
+
+      <span class="k">try</span><span class="p">:</span>
+          <span class="n">interval</span><span class="p">,</span> <span class="o">=</span> <span class="n">cls</span><span class="o">.</span><span class="n">get_intervals</span><span class="p">(</span><span class="n">quality</span><span class="o">=</span><span class="n">quality</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="n">number</span><span class="p">,</span> <span class="n">half_steps</span><span class="o">=</span><span class="n">half_steps</span><span class="p">)</span>
+
+      <span class="c1">## if there was not one and only one result</span>
+      <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+
+          <span class="c1"># only select by half_steps</span>
+          <span class="n">candidates</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">cls</span><span class="o">.</span><span class="n">instances</span> <span class="k">if</span> <span class="n">half_steps</span> <span class="o">==</span> <span class="n">x</span><span class="o">.</span><span class="n">half_steps</span><span class="p">]</span>
+
+          <span class="c1"># select the first one,</span>
+          <span class="c1"># based on quality priority:</span>
+          <span class="c1"># Perfect, Major, Minor, Dim, Aug</span>
+          <span class="n">interval</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">candidates</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">quality</span><span class="o">.</span><span class="n">priority</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">interval</span>
+</pre>
+
+
+<p>In <a href="https://github.com/OphisMusic/ophis">the actual code</a>, there's a bunch of other things going on, but this is the general idea.</p>
+<h2>Another approach</h2>
+<p>For my specific use case, another approach is simply to not create a set for the unspecified attribute.</p>
+<pre class="code literal-block"><span class="k">if</span> <span class="n">quality</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="n">candidate_sets</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">cls</span><span class="o">.</span><span class="n">instances</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">quality</span> <span class="o">==</span> <span class="n">quality</span><span class="p">})</span>
+
+<span class="k">if</span> <span class="n">number</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="n">candidate_sets</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">cls</span><span class="o">.</span><span class="n">instances</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">number</span> <span class="o">==</span> <span class="n">number</span><span class="p">})</span>
+
+<span class="k">if</span> <span class="n">half_steps</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="n">candidate_sets</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">cls</span><span class="o">.</span><span class="n">instances</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">half_steps</span> <span class="o">==</span> <span class="n">half_steps</span><span class="p">})</span>
+</pre>
+
+
+<p>In my working code, I actually do both. This allows for a potentially meaningful result even if something is specified incorrectly. I could have decided to let bad input cause explicit failure, but I <strong>think</strong> I'd rather not in this case.</p>
+<h2>So... what's the point?</h2>
+<p>This post looks like a tutorial on list comprehension. Or maybe set operations. But really this post is about problem solving while writing code.</p>
+<p>The code solution to this problem is really easy... but <em>only if you've figured out the problem you need to solve</em>.</p>
+<p>I started with the following problem:</p>
+<blockquote>
+<p>Find the intersection of all non-empty sets, from an arbitrary pool of sets, not knowing which ones would be empty.</p>
+</blockquote>
+<p>So I started Googling variations on that theme. But there aren't any "intersection of just the good sets" functions. Then I tried to start writing a question for Stack Overflow, and as soon as I had written the title, I knew the answer.</p>
+<blockquote>
+<p>Starting with a collection of sets, drop the empty sets and find the intersection of the remaining sets.</p>
+</blockquote>
+<p>As soon as I broke my one problem into two steps, the problem was immediately solved:</p>
+<ol>
+<li>Create a new collection without the empties. (List comp.)</li>
+<li>Find the intersection of <em>that</em> list.</li>
+</ol>
+<p>At the same moment I realized these steps, it also become clear that the original group of sets should be a collection, not just several unrelated objects.</p>
+<p>So, the moral of the story is...</p>
+<p>If you can't find the solution to your specific problem, restate your problem as a series of steps.</p>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/verbiage/" class="u-url">Verbiage</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn">
                 Adam Michael Wood
@@ -282,26 +448,6 @@
     <div>
 <p>My New Year's Resolution --- which I have so far held to --- is to write <em>and publish</em> every day.</p>
 <p class="more"><a href="posts/shipping/">Read more…</a></p>
-</div>
-    </div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/data-structures-and-philosophy/" class="u-url">Data Structures and Philosophy</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn">
-                Adam Michael Wood
-            </span></p>
-            <p class="dateline"><a href="posts/data-structures-and-philosophy/" rel="bookmark"><time class="published dt-published" datetime="2017-01-06T07:26:34-08:00" title="2017-01-06 07:26">2017-01-06 07:26</time></a></p>
-                <p class="commentline">
-        
-    <a href="posts/data-structures-and-philosophy/#disqus_thread" data-disqus-identifier="cache/posts/data-structures-and-philosophy.html">Comments</a>
-
-
-        </p>
-</div>
-    </header><div class="p-summary entry-summary">
-    <div>
-<p>Sometimes bad programming is just bad programming: people write sloppy code, people don't know how things are supposed to work, people forget that binary math is weird sometimes.</p>
-<p>But often, bad programming is a result of bad philosophy - a fundamental misunderstanding of how meaning is made, or thought works, or how the world is structured. Sometimes the fault is a little less radical, tied to ignorance of some domain-specific facts, but often it's just plain bad philosophy.</p>
-<p class="more"><a href="posts/data-structures-and-philosophy/">Read more…</a></p>
 </div>
     </div>
     </article>
