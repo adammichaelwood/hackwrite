@@ -11,7 +11,7 @@
 <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
 <link rel="canonical" href="http://hackwrite.com/">
 <link rel="next" href="index-1.html" type="text/html">
-<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/intersection-of-non-empty-sets-in-python/" type="text/html">
+<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/registering-functions-against-object-methods-in-python/" type="text/html">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -33,7 +33,214 @@
     
     
     </ul></nav></header><main id="content"><div class="postindex">
-    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/intersection-of-non-empty-sets-in-python/" class="u-url">Intersection of Non-Empty Sets in Python</a></h1>
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/registering-functions-against-object-methods-in-python/" class="u-url">Registering Functions Against Object Methods in Python</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                Adam Michael Wood
+            </span></p>
+            <p class="dateline"><a href="posts/registering-functions-against-object-methods-in-python/" rel="bookmark"><time class="published dt-published" datetime="2017-05-25T13:07:32-07:00" title="2017-05-25 13:07">2017-05-25 13:07</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/registering-functions-against-object-methods-in-python/#disqus_thread" data-disqus-identifier="cache/posts/registering-functions-against-object-methods-in-python.html">Comments</a>
+
+
+        </p>
+</div>
+    </header><div class="p-summary entry-summary">
+    <p>My big side project right now is a <a href="https://github.com/OphisMusic/ophis">music theory library in Python, called Ophis</a>. Among many other concerns, I'm trying to make the API as natural and easy to use as possible. This often means finding ways of creating objects other than <code>ClassName(args)</code>.</p>
+<p>Ophis has the classes <code>Chroma</code> and <code>Pitch</code>. A chroma is a note name without an octave (the <em>idea</em> of C), while a pitch is a chroma with a specified octave (middle C).</p>
+<p>The problem with this is that the conventional way of referring to a pitch would then be:</p>
+<pre class="code literal-block"><span class="n">ophis</span><span class="o">.</span><span class="n">Pitch</span><span class="p">(</span><span class="n">ophis</span><span class="o">.</span><span class="n">C</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre>
+
+
+<p>You can see, Ophis has already initialized all the note names (chromae) you would need. We <em>could</em> do that with pitches...</p>
+<pre class="code literal-block"><span class="n">C0</span> <span class="o">=</span> <span class="n">Pitch</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">C1</span> <span class="o">=</span> <span class="n">Pitch</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># later, in user code...</span>
+
+<span class="n">ophis</span><span class="o">.</span><span class="n">C1</span>
+</pre>
+
+
+<p>...but I think we all know the problem with that. It requires initializing several hundred pitch objects that may never be used. Most songs don't use every note. And every physical note has multiple names because of enharmonic spelling (F♯ == G♭).</p>
+<p>So, what if the API looked like this?</p>
+<pre class="code literal-block"><span class="n">ophis</span><span class="o">.</span><span class="n">C</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre>
+
+
+<p>That's cool. Pretty easy to do, too.</p>
+<pre class="code literal-block"><span class="k">class</span> <span class="nc">Chroma</span><span class="p">:</span>
+
+  <span class="c1">#</span>
+  <span class="c1">#</span>
+  <span class="c1">#</span>
+
+  <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">octave</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">Pitch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">octave</span><span class="p">)</span>
+</pre>
+
+
+<h2>What if we went deeper?</h2>
+<p>Once you realize this is a good idea, the next thing you realize is.... what about chords?</p>
+<pre class="code literal-block"><span class="n">ophis</span><span class="o">.</span><span class="n">Chord</span><span class="p">(</span><span class="n">ophis</span><span class="o">.</span><span class="n">C</span><span class="p">,</span> <span class="n">Major</span><span class="p">)</span>
+</pre>
+
+
+<p>Well, that looks pretty similar, doesn't it?</p>
+<p>So, um... okay...</p>
+<pre class="code literal-block"><span class="k">class</span> <span class="nc">Chroma</span><span class="p">:</span>
+
+    <span class="c1">#</span>
+    <span class="c1">#</span>
+    <span class="c1">#</span>
+
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+          <span class="k">return</span> <span class="n">Pitch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+          <span class="k">return</span> <span class="n">Chord</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+</pre>
+
+
+<p>There are problems with this.</p>
+<ul>
+<li>Definitions for Pitch and Chord are in modules that get loaded after Chroma. This doesn't create any errors (because the function isn't run on load), but still feels wrong.</li>
+<li>It is brittle. If I change the name of <code>Pitch</code> or <code>Chord</code>, I have to go back and change it here. The tightly-wound nature of music terminology means I have long-since given up the idea of <em>loose coupling</em>, but I'm trying to make these types of dependencies only go up the conceptual ladder, not back down it.</li>
+<li>What if I want to add more things to this method? Eventually I'm going to end up creating a series of type checks.</li>
+</ul>
+<p>When I was working through this, I didn't see any way around a series of type checks, but I thought I could solve the first two problems with some creative coding.</p>
+<p>I decided I could register functions into a <code>dict</code>, stored on the class. The keys for the dict would be types, and the values would be the functions to run when <code>__call__</code> is called with that particular type as an argument. These functions could be registered at the point when the type that the function is supposed to return is created.</p>
+<p>Something like...</p>
+<pre class="code literal-block"><span class="k">class</span> <span class="nc">Chroma</span><span class="p">:</span>
+
+    <span class="c1">#</span>
+    <span class="c1">#</span>
+    <span class="c1">#</span>
+
+    <span class="n">_callable_funcs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">x_type</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">_callable_funcs</span><span class="p">[</span><span class="n">x_type</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">_callable_funcs</span><span class="p">[</span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)](</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+
+<span class="c1"># This code has not been tested.</span>
+</pre>
+
+
+<p>I got (a version of) this to work, and I was feeling pretty darn proud of myself for thinking of this solution, and implementing it.</p>
+<p>Then I had this feeling like this was all very familiar. Maybe I had read about this type of thing?</p>
+<p>I quickly discovered three things:</p>
+<ul>
+<li>I had read about precisely this in <a href="http://amzn.to/2ruo2td"><em>Fluent Python</em> by Luciano Ramalho</a>. (This is a great book for intermediate Python programmers.)</li>
+<li>This pattern is called <em>single dispatch</em>.</li>
+<li>It is already <a href="https://docs.python.org/3/library/functools.html#functools.singledispatch">implemented in the standard library</a>.</li>
+</ul>
+<p>Unfortunately, I have two problems:</p>
+<ul>
+<li>The <code>@singledispatch</code> decorator only looks at the first argument of a function call. The first argument of a method call is always <code>self</code>. So, out of the box, this dosn't work for instance methods.</li>
+<li>
+<code>@singledispatch</code> was <a href="https://www.python.org/dev/peps/pep-0443/">added in v3.4</a>, making it still a little newish. Since I'm writing a utility library for others to use, and not my own application, it seems unwise to rely on something that everyone might not have.</li>
+</ul>
+<p>But, now I can do two things:</p>
+<ul>
+<li>See if anyone has already figured out a way to apply <code>@singledispatch</code> to a method. (<a href="https://stackoverflow.com/questions/24601722/how-can-i-use-functools-singledispatch-with-instance-methods">Someone has</a>.)</li>
+<li>Potentially re-implement <code>@singledispatch</code> myself, for backwards compatibility.</li>
+</ul>
+<p>Right...</p>
+<pre class="code literal-block"><span class="c1"># oph_utils.py</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">singledispatch</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="c1"># A re-implementation of @singledispatch</span>
+    <span class="c1"># has been left as an exercise for the reader</span>
+    <span class="c1"># because I haven't done one yet.</span>
+
+<span class="k">def</span> <span class="nf">method_dispatch</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="sd">"""</span>
+<span class="sd">    An extension of functools.singledispatch,</span>
+<span class="sd">    which looks at the argument after self.</span>
+<span class="sd">    """</span>
+    <span class="n">dispatcher</span> <span class="o">=</span> <span class="n">singledispatch</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">dispatcher</span><span class="o">.</span><span class="n">dispatch</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">__class__</span><span class="p">)(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
+    <span class="n">wrapper</span><span class="o">.</span><span class="n">register</span> <span class="o">=</span> <span class="n">dispatcher</span><span class="o">.</span><span class="n">register</span>
+    <span class="n">update_wrapper</span><span class="p">(</span><span class="n">wrapper</span><span class="p">,</span> <span class="n">func</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">wrapper</span>
+
+<span class="c1"># chroma.py</span>
+
+<span class="k">class</span> <span class="nc">Chroma</span><span class="p">():</span>
+
+    <span class="c1">#</span>
+    <span class="c1">#</span>
+    <span class="c1">#</span>
+
+
+    <span class="nd">@oph_utils.method_dispatch</span>
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+<span class="c1"># pitch.py</span>
+
+
+<span class="kn">import</span> <span class="nn">chroma</span> <span class="kn">as</span> <span class="nn">ch</span>
+
+<span class="k">class</span> <span class="nc">Pitch</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chroma</span><span class="p">,</span> <span class="n">octave</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">chroma</span> <span class="o">=</span> <span class="n">chroma</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">octave</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">octave</span><span class="p">)</span>
+
+
+<span class="n">ch</span><span class="o">.</span><span class="n">Chroma</span><span class="o">.</span><span class="n">__call__</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">Pitch</span><span class="p">)</span>
+
+
+<span class="c1"># In user code:</span>
+
+<span class="n">ophis</span><span class="o">.</span><span class="n">C</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="n">ophis</span><span class="o">.</span><span class="n">Pitch</span><span class="p">(</span><span class="n">ophis</span><span class="o">.</span><span class="n">C</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="c1"># True</span>
+</pre>
+
+
+<p>And finally, to encourage this usage...</p>
+<pre class="code literal-block"><span class="k">class</span> <span class="nc">Pitch</span><span class="p">:</span>
+
+    <span class="c1">#</span>
+    <span class="c1">#</span>
+    <span class="c1">#</span>
+
+
+    <span class="n">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">chroma</span><span class="o">.</span><span class="n">__repr__</span><span class="p">()],</span> <span class="s2">"("</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">octave</span><span class="o">.</span><span class="n">__repr__</span><span class="p">()],</span> <span class="s2">")"</span>
+            <span class="p">])</span>
+
+
+<span class="c1"># At a terminal...</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">ophis</span><span class="o">.</span><span class="n">Pitch</span><span class="p">(</span><span class="n">ophis</span><span class="o">.</span><span class="n">C</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">C</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre>
+
+
+<p>Feels Pythonic, yes?</p>
+<h2>Further Reading</h2>
+<ul>
+<li><a href="http://amzn.to/2rLvDTO">Fluent Python, by Luciano Ramalho</a></li>
+<li><a href="https://www.python.org/dev/peps/pep-0443/">PEP 443 -- Single-dispatch generic functions</a></li>
+<li>
+<a href="https://julien.danjou.info/blog/2013/python-3.4-single-dispatch-generic-function">Python 3.4 single dispatch, a step into generic functions</a> (Also a music-related example.)</li>
+</ul>
+</div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/intersection-of-non-empty-sets-in-python/" class="u-url">Intersection of Non-Empty Sets in Python</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn">
                 Adam Michael Wood
@@ -429,25 +636,6 @@ first_item, *stuff_i_will_not_care_about = some_collection
 <p>I love Github Pages. I run this blog, my <a href="http://adammichaelwood.com">personal blog</a>, and my <a href="http://progressivesolemnity.org">music and liturgy blog</a> on it. I used it to host <a href="http://docs.botcentral.ai">documentation for my most recent tech writing gig</a>.</p>
 <p>For a single writer with moderate or better technical skills looking for a simple hosting solution, it's amazing. But, I've recently realized there's a problem with it that makes it ill-suited for multiple collaborators working on complicated documentation. (Or even, as I discovered, a single writer on more than one machine.)</p>
 <p class="more"><a href="posts/github-pages-problem/">Read more…</a></p>
-</div>
-    </div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/shipping/" class="u-url">Shipping</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn">
-                Adam Michael Wood
-            </span></p>
-            <p class="dateline"><a href="posts/shipping/" rel="bookmark"><time class="published dt-published" datetime="2017-01-09T06:42:24-08:00" title="2017-01-09 06:42">2017-01-09 06:42</time></a></p>
-                <p class="commentline">
-        
-    <a href="posts/shipping/#disqus_thread" data-disqus-identifier="cache/posts/shipping.html">Comments</a>
-
-
-        </p>
-</div>
-    </header><div class="p-summary entry-summary">
-    <div>
-<p>My New Year's Resolution --- which I have so far held to --- is to write <em>and publish</em> every day.</p>
-<p class="more"><a href="posts/shipping/">Read more…</a></p>
 </div>
     </div>
     </article>

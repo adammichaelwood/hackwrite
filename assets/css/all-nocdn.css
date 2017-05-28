@@ -787,3 +787,7 @@ pre.code, code {
 		padding: 0;
 	}
 }
+
+.literal-block{
+  padding: 1em;
+}

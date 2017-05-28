@@ -1,5 +1,194 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>hack.write()</title><link>http://hackwrite.com/</link><description>Writing about writing about development.</description><atom:link href="http://hackwrite.com/rss.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><lastBuildDate>Sun, 16 Apr 2017 00:19:05 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Intersection of Non-Empty Sets in Python</title><link>http://hackwrite.com/posts/intersection-of-non-empty-sets-in-python/</link><dc:creator>Adam Michael Wood</dc:creator><description>&lt;p&gt;Suppose you generate several sets on the fly, and you want to find the elements that are in all the sets. That's easy, it's the intersection of sets.&lt;/p&gt;
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>hack.write()</title><link>http://hackwrite.com/</link><description>Writing about writing about development.</description><atom:link rel="self" href="http://hackwrite.com/rss.xml" type="application/rss+xml"></atom:link><language>en</language><lastBuildDate>Sun, 28 May 2017 23:24:28 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Registering Functions Against Object Methods in Python</title><link>http://hackwrite.com/posts/registering-functions-against-object-methods-in-python/</link><dc:creator>Adam Michael Wood</dc:creator><description>&lt;p&gt;My big side project right now is a &lt;a href="https://github.com/OphisMusic/ophis"&gt;music theory library in Python, called Ophis&lt;/a&gt;. Among many other concerns, I'm trying to make the API as natural and easy to use as possible. This often means finding ways of creating objects other than &lt;code&gt;ClassName(args)&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Ophis has the classes &lt;code&gt;Chroma&lt;/code&gt; and &lt;code&gt;Pitch&lt;/code&gt;. A chroma is a note name without an octave (the &lt;em&gt;idea&lt;/em&gt; of C), while a pitch is a chroma with a specified octave (middle C).&lt;/p&gt;
+&lt;p&gt;The problem with this is that the conventional way of referring to a pitch would then be:&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span class="n"&gt;ophis&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Pitch&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ophis&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;
+
+
+&lt;p&gt;You can see, Ophis has already initialized all the note names (chromae) you would need. We &lt;em&gt;could&lt;/em&gt; do that with pitches...&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span class="n"&gt;C0&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Pitch&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;C1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Pitch&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# later, in user code...&lt;/span&gt;
+
+&lt;span class="n"&gt;ophis&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;C1&lt;/span&gt;
+&lt;/pre&gt;
+
+
+&lt;p&gt;...but I think we all know the problem with that. It requires initializing several hundred pitch objects that may never be used. Most songs don't use every note. And every physical note has multiple names because of enharmonic spelling (F♯ == G♭).&lt;/p&gt;
+&lt;p&gt;So, what if the API looked like this?&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span class="n"&gt;ophis&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;
+
+
+&lt;p&gt;That's cool. Pretty easy to do, too.&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Chroma&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+
+  &lt;span class="c1"&gt;#&lt;/span&gt;
+  &lt;span class="c1"&gt;#&lt;/span&gt;
+  &lt;span class="c1"&gt;#&lt;/span&gt;
+
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__call__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;octave&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;Pitch&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;octave&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;
+
+
+&lt;h2&gt;What if we went deeper?&lt;/h2&gt;
+&lt;p&gt;Once you realize this is a good idea, the next thing you realize is.... what about chords?&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span class="n"&gt;ophis&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Chord&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ophis&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Major&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;
+
+
+&lt;p&gt;Well, that looks pretty similar, doesn't it?&lt;/p&gt;
+&lt;p&gt;So, um... okay...&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Chroma&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+
+    &lt;span class="c1"&gt;#&lt;/span&gt;
+    &lt;span class="c1"&gt;#&lt;/span&gt;
+    &lt;span class="c1"&gt;#&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__call__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+          &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;Pitch&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;except&lt;/span&gt; &lt;span class="ne"&gt;TypeError&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+          &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;Chord&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;
+
+
+&lt;p&gt;There are problems with this.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Definitions for Pitch and Chord are in modules that get loaded after Chroma. This doesn't create any errors (because the function isn't run on load), but still feels wrong.&lt;/li&gt;
+&lt;li&gt;It is brittle. If I change the name of &lt;code&gt;Pitch&lt;/code&gt; or &lt;code&gt;Chord&lt;/code&gt;, I have to go back and change it here. The tightly-wound nature of music terminology means I have long-since given up the idea of &lt;em&gt;loose coupling&lt;/em&gt;, but I'm trying to make these types of dependencies only go up the conceptual ladder, not back down it.&lt;/li&gt;
+&lt;li&gt;What if I want to add more things to this method? Eventually I'm going to end up creating a series of type checks.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;When I was working through this, I didn't see any way around a series of type checks, but I thought I could solve the first two problems with some creative coding.&lt;/p&gt;
+&lt;p&gt;I decided I could register functions into a &lt;code&gt;dict&lt;/code&gt;, stored on the class. The keys for the dict would be types, and the values would be the functions to run when &lt;code&gt;__call__&lt;/code&gt; is called with that particular type as an argument. These functions could be registered at the point when the type that the function is supposed to return is created.&lt;/p&gt;
+&lt;p&gt;Something like...&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Chroma&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+
+    &lt;span class="c1"&gt;#&lt;/span&gt;
+    &lt;span class="c1"&gt;#&lt;/span&gt;
+    &lt;span class="c1"&gt;#&lt;/span&gt;
+
+    &lt;span class="n"&gt;_callable_funcs&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;dict&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__call__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;x_type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;callable&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+            &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;__class__&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_callable_funcs&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;x_type&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;
+        &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;__class__&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_callable_funcs&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;type&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)](&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+&lt;span class="c1"&gt;# This code has not been tested.&lt;/span&gt;
+&lt;/pre&gt;
+
+
+&lt;p&gt;I got (a version of) this to work, and I was feeling pretty darn proud of myself for thinking of this solution, and implementing it.&lt;/p&gt;
+&lt;p&gt;Then I had this feeling like this was all very familiar. Maybe I had read about this type of thing?&lt;/p&gt;
+&lt;p&gt;I quickly discovered three things:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;I had read about precisely this in &lt;a href="http://amzn.to/2ruo2td"&gt;&lt;em&gt;Fluent Python&lt;/em&gt; by Luciano Ramalho&lt;/a&gt;. (This is a great book for intermediate Python programmers.)&lt;/li&gt;
+&lt;li&gt;This pattern is called &lt;em&gt;single dispatch&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;It is already &lt;a href="https://docs.python.org/3/library/functools.html#functools.singledispatch"&gt;implemented in the standard library&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Unfortunately, I have two problems:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The &lt;code&gt;@singledispatch&lt;/code&gt; decorator only looks at the first argument of a function call. The first argument of a method call is always &lt;code&gt;self&lt;/code&gt;. So, out of the box, this dosn't work for instance methods.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;@singledispatch&lt;/code&gt; was &lt;a href="https://www.python.org/dev/peps/pep-0443/"&gt;added in v3.4&lt;/a&gt;, making it still a little newish. Since I'm writing a utility library for others to use, and not my own application, it seems unwise to rely on something that everyone might not have.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;But, now I can do two things:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;See if anyone has already figured out a way to apply &lt;code&gt;@singledispatch&lt;/code&gt; to a method. (&lt;a href="https://stackoverflow.com/questions/24601722/how-can-i-use-functools-singledispatch-with-instance-methods"&gt;Someone has&lt;/a&gt;.)&lt;/li&gt;
+&lt;li&gt;Potentially re-implement &lt;code&gt;@singledispatch&lt;/code&gt; myself, for backwards compatibility.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Right...&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span class="c1"&gt;# oph_utils.py&lt;/span&gt;
+
+&lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;functools&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;singledispatch&lt;/span&gt;
+&lt;span class="k"&gt;except&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="c1"&gt;# A re-implementation of @singledispatch&lt;/span&gt;
+    &lt;span class="c1"&gt;# has been left as an exercise for the reader&lt;/span&gt;
+    &lt;span class="c1"&gt;# because I haven't done one yet.&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;method_dispatch&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;func&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;"""&lt;/span&gt;
+&lt;span class="sd"&gt;    An extension of functools.singledispatch,&lt;/span&gt;
+&lt;span class="sd"&gt;    which looks at the argument after self.&lt;/span&gt;
+&lt;span class="sd"&gt;    """&lt;/span&gt;
+    &lt;span class="n"&gt;dispatcher&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;singledispatch&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;func&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;wrapper&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kw&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;dispatcher&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dispatch&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;__class__&lt;/span&gt;&lt;span class="p"&gt;)(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kw&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;wrapper&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;register&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;dispatcher&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;register&lt;/span&gt;
+    &lt;span class="n"&gt;update_wrapper&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;wrapper&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;func&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;wrapper&lt;/span&gt;
+
+&lt;span class="c1"&gt;# chroma.py&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Chroma&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+
+    &lt;span class="c1"&gt;#&lt;/span&gt;
+    &lt;span class="c1"&gt;#&lt;/span&gt;
+    &lt;span class="c1"&gt;#&lt;/span&gt;
+
+
+    &lt;span class="nd"&gt;@oph_utils.method_dispatch&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__call__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;
+
+&lt;span class="c1"&gt;# pitch.py&lt;/span&gt;
+
+
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;chroma&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;ch&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Pitch&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;chroma&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;octave&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+          &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;chroma&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;chroma&lt;/span&gt;
+          &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;octave&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;octave&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+&lt;span class="n"&gt;ch&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Chroma&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;__call__&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;register&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Pitch&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+&lt;span class="c1"&gt;# In user code:&lt;/span&gt;
+
+&lt;span class="n"&gt;ophis&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="n"&gt;ophis&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Pitch&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ophis&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="c1"&gt;# True&lt;/span&gt;
+&lt;/pre&gt;
+
+
+&lt;p&gt;And finally, to encourage this usage...&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Pitch&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+
+    &lt;span class="c1"&gt;#&lt;/span&gt;
+    &lt;span class="c1"&gt;#&lt;/span&gt;
+    &lt;span class="c1"&gt;#&lt;/span&gt;
+
+
+    &lt;span class="n"&gt;__repr__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s2"&gt;""&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;
+            &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;chroma&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;__repr__&lt;/span&gt;&lt;span class="p"&gt;()],&lt;/span&gt; &lt;span class="s2"&gt;"("&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;octave&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;__repr__&lt;/span&gt;&lt;span class="p"&gt;()],&lt;/span&gt; &lt;span class="s2"&gt;")"&lt;/span&gt;
+            &lt;span class="p"&gt;])&lt;/span&gt;
+
+
+&lt;span class="c1"&gt;# At a terminal...&lt;/span&gt;
+
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;ophis&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Pitch&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ophis&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;
+
+
+&lt;p&gt;Feels Pythonic, yes?&lt;/p&gt;
+&lt;h2&gt;Further Reading&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://amzn.to/2rLvDTO"&gt;Fluent Python, by Luciano Ramalho&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.python.org/dev/peps/pep-0443/"&gt;PEP 443 -- Single-dispatch generic functions&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://julien.danjou.info/blog/2013/python-3.4-single-dispatch-generic-function"&gt;Python 3.4 single dispatch, a step into generic functions&lt;/a&gt; (Also a music-related example.)&lt;/li&gt;
+&lt;/ul&gt;</description><guid>http://hackwrite.com/posts/registering-functions-against-object-methods-in-python/</guid><pubDate>Thu, 25 May 2017 20:07:32 GMT</pubDate></item><item><title>Intersection of Non-Empty Sets in Python</title><link>http://hackwrite.com/posts/intersection-of-non-empty-sets-in-python/</link><dc:creator>Adam Michael Wood</dc:creator><description>&lt;p&gt;Suppose you generate several sets on the fly, and you want to find the elements that are in all the sets. That's easy, it's the intersection of sets.&lt;/p&gt;
 &lt;pre class="code literal-block"&gt;&lt;span class="c1"&gt;# One syntax option&lt;/span&gt;
 &lt;span class="n"&gt;result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;set_one&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;set_two&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;set_three&lt;/span&gt;
 
@@ -247,5 +436,4 @@ first_item, *stuff_i_will_not_care_about = some_collection
 &lt;p&gt;To start answering that question, I'd like to expand what we mean by "learn to code" or "knowing how to code" to "developer skills" in general. Too much focus on &lt;em&gt;coding&lt;/em&gt; overlooks the other highly useful things that developers know and do that tech writers can benefit from.&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://hackwrite.com/posts/what-and-how-much-to-learn/"&gt;Read more…&lt;/a&gt; (11 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><guid>http://hackwrite.com/posts/what-and-how-much-to-learn/</guid><pubDate>Thu, 19 Jan 2017 14:30:00 GMT</pubDate></item><item><title>The Problem with Github Pages</title><link>http://hackwrite.com/posts/github-pages-problem/</link><dc:creator>Adam Michael Wood</dc:creator><description>&lt;div&gt;&lt;p&gt;I love Github Pages. I run this blog, my &lt;a href="http://adammichaelwood.com"&gt;personal blog&lt;/a&gt;, and my &lt;a href="http://progressivesolemnity.org"&gt;music and liturgy blog&lt;/a&gt; on it. I used it to host &lt;a href="http://docs.botcentral.ai"&gt;documentation for my most recent tech writing gig&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;For a single writer with moderate or better technical skills looking for a simple hosting solution, it's amazing. But, I've recently realized there's a problem with it that makes it ill-suited for multiple collaborators working on complicated documentation. (Or even, as I discovered, a single writer on more than one machine.)&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://hackwrite.com/posts/github-pages-problem/"&gt;Read more…&lt;/a&gt; (4 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><guid>http://hackwrite.com/posts/github-pages-problem/</guid><pubDate>Tue, 10 Jan 2017 13:50:37 GMT</pubDate></item><item><title>Shipping</title><link>http://hackwrite.com/posts/shipping/</link><dc:creator>Adam Michael Wood</dc:creator><description>&lt;div&gt;&lt;p&gt;My New Year's Resolution --- which I have so far held to --- is to write &lt;em&gt;and publish&lt;/em&gt; every day.&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://hackwrite.com/posts/shipping/"&gt;Read more…&lt;/a&gt; (1 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><guid>http://hackwrite.com/posts/shipping/</guid><pubDate>Mon, 09 Jan 2017 14:42:24 GMT</pubDate></item></channel></rss>
+&lt;p&gt;&lt;a href="http://hackwrite.com/posts/github-pages-problem/"&gt;Read more…&lt;/a&gt; (4 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><guid>http://hackwrite.com/posts/github-pages-problem/</guid><pubDate>Tue, 10 Jan 2017 13:50:37 GMT</pubDate></item></channel></rss>
