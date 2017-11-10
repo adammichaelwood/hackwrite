@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html prefix="            og: http://ogp.me/ns# article: http://ogp.me/ns/article#     " vocab="http://ogp.me/ns" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Emacs for Technical Writing | hack.write()</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<link rel="canonical" href="http://hackwrite.com/posts/emacs-for-technical-writing/">
+<!--[if lt IE 9]><script src="../../assets/js/html5shiv-printshiv.min.js"></script><![endif]--><meta name="author" content="Adam Michael Wood">
+<link rel="prev" href="../registering-functions-against-object-methods-in-python/" title="Registering Functions Against Object Methods in Python" type="text/html">
+<link rel="next" href="../object-oriented-vs-functional-modelling-of-musical-arithmetic-in-python/" title="Object-oriented vs. Functional Modelling of Musical Arithmetic in Python" type="text/html">
+<meta property="og:site_name" content="hack.write()">
+<meta property="og:title" content="Emacs for Technical Writing">
+<meta property="og:url" content="http://hackwrite.com/posts/emacs-for-technical-writing/">
+<meta property="og:description" content="I've been thinking about switching to Emacs for a long time. I had a sense that it would fit my personality, and that the ability to automate tasks and customize the environment would boost productivi">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2017-08-22T08:29:08-07:00">
+</head>
+<body>
+    <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+    <div id="container">
+         
+    <header id="header"><h1 id="brand"><a href="http://hackwrite.com/" title="hack.write()" rel="home">
+
+        <span id="blog-title">hack.write()</span>
+    </a></h1>
+
+        
+
+        
+    <nav id="menu"><ul>
+<li><a href="../../archive.html">Archive</a></li>
+                <li><a href="../../categories/">Tags</a></li>
+                <li><a href="../../rss.xml">RSS feed</a></li>
+                <li><a href="https://github.com/adammichaelwood/hackwrite">Repo</a></li>
+    
+    
+    </ul></nav></header><main id="content"><article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Emacs for Technical Writing</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                    Adam Michael Wood
+            </span></p>
+            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2017-08-22T08:29:08-07:00" itemprop="datePublished" title="2017-08-22 08:29">2017-08-22 08:29</time></a></p>
+                <p class="commentline">
+        
+    <a href="#disqus_thread" data-disqus-identifier="cache/posts/emacs-for-technical-writing.html">Comments</a>
+
+
+            
+        </p>
+<p class="sourceline"><a href="index.md" class="sourcelink">Source</a></p>
+
+        </div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <p>I've been thinking about switching to Emacs for a long time. I had a sense that it would fit my personality, and that the ability to automate tasks and customize the environment would boost productivity. But it always seemed a bit out of reach. I thought I would probably need to take several weeks to really learn it, and I never seem to have that kind of time.</p>
+<p>But I recently made the switch, and am now using Emacs as my primary editor and terminal.</p>
+<p>This is my fourth editor. When I first started writing code and using plaintext for prose, I used Notepad++. When I had enough of an idea about what I wanted in an editor, I switched to Sublime. Then about a year or so ago I switched to Atom because it is Free and Open, and provided a very similar experience to Sublime.</p>
+<p>But Emacs was always there, in the back of my mind. Finally, two things shifted the balance for me:</p>
+<ul>
+<li>better reStructured text support in Emacs (specificially, proper syntax highlighting)</li>
+<li>the dawning realization of Atom's (well, Electron's) performance problems</li>
+</ul>
+<p>There are a couple Atom plugins for highlighting ReST, but neither one works right 100% of the time. I would write some oddball directive and all of the sudden half the document was grey or red. Then I'd open a new <code>.rst</code> doc and try the samwe thing and it would be fine. Or portions simply wouldn't highlight at all. I found it maddening. I thought about learning enough about the Atom plugin development and syntax highlighting to try to fix the problem myself, but that seemed like a bad use of my time and learning bandwidth.</p>
+<p>Looking around for editors with good ReST support, I found Emacs listed. I use ReST and Sphinx every day now, and I'm currently on my fourth Sphinx-using writing gig. <em>Okay... I guess I'll finally take the time.</em></p>
+<h2>Benefits of Emacs</h2>
+<p>I've quickly discovered that Emacs is:</p>
+<ul>
+<li>not <em>that hard</em> to get going with</li>
+<li>enormously helpful</li>
+</ul>
+<p>Here are a few of the benefits I have noticed in just the first couple weeks, while barely scratching the surface.</p>
+<h3>Less Pain</h3>
+<p>I have moderate-to-severe pain in my back, around my right shoulder blade. This seems to be largely caused by my constant trackpadding. Moving to a keyboard-centric interface has greatly reduced my pain. (I suspect that if I switch to a split keyboard and maybe get a foot pedal I can make more progress on this front. I also think I should take the time to learn to type properly.)</p>
+<p>It is, of course, possible to use a keyboard to navigate in Atom and most other editors. I could have installed Emacs keybinding for Atom. But it was too easy not too. Emacs served a forcing function because mouse navigating simply isn't possible. (I am even running Emacs in my terminal, rather than as a standalone app, so I can't even mouse on the menu.)</p>
+<h3>Less Distraction</h3>
+<p>You can run a shell inside Emacs. Since I can switch from the file I'm working on to the shell inside the same window, I don't need to swipe over to another screen. This </p>
+    </div>
+    <aside class="postpromonav"><nav><ul class="pager hidden-print">
+<li class="previous">
+                <a href="../registering-functions-against-object-methods-in-python/" rel="prev" title="Registering Functions Against Object Methods in Python">Previous post</a>
+            </li>
+            <li class="next">
+                <a href="../object-oriented-vs-functional-modelling-of-musical-arithmetic-in-python/" rel="next" title="Object-oriented vs. Functional Modelling of Musical Arithmetic in Python">Next post</a>
+            </li>
+        </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
+        
+        
+        <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="adammichaelwood",
+            disqus_url="http://hackwrite.com/posts/emacs-for-technical-writing/",
+        disqus_title="Emacs for Technical Writing",
+        disqus_identifier="cache/posts/emacs-for-technical-writing.html",
+        disqus_config = function () {
+            this.language = "en";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="https://disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        </section></article><script>var disqus_shortname="adammichaelwood";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script></main><footer id="footer"><p>© 2016–2017 <a href="mailto:adam.michael.wood@gmail.com">Adam Michael Wood</a> - <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> <br><span id="powered-by">Powered by <a href="https://getnikola.com" rel="nofollow">Nikola</a></span></p>
+            
+        </footer>
+</div>
+    
+    
+
+        <script src="../../assets/js/baguetteBox.min.js"></script><script>baguetteBox.run('a.reference', {
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});</script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga'); ga('create', 'UA-46189469-6', 'auto'); ga('send', 'pageview');</script>
+</body>
+</html>

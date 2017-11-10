@@ -2,18 +2,53 @@
 <html prefix="            og: http://ogp.me/ns# article: http://ogp.me/ns/article#     " vocab="http://ogp.me/ns" lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="description" content="Writing about writing about development.">
 <meta name="viewport" content="width=device-width">
-<title>hack.write()</title>
-<link href="assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
-<link href="assets/css/ipython.min.css" rel="stylesheet" type="text/css">
-<link href="assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
+<title>Object-oriented vs. Functional Modelling of Musical Arithmetic in Python | hack.write()</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
 <meta name="theme-color" content="#5670d4">
 <meta name="generator" content="Nikola (getnikola.com)">
-<link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
-<link rel="canonical" href="http://hackwrite.com/">
-<link rel="next" href="index-2.html" type="text/html">
-<!--[if lt IE 9]><script src="assets/js/html5shiv-printshiv.min.js"></script><![endif]--><link rel="prefetch" href="posts/object-oriented-vs-functional-modelling-of-musical-arithmetic-in-python/" type="text/html">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<link rel="canonical" href="http://hackwrite.com/posts/object-oriented-vs-functional-modelling-of-musical-arithmetic-in-python/">
+<!--[if lt IE 9]><script src="../../assets/js/html5shiv-printshiv.min.js"></script><![endif]--><meta name="author" content="Adam Michael Wood">
+<link rel="prev" href="../emacs-for-technical-writing/" title="Emacs for Technical Writing" type="text/html">
+<meta property="og:site_name" content="hack.write()">
+<meta property="og:title" content="Object-oriented vs. Functional Modelling of Musical Arithmetic in Pyth">
+<meta property="og:url" content="http://hackwrite.com/posts/object-oriented-vs-functional-modelling-of-musical-arithmetic-in-python/">
+<meta property="og:description" content="Classical vs. Functional Modelling of Musical Arithmetic in Python¶
+
+
+
+
+
+
+
+I'm currently building a music theory library in Python, called Ophis.
+
+
+
+
+
+
+In [1]:
+
+    
+import ophis
+
+
+
+
+
+
+
+
+
+
+
+This is an">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2017-11-10T11:07:06-08:00">
 </head>
 <body>
     <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -28,27 +63,32 @@
 
         
     <nav id="menu"><ul>
-<li><a href="archive.html">Archive</a></li>
-                <li><a href="categories/">Tags</a></li>
-                <li><a href="rss.xml">RSS feed</a></li>
+<li><a href="../../archive.html">Archive</a></li>
+                <li><a href="../../categories/">Tags</a></li>
+                <li><a href="../../rss.xml">RSS feed</a></li>
                 <li><a href="https://github.com/adammichaelwood/hackwrite">Repo</a></li>
     
     
-    </ul></nav></header><main id="content"><div class="postindex">
-    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/object-oriented-vs-functional-modelling-of-musical-arithmetic-in-python/" class="u-url">Object-oriented vs. Functional Modelling of Musical Arithmetic in Python</a></h1>
+    </ul></nav></header><main id="content"><article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Object-oriented vs. Functional Modelling of Musical Arithmetic in Python</a></h1>
+
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
-                Adam Michael Wood
+                    Adam Michael Wood
             </span></p>
-            <p class="dateline"><a href="posts/object-oriented-vs-functional-modelling-of-musical-arithmetic-in-python/" rel="bookmark"><time class="published dt-published" datetime="2017-11-10T11:07:06-08:00" title="2017-11-10 11:07">2017-11-10 11:07</time></a></p>
+            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2017-11-10T11:07:06-08:00" itemprop="datePublished" title="2017-11-10 11:07">2017-11-10 11:07</time></a></p>
                 <p class="commentline">
         
-    <a href="posts/object-oriented-vs-functional-modelling-of-musical-arithmetic-in-python/#disqus_thread" data-disqus-identifier="cache/posts/ophis-f-v-oo.html">Comments</a>
+    <a href="#disqus_thread" data-disqus-identifier="cache/posts/ophis-f-v-oo.html">Comments</a>
 
 
+            
         </p>
-</div>
-    </header><div class="p-summary entry-summary">
+<p class="sourceline"><a href="index.ipynb" class="sourcelink">Source</a></p>
+
+        </div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
     <div tabindex="-1" id="notebook" class="border-box-sizing">
     <div class="container" id="notebook-container">
 
@@ -57,7 +97,7 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Classical-vs.-Functional-Modelling-of-Musical-Arithmetic-in-Python">Classical vs. Functional Modelling of Musical Arithmetic in Python<a class="anchor-link" href="posts/object-oriented-vs-functional-modelling-of-musical-arithmetic-in-python/#Classical-vs.-Functional-Modelling-of-Musical-Arithmetic-in-Python">¶</a>
+<h1 id="Classical-vs.-Functional-Modelling-of-Musical-Arithmetic-in-Python">Classical vs. Functional Modelling of Musical Arithmetic in Python<a class="anchor-link" href="#Classical-vs.-Functional-Modelling-of-Musical-Arithmetic-in-Python">¶</a>
 </h1>
 </div>
 </div>
@@ -101,7 +141,7 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="A-Classical-OOP-Design">A Classical OOP Design<a class="anchor-link" href="posts/object-oriented-vs-functional-modelling-of-musical-arithmetic-in-python/#A-Classical-OOP-Design">¶</a>
+<h2 id="A-Classical-OOP-Design">A Classical OOP Design<a class="anchor-link" href="#A-Classical-OOP-Design">¶</a>
 </h2>
 </div>
 </div>
@@ -786,7 +826,7 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Problems-Appear">Problems Appear<a class="anchor-link" href="posts/object-oriented-vs-functional-modelling-of-musical-arithmetic-in-python/#Problems-Appear">¶</a>
+<h2 id="Problems-Appear">Problems Appear<a class="anchor-link" href="#Problems-Appear">¶</a>
 </h2>
 </div>
 </div>
@@ -808,7 +848,7 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Logic-is-hard-to-reason-about">Logic is hard to reason about<a class="anchor-link" href="posts/object-oriented-vs-functional-modelling-of-musical-arithmetic-in-python/#Logic-is-hard-to-reason-about">¶</a>
+<h3 id="Logic-is-hard-to-reason-about">Logic is hard to reason about<a class="anchor-link" href="#Logic-is-hard-to-reason-about">¶</a>
 </h3>
 <p>The math of moving from note to note is riddled with off-by-one and modulo arithmetic problems.</p>
 <ul>
@@ -827,7 +867,7 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Incorrect-assumptions-about-logical-order">Incorrect assumptions about logical order<a class="anchor-link" href="posts/object-oriented-vs-functional-modelling-of-musical-arithmetic-in-python/#Incorrect-assumptions-about-logical-order">¶</a>
+<h3 id="Incorrect-assumptions-about-logical-order">Incorrect assumptions about logical order<a class="anchor-link" href="#Incorrect-assumptions-about-logical-order">¶</a>
 </h3>
 <p>The first attempt to implement basic <code>Chroma</code> functionality assumed that <code>Interval</code> — the relationship between two chromae — would depend on <code>Chroma</code>. It turns out this is exactly backwards. <code>Interval</code> is logically prior to <code>Chroma</code>. There is no way to define abstract named pitches without their relationships already existing.</p>
 <p>Practically speaking, discovering this simply meant I had to re-order some code. But this challenged my thinking about what the fundamental building blocks of music theory actually are.</p>
@@ -840,7 +880,7 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Convoluted-logic-and-utility-data-structures">Convoluted logic and utility data structures<a class="anchor-link" href="posts/object-oriented-vs-functional-modelling-of-musical-arithmetic-in-python/#Convoluted-logic-and-utility-data-structures">¶</a>
+<h3 id="Convoluted-logic-and-utility-data-structures">Convoluted logic and utility data structures<a class="anchor-link" href="#Convoluted-logic-and-utility-data-structures">¶</a>
 </h3>
 <p>Here's an example, the <code>augment</code> method from the <code>Chroma</code> class.</p>
 <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">augment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">magnitude</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">modifier_preference</span><span class="o">=</span><span class="s2">"sharp"</span><span class="p">):</span>
@@ -914,7 +954,7 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Fragile-Primitives">Fragile Primitives<a class="anchor-link" href="posts/object-oriented-vs-functional-modelling-of-musical-arithmetic-in-python/#Fragile-Primitives">¶</a>
+<h3 id="Fragile-Primitives">Fragile Primitives<a class="anchor-link" href="#Fragile-Primitives">¶</a>
 </h3>
 <p>Python doesn't <em>really</em> allow you to protect object attributes or module-level constants. There are some things you can do to ensure object attributes aren't reassigned accidentally (and I've done them), but (as far as I can tell) module-level constants cannot be protected.</p>
 <p>This is a problem, since the fundamental building blocks of music theory in the current implementation are initialized as constants. The object representing <em>C Sharp</em> is created and assigned to the name <code>CSHARP</code>. If that name gets reassigned, <em>you are basically hosed</em>. This could lead to hard-to-trace errors and frustrating interactive sessions.</p>
@@ -927,7 +967,7 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Poor-isomorphism-to-numbers">Poor isomorphism to numbers<a class="anchor-link" href="posts/object-oriented-vs-functional-modelling-of-musical-arithmetic-in-python/#Poor-isomorphism-to-numbers">¶</a>
+<h3 id="Poor-isomorphism-to-numbers">Poor isomorphism to numbers<a class="anchor-link" href="#Poor-isomorphism-to-numbers">¶</a>
 </h3>
 <p>One of the design goals of Ophis is to be able to treat musical concepts as numbers. That's why the arithmetic operators are implemented and everything has an integer value. I wanted it to be easy for math utilities to operate on pitches and intervals. This would enable things like advanced theoretical analysis  and machine learning.</p>
 <p>But, they <em>aren't</em> numbers. They just aren't.</p>
@@ -958,7 +998,7 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Poor-isomorphism-between-Chroma-and-Intervals">Poor isomorphism between Chroma and Intervals<a class="anchor-link" href="posts/object-oriented-vs-functional-modelling-of-musical-arithmetic-in-python/#Poor-isomorphism-between-Chroma-and-Intervals">¶</a>
+<h3 id="Poor-isomorphism-between-Chroma-and-Intervals">Poor isomorphism between Chroma and Intervals<a class="anchor-link" href="#Poor-isomorphism-between-Chroma-and-Intervals">¶</a>
 </h3>
 <p>Or really, no explicit isomorphism at all. And this is a problem because these are really <em>the same thing</em>.</p>
 <p>I had implemented the <code>Interval</code> class, and written all the logic for how intervals are inverted, augmented, and diminished. This requires understanding of the interplay between interval distances (third, fourth, sixth) and their qualities (Major, minor, Perfect), and how many half-steps each are. And of course there's that zero-indexing stuff to think about (second = 1, third = 2).</p>
@@ -1717,7 +1757,7 @@ B
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Where-to-Go-From-Here">Where to Go From Here<a class="anchor-link" href="posts/object-oriented-vs-functional-modelling-of-musical-arithmetic-in-python/#Where-to-Go-From-Here">¶</a>
+<h2 id="Where-to-Go-From-Here">Where to Go From Here<a class="anchor-link" href="#Where-to-Go-From-Here">¶</a>
 </h2>
 </div>
 </div>
@@ -1945,7 +1985,7 @@ B
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Is-Functional-Really-Better?">Is Functional Really Better?<a class="anchor-link" href="posts/object-oriented-vs-functional-modelling-of-musical-arithmetic-in-python/#Is-Functional-Really-Better?">¶</a>
+<h2 id="Is-Functional-Really-Better?">Is Functional Really Better?<a class="anchor-link" href="#Is-Functional-Really-Better?">¶</a>
 </h2>
 </div>
 </div>
@@ -1968,624 +2008,42 @@ B
   </div>
 
     </div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/emacs-for-technical-writing/" class="u-url">Emacs for Technical Writing</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
-                Adam Michael Wood
-            </span></p>
-            <p class="dateline"><a href="posts/emacs-for-technical-writing/" rel="bookmark"><time class="published dt-published" datetime="2017-08-22T08:29:08-07:00" title="2017-08-22 08:29">2017-08-22 08:29</time></a></p>
-                <p class="commentline">
-        
-    <a href="posts/emacs-for-technical-writing/#disqus_thread" data-disqus-identifier="cache/posts/emacs-for-technical-writing.html">Comments</a>
-
-
-        </p>
-</div>
-    </header><div class="p-summary entry-summary">
-    <p>I've been thinking about switching to Emacs for a long time. I had a sense that it would fit my personality, and that the ability to automate tasks and customize the environment would boost productivity. But it always seemed a bit out of reach. I thought I would probably need to take several weeks to really learn it, and I never seem to have that kind of time.</p>
-<p>But I recently made the switch, and am now using Emacs as my primary editor and terminal.</p>
-<p>This is my fourth editor. When I first started writing code and using plaintext for prose, I used Notepad++. When I had enough of an idea about what I wanted in an editor, I switched to Sublime. Then about a year or so ago I switched to Atom because it is Free and Open, and provided a very similar experience to Sublime.</p>
-<p>But Emacs was always there, in the back of my mind. Finally, two things shifted the balance for me:</p>
-<ul>
-<li>better reStructured text support in Emacs (specificially, proper syntax highlighting)</li>
-<li>the dawning realization of Atom's (well, Electron's) performance problems</li>
-</ul>
-<p>There are a couple Atom plugins for highlighting ReST, but neither one works right 100% of the time. I would write some oddball directive and all of the sudden half the document was grey or red. Then I'd open a new <code>.rst</code> doc and try the samwe thing and it would be fine. Or portions simply wouldn't highlight at all. I found it maddening. I thought about learning enough about the Atom plugin development and syntax highlighting to try to fix the problem myself, but that seemed like a bad use of my time and learning bandwidth.</p>
-<p>Looking around for editors with good ReST support, I found Emacs listed. I use ReST and Sphinx every day now, and I'm currently on my fourth Sphinx-using writing gig. <em>Okay... I guess I'll finally take the time.</em></p>
-<h2>Benefits of Emacs</h2>
-<p>I've quickly discovered that Emacs is:</p>
-<ul>
-<li>not <em>that hard</em> to get going with</li>
-<li>enormously helpful</li>
-</ul>
-<p>Here are a few of the benefits I have noticed in just the first couple weeks, while barely scratching the surface.</p>
-<h3>Less Pain</h3>
-<p>I have moderate-to-severe pain in my back, around my right shoulder blade. This seems to be largely caused by my constant trackpadding. Moving to a keyboard-centric interface has greatly reduced my pain. (I suspect that if I switch to a split keyboard and maybe get a foot pedal I can make more progress on this front. I also think I should take the time to learn to type properly.)</p>
-<p>It is, of course, possible to use a keyboard to navigate in Atom and most other editors. I could have installed Emacs keybinding for Atom. But it was too easy not too. Emacs served a forcing function because mouse navigating simply isn't possible. (I am even running Emacs in my terminal, rather than as a standalone app, so I can't even mouse on the menu.)</p>
-<h3>Less Distraction</h3>
-<p>You can run a shell inside Emacs. Since I can switch from the file I'm working on to the shell inside the same window, I don't need to swipe over to another screen. This </p>
-    </div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/registering-functions-against-object-methods-in-python/" class="u-url">Registering Functions Against Object Methods in Python</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
-                Adam Michael Wood
-            </span></p>
-            <p class="dateline"><a href="posts/registering-functions-against-object-methods-in-python/" rel="bookmark"><time class="published dt-published" datetime="2017-05-25T13:07:32-07:00" title="2017-05-25 13:07">2017-05-25 13:07</time></a></p>
-                <p class="commentline">
-        
-    <a href="posts/registering-functions-against-object-methods-in-python/#disqus_thread" data-disqus-identifier="cache/posts/registering-functions-against-object-methods-in-python.html">Comments</a>
-
-
-        </p>
-</div>
-    </header><div class="p-summary entry-summary">
-    <p>My big side project right now is a <a href="https://github.com/OphisMusic/ophis">music theory library in Python, called Ophis</a>. Among many other concerns, I'm trying to make the API as natural and easy to use as possible. This often means finding ways of creating objects other than <code>ClassName(args)</code>.</p>
-<p>Ophis has the classes <code>Chroma</code> and <code>Pitch</code>. A chroma is a note name without an octave (the <em>idea</em> of C), while a pitch is a chroma with a specified octave (middle C).</p>
-<p>The problem with this is that the conventional way of referring to a pitch would then be:</p>
-<pre class="code literal-block"><span></span><span class="n">ophis</span><span class="o">.</span><span class="n">Pitch</span><span class="p">(</span><span class="n">ophis</span><span class="o">.</span><span class="n">C</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-</pre>
-
-
-<p>You can see, Ophis has already initialized all the note names (chromae) you would need. We <em>could</em> do that with pitches...</p>
-<pre class="code literal-block"><span></span><span class="n">C0</span> <span class="o">=</span> <span class="n">Pitch</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">C1</span> <span class="o">=</span> <span class="n">Pitch</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-
-<span class="c1"># later, in user code...</span>
-
-<span class="n">ophis</span><span class="o">.</span><span class="n">C1</span>
-</pre>
-
-
-<p>...but I think we all know the problem with that. It requires initializing several hundred pitch objects that may never be used. Most songs don't use every note. And every physical note has multiple names because of enharmonic spelling (F♯ == G♭).</p>
-<p>So, what if the API looked like this?</p>
-<pre class="code literal-block"><span></span><span class="n">ophis</span><span class="o">.</span><span class="n">C</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</pre>
-
-
-<p>That's cool. Pretty easy to do, too.</p>
-<pre class="code literal-block"><span></span><span class="k">class</span> <span class="nc">Chroma</span><span class="p">:</span>
-
-  <span class="c1">#</span>
-  <span class="c1">#</span>
-  <span class="c1">#</span>
-
-  <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">octave</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">Pitch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">octave</span><span class="p">)</span>
-</pre>
-
-
-<h2>What if we went deeper?</h2>
-<p>Once you realize this is a good idea, the next thing you realize is.... what about chords?</p>
-<pre class="code literal-block"><span></span><span class="n">ophis</span><span class="o">.</span><span class="n">Chord</span><span class="p">(</span><span class="n">ophis</span><span class="o">.</span><span class="n">C</span><span class="p">,</span> <span class="n">Major</span><span class="p">)</span>
-</pre>
-
-
-<p>Well, that looks pretty similar, doesn't it?</p>
-<p>So, um... okay...</p>
-<pre class="code literal-block"><span></span><span class="k">class</span> <span class="nc">Chroma</span><span class="p">:</span>
-
-    <span class="c1">#</span>
-    <span class="c1">#</span>
-    <span class="c1">#</span>
-
-    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-        <span class="k">try</span><span class="p">:</span>
-          <span class="k">return</span> <span class="n">Pitch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
-        <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
-          <span class="k">return</span> <span class="n">Chord</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
-</pre>
-
-
-<p>There are problems with this.</p>
-<ul>
-<li>Definitions for Pitch and Chord are in modules that get loaded after Chroma. This doesn't create any errors (because the function isn't run on load), but still feels wrong.</li>
-<li>It is brittle. If I change the name of <code>Pitch</code> or <code>Chord</code>, I have to go back and change it here. The tightly-wound nature of music terminology means I have long-since given up the idea of <em>loose coupling</em>, but I'm trying to make these types of dependencies only go up the conceptual ladder, not back down it.</li>
-<li>What if I want to add more things to this method? Eventually I'm going to end up creating a series of type checks.</li>
-</ul>
-<p>When I was working through this, I didn't see any way around a series of type checks, but I thought I could solve the first two problems with some creative coding.</p>
-<p>I decided I could register functions into a <code>dict</code>, stored on the class. The keys for the dict would be types, and the values would be the functions to run when <code>__call__</code> is called with that particular type as an argument. These functions could be registered at the point when the type that the function is supposed to return is created.</p>
-<p>Something like...</p>
-<pre class="code literal-block"><span></span><span class="k">class</span> <span class="nc">Chroma</span><span class="p">:</span>
-
-    <span class="c1">#</span>
-    <span class="c1">#</span>
-    <span class="c1">#</span>
-
-    <span class="n">_callable_funcs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
-
-    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">x_type</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-
-        <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">_callable_funcs</span><span class="p">[</span><span class="n">x_type</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">_callable_funcs</span><span class="p">[</span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)](</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
-
-
-<span class="c1"># This code has not been tested.</span>
-</pre>
-
-
-<p>I got (a version of) this to work, and I was feeling pretty darn proud of myself for thinking of this solution, and implementing it.</p>
-<p>Then I had this feeling like this was all very familiar. Maybe I had read about this type of thing?</p>
-<p>I quickly discovered three things:</p>
-<ul>
-<li>I had read about precisely this in <a href="http://amzn.to/2ruo2td"><em>Fluent Python</em> by Luciano Ramalho</a>. (This is a great book for intermediate Python programmers.)</li>
-<li>This pattern is called <em>single dispatch</em>.</li>
-<li>It is already <a href="https://docs.python.org/3/library/functools.html#functools.singledispatch">implemented in the standard library</a>.</li>
-</ul>
-<p>Unfortunately, I have two problems:</p>
-<ul>
-<li>The <code>@singledispatch</code> decorator only looks at the first argument of a function call. The first argument of a method call is always <code>self</code>. So, out of the box, this dosn't work for instance methods.</li>
-<li>
-<code>@singledispatch</code> was <a href="https://www.python.org/dev/peps/pep-0443/">added in v3.4</a>, making it still a little newish. Since I'm writing a utility library for others to use, and not my own application, it seems unwise to rely on something that everyone might not have.</li>
-</ul>
-<p>But, now I can do two things:</p>
-<ul>
-<li>See if anyone has already figured out a way to apply <code>@singledispatch</code> to a method. (<a href="https://stackoverflow.com/questions/24601722/how-can-i-use-functools-singledispatch-with-instance-methods">Someone has</a>.)</li>
-<li>Potentially re-implement <code>@singledispatch</code> myself, for backwards compatibility.</li>
-</ul>
-<p>Right...</p>
-<pre class="code literal-block"><span></span><span class="c1"># oph_utils.py</span>
-
-<span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">singledispatch</span>
-<span class="k">except</span><span class="p">:</span>
-    <span class="c1"># A re-implementation of @singledispatch</span>
-    <span class="c1"># has been left as an exercise for the reader</span>
-    <span class="c1"># because I haven't done one yet.</span>
-
-<span class="k">def</span> <span class="nf">method_dispatch</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
-    <span class="sd">"""</span>
-<span class="sd">    An extension of functools.singledispatch,</span>
-<span class="sd">    which looks at the argument after self.</span>
-<span class="sd">    """</span>
-    <span class="n">dispatcher</span> <span class="o">=</span> <span class="n">singledispatch</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">dispatcher</span><span class="o">.</span><span class="n">dispatch</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="vm">__class__</span><span class="p">)(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
-    <span class="n">wrapper</span><span class="o">.</span><span class="n">register</span> <span class="o">=</span> <span class="n">dispatcher</span><span class="o">.</span><span class="n">register</span>
-    <span class="n">update_wrapper</span><span class="p">(</span><span class="n">wrapper</span><span class="p">,</span> <span class="n">func</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">wrapper</span>
-
-<span class="c1"># chroma.py</span>
-
-<span class="k">class</span> <span class="nc">Chroma</span><span class="p">():</span>
-
-    <span class="c1">#</span>
-    <span class="c1">#</span>
-    <span class="c1">#</span>
-
-
-    <span class="nd">@oph_utils.method_dispatch</span>
-    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span>
-
-<span class="c1"># pitch.py</span>
-
-
-<span class="kn">import</span> <span class="nn">chroma</span> <span class="kn">as</span> <span class="nn">ch</span>
-
-<span class="k">class</span> <span class="nc">Pitch</span><span class="p">:</span>
-
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chroma</span><span class="p">,</span> <span class="n">octave</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-          <span class="bp">self</span><span class="o">.</span><span class="n">chroma</span> <span class="o">=</span> <span class="n">chroma</span>
-          <span class="bp">self</span><span class="o">.</span><span class="n">octave</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">octave</span><span class="p">)</span>
-
-
-<span class="n">ch</span><span class="o">.</span><span class="n">Chroma</span><span class="o">.</span><span class="fm">__call__</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">Pitch</span><span class="p">)</span>
-
-
-<span class="c1"># In user code:</span>
-
-<span class="n">ophis</span><span class="o">.</span><span class="n">C</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="n">ophis</span><span class="o">.</span><span class="n">Pitch</span><span class="p">(</span><span class="n">ophis</span><span class="o">.</span><span class="n">C</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="c1"># True</span>
-</pre>
-
-
-<p>And finally, to encourage this usage...</p>
-<pre class="code literal-block"><span></span><span class="k">class</span> <span class="nc">Pitch</span><span class="p">:</span>
-
-    <span class="c1">#</span>
-    <span class="c1">#</span>
-    <span class="c1">#</span>
-
-
-    <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">chroma</span><span class="o">.</span><span class="fm">__repr__</span><span class="p">()],</span> <span class="s2">"("</span><span class="p">,</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">octave</span><span class="o">.</span><span class="fm">__repr__</span><span class="p">()],</span> <span class="s2">")"</span>
-            <span class="p">])</span>
-
-
-<span class="c1"># At a terminal...</span>
-
-<span class="o">&gt;&gt;&gt;</span> <span class="n">ophis</span><span class="o">.</span><span class="n">Pitch</span><span class="p">(</span><span class="n">ophis</span><span class="o">.</span><span class="n">C</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">C</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-</pre>
-
-
-<p>Feels Pythonic, yes?</p>
-<h2>Further Reading</h2>
-<ul>
-<li><a href="http://amzn.to/2rLvDTO">Fluent Python, by Luciano Ramalho</a></li>
-<li><a href="https://www.python.org/dev/peps/pep-0443/">PEP 443 -- Single-dispatch generic functions</a></li>
-<li>
-<a href="https://julien.danjou.info/blog/2013/python-3.4-single-dispatch-generic-function">Python 3.4 single dispatch, a step into generic functions</a> (Also a music-related example.)</li>
-</ul>
-</div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/intersection-of-non-empty-sets-in-python/" class="u-url">Intersection of Non-Empty Sets in Python</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
-                Adam Michael Wood
-            </span></p>
-            <p class="dateline"><a href="posts/intersection-of-non-empty-sets-in-python/" rel="bookmark"><time class="published dt-published" datetime="2017-04-15T07:48:40-07:00" title="2017-04-15 07:48">2017-04-15 07:48</time></a></p>
-                <p class="commentline">
-        
-    <a href="posts/intersection-of-non-empty-sets-in-python/#disqus_thread" data-disqus-identifier="cache/posts/intersection-of-non-empty-sets-in-python.html">Comments</a>
-
-
-        </p>
-</div>
-    </header><div class="p-summary entry-summary">
-    <p>Suppose you generate several sets on the fly, and you want to find the elements that are in all the sets. That's easy, it's the intersection of sets.</p>
-<pre class="code literal-block"><span></span><span class="c1"># One syntax option</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">set_one</span> <span class="o">&amp;</span> <span class="n">set_two</span> <span class="o">&amp;</span> <span class="n">set_three</span>
-
-<span class="c1"># Another option</span>
-<span class="n">result</span> <span class="o">=</span> <span class="nb">set</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">set_one</span><span class="p">,</span> <span class="n">set_two</span><span class="p">,</span> <span class="n">set_three</span><span class="p">)</span>
-</pre>
-
-
-<p>But let's suppose that one or more of your sets is empty. The intersection of any set and an empty set is an empty set. But, that's not what you want. (Well, it wasn't what I wanted, anyway.)</p>
-<p>Suppose you want the intersection of all non-empty sets.</p>
-<h2>List comprehension</h2>
-<p>If the sets are in a list, you can remove the empties. Then unpack the list into the <code>set.intersection()</code> function.</p>
-<pre class="code literal-block"><span></span><span class="n">list_of_sets</span> <span class="o">=</span> <span class="p">[</span><span class="n">set_one</span><span class="p">,</span> <span class="n">set_two</span><span class="p">,</span> <span class="n">set_three</span><span class="p">]</span>
-
-<span class="c1"># Empty sets evaluate to false,</span>
-<span class="c1"># so will be excluded from list comp.</span>
-<span class="n">non_empties</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">list_of_sets</span> <span class="k">if</span> <span class="n">x</span><span class="p">]</span>
-
-<span class="n">solution_set</span> <span class="o">=</span> <span class="nb">set</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="o">*</span><span class="n">non_empties</span><span class="p">)</span>
-</pre>
-
-
-<p>The asterisk before <code>non_empties</code> unpacks the list into a series of positional arguments. This is needed because <code>set.intersection()</code> takes an arbitrary number of sets, not an iterable full of sets. (It's the same asterisk as in <code>*args</code> in function definitions.)</p>
-<p>(Note: You <em>could</em> use a filter instead of a list comprehension, but <a href="http://www.artima.com/weblogs/viewpost.jsp?thread=98196">Guido thinks a list comprehension is better</a>. I agree.)</p>
-<h3>With iterable unpacking (tuple unpacking)</h3>
-<p>In my case, I was generating the sets in my code, and the solution set always contained only one item. And I wanted the item, not a set with the item. So...</p>
-<pre class="code literal-block"><span></span><span class="c1"># initialize an empty list</span>
-<span class="n">list_of_sets</span> <span class="o">=</span> <span class="p">[]</span>
-
-<span class="c1"># each time I create a set,</span>
-<span class="c1"># append set to list when it is created,</span>
-<span class="c1"># instead of naming them individually</span>
-<span class="n">list_of_sets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">thing_that_generates_a_set</span><span class="p">()</span> <span class="p">)</span>
-
-<span class="c1"># drop the empties, find the intersection</span>
-<span class="c1"># and unpack the remaining single element</span>
-<span class="n">solution</span><span class="p">,</span> <span class="o">=</span> <span class="nb">set</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">list_of_sets</span> <span class="k">if</span> <span class="n">x</span><span class="p">])</span>
-</pre>
-
-
-<p>The comma after <code>solution</code> turns the assignment into a tuple unpacking. If you unpack a collection of one, you get the single item.</p>
-<p>By the way, if you end up with more than one item in your collection, and only want the first item, you can do:</p>
-<pre class="code literal-block"><span></span>first_item, *_ = some_collection
-</pre>
-
-
-<p>The <code>*</code> indicates a variable number of positional arguments (it's the same asterisk as in <code>*args</code> and in passing the list to <code>set.intersection()</code> above), and the underscore is used as a convention for "not using this stuff."</p>
-<pre class="code literal-block"><span></span># you could have done this instead
-
-first_item, *stuff_i_will_not_care_about = some_collection
-</pre>
-
-
-<p>I'll be using that <code>*_</code> below, in the actual code.</p>
-<h2>Why would you ever do this?</h2>
-<h3>The generalized problem</h3>
-<p>From a pool of items, there are three attributes to select for. Specifying any two of them should produce one and only one result.</p>
-<h3>More specifically...</h3>
-<p>Musical intervals.</p>
-<p>A musical interval has:</p>
-<ul>
-<li>a quality (Major, Minor, Perfect, Augment, or Diminished)</li>
-<li>a number (Unison (1), Second (2), Third (3) ... Octave (8))</li>
-<li>a distance of half_steps (for example, a major third is 4 half steps)</li>
-</ul>
-<p>If you know any two of these, you can select the correct one.</p>
-<h2>Some actual code</h2>
-<pre class="code literal-block"><span></span><span class="k">class</span> <span class="nc">Interval</span><span class="p">():</span>
-
-  <span class="c1">#####################################</span>
-  <span class="c1"># ... all sorts of things removed ...</span>
-  <span class="c1">#####################################</span>
-
-
-  <span class="n">instances</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
-  <span class="c1"># all instances of Interval</span>
-
-
-  <span class="nd">@classmethod</span>
-  <span class="k">def</span> <span class="nf">get_intervals</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">quality</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">half_steps</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-      <span class="sd">"""Return a set of intervals."""</span>
-
-      <span class="n">candidate_sets</span> <span class="o">=</span> <span class="p">[]</span>
-
-      <span class="n">candidate_sets</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">instances</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">quality</span> <span class="o">==</span> <span class="n">quality</span><span class="p">})</span>
-
-      <span class="n">candidate_sets</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">instances</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">number</span> <span class="o">==</span> <span class="n">number</span><span class="p">})</span>
-
-      <span class="n">candidate_sets</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">instances</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">half_steps</span> <span class="o">==</span> <span class="n">half_steps</span><span class="p">})</span>
-
-      <span class="n">candidate_sets</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">candidate_sets</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
-
-      <span class="k">return</span> <span class="nb">set</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="o">*</span><span class="n">candidate_sets</span><span class="p">)</span>
-
-  <span class="nd">@classmethod</span>
-  <span class="k">def</span> <span class="nf">get_interval</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">quality</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">half_steps</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-      <span class="sd">""" Return a single interval."""</span>
-
-      <span class="k">try</span><span class="p">:</span>
-          <span class="n">interval</span><span class="p">,</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">get_intervals</span><span class="p">(</span><span class="n">quality</span><span class="o">=</span><span class="n">quality</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="n">number</span><span class="p">,</span> <span class="n">half_steps</span><span class="o">=</span><span class="n">half_steps</span><span class="p">)</span>
-
-      <span class="c1">## if there was not one and only one result</span>
-      <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-
-          <span class="c1"># only select by half_steps</span>
-          <span class="n">candidates</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">instances</span> <span class="k">if</span> <span class="n">half_steps</span> <span class="o">==</span> <span class="n">x</span><span class="o">.</span><span class="n">half_steps</span><span class="p">]</span>
-
-          <span class="c1"># select the first one,</span>
-          <span class="c1"># based on quality priority:</span>
-          <span class="c1"># Perfect, Major, Minor, Dim, Aug</span>
-          <span class="n">interval</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">candidates</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">quality</span><span class="o">.</span><span class="n">priority</span><span class="p">)</span>
-
-        <span class="k">return</span> <span class="n">interval</span>
-</pre>
-
-
-<p>In <a href="https://github.com/OphisMusic/ophis">the actual code</a>, there's a bunch of other things going on, but this is the general idea.</p>
-<h2>Another approach</h2>
-<p>For my specific use case, another approach is simply to not create a set for the unspecified attribute.</p>
-<pre class="code literal-block"><span></span><span class="k">if</span> <span class="n">quality</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-    <span class="n">candidate_sets</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">instances</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">quality</span> <span class="o">==</span> <span class="n">quality</span><span class="p">})</span>
-
-<span class="k">if</span> <span class="n">number</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-    <span class="n">candidate_sets</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">instances</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">number</span> <span class="o">==</span> <span class="n">number</span><span class="p">})</span>
-
-<span class="k">if</span> <span class="n">half_steps</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-    <span class="n">candidate_sets</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">instances</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">half_steps</span> <span class="o">==</span> <span class="n">half_steps</span><span class="p">})</span>
-</pre>
-
-
-<p>In my working code, I actually do both. This allows for a potentially meaningful result even if something is specified incorrectly. I could have decided to let bad input cause explicit failure, but I <strong>think</strong> I'd rather not in this case.</p>
-<h2>So... what's the point?</h2>
-<p>This post looks like a tutorial on list comprehension. Or maybe set operations. But really this post is about problem solving while writing code.</p>
-<p>The code solution to this problem is really easy... but <em>only if you've figured out the problem you need to solve</em>.</p>
-<p>I started with the following problem:</p>
-<blockquote>
-<p>Find the intersection of all non-empty sets, from an arbitrary pool of sets, not knowing which ones would be empty.</p>
-</blockquote>
-<p>So I started Googling variations on that theme. But there aren't any "intersection of just the good sets" functions. Then I tried to start writing a question for Stack Overflow, and as soon as I had written the title, I knew the answer.</p>
-<blockquote>
-<p>Starting with a collection of sets, drop the empty sets and find the intersection of the remaining sets.</p>
-</blockquote>
-<p>As soon as I broke my one problem into two steps, the problem was immediately solved:</p>
-<ol>
-<li>Create a new collection without the empties. (List comp.)</li>
-<li>Find the intersection of <em>that</em> list.</li>
-</ol>
-<p>At the same moment I realized these steps, it also become clear that the original group of sets should be a collection, not just several unrelated objects.</p>
-<p>So, the moral of the story is...</p>
-<p>If you can't find the solution to your specific problem, restate your problem as a series of steps.</p>
-    </div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/verbiage/" class="u-url">Verbiage</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
-                Adam Michael Wood
-            </span></p>
-            <p class="dateline"><a href="posts/verbiage/" rel="bookmark"><time class="published dt-published" datetime="2017-02-08T08:26:57-08:00" title="2017-02-08 08:26">2017-02-08 08:26</time></a></p>
-                <p class="commentline">
-        
-    <a href="posts/verbiage/#disqus_thread" data-disqus-identifier="cache/posts/verbiage.html">Comments</a>
-
-
-        </p>
-</div>
-    </header><div class="p-summary entry-summary">
-    <p>I hate the word <em>verbiage</em>.</p>
-<p>First, we need to deal with the fact that it is the <em>wrong word</em>. Most of the time, when people say <em>verbiage</em>, they really mean <em>verbage</em> --- that is, the wording. <em>Verbiage</em>, properly, means excessive wordiness, not the specifics of word choice.</p>
-<p>But this isn't what I hate about it. I would hate it just as much if it meant precisely what every one uses it to mean. My problem is with the idea itself. I hate what people are saying when they say <em>verbiage</em>.</p>
-<p>Every time I have ever heard the word <em>verbiage</em>, the person has been talking about <em>the precise way that something is worded</em>. The context is always about improving something.</p>
-<ul>
-<li><em>Can you make this more clear by fixing up the verbiage?</em></li>
-<li><em>After you get the first draft of the design done, ask Adam to help you clean up the verbiage.</em></li>
-<li><em>Maybe we can change the verbiage on this form to make it more user friendly.</em></li>
-</ul>
-<p>Without fail, a request to <em>work on the verbiage</em> is symptomatic of a deeply flawed design and engineering process. We got to this point because people were <a href="http://hackwrite.com/posts/designing-vs-decorating/">decorating, not designing</a>, and now we are going to try to get out of it by changing the words the user sees.</p>
-<p>This causes more problems, of course.</p>
-<p>The reason the words aren't clear and precise in the UI is that the mental model developed by the engineering team is either confused or just plain wrong. In order to make the application easy to use, our Verbiage Specialist has to overlay a new mental model --- often, the one that should have been used in the first place. This new mental model, and the collection of verbages that go with it, will be imprecise and incomplete because the Verbiage Engineering Team can't tell the developers to restructure the database and rename all the application's variables. The result is that the UI becomes temporarily easier to use, but at the cost of taking on additional Verbiage Debt. Somewhere deep in an internal wiki or Confluence page is a OVM (Object-Verbiage Mapper) glossary telling you that <code>dev:event_property =&gt; user:"Device Status"</code>. But nobody reads internal wiki pages, so the problem just gets worse.</p>
-<p>You cannot fix an application by redecorating the UI. Fixing the <em>verbiage</em> is just redecorating + technical debt. If you find yourself <em>fixing up the verbiage</em>, the problems are much deeper.</p>
-<p>So how do you avoid Verbiage Debt?</p>
-<p>Stop treating writers as Verbiage Technicians and think of them as Verbiage Architects. (I'm sure there's a <a href="http://www.uxbooth.com/articles/what-is-ux-writing/">good word for this</a> already.) Your Verbiage Team, along with your Pictures of Things Engineers, need to be involved <strong>from the beginning</strong> with the design of your application, and they need to be fully-fledged members of the engineering team --- not hired hands, consultants, helpers, or otherwise after-the-facters.</p>
-<p>Building software has more to do with creating mental models than it does with writing code. Humans create mental models in language and pictures.</p>
-<p>Your language and pictures people are as important as your coders.</p>
-    </div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/designing-vs-decorating/" class="u-url">Designing vs. Decorating</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
-                Adam Michael Wood
-            </span></p>
-            <p class="dateline"><a href="posts/designing-vs-decorating/" rel="bookmark"><time class="published dt-published" datetime="2017-02-06T05:41:06-08:00" title="2017-02-06 05:41">2017-02-06 05:41</time></a></p>
-                <p class="commentline">
-        
-    <a href="posts/designing-vs-decorating/#disqus_thread" data-disqus-identifier="cache/posts/designing-vs-decorating.html">Comments</a>
-
-
-        </p>
-</div>
-    </header><div class="p-summary entry-summary">
-    <p>My wife spent some time in an Interior Design master's degree program. One of the things that frequently frustrated her was the conflation, by people outside the industry, of interior design and interior decorating.</p>
-<ul>
-<li>"Oh, so like, you're learning how to pick out furniture and stuff."</li>
-<li>"Can you help me pick paint colors in my bedroom?"</li>
-<li>"That's cool, like that show on HGTV."</li>
-</ul>
-<p>Decorating is primarily about aesthetics --- how things look. Design is about function --- how things work. There is certainly overlap between the professions, but their focus and concern is very different.</p>
-<p>At least, though, nearly everyone in the industry --- and certainly everyone at her school --- understood the difference. Since my wife was there the school has actually <a href="http://the-bac.edu/academics/school-of-interior-architecture">changed the name of the program to <em>Interior Architecture</em></a>, to make the focus more clear.</p>
-<p>I'm not sure the software industry as a whole understands the difference between decorating and design. Part of the problem is that we don't use the word "decorator," to describe people with graphics skills and no sense of the underlying software. Everyone is a "designer." The best we have done is to try to make distinctions between "UX Design" and "Graphic Design."</p>
-<p>In fact, I think the push in the last decade or so to use the word "UX" is an attempt to make the distinction. Unfortunately, I don't think it has helped. Like Tech Writers calling themselves "Documentation Specialists," the change in label has been driven as much by a desire for a cooler resume as by any real change in practices. The distinction we need to make is not between "graphics" and "UX," and certainly not between "UX" and "UI" (as if those are, you know, <em>actually</em> different things, <em>really</em>). The distinction we need to make is between design and decoration.</p>
-<p>Have you ever sat in a redesign review that solved exactly none of the problems of the original design? The new thing looks better, but it functions the same. <strong>Decorating</strong></p>
-<p>Have you ever been involved in a process where some non-engineer Product Manager drew pictures of screens and buttons, and then someone with Photoshop skills and no coding experience turned that into a mockup? <strong>Decorating.</strong></p>
-<p>Have you ever been asked, after the graphics person has completed an entire set of screen mockups, to "help with some of the verbiage" in order to make things more clear? <strong>Decorating.</strong></p>
-<p>Any process that separates out the work of contributors --- first the engineers do something and then hand it off to the graphics person and then the tech writer writes about it later --- will tend toward decorating. Design requires people to actually talk to each other, preferably in the same room. Design requires that a person drawing and labelling a form input understand the conceptual model the form is interacting with.</p>
-<p>I suggest we stop futzing with labels for types of people and buzzwords that feel helpful but aren't. This problem cannot be solved by finding an even cooler replacement word for "UX," and then blogging about how "UX is dead, we're doing XZ now." Just keep "design" and "decoration" in your head as an evaluative tool. Look at how things are being done and ask yourself --- it this designing or is it decorating? Then, if there's too much decorating, don't spend a lot of energy convincing people about the difference. Just begin to change the process.</p>
-<p>And don't let someone with Photoshop skills redesign an app they don't understand and have never used.</p>
-    </div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/docs-as-code/" class="u-url">Docs as Code</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
-                Adam Michael Wood
-            </span></p>
-            <p class="dateline"><a href="posts/docs-as-code/" rel="bookmark"><time class="published dt-published" datetime="2017-02-01T05:33:02-08:00" title="2017-02-01 05:33">2017-02-01 05:33</time></a></p>
-                <p class="commentline">
-        
-    <a href="posts/docs-as-code/#disqus_thread" data-disqus-identifier="cache/posts/docs-as-code.html">Comments</a>
-
-
-        </p>
-</div>
-    </header><div class="p-summary entry-summary">
-    <h2>Practices</h2>
-<ul>
-<li>Docs are written in plain text formats such as Markdown or reStructured Text.</li>
-<li>Docs are stored as flat files, not database entries.</li>
-<li>Docs are authored in a code editor of the writer's choice, not a monolithic authoring application.</li>
-<li>Docs are kept under version control.</li>
-<li>Doc versions are organized in parallel to product versions.</li>
-<li>Docs are built and deployed from source in an automated process that mirrors product deployment.</li>
-<li>Docs are automatically tested for internal consistency and compliance to style guides.</li>
-<li>Whenever reasonable, writers use the same tools and processes as developers.</li>
-<li>Writers are integrated into the development team.</li>
-</ul>
-<h2>Benefits</h2>
-<ul>
-<li>Writers have more control over their authoring environment.</li>
-<li>Less friction in the authoring process.</li>
-<li>Elimination of inconsistencies between docs and product.</li>
-<li>Less need for human proofreading.</li>
-<li>Coordinated releases of docs with product.</li>
-<li>Developers are more likely to contribute to docs.</li>
-<li>Writers and developers have more awareness of and respect for each others' work.</li>
-<li>Authoring and deployment tools are mostly free; hosting requires less overhead.</li>
-</ul>
-</div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/docops-not-just-fun-part/" class="u-url">DocOps Isn't Just the Fun Part</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
-                Adam Michael Wood
-            </span></p>
-            <p class="dateline"><a href="posts/docops-not-just-fun-part/" rel="bookmark"><time class="published dt-published" datetime="2017-01-26T06:56:30-08:00" title="2017-01-26 06:56">2017-01-26 06:56</time></a></p>
-                <p class="commentline">
-        
-    <a href="posts/docops-not-just-fun-part/#disqus_thread" data-disqus-identifier="cache/posts/docops-not-just-fun-part.html">Comments</a>
-
-
-        </p>
-</div>
-    </header><div class="p-summary entry-summary">
-    <p>Somewhere in the last year I decided I was into <em>DocOps</em>.</p>
-<p>What that really meant for me is that I am into <em>Docs-as-code</em>, which is a related trend, but not quite the same. I care about  things like single-source documents (DRY), version control, plain text editing, style linting, and automated deployment. I write little Python or Bash scripts to pipe tools together and customize the output of static site generators. I'm learning a lot, having a lot of fun, and finally weaving together a number of different skill sets and interests I've picked up over the years (writing, coding, project management).</p>
-<p>When I was the only writer at a startup, this was all really effective. I could fool myself into thinking I was <em>doing DocOps</em>. And maybe I was, but only in that particular context.</p>
-<p>But now I work at a big, hulking enterprise company. And all of the sudden it is clear that DocOps isn't just the fun technology bits, just like how DevOps isn't just about knowing how to deploy Docker on Kubernetes. It's about dealing with people and dealing with organizations.</p>
-<p>I just want to stand up my docs somewhere. "Give me SSH access to a directory with a public URL." At the startup I just made a decision and had live docs published my second or third day there. At the enterprise? Not so simple. My tooling has to go through security checks. Engineers have to sign off on deployment processes. Customer service has a vested interest in how documents are delivered. Can we integrate to Salesforce knowledge base? How do I <code>pip install</code> from behind a firewall?</p>
-<p>If I'm <em>into DocOps</em>, this is what I'm into. Not just hacking on writing tools (as much fun as that is), but also being effective in an organization. I was very effective in a startup, where hacking on things was how the organization operated. Now I have to level up and learn how to be effective at scale.</p>
-    </div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/real-reason-i-love-static-site-generators/" class="u-url">The Real Reason I Love Static Site Generators</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
-                Adam Michael Wood
-            </span></p>
-            <p class="dateline"><a href="posts/real-reason-i-love-static-site-generators/" rel="bookmark"><time class="published dt-published" datetime="2017-01-25T06:07:37-08:00" title="2017-01-25 06:07">2017-01-25 06:07</time></a></p>
-                <p class="commentline">
-        
-    <a href="posts/real-reason-i-love-static-site-generators/#disqus_thread" data-disqus-identifier="cache/posts/real-reason-i-love-static-site-generators.html">Comments</a>
-
-
-        </p>
-</div>
-    </header><div class="p-summary entry-summary">
-    <p>There's a lot to like about <a href="https://www.staticgen.com/">static site generators</a> like <a href="http://jekyllrb.com/">Jekyll</a>, <a href="https://getnikola.com/">Nikola</a>, and <a href="http://www.sphinx-doc.org/">Sphinx</a>.</p>
-<ul>
-<li>Hosting is much simpler, and can usually be done for free.</li>
-<li>Static sites are inherently more secure than dynamic ones.</li>
-<li>Very fast page load times.</li>
-<li>Authoring in a code editor that I have control over.</li>
-<li>Markdown and reStructured Text are both faster to type than HTML or rich content in a WYSIWYG editor.</li>
-<li>Version control.</li>
-<li>The ability to manage the build and deploy process like code.</li>
-</ul>
-<p>There are probably more benefits I'm not thinking of at the moment. When I first started using Jekyll, my main motivation was wanting to simplify hosting and exert control over authoring. I discovered the other benefits along the way, and they have really changed my professional life.</p>
-<p>But I've realized there's one thing that has come to matter the most to me:</p>
-<p><strong>Static sites revive and make real the notion of a document on the web.</strong></p>
-<p>In database-backed CMSes, the pretty URL is a noble lie. Content is smeared around in a database and accessed through <code>?id=1234</code> parameters or internal query mechanisms. This is fine, and really the only way to handle massive amounts of content.</p>
-<p>But the web was built to serve documents, not database results. In an age where content-as-data is on such hyperdrive that people think a <a href="http://sennajs.com/examples/blog/">single-page app blog system</a> is a reasonable idea, it is calming to use a technology that works the way the web was always supposed to work.</p>
-<p>And this has as much to do with the mental model as with the technology. (Maybe more.) The individual documents that make up a static site are handled <em>as documents</em> before being processed to HTML. If I want to change the content on some blog post, I edit a file on my local computer. I don't have to log in and use an application. It is transparent, and there's a direct relationship between a single file in my source and a single URI on my site. Now it feels like the URI actually identifies a <em>resource</em>, and is not just a cleverly-disguised search pattern.</p>
-<p>I understand why we moved past the web of documents. But if you're producing documents, maybe it's the right model.</p>
-    </div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/file-names/" class="u-url">File Names</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
-                Adam Michael Wood
-            </span></p>
-            <p class="dateline"><a href="posts/file-names/" rel="bookmark"><time class="published dt-published" datetime="2017-01-20T06:31:12-08:00" title="2017-01-20 06:31">2017-01-20 06:31</time></a></p>
-                <p class="commentline">
-        
-    <a href="posts/file-names/#disqus_thread" data-disqus-identifier="cache/posts/file-names.html">Comments</a>
-
-
-        </p>
-</div>
-    </header><div class="p-summary entry-summary">
-    <div>
-<blockquote>
-<p>There are only two hard things in Computer Science: cache invalidation and naming things.<br>
--- Phil Karlton</p>
-<p>I cannot help you with cache invalidation.<br>
--- Adam Michael Wood</p>
-</blockquote>
-<p>I recently saw a question about file names in the <a href="https://www.facebook.com/groups/episcopalcommunicators/">Episcopal Communicators Facebook Group</a>:</p>
-<p><img alt="Question about file names." src="img/filename-question.png"></p>
-<blockquote>
-<p>This is a question about filenames for websites.</p>
-<p>When we first developed our website, our consultant told me that when we put a file on there, it's important to give the file a date and a unique and descriptive name.</p>
-<p>While that works for some files, it doesn't for others. It caused me to end up with a lot of old files on my website.</p>
-<p>What I changed was that I stopped changing file names. So instead of mileage_rates_2016.pdf, I just call it mileage_rates.pdf. That way every link is correct, everywhere on the site.</p>
-<p>However, when we link to outside websites, like the wider church's site, we end up with obsolete links. Case in point: the Manual of Business Methods:</p>
-<p>We had full_manual_updated_09-30-2013.pdf.</p>
-<p>And now the link is full_manual_updated_012815_0.pdf</p>
-<p>Is there any need to give dates to files like this? It's important for the organization to archive old versions, but is there any need to have unique names so that websites like ours end up with older versions?</p>
-</blockquote>
-<p>I summed a few file name best practices, but... I have <em>a lot</em> to say about this topic. File naming is one of those weird little things I have irrationally strong feelings about, and the ubiquity of bad file naming practices is a constant source of rage in my life.</p>
-<p class="more"><a href="posts/file-names/">Read more…</a></p>
-</div>
-    </div>
-    </article>
-</div>
-
-        <nav class="postindexpager"><ul class="pager">
-<li class="next">
-                <a href="index-2.html" rel="next">Older posts</a>
+    <aside class="postpromonav"><nav><ul class="pager hidden-print">
+<li class="previous">
+                <a href="../emacs-for-technical-writing/" rel="prev" title="Emacs for Technical Writing">Previous post</a>
             </li>
-        </ul></nav><script>var disqus_shortname="adammichaelwood";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha256-SDRP1VVYu+tgAGKhddBSl5+ezofHKZeI+OzxakbIe/Y=" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
+        </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
+        
+        
+        <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="adammichaelwood",
+            disqus_url="http://hackwrite.com/posts/object-oriented-vs-functional-modelling-of-musical-arithmetic-in-python/",
+        disqus_title="Object-oriented vs. Functional Modelling of Musical Arithmetic in Python",
+        disqus_identifier="cache/posts/ophis-f-v-oo.html",
+        disqus_config = function () {
+            this.language = "en";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="https://disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        </section><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha256-SDRP1VVYu+tgAGKhddBSl5+ezofHKZeI+OzxakbIe/Y=" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
         MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});
-        </script></main><footer id="footer"><p>© 2016–2017 <a href="mailto:adam.michael.wood@gmail.com">Adam Michael Wood</a> - <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> <br><span id="powered-by">Powered by <a href="https://getnikola.com" rel="nofollow">Nikola</a></span></p>
+        </script></article><script>var disqus_shortname="adammichaelwood";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script></main><footer id="footer"><p>© 2016–2017 <a href="mailto:adam.michael.wood@gmail.com">Adam Michael Wood</a> - <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> <br><span id="powered-by">Powered by <a href="https://getnikola.com" rel="nofollow">Nikola</a></span></p>
             
         </footer>
 </div>
     
     
 
-        <script src="assets/js/baguetteBox.min.js"></script><script>baguetteBox.run('a.reference', {
+        <script src="../../assets/js/baguetteBox.min.js"></script><script>baguetteBox.run('a.reference', {
         captions: function(element) {
             return element.getElementsByTagName('img')[0].alt;
     }});</script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga'); ga('create', 'UA-46189469-6', 'auto'); ga('send', 'pageview');</script>

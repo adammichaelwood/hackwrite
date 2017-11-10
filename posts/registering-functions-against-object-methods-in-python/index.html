@@ -1,16 +1,19 @@
 <!DOCTYPE html>
-<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " vocab="http://ogp.me/ns" lang="en">
+<html prefix="            og: http://ogp.me/ns# article: http://ogp.me/ns/article#     " vocab="http://ogp.me/ns" lang="en">
 <head>
 <meta charset="utf-8">
-<base href="http://hackwrite.com/posts/registering-functions-against-object-methods-in-python/">
 <meta name="viewport" content="width=device-width">
 <title>Registering Functions Against Object Methods in Python | hack.write()</title>
 <link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
-<meta content="#5670d4" name="theme-color">
+<link href="../../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
 <link rel="canonical" href="http://hackwrite.com/posts/registering-functions-against-object-methods-in-python/">
-<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Adam Michael Wood">
+<!--[if lt IE 9]><script src="../../assets/js/html5shiv-printshiv.min.js"></script><![endif]--><meta name="author" content="Adam Michael Wood">
 <link rel="prev" href="../intersection-of-non-empty-sets-in-python/" title="Intersection of Non-Empty Sets in Python" type="text/html">
+<link rel="next" href="../emacs-for-technical-writing/" title="Emacs for Technical Writing" type="text/html">
 <meta property="og:site_name" content="hack.write()">
 <meta property="og:title" content="Registering Functions Against Object Methods in Python">
 <meta property="og:url" content="http://hackwrite.com/posts/registering-functions-against-object-methods-in-python/">
@@ -19,7 +22,7 @@
 <meta property="article:published_time" content="2017-05-25T13:07:32-07:00">
 </head>
 <body>
-<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+    <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
     <div id="container">
          
     <header id="header"><h1 id="brand"><a href="http://hackwrite.com/" title="hack.write()" rel="home">
@@ -40,7 +43,7 @@
     </ul></nav></header><main id="content"><article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Registering Functions Against Object Methods in Python</a></h1>
 
         <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                     Adam Michael Wood
             </span></p>
             <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2017-05-25T13:07:32-07:00" itemprop="datePublished" title="2017-05-25 13:07">2017-05-25 13:07</time></a></p>
@@ -51,7 +54,7 @@
 
             
         </p>
-<p class="sourceline"><a href="index.md" id="sourcelink">Source</a></p>
+<p class="sourceline"><a href="index.md" class="sourcelink">Source</a></p>
 
         </div>
         
@@ -60,12 +63,12 @@
     <p>My big side project right now is a <a href="https://github.com/OphisMusic/ophis">music theory library in Python, called Ophis</a>. Among many other concerns, I'm trying to make the API as natural and easy to use as possible. This often means finding ways of creating objects other than <code>ClassName(args)</code>.</p>
 <p>Ophis has the classes <code>Chroma</code> and <code>Pitch</code>. A chroma is a note name without an octave (the <em>idea</em> of C), while a pitch is a chroma with a specified octave (middle C).</p>
 <p>The problem with this is that the conventional way of referring to a pitch would then be:</p>
-<pre class="code literal-block"><span class="n">ophis</span><span class="o">.</span><span class="n">Pitch</span><span class="p">(</span><span class="n">ophis</span><span class="o">.</span><span class="n">C</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<pre class="code literal-block"><span></span><span class="n">ophis</span><span class="o">.</span><span class="n">Pitch</span><span class="p">(</span><span class="n">ophis</span><span class="o">.</span><span class="n">C</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 </pre>
 
 
 <p>You can see, Ophis has already initialized all the note names (chromae) you would need. We <em>could</em> do that with pitches...</p>
-<pre class="code literal-block"><span class="n">C0</span> <span class="o">=</span> <span class="n">Pitch</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<pre class="code literal-block"><span></span><span class="n">C0</span> <span class="o">=</span> <span class="n">Pitch</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 <span class="n">C1</span> <span class="o">=</span> <span class="n">Pitch</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
 <span class="c1"># later, in user code...</span>
@@ -76,37 +79,37 @@
 
 <p>...but I think we all know the problem with that. It requires initializing several hundred pitch objects that may never be used. Most songs don't use every note. And every physical note has multiple names because of enharmonic spelling (F♯ == G♭).</p>
 <p>So, what if the API looked like this?</p>
-<pre class="code literal-block"><span class="n">ophis</span><span class="o">.</span><span class="n">C</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<pre class="code literal-block"><span></span><span class="n">ophis</span><span class="o">.</span><span class="n">C</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </pre>
 
 
 <p>That's cool. Pretty easy to do, too.</p>
-<pre class="code literal-block"><span class="k">class</span> <span class="nc">Chroma</span><span class="p">:</span>
+<pre class="code literal-block"><span></span><span class="k">class</span> <span class="nc">Chroma</span><span class="p">:</span>
 
   <span class="c1">#</span>
   <span class="c1">#</span>
   <span class="c1">#</span>
 
-  <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">octave</span><span class="p">):</span>
+  <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">octave</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">Pitch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">octave</span><span class="p">)</span>
 </pre>
 
 
 <h2>What if we went deeper?</h2>
 <p>Once you realize this is a good idea, the next thing you realize is.... what about chords?</p>
-<pre class="code literal-block"><span class="n">ophis</span><span class="o">.</span><span class="n">Chord</span><span class="p">(</span><span class="n">ophis</span><span class="o">.</span><span class="n">C</span><span class="p">,</span> <span class="n">Major</span><span class="p">)</span>
+<pre class="code literal-block"><span></span><span class="n">ophis</span><span class="o">.</span><span class="n">Chord</span><span class="p">(</span><span class="n">ophis</span><span class="o">.</span><span class="n">C</span><span class="p">,</span> <span class="n">Major</span><span class="p">)</span>
 </pre>
 
 
 <p>Well, that looks pretty similar, doesn't it?</p>
 <p>So, um... okay...</p>
-<pre class="code literal-block"><span class="k">class</span> <span class="nc">Chroma</span><span class="p">:</span>
+<pre class="code literal-block"><span></span><span class="k">class</span> <span class="nc">Chroma</span><span class="p">:</span>
 
     <span class="c1">#</span>
     <span class="c1">#</span>
     <span class="c1">#</span>
 
-    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
           <span class="k">return</span> <span class="n">Pitch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
@@ -123,7 +126,7 @@
 <p>When I was working through this, I didn't see any way around a series of type checks, but I thought I could solve the first two problems with some creative coding.</p>
 <p>I decided I could register functions into a <code>dict</code>, stored on the class. The keys for the dict would be types, and the values would be the functions to run when <code>__call__</code> is called with that particular type as an argument. These functions could be registered at the point when the type that the function is supposed to return is created.</p>
 <p>Something like...</p>
-<pre class="code literal-block"><span class="k">class</span> <span class="nc">Chroma</span><span class="p">:</span>
+<pre class="code literal-block"><span></span><span class="k">class</span> <span class="nc">Chroma</span><span class="p">:</span>
 
     <span class="c1">#</span>
     <span class="c1">#</span>
@@ -131,12 +134,12 @@
 
     <span class="n">_callable_funcs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">x_type</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">x_type</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
 
         <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">_callable_funcs</span><span class="p">[</span><span class="n">x_type</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span>
+            <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">_callable_funcs</span><span class="p">[</span><span class="n">x_type</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">_callable_funcs</span><span class="p">[</span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)](</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">_callable_funcs</span><span class="p">[</span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)](</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
 
 
 <span class="c1"># This code has not been tested.</span>
@@ -163,7 +166,7 @@
 <li>Potentially re-implement <code>@singledispatch</code> myself, for backwards compatibility.</li>
 </ul>
 <p>Right...</p>
-<pre class="code literal-block"><span class="c1"># oph_utils.py</span>
+<pre class="code literal-block"><span></span><span class="c1"># oph_utils.py</span>
 
 <span class="k">try</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">singledispatch</span>
@@ -179,7 +182,7 @@
 <span class="sd">    """</span>
     <span class="n">dispatcher</span> <span class="o">=</span> <span class="n">singledispatch</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">dispatcher</span><span class="o">.</span><span class="n">dispatch</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">__class__</span><span class="p">)(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">dispatcher</span><span class="o">.</span><span class="n">dispatch</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="vm">__class__</span><span class="p">)(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
     <span class="n">wrapper</span><span class="o">.</span><span class="n">register</span> <span class="o">=</span> <span class="n">dispatcher</span><span class="o">.</span><span class="n">register</span>
     <span class="n">update_wrapper</span><span class="p">(</span><span class="n">wrapper</span><span class="p">,</span> <span class="n">func</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">wrapper</span>
@@ -194,7 +197,7 @@
 
 
     <span class="nd">@oph_utils.method_dispatch</span>
-    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span>
 
 <span class="c1"># pitch.py</span>
@@ -204,12 +207,12 @@
 
 <span class="k">class</span> <span class="nc">Pitch</span><span class="p">:</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chroma</span><span class="p">,</span> <span class="n">octave</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chroma</span><span class="p">,</span> <span class="n">octave</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
           <span class="bp">self</span><span class="o">.</span><span class="n">chroma</span> <span class="o">=</span> <span class="n">chroma</span>
           <span class="bp">self</span><span class="o">.</span><span class="n">octave</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">octave</span><span class="p">)</span>
 
 
-<span class="n">ch</span><span class="o">.</span><span class="n">Chroma</span><span class="o">.</span><span class="n">__call__</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">Pitch</span><span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">Chroma</span><span class="o">.</span><span class="fm">__call__</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">Pitch</span><span class="p">)</span>
 
 
 <span class="c1"># In user code:</span>
@@ -220,17 +223,17 @@
 
 
 <p>And finally, to encourage this usage...</p>
-<pre class="code literal-block"><span class="k">class</span> <span class="nc">Pitch</span><span class="p">:</span>
+<pre class="code literal-block"><span></span><span class="k">class</span> <span class="nc">Pitch</span><span class="p">:</span>
 
     <span class="c1">#</span>
     <span class="c1">#</span>
     <span class="c1">#</span>
 
 
-    <span class="n">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">chroma</span><span class="o">.</span><span class="n">__repr__</span><span class="p">()],</span> <span class="s2">"("</span><span class="p">,</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">octave</span><span class="o">.</span><span class="n">__repr__</span><span class="p">()],</span> <span class="s2">")"</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">chroma</span><span class="o">.</span><span class="fm">__repr__</span><span class="p">()],</span> <span class="s2">"("</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">octave</span><span class="o">.</span><span class="fm">__repr__</span><span class="p">()],</span> <span class="s2">")"</span>
             <span class="p">])</span>
 
 
@@ -253,6 +256,9 @@
     <aside class="postpromonav"><nav><ul class="pager hidden-print">
 <li class="previous">
                 <a href="../intersection-of-non-empty-sets-in-python/" rel="prev" title="Intersection of Non-Empty Sets in Python">Previous post</a>
+            </li>
+            <li class="next">
+                <a href="../emacs-for-technical-writing/" rel="next" title="Emacs for Technical Writing">Next post</a>
             </li>
         </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
         
@@ -283,7 +289,9 @@
     
     
 
-    
-    <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga'); ga('create', 'UA-46189469-6', 'auto'); ga('send', 'pageview');</script>
+        <script src="../../assets/js/baguetteBox.min.js"></script><script>baguetteBox.run('a.reference', {
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});</script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga'); ga('create', 'UA-46189469-6', 'auto'); ga('send', 'pageview');</script>
 </body>
 </html>

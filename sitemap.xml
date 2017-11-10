@@ -7,7 +7,7 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>http://hackwrite.com/</loc>
-  <lastmod>2017-01-19T15:06:00Z</lastmod>
+  <lastmod>2017-11-10T19:15:00Z</lastmod>
  </url>
  <url>
   <loc>http://hackwrite.com/2016/</loc>
@@ -19,7 +19,7 @@
  </url>
  <url>
   <loc>http://hackwrite.com/archive.html</loc>
-  <lastmod>2017-05-27T14:30:00Z</lastmod>
+  <lastmod>2017-11-10T19:15:00Z</lastmod>
  </url>
  <url>
   <loc>http://hackwrite.com/categories/</loc>
@@ -27,7 +27,11 @@
  </url>
  <url>
   <loc>http://hackwrite.com/index-1.html</loc>
-  <lastmod>2017-05-27T14:30:00Z</lastmod>
+  <lastmod>2017-11-10T19:15:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://hackwrite.com/index-2.html</loc>
+  <lastmod>2017-11-10T19:15:00Z</lastmod>
  </url>
  <url>
   <loc>http://hackwrite.com/posts/data-structures-and-philosophy/</loc>
@@ -44,6 +48,10 @@
  <url>
   <loc>http://hackwrite.com/posts/docs-as-code/</loc>
   <lastmod>2017-04-16T00:19:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://hackwrite.com/posts/emacs-for-technical-writing/</loc>
+  <lastmod>2017-11-10T19:15:00Z</lastmod>
  </url>
  <url>
   <loc>http://hackwrite.com/posts/enough-to-be-dangerous/</loc>
@@ -64,6 +72,10 @@
  <url>
   <loc>http://hackwrite.com/posts/it-should-matter-that-its-you/</loc>
   <lastmod>2017-01-09T14:40:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://hackwrite.com/posts/object-oriented-vs-functional-modelling-of-musical-arithmetic-in-python/</loc>
+  <lastmod>2017-11-10T19:15:00Z</lastmod>
  </url>
  <url>
   <loc>http://hackwrite.com/posts/on-the-design-of-this-blog/</loc>
