@@ -2,11 +2,6 @@
 .. title: Docs as Code
 .. slug: docs-as-code
 .. date: 2017-02-01 05:33:02 UTC-08:00
-.. tags:
-.. category:
-.. link:
-.. description:
-.. type: text
 -->
 
 ## Practices
