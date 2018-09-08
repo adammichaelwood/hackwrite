@@ -7,114 +7,118 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>http://hackwrite.com/</loc>
-  <lastmod>2017-11-10T19:15:00Z</lastmod>
+  <lastmod>2018-09-08T01:42:00Z</lastmod>
  </url>
  <url>
   <loc>http://hackwrite.com/2016/</loc>
-  <lastmod>2017-01-09T14:40:00Z</lastmod>
+  <lastmod>2018-09-08T01:42:00Z</lastmod>
  </url>
  <url>
   <loc>http://hackwrite.com/2017/</loc>
-  <lastmod>2017-01-09T14:40:00Z</lastmod>
+  <lastmod>2018-09-08T01:42:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://hackwrite.com/2018/</loc>
+  <lastmod>2018-09-08T01:42:00Z</lastmod>
  </url>
  <url>
   <loc>http://hackwrite.com/archive.html</loc>
-  <lastmod>2017-11-10T19:15:00Z</lastmod>
+  <lastmod>2018-09-08T01:42:00Z</lastmod>
  </url>
  <url>
   <loc>http://hackwrite.com/categories/</loc>
-  <lastmod>2017-01-09T14:40:00Z</lastmod>
+  <lastmod>2018-09-08T01:42:00Z</lastmod>
  </url>
  <url>
   <loc>http://hackwrite.com/index-1.html</loc>
-  <lastmod>2017-11-10T19:15:00Z</lastmod>
+  <lastmod>2018-09-08T01:42:00Z</lastmod>
  </url>
  <url>
   <loc>http://hackwrite.com/index-2.html</loc>
-  <lastmod>2017-11-10T19:15:00Z</lastmod>
+  <lastmod>2018-09-08T01:42:00Z</lastmod>
  </url>
  <url>
   <loc>http://hackwrite.com/posts/data-structures-and-philosophy/</loc>
-  <lastmod>2017-01-09T14:40:00Z</lastmod>
+  <lastmod>2018-09-08T01:42:00Z</lastmod>
  </url>
  <url>
   <loc>http://hackwrite.com/posts/designing-vs-decorating/</loc>
-  <lastmod>2017-04-16T00:19:00Z</lastmod>
+  <lastmod>2018-09-08T01:42:00Z</lastmod>
  </url>
  <url>
   <loc>http://hackwrite.com/posts/docops-not-just-fun-part/</loc>
-  <lastmod>2017-04-16T00:19:00Z</lastmod>
+  <lastmod>2018-09-08T01:42:00Z</lastmod>
  </url>
  <url>
   <loc>http://hackwrite.com/posts/docs-as-code/</loc>
-  <lastmod>2017-04-16T00:19:00Z</lastmod>
- </url>
- <url>
-  <loc>http://hackwrite.com/posts/emacs-for-technical-writing/</loc>
-  <lastmod>2017-11-10T19:15:00Z</lastmod>
+  <lastmod>2018-09-08T01:42:00Z</lastmod>
  </url>
  <url>
   <loc>http://hackwrite.com/posts/enough-to-be-dangerous/</loc>
-  <lastmod>2017-01-09T14:40:00Z</lastmod>
+  <lastmod>2018-09-08T01:42:00Z</lastmod>
  </url>
  <url>
   <loc>http://hackwrite.com/posts/file-names/</loc>
-  <lastmod>2017-04-16T00:19:00Z</lastmod>
+  <lastmod>2018-09-08T01:42:00Z</lastmod>
  </url>
  <url>
   <loc>http://hackwrite.com/posts/github-pages-problem/</loc>
-  <lastmod>2017-01-10T15:20:00Z</lastmod>
+  <lastmod>2018-09-08T01:42:00Z</lastmod>
  </url>
  <url>
   <loc>http://hackwrite.com/posts/intersection-of-non-empty-sets-in-python/</loc>
-  <lastmod>2017-04-16T00:19:00Z</lastmod>
+  <lastmod>2018-09-08T01:42:00Z</lastmod>
  </url>
  <url>
   <loc>http://hackwrite.com/posts/it-should-matter-that-its-you/</loc>
-  <lastmod>2017-01-09T14:40:00Z</lastmod>
+  <lastmod>2018-09-08T01:42:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://hackwrite.com/posts/learn-about-python-decorators-by-writing-a-function-dispatcher/</loc>
+  <lastmod>2018-09-08T01:42:00Z</lastmod>
  </url>
  <url>
   <loc>http://hackwrite.com/posts/object-oriented-vs-functional-modelling-of-musical-arithmetic-in-python/</loc>
-  <lastmod>2017-11-10T19:15:00Z</lastmod>
+  <lastmod>2018-09-08T01:42:00Z</lastmod>
  </url>
  <url>
   <loc>http://hackwrite.com/posts/on-the-design-of-this-blog/</loc>
-  <lastmod>2017-01-09T14:40:00Z</lastmod>
+  <lastmod>2018-09-08T01:42:00Z</lastmod>
  </url>
  <url>
   <loc>http://hackwrite.com/posts/overriding-css-declaration-to-reduce-loc/</loc>
-  <lastmod>2017-01-09T14:40:00Z</lastmod>
+  <lastmod>2018-09-08T01:42:00Z</lastmod>
  </url>
  <url>
   <loc>http://hackwrite.com/posts/python-and-django-vs-ruby-and-rails/</loc>
-  <lastmod>2017-01-09T14:40:00Z</lastmod>
+  <lastmod>2018-09-08T01:42:00Z</lastmod>
  </url>
  <url>
   <loc>http://hackwrite.com/posts/real-reason-i-love-static-site-generators/</loc>
-  <lastmod>2017-04-16T00:19:00Z</lastmod>
+  <lastmod>2018-09-08T01:42:00Z</lastmod>
  </url>
  <url>
   <loc>http://hackwrite.com/posts/registering-functions-against-object-methods-in-python/</loc>
-  <lastmod>2017-05-27T14:30:00Z</lastmod>
+  <lastmod>2018-09-08T01:42:00Z</lastmod>
  </url>
  <url>
   <loc>http://hackwrite.com/posts/shipping/</loc>
-  <lastmod>2017-01-09T14:54:00Z</lastmod>
+  <lastmod>2018-09-08T01:42:00Z</lastmod>
  </url>
  <url>
   <loc>http://hackwrite.com/posts/simple-input-validation-handling-python/</loc>
-  <lastmod>2017-01-09T14:40:00Z</lastmod>
+  <lastmod>2018-09-08T01:42:00Z</lastmod>
  </url>
  <url>
   <loc>http://hackwrite.com/posts/third-option-success/</loc>
-  <lastmod>2017-01-09T14:40:00Z</lastmod>
+  <lastmod>2018-09-08T01:42:00Z</lastmod>
  </url>
  <url>
   <loc>http://hackwrite.com/posts/verbiage/</loc>
-  <lastmod>2017-04-16T00:19:00Z</lastmod>
+  <lastmod>2018-09-08T01:42:00Z</lastmod>
  </url>
  <url>
   <loc>http://hackwrite.com/posts/what-and-how-much-to-learn/</loc>
-  <lastmod>2017-01-19T15:06:00Z</lastmod>
+  <lastmod>2018-09-08T01:42:00Z</lastmod>
  </url>
 </urlset>

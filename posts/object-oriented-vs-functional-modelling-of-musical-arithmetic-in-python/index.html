@@ -12,12 +12,12 @@
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
 <link rel="canonical" href="http://hackwrite.com/posts/object-oriented-vs-functional-modelling-of-musical-arithmetic-in-python/">
 <!--[if lt IE 9]><script src="../../assets/js/html5shiv-printshiv.min.js"></script><![endif]--><meta name="author" content="Adam Michael Wood">
-<link rel="prev" href="../emacs-for-technical-writing/" title="Emacs for Technical Writing" type="text/html">
+<link rel="prev" href="../registering-functions-against-object-methods-in-python/" title="Registering Functions Against Object Methods in Python" type="text/html">
+<link rel="next" href="../learn-about-python-decorators-by-writing-a-function-dispatcher/" title="Learn About Python Decorators by Writing a Function Dispatcher" type="text/html">
 <meta property="og:site_name" content="hack.write()">
 <meta property="og:title" content="Object-oriented vs. Functional Modelling of Musical Arithmetic in Pyth">
 <meta property="og:url" content="http://hackwrite.com/posts/object-oriented-vs-functional-modelling-of-musical-arithmetic-in-python/">
 <meta property="og:description" content="Classical vs. Functional Modelling of Musical Arithmetic in Python¶
-
 
 
 
@@ -37,6 +37,7 @@ In [1]:
 import ophis
 
 
+    
 
 
 
@@ -44,9 +45,7 @@ import ophis
 
 
 
-
-
-This is an">
+This is ">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2017-11-10T11:07:06-08:00">
 </head>
@@ -120,7 +119,7 @@ This is an">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">ophis</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -172,7 +171,7 @@ This is an">
           <span class="c1"># the complete list of all initialized chromae</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -182,7 +181,7 @@ This is an">
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[2]:</div>
+    <div class="prompt output_prompt">Out[2]:</div>
 
 
 
@@ -250,7 +249,7 @@ This is an">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">ophis</span><span class="o">.</span><span class="n">FSHARP</span><span class="o">.</span><span class="n">unicode</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -260,7 +259,7 @@ This is an">
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[3]:</div>
+    <div class="prompt output_prompt">Out[3]:</div>
 
 
 
@@ -283,7 +282,7 @@ This is an">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">ophis</span><span class="o">.</span><span class="n">FSHARP</span><span class="o">.</span><span class="n">ascii</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -293,7 +292,7 @@ This is an">
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[4]:</div>
+    <div class="prompt output_prompt">Out[4]:</div>
 
 
 
@@ -316,7 +315,7 @@ This is an">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">ophis</span><span class="o">.</span><span class="n">FSHARP</span><span class="o">.</span><span class="n">base</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -326,7 +325,7 @@ This is an">
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[5]:</div>
+    <div class="prompt output_prompt">Out[5]:</div>
 
 
 
@@ -359,7 +358,7 @@ This is an">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">int</span><span class="p">(</span><span class="n">ophis</span><span class="o">.</span><span class="n">FSHARP</span><span class="p">)</span> 
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -369,7 +368,7 @@ This is an">
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[6]:</div>
+    <div class="prompt output_prompt">Out[6]:</div>
 
 
 
@@ -392,7 +391,7 @@ This is an">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">ophis</span><span class="o">.</span><span class="n">FSHARP</span><span class="o">.</span><span class="n">augment</span><span class="p">()</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -402,7 +401,7 @@ This is an">
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[7]:</div>
+    <div class="prompt output_prompt">Out[7]:</div>
 
 
 
@@ -425,7 +424,7 @@ This is an">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">ophis</span><span class="o">.</span><span class="n">FSHARP</span><span class="o">.</span><span class="n">diminish</span><span class="p">()</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -435,7 +434,7 @@ This is an">
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[8]:</div>
+    <div class="prompt output_prompt">Out[8]:</div>
 
 
 
@@ -479,7 +478,7 @@ This is an">
 <span class="n">ophis</span><span class="o">.</span><span class="n">Pitch</span><span class="p">(</span><span class="n">ophis</span><span class="o">.</span><span class="n">GFLAT</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -489,7 +488,7 @@ This is an">
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[9]:</div>
+    <div class="prompt output_prompt">Out[9]:</div>
 
 
 
@@ -514,7 +513,7 @@ This is an">
 <span class="n">ophis</span><span class="o">.</span><span class="n">GFLAT</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -524,7 +523,7 @@ This is an">
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[11]:</div>
+    <div class="prompt output_prompt">Out[11]:</div>
 
 
 
@@ -558,7 +557,7 @@ This is an">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">ophis</span><span class="o">.</span><span class="n">Major</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># A Major second.</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -568,7 +567,7 @@ This is an">
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[12]:</div>
+    <div class="prompt output_prompt">Out[12]:</div>
 
 
 
@@ -591,7 +590,7 @@ This is an">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">ophis</span><span class="o">.</span><span class="n">Perfect</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="c1"># A Perfect fourth, plus 2 octaves.</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -601,7 +600,7 @@ This is an">
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[13]:</div>
+    <div class="prompt output_prompt">Out[13]:</div>
 
 
 
@@ -634,7 +633,7 @@ This is an">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">id</span><span class="p">(</span><span class="n">ophis</span><span class="o">.</span><span class="n">minor</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">augmented</span><span class="p">())</span> <span class="o">==</span> <span class="nb">id</span><span class="p">(</span><span class="n">ophis</span><span class="o">.</span><span class="n">Major</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -644,7 +643,7 @@ This is an">
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[14]:</div>
+    <div class="prompt output_prompt">Out[14]:</div>
 
 
 
@@ -677,7 +676,7 @@ This is an">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">ophis</span><span class="o">.</span><span class="n">G</span> <span class="o">+</span> <span class="n">ophis</span><span class="o">.</span><span class="n">Major</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -687,7 +686,7 @@ This is an">
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[15]:</div>
+    <div class="prompt output_prompt">Out[15]:</div>
 
 
 
@@ -710,7 +709,7 @@ This is an">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">ophis</span><span class="o">.</span><span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">ophis</span><span class="o">.</span><span class="n">Perfect</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -720,7 +719,7 @@ This is an">
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[16]:</div>
+    <div class="prompt output_prompt">Out[16]:</div>
 
 
 
@@ -743,7 +742,7 @@ This is an">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">ophis</span><span class="o">.</span><span class="n">FSHARP</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">ophis</span><span class="o">.</span><span class="n">Major</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -753,7 +752,7 @@ This is an">
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[17]:</div>
+    <div class="prompt output_prompt">Out[17]:</div>
 
 
 
@@ -786,7 +785,7 @@ This is an">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="p">(</span><span class="n">ophis</span><span class="o">.</span><span class="n">FFLAT</span> <span class="o">+</span> <span class="n">ophis</span><span class="o">.</span><span class="n">Perfect</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span><span class="o">.</span><span class="n">diminish</span><span class="p">()</span><span class="o">.</span><span class="n">unicode</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -796,7 +795,7 @@ This is an">
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[18]:</div>
+    <div class="prompt output_prompt">Out[18]:</div>
 
 
 
@@ -1026,7 +1025,7 @@ This is an">
 <span class="nb">print</span><span class="p">(</span><span class="n">ophis</span><span class="o">.</span><span class="n">E</span><span class="o">.</span><span class="n">base_num</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">ophis</span><span class="o">.</span><span class="n">E</span><span class="p">))</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1036,7 +1035,7 @@ This is an">
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
@@ -1069,7 +1068,7 @@ This is an">
 <span class="nb">print</span><span class="p">(</span><span class="n">ophis</span><span class="o">.</span><span class="n">G</span><span class="o">.</span><span class="n">base_num</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">ophis</span><span class="o">.</span><span class="n">G</span><span class="p">))</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1079,7 +1078,7 @@ This is an">
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
@@ -1102,7 +1101,7 @@ This is an">
 <span class="nb">print</span><span class="p">(</span><span class="n">ophis</span><span class="o">.</span><span class="n">ASHARP</span><span class="o">.</span><span class="n">base_num</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">ophis</span><span class="o">.</span><span class="n">ASHARP</span><span class="p">))</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1112,7 +1111,7 @@ This is an">
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
@@ -1153,7 +1152,7 @@ This is an">
 <span class="n">sum_of_tuples</span> <span class="c1"># (6,11)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1163,7 +1162,7 @@ This is an">
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[22]:</div>
+    <div class="prompt output_prompt">Out[22]:</div>
 
 
 
@@ -1190,7 +1189,7 @@ This is an">
 <span class="nb">print</span><span class="p">(</span><span class="n">e_augmented_by_p5</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1200,7 +1199,7 @@ This is an">
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
@@ -1222,7 +1221,7 @@ B
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">ophis</span><span class="o">.</span><span class="n">B</span><span class="o">.</span><span class="n">base_num</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">ophis</span><span class="o">.</span><span class="n">B</span><span class="p">))</span> 
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1232,7 +1231,7 @@ B
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
@@ -1254,7 +1253,7 @@ B
 <span class="n">z</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1264,7 +1263,7 @@ B
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[25]:</div>
+    <div class="prompt output_prompt">Out[25]:</div>
 
 
 
@@ -1287,7 +1286,7 @@ B
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">distance</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">z</span><span class="p">))</span> 
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1297,7 +1296,7 @@ B
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
@@ -1401,7 +1400,7 @@ B
 <span class="p">})</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1468,7 +1467,7 @@ B
     <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">b</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1481,7 +1480,7 @@ B
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">chroma</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1491,7 +1490,7 @@ B
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[29]:</div>
+    <div class="prompt output_prompt">Out[29]:</div>
 
 
 
@@ -1514,7 +1513,7 @@ B
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">interval</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1524,7 +1523,7 @@ B
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[30]:</div>
+    <div class="prompt output_prompt">Out[30]:</div>
 
 
 
@@ -1547,7 +1546,7 @@ B
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">chroma</span><span class="p">(</span><span class="s1">'D'</span><span class="p">,</span> <span class="s1">'sharp'</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1557,7 +1556,7 @@ B
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[31]:</div>
+    <div class="prompt output_prompt">Out[31]:</div>
 
 
 
@@ -1580,7 +1579,7 @@ B
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">interval</span><span class="p">(</span><span class="s1">'Major'</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1590,7 +1589,7 @@ B
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[32]:</div>
+    <div class="prompt output_prompt">Out[32]:</div>
 
 
 
@@ -1613,7 +1612,7 @@ B
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">chroma</span><span class="p">(</span><span class="n">augment</span><span class="p">(</span><span class="n">chroma</span><span class="p">(</span><span class="s1">'C'</span><span class="p">,</span> <span class="s1">'sharp'</span><span class="p">),</span> <span class="n">interval</span><span class="p">(</span><span class="s1">'minor'</span><span class="p">,</span> <span class="mi">3</span><span class="p">)))</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1623,7 +1622,7 @@ B
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[33]:</div>
+    <div class="prompt output_prompt">Out[33]:</div>
 
 
 
@@ -1648,7 +1647,7 @@ B
 <span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1658,7 +1657,7 @@ B
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
@@ -1679,7 +1678,7 @@ B
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">ophis</span><span class="o">.</span><span class="n">CSHARP</span><span class="o">.</span><span class="n">augment</span><span class="p">(</span><span class="n">ophis</span><span class="o">.</span><span class="n">minor</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1689,7 +1688,7 @@ B
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[35]:</div>
+    <div class="prompt output_prompt">Out[35]:</div>
 
 
 
@@ -1712,7 +1711,7 @@ B
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">timeit</span> ophis.CSHARP.augment(ophis.minor(3))
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1722,7 +1721,7 @@ B
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
@@ -1781,7 +1780,7 @@ B
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">augment</span><span class="p">((</span><span class="mi">7</span><span class="p">,</span><span class="mi">11</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span> <span class="c1"># Should be (0,0), in musical logic.</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1791,7 +1790,7 @@ B
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[37]:</div>
+    <div class="prompt output_prompt">Out[37]:</div>
 
 
 
@@ -1815,7 +1814,7 @@ B
 <span class="n">chroma</span><span class="p">((</span><span class="mi">8</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>  <span class="c1"># KeyError</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1825,7 +1824,7 @@ B
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 <div class="output_subarea output_text output_error">
@@ -1884,7 +1883,7 @@ B
 <span class="n">augment</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> 
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1894,7 +1893,7 @@ B
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[39]:</div>
+    <div class="prompt output_prompt">Out[39]:</div>
 
 
 
@@ -1918,7 +1917,7 @@ B
 <span class="n">chroma</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span> <span class="c1"># ValueError</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1928,7 +1927,7 @@ B
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 <div class="output_subarea output_text output_error">
@@ -2010,7 +2009,10 @@ B
     </div>
     <aside class="postpromonav"><nav><ul class="pager hidden-print">
 <li class="previous">
-                <a href="../emacs-for-technical-writing/" rel="prev" title="Emacs for Technical Writing">Previous post</a>
+                <a href="../registering-functions-against-object-methods-in-python/" rel="prev" title="Registering Functions Against Object Methods in Python">Previous post</a>
+            </li>
+            <li class="next">
+                <a href="../learn-about-python-decorators-by-writing-a-function-dispatcher/" rel="next" title="Learn About Python Decorators by Writing a Function Dispatcher">Next post</a>
             </li>
         </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
         
@@ -2036,7 +2038,7 @@ B
 
         </section><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha256-SDRP1VVYu+tgAGKhddBSl5+ezofHKZeI+OzxakbIe/Y=" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
         MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});
-        </script></article><script>var disqus_shortname="adammichaelwood";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script></main><footer id="footer"><p>© 2016–2017 <a href="mailto:adam.michael.wood@gmail.com">Adam Michael Wood</a> - <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> <br><span id="powered-by">Powered by <a href="https://getnikola.com" rel="nofollow">Nikola</a></span></p>
+        </script></article><script>var disqus_shortname="adammichaelwood";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script></main><footer id="footer"><p>© 2016–2018 <a href="mailto:adam.michael.wood@gmail.com">Adam Michael Wood</a> - <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> <br><span id="powered-by">Powered by <a href="https://getnikola.com" rel="nofollow">Nikola</a></span></p>
             
         </footer>
 </div>

@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html prefix="            og: http://ogp.me/ns# article: http://ogp.me/ns/article#     " vocab="http://ogp.me/ns" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Learn About Python Decorators by Writing a Function Dispatcher | hack.write()</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<link rel="canonical" href="http://hackwrite.com/posts/learn-about-python-decorators-by-writing-a-function-dispatcher/">
+<!--[if lt IE 9]><script src="../../assets/js/html5shiv-printshiv.min.js"></script><![endif]--><meta name="author" content="Adam Michael Wood">
+<link rel="prev" href="../object-oriented-vs-functional-modelling-of-musical-arithmetic-in-python/" title="Object-oriented vs. Functional Modelling of Musical Arithmetic in Python" type="text/html">
+<meta property="og:site_name" content="hack.write()">
+<meta property="og:title" content="Learn About Python Decorators by Writing a Function Dispatcher">
+<meta property="og:url" content="http://hackwrite.com/posts/learn-about-python-decorators-by-writing-a-function-dispatcher/">
+<meta property="og:description" content='Learn About Decorators By Writing a Function Dispatcher¶
+
+
+
+
+
+
+Python decorators transform how functions work.
+@this_is_a_decorator
+def some_function():
+    return something
+
+"""
+&gt;&gt;&gt; some_function()
+S'>
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2018-09-07T18:39:32-07:00">
+</head>
+<body>
+    <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+    <div id="container">
+         
+    <header id="header"><h1 id="brand"><a href="http://hackwrite.com/" title="hack.write()" rel="home">
+
+        <span id="blog-title">hack.write()</span>
+    </a></h1>
+
+        
+
+        
+    <nav id="menu"><ul>
+<li><a href="../../archive.html">Archive</a></li>
+                <li><a href="../../categories/">Tags</a></li>
+                <li><a href="../../rss.xml">RSS feed</a></li>
+                <li><a href="https://github.com/adammichaelwood/hackwrite">Repo</a></li>
+    
+    
+    </ul></nav></header><main id="content"><article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Learn About Python Decorators by Writing a Function Dispatcher</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                    Adam Michael Wood
+            </span></p>
+            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2018-09-07T18:39:32-07:00" itemprop="datePublished" title="2018-09-07 18:39">2018-09-07 18:39</time></a></p>
+                <p class="commentline">
+        
+    <a href="#disqus_thread" data-disqus-identifier="cache/posts/learn-about-python-decorators-by-writing-a-function-dispatcher.html">Comments</a>
+
+
+            
+        </p>
+<p class="sourceline"><a href="index.ipynb" class="sourcelink">Source</a></p>
+
+        </div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Learn-About-Decorators-By-Writing-a-Function-Dispatcher">Learn About Decorators By Writing a Function Dispatcher<a class="anchor-link" href="#Learn-About-Decorators-By-Writing-a-Function-Dispatcher">¶</a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Python decorators transform how functions work.</p>
+<div class="highlight"><pre><span></span><span class="nd">@this_is_a_decorator</span>
+<span class="k">def</span> <span class="nf">some_function</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">something</span>
+
+<span class="sd">"""</span>
+<span class="sd">&gt;&gt;&gt; some_function()</span>
+<span class="sd">Something else!</span>
+<span class="sd">"""</span>
+</pre></div>
+<p>Between the core language and the standard library,
+there are several decorators that come with Python.
+Also, many popular frameworks provide decorators
+to help eliminate boilerplate 
+and make building applications faster and easier.</p>
+<p>Decorators are easier to use than to understand.</p>
+<p>This article will try to help you understand 
+how decorators work and
+how to write them.
+To do that,
+we'll write a basic implementation of a dispatch function,
+which will conditionally call function implementations
+based on the value of an argument.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="A-Problem-in-Need-of-Decorators">A Problem in Need of Decorators<a class="anchor-link" href="#A-Problem-in-Need-of-Decorators">¶</a>
+</h2>
+<p>How often have you written code that looks something like this?</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">if_chain_function</span><span class="p">(</span><span class="n">status</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="s2">"red"</span><span class="p">:</span>
+        <span class="c1"># large block of code</span>
+    <span class="k">elif</span> <span class="n">status</span> <span class="o">==</span> <span class="s2">"orange"</span><span class="p">:</span>
+        <span class="c1"># large block of code</span>
+    <span class="k">elif</span> <span class="n">status</span> <span class="o">==</span> <span class="s2">"yellow"</span><span class="p">:</span>
+        <span class="c1"># large block of code</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># some default large block of code</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Most of us have written some version of that more than we'd like to admit.
+Some languages even have a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch">special mechanism (usually called <code>switch</code>) for doing it</a>.</p>
+<p>But it has problems.</p>
+<ul>
+<li>As the number of cases increases, it becomes hard to read.</li>
+<li>The code blocks in each case will likely evolve independently, 
+some getting refactored into clean functions, 
+some not, 
+and some being a mix of inline code and custom function calls.</li>
+<li>New cases have to be added explicitly in this function. 
+This precludes pluggable cases from external modules, 
+and also just adds mental load.</li>
+<li>If the cases are anything other than simple comparisons,
+the whole thing quickly becomes difficult to reason about.</li>
+</ul>
+<p>To solve these problems, 
+making the code more readable and easier to extend, 
+we're going to look at function dispatching.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="A-little-bit-about-function-dispatching">A little bit about function dispatching<a class="anchor-link" href="#A-little-bit-about-function-dispatching">¶</a>
+</h2>
+<p>Conventionally, function dispatching is related to the <em>type</em> of the argument.
+That is, function dispatching is a mechanism for doing different things,
+depending on whether you pass in an <code>int</code> or a <code>str</code> or a <code>list</code> or whatever.</p>
+<p>Python is <a href=".">dynamically typed</a>,
+so you don't have to specify that a function only accepts some specific type as an argument.
+But if those different types have to be handled differently,
+you might end up with code that looks eerily similar to the code above.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">depends_on_type</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">==</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="c1"># large block of code</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="c1"># large block of code</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">==</span> <span class="nb">list</span><span class="p">:</span>
+        <span class="c1"># large block of code</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># some default large block of code</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This has all the same problems mentioned above.
+But, unlike the first example, Python has a solution to this already:<br><a href="https://docs.python.org/3/library/functools.html#functools.singledispatch"><code>@functools.singledispatch</code></a>.</p>
+<p>This is a <a href=".">decorator</a> 
+which transforms a function into a single-dispatch generic function. 
+You then register other functions against it, 
+specifying a type of object (that is, a class name).
+When the function is called, it:</p>
+<ol>
+<li>looks up the type of the first argument</li>
+<li>checks its registry for that type</li>
+<li>executes the function registered for that type</li>
+<li>if the type wasn't registered, the original function is executed</li>
+</ol>
+<p>If this sounds complicated, don't worry. Using <code>singledispatch</code> is simpler than explaining it.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">functools</span>
+
+<span class="nd">@functools</span><span class="o">.</span><span class="n">singledispatch</span>
+<span class="k">def</span> <span class="nf">dispatch_on_type</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="c1"># some default logic</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"I am the default implementation."</span><span class="p">)</span>
+    
+<span class="nd">@dispatch_on_type</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">_</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="c1"># some stringy logic</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">"'</span><span class="si">{x}</span><span class="s2">' is a string."</span><span class="p">)</span>
+    
+<span class="nd">@dispatch_on_type</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">_</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="c1"># some integer logic</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">"</span><span class="si">{x}</span><span class="s2"> is an integer."</span><span class="p">)</span>
+    
+<span class="nd">@dispatch_on_type</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">_</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="c1"># some list logic</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">"</span><span class="si">{x}</span><span class="s2"> is a list."</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dispatch_on_type</span><span class="p">(</span><span class="nb">set</span><span class="p">())</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>I am the default implementation.
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dispatch_on_type</span><span class="p">(</span><span class="s2">"STRING"</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>'STRING' is a string.
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dispatch_on_type</span><span class="p">(</span><span class="mi">1337</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>1337 is an integer.
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dispatch_on_type</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">7</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[1, 3, 3, 7] is a list.
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>You can do all sorts of cool things with <code>functools.singledispatch</code>,
+but it doesn't solve the problem in the code at the top of the page.
+For that, 
+we're going to create a decorator similar to <code>singledispatch</code>
+that dispatches based on the <em>value</em> of the first argument
+instead of the type.</p>
+<p>Along the way we'll learn more about how decorators work.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Writing-Decorators">Writing Decorators<a class="anchor-link" href="#Writing-Decorators">¶</a>
+</h2>
+<p>The <code>@</code> decorator syntax is <a href="https://en.wikipedia.org/wiki/Syntactic_sugar">syntactic sugar</a>
+that covers <a href="https://twitter.com/adammichaelwood/status/1035338321877037056">passing a function to another function and then returning a function</a>.</p>
+<p>What?</p>
+<p>Again, this is easier to show than to explain.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">a_decorator</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">func</span>
+
+
+<span class="c1"># The sweet decorator way...</span>
+<span class="nd">@a_decorator</span>
+<span class="k">def</span> <span class="nf">some_function</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Some function."</span><span class="p">)</span>
+
+<span class="c1"># Which has exactly the same effect as...</span>
+<span class="k">def</span> <span class="nf">some_other_function</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Some other function."</span><span class="p">)</span>
+    
+<span class="n">some_other_function</span> <span class="o">=</span> <span class="n">a_decorator</span><span class="p">(</span><span class="n">some_other_function</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>A decorator is just a function that returns a function.</p>
+<p>When used with the <code>@</code> syntax,</p>
+<ol>
+<li>the decorator function is called, with the decorated function passed as an argument;</li>
+<li>the return value of the decorator function is assigned to the same name as the decorated function.</li>
+<li>When you call the decorated function, you are <em>actually</em> calling the function that was returned by the decorator
+(which may or may not call the original function's code).</li>
+</ol>
+<p>But the above example returned the original function without altering it.
+The point of decorators is to return something other than the original function,
+in order to transform the function in some way.</p>
+<p>To do this, 
+we usually define another function inside the decorator,
+and then return that.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">never_two</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">x</span> <span class="k">if</span> <span class="n">x</span> <span class="o">!=</span> <span class="mi">2</span> <span class="k">else</span> <span class="mi">3</span>
+    <span class="k">return</span> <span class="n">wrapper</span>
+    
+<span class="nd">@never_two</span>
+<span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+    
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[8]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>3</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The <code>wrapper</code> function is defined inside <code>never_two</code>, 
+but it is not executed when <code>never_two</code> is executed
+(which happens at the line where <code>@never_two</code> appears).
+Notice — it isn't called anywhere.
+(That is, you don't see anything like <code>wrapper(1,1)</code>.)</p>
+<p>Instead, the <code>wrapper</code> function is returned by <code>@never_two</code>,
+and assigned to the name <code>add</code>.
+Meanwhile, the code in the original <code>add</code> definition
+is <em>inside</em> <code>wrapper</code>, where it is called <code>func</code>.</p>
+<p>When <code>add(1,1)</code> is called:</p>
+<ol>
+<li>The code defined in <code>wrapper</code> is executed, because it was assigned to <code>add</code>.</li>
+<li>The arguments passed into <code>add</code> (the two <code>1</code>s) are passed on to <code>func</code> 
+when it is called at <code>x = func(*args, **kw)</code>.</li>
+<li>The code originally defined at <code>add</code> (<code>return x + y</code>) is executed,
+because that code was assigned to <code>func</code>.</li>
+<li>The output of <code>func</code> (the original <code>add</code>) is compared to <code>2</code>, 
+and altered accordingly.</li>
+<li>The code defined under <code>wrapper</code> (currently being called <code>add</code>) returns <code>3</code>.</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Two points might be helpful here:</p>
+<ul>
+<li>
+<p>Think of a function as just everything from the parenthesis onward, excluding the name.
+Once you think of a function as a block of code that accepts arguments,
+which can be assigned to any name,
+things get a little easier to understand.</p>
+</li>
+<li>
+<p>The <code>(*args, **kw)</code> is a way to 
+collect, pass on, and then unpack 
+all the positional and keyword arguments.
+A full treatment is beyond the scope of this article.
+For now, just notice that whatever is passed into <code>wrapper</code>
+is simply passed on to <code>func</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Writing-a-Dispatch-Decorator">Writing a Dispatch Decorator<a class="anchor-link" href="#Writing-a-Dispatch-Decorator">¶</a>
+</h2>
+<p>Let's look at the syntax of <code>functools.singledispatch</code> again,
+and think about what we need to do to emulate it for values instead of types.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nd">@functools</span><span class="o">.</span><span class="n">singledispatch</span>
+<span class="k">def</span> <span class="nf">dispatch_on_type</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"I am the default implementation."</span><span class="p">)</span>
+    
+<span class="nd">@dispatch_on_type</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">_</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">"'</span><span class="si">{x}</span><span class="s2">' is a string."</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Decorators-that-Return-Decorators">Decorators that Return Decorators<a class="anchor-link" href="#Decorators-that-Return-Decorators">¶</a>
+</h3>
+<p>Notice that we actually have <strong>two</strong> decorators:</p>
+<ul>
+<li><code>functools.singledispatch</code></li>
+<li><code>dispatch_on_type.register</code></li>
+</ul>
+<p>This means inside <code>singledispatch</code>, 
+the decorated function (in this case, <code>dispatch_on_type</code>)
+is being assigned an additional attribute, 
+<code>.register</code>, which is also a decorator function.</p>
+<p>That might look something like:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">outer_decorator</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    
+    <span class="k">def</span> <span class="nf">inner_decorator</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+        
+        <span class="k">def</span> <span class="nf">inner_wrapper</span><span class="p">():</span>
+        
+            <span class="nb">print</span><span class="p">(</span><span class="s2">"Inner wrapper."</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="n">inner_wrapper</span>
+    
+    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"The wrapper function."</span><span class="p">)</span>
+    
+    <span class="n">wrapper</span><span class="o">.</span><span class="n">decorator</span> <span class="o">=</span> <span class="n">inner_decorator</span>
+    
+    <span class="k">return</span> <span class="n">wrapper</span>
+
+<span class="nd">@outer_decorator</span>
+<span class="k">def</span> <span class="nf">a_function</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Original a_function."</span><span class="p">)</span> <span class="c1"># This will never execute.</span>
+
+<span class="nd">@a_function</span><span class="o">.</span><span class="n">decorator</span>
+<span class="k">def</span> <span class="nf">another_function</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Original another_function."</span><span class="p">)</span> <span class="c1"># This will never execute.</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [11]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a_function</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>The wrapper function.
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">another_function</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Inner wrapper.
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Unpacking that a bit:</p>
+<ul>
+<li>
+<code>outer_decorator</code> defines two functions,<code>inner_decorator</code> and <code>wrapper</code>
+</li>
+<li>
+<code>wrapper</code> is returned by <code>outer_decorator</code>, so it will be executed when <code>a_function</code> is called</li>
+<li>
+<code>inner_decorator</code> is assigned as an attribute of <code>wrapper</code>, so <code>a_function.inner_decorator</code> becomes a usable decorator</li>
+<li>
+<code>inner_decorator</code> defines <code>inner_wrapper</code> and returns it, so it will be executed when <code>another_function</code> is called</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Decorators-with-Arguments">Decorators with Arguments<a class="anchor-link" href="#Decorators-with-Arguments">¶</a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>You may have noticed that up until now,
+the decorators created in this article did not included parentheses or arguments
+when attached to functions.
+This is because the decorated function is actually passed
+as the only argument to the function call.</p>
+<p>But when registering functions against types,
+<code>singledispatch</code> included an argument.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [13]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nd">@functools</span><span class="o">.</span><span class="n">singledispatch</span>
+<span class="k">def</span> <span class="nf">dispatched</span><span class="p">():</span>
+    <span class="k">return</span>
+
+<span class="nd">@dispatched</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">_</span><span class="p">():</span>
+    <span class="k">return</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Incredibly, the way to achieve this is to nest <em>yet another function</em> into the decorator.</p>
+<p>That is because, really, <code>register</code> isn't a decorator. 
+Instead, <strong><code>register</code> is a function which returns a decorator when passed an argument.</strong></p>
+<p>Let's take our previous example and expand it to include this idea.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [14]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">outer_decorator</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    
+    <span class="k">def</span> <span class="nf">faux_decorator_w_arg</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
+        
+        <span class="k">def</span> <span class="nf">actual_decorator</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+            
+            <span class="k">def</span> <span class="nf">inner_wrapper</span><span class="p">():</span>
+        
+                <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">"Inner wrapper. arg was: </span><span class="si">{arg}</span><span class="s2">"</span><span class="p">)</span>
+        
+            <span class="k">return</span> <span class="n">inner_wrapper</span>
+        
+        <span class="k">return</span> <span class="n">actual_decorator</span>
+    
+    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"The wrapper function."</span><span class="p">)</span>
+    
+    <span class="n">wrapper</span><span class="o">.</span><span class="n">decorator</span> <span class="o">=</span> <span class="n">faux_decorator_w_arg</span>
+    
+    <span class="k">return</span> <span class="n">wrapper</span>
+
+<span class="nd">@outer_decorator</span>
+<span class="k">def</span> <span class="nf">a_function</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Original a_function."</span><span class="p">)</span> <span class="c1"># This will never execute.</span>
+
+<span class="nd">@a_function</span><span class="o">.</span><span class="n">decorator</span><span class="p">(</span><span class="s2">"decorator_argument"</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">another_function</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Original another_function."</span><span class="p">)</span> <span class="c1"># This will never execute.</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [15]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a_function</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>The wrapper function.
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [16]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">another_function</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Inner wrapper. arg was: decorator_argument
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Putting-it-Together">Putting it Together<a class="anchor-link" href="#Putting-it-Together">¶</a>
+</h3>
+<p>So now we know how to create decorators that return decorators and accepts arguments. 
+With this,
+plus a dictionary that maps registered values to functions,
+we can create a dispatch on value decorator.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [17]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">dispatch_on_value</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="sd">"""</span>
+<span class="sd">    Value-dispatch function decorator.</span>
+<span class="sd">    </span>
+<span class="sd">    Transforms a function into a value-dispatch function,</span>
+<span class="sd">    which can have different behaviors based on the value of the first argument.</span>
+<span class="sd">    """</span>
+    
+    <span class="n">registry</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">def</span> <span class="nf">dispatch</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">registry</span><span class="p">[</span><span class="n">value</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">func</span>
+
+    <span class="k">def</span> <span class="nf">register</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">func</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+       
+        <span class="k">if</span> <span class="n">func</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="k">lambda</span> <span class="n">f</span><span class="p">:</span> <span class="n">register</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+        
+        <span class="n">registry</span><span class="p">[</span><span class="n">value</span><span class="p">]</span> <span class="o">=</span> <span class="n">func</span>
+        
+        <span class="k">return</span> <span class="n">func</span>
+
+    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">dispatch</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
+
+    <span class="n">wrapper</span><span class="o">.</span><span class="n">register</span> <span class="o">=</span> <span class="n">register</span>
+    <span class="n">wrapper</span><span class="o">.</span><span class="n">dispatch</span> <span class="o">=</span> <span class="n">dispatch</span>
+    <span class="n">wrapper</span><span class="o">.</span><span class="n">registry</span> <span class="o">=</span> <span class="n">registry</span>
+
+    <span class="k">return</span> <span class="n">wrapper</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [18]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nd">@dispatch_on_value</span>
+<span class="k">def</span> <span class="nf">react_to_status</span><span class="p">(</span><span class="n">status</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Everything's fine."</span><span class="p">)</span>
+    
+
+<span class="nd">@react_to_status</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s2">"red"</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">_</span><span class="p">(</span><span class="n">status</span><span class="p">):</span>
+    <span class="c1"># Red status is probably bad.</span>
+    <span class="c1"># So we need lots of complicated code here to deal with it.</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Status is red."</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [19]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">react_to_status</span><span class="p">(</span><span class="s2">"red"</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Status is red.
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>There are a few things here which might not be obvious.
+So let's take a closer look.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dispatch</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">registry</span><span class="p">[</span><span class="n">value</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">func</span>
+</pre></div>
+<p>This is called by <code>wrapper</code>, and is the mechanism that determines which registered function is executed.
+It looks in the registry and returns the appropriate function (without executing it).
+If the value isn't registered,
+this will raise a KeyError.
+The <code>except</code> block catches that error
+and returns the original function.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">register</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">func</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="n">func</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="k">lambda</span> <span class="n">f</span><span class="p">:</span> <span class="n">register</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+
+        <span class="n">registry</span><span class="p">[</span><span class="n">value</span><span class="p">]</span> <span class="o">=</span> <span class="n">func</span>
+
+        <span class="k">return</span> <span class="n">func</span>
+</pre></div>
+<p>This acts as both the <code>faux_decorator</code> and the <code>actual_decorator</code>.</p>
+<p>It can be called with one or two positional arguments;
+if the second one is omitted, it is set to <code>None</code>.</p>
+<p>At <code>@react_to_status.register("red")</code>, it is being called with only the <code>value</code> argument.
+This causes the <code>lambda expression</code> to be returned, with <code>value</code> already interpreted.
+(That is, the return value is <code>lambda f: register("red", f)</code>).</p>
+<p>This is the same as:</p>
+<div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">func</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">def</span> <span class="nf">actual_decorator</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+            <span class="n">register</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">func</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">actual</span> <span class="n">decorator</span>
+</pre></div>
+<p>But the lambda expression is a bit easier to read, once you know what it is doing.</p>
+<p>This returned lambda function is then the actual decorator,
+and is executed with the wrapped function as its one argument.
+The function argument is them passed to <code>register</code>,
+along with the <code>value</code> that got set when the lambda was created.</p>
+<p>Now <code>register</code> runs again,
+but this time it has both arguments.
+The <code>if func is None</code> is skipped,
+and the function is added to the registry with <code>value</code> as the key.
+The function is returned back to the point when the <code>register</code> decorator was called,
+but it gets assigned to the name <code>_</code>, 
+because we never need to call it directly.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">dispatch</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
+</pre></div>
+<p>This is the function that actually gets executed when <code>react_to_status</code> is called.
+It calls <code>dispatch</code> with the first argument (<code>arg[0]</code>),
+which return the appropriate function.
+The returned function is immediatly called, with <code>*args, **kw</code> passed in.
+Any output from the function is returned to the caller of <code>react_to_status</code>,
+which completes the entire dispatch process.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Going-Further">Going Further<a class="anchor-link" href="#Going-Further">¶</a>
+</h2>
+<p>This tutorial looked at value dispatch in order to dig into how decorators work. 
+It does not provide a complete implementation for a practical value dispatch decorator.</p>
+<p>For example,
+in practice you'd probably want value dispatch to include:</p>
+<ul>
+<li>values within a range</li>
+<li>values in a collection</li>
+<li>values matching a regular expression</li>
+<li>values meeting criteria defined in a fitness or sorting function</li>
+</ul>
+<p>And we didn't even talk about additional <code>functools</code> features 
+that <a href="https://docs.python.org/3/library/functools.html#functools.wraps">help sort out introspection</a>
+or <a href="https://hynek.me/articles/decorators/">dealing with the many problems created by decorators</a>.</p>
+<p>For a more complete, production ready implementation of this idea, 
+see <a href="https://github.com/minimind/dispatch-on-value-for-python">Dispatch on Value by minimind</a>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h2 id="Credits">Credits<a class="anchor-link" href="#Credits">¶</a>
+</h2>
+<p>The final form of <code>dispatch_on_value</code> was based heavily on 
+the <a href="https://github.com/pybee/ouroboros">Ouroboros</a> implementation of <a href="https://github.com/pybee/ouroboros/blob/master/ouroboros/functools.py"><code>functools.singledispatch</code></a>.</p>
+
+</div>
+</div>
+</div>
+    </div>
+  </div>
+
+    </div>
+    <aside class="postpromonav"><nav><ul class="pager hidden-print">
+<li class="previous">
+                <a href="../object-oriented-vs-functional-modelling-of-musical-arithmetic-in-python/" rel="prev" title="Object-oriented vs. Functional Modelling of Musical Arithmetic in Python">Previous post</a>
+            </li>
+        </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
+        
+        
+        <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="adammichaelwood",
+            disqus_url="http://hackwrite.com/posts/learn-about-python-decorators-by-writing-a-function-dispatcher/",
+        disqus_title="Learn About Python Decorators by Writing a Function Dispatcher",
+        disqus_identifier="cache/posts/learn-about-python-decorators-by-writing-a-function-dispatcher.html",
+        disqus_config = function () {
+            this.language = "en";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="https://disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        </section><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha256-SDRP1VVYu+tgAGKhddBSl5+ezofHKZeI+OzxakbIe/Y=" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});
+        </script></article><script>var disqus_shortname="adammichaelwood";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script></main><footer id="footer"><p>© 2016–2018 <a href="mailto:adam.michael.wood@gmail.com">Adam Michael Wood</a> - <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> <br><span id="powered-by">Powered by <a href="https://getnikola.com" rel="nofollow">Nikola</a></span></p>
+            
+        </footer>
+</div>
+    
+    
+
+        <script src="../../assets/js/baguetteBox.min.js"></script><script>baguetteBox.run('a.reference', {
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});</script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga'); ga('create', 'UA-46189469-6', 'auto'); ga('send', 'pageview');</script>
+</body>
+</html>
